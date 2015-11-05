@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 2.8)
 project(capstone)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu11")
+
+IF(CYGWIN)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu11")
+ELSE()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ENDIF()
+
 
 set(SOURCE_FILES main.cpp)
 add_executable(run_capstone ${SOURCE_FILES})
