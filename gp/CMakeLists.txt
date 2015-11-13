@@ -1,0 +1,6 @@
+find_package(Protobuf REQUIRED)
+file(GLOB PROTO_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.proto")
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_FILES})
+add_library(capstone-shared STATIC ${PROTO_SRCS} ${PROTO_HDRS})
+target_include_directories(capstone-shared PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(capstone-shared ${PROTOBUF_LIBRARY})
