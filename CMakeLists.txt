@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.12)
 
 project(saas)
 
@@ -9,7 +9,7 @@ ELSE()
 ENDIF()
 
 add_subdirectory(lib/gtest-1.7.0)
-
+add_subdirectory(capstone-shared)
 add_subdirectory(sim)
 add_subdirectory(saap)
 add_subdirectory(cdti)
