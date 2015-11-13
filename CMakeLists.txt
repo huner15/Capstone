@@ -9,7 +9,7 @@ ELSE()
 ENDIF()
 
 add_subdirectory(lib/gtest-1.7.0)
-add_subdirectory(capstone-shared)
+add_subdirectory(gp)
 add_subdirectory(sim)
 add_subdirectory(saap)
 add_subdirectory(cdti)
