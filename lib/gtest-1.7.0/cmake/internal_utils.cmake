@@ -110,7 +110,7 @@ macro(config_compiler_and_linker)
     set(cxx_base_flags "${cxx_base_flags} -DGTEST_HAS_PTHREAD=0")
   endif()
 
-  # For building gtest's own tests and samples.
+  # For building gtest's own test and samples.
   set(cxx_exception "${CMAKE_CXX_FLAGS} ${cxx_base_flags} ${cxx_exception_flags}")
   set(cxx_no_exception
     "${CMAKE_CXX_FLAGS} ${cxx_base_flags} ${cxx_no_exception_flags}")
@@ -122,7 +122,7 @@ macro(config_compiler_and_linker)
   set(cxx_strict "${cxx_default} ${cxx_strict_flags}")
 endmacro()
 
-# Defines the gtest & gtest_main libraries.  User tests should link
+# Defines the gtest & gtest_main libraries.  User test should link
 # with one of them.
 function(cxx_library_with_type name type cxx_flags)
   # type can be either STATIC or SHARED to denote a static or shared library.
@@ -213,7 +213,7 @@ endfunction()
 # creates a Python test with the given name whose main module is in
 # test/name.py.  It does nothing if Python is not installed.
 function(py_test name)
-  # We are not supporting Python tests on Linux yet as they consider
+  # We are not supporting Python test on Linux yet as they consider
   # all Linux environments to be google3 and try to use google3 features.
   if (PYTHONINTERP_FOUND)
     # ${CMAKE_BINARY_DIR} is known at configuration time, so we can

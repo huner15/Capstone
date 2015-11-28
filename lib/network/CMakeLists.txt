@@ -1,5 +1,4 @@
-project(sim)
+project(network)
 
-add_subdirectory(app)
 add_subdirectory(src)
 add_subdirectory(test)
