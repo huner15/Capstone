@@ -5,7 +5,6 @@
 #include <google/protobuf/message.h>
 #include "Socket.h"
 
-
 /**
  * A Client Socket is a socket that connects to an open port.
  * The client socket should be used when it wants to communicate
@@ -68,6 +67,5 @@ private:
 
 
 };
-
 
 #endif
