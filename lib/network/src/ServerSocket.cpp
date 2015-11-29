@@ -1,27 +1,26 @@
-#include "ServerSocket.h"
-#include "SocketException.h"
 #include <arpa/inet.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <google/protobuf/io/zero_copy_stream_impl.h>
 #include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/io/zero_copy_stream_impl_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <iostream>
+#include <cstring>
 #include "ProtobufSocketSerializer.h"
+
+#include "ServerSocket.h"
+#include "SocketException.h"
+
 #define PROTOBUF_HEADER_LEN 4
+
 ServerSocket::ServerSocket(int port)
 {
    //Create the socket
    if(! Socket::create())
    {
       throw SocketException("Could not create server socket.");
-
    }
    if(! Socket::bind(port))
    {
       throw SocketException("Could not bind to port" + std::to_string(port));
-
    }
    if(! Socket::listen())
    {
@@ -96,8 +95,6 @@ void ServerSocket::read_protobuf(::google::protobuf::Message & msg, const char *
    msg.ParseFromCodedStream(&coded_input);
    //Once the embedded message has been parsed, PopLimit() is called to undo the limit
    coded_input.PopLimit(msgLimit);
-
-
 }
 //read data from socket into s
 const ServerSocket& ServerSocket::operator >> (::google::protobuf::Message & msg) const
@@ -120,7 +117,7 @@ const ServerSocket& ServerSocket::operator >> (::google::protobuf::Message & msg
    return *this;
 }
 
-void ServerSocket::accept(ServerSocket & sock)
+void ServerSocket::accept(ServerSocket &sock)
 {
    if(!Socket::accept(sock))
    {
