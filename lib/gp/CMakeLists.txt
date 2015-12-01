@@ -1,6 +1,4 @@
-find_package(Protobuf REQUIRED)
-file(GLOB PROTO_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.proto")
-protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_FILES})
-add_library(gp_lib STATIC ${PROTO_SRCS} ${PROTO_HDRS})
-target_include_directories(gp_lib PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(gp_lib ${PROTOBUF_LIBRARY})
+project(gp)
+
+add_subdirectory(src)
+add_subdirectory(test)

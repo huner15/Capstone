@@ -1,6 +1,0 @@
-package test;
-
-message Msg{
-	required string name = 1;
-	required int32 age = 2;
-}
