@@ -4,27 +4,71 @@ using System.Net.Sockets;
 using System.Net;
 using System;
 using Example;
+using System.Threading;
 public class NetworkInput : MonoBehaviour {
 
     TcpListener server = null;
     NetworkStream stream;
+    Thread mThread;
+    private bool isRunning;
+
+
 
     public Sprite airTrafficDirectional, airTrafficNonDirectional, proximateTrafficDirectional, proximateTrafficNonDirectional, resolutionAdvisoryDirectional, trafficAdvisoryDirectional;
     public GameObject aircraftBuilder;
     private System.Collections.Generic.List<GameObject> aircraft = new System.Collections.Generic.List<GameObject>();
     private System.Collections.Generic.List<GameObject> aircraftHidden = new System.Collections.Generic.List<GameObject>();
+    public GameObject circle;
 
     public int maxRange = 20;
+
+    void OnGUI()
+    {
+        int h = Screen.height;
+        int w = Screen.width;
+        Console.Write("boom");
+        GUI.Label(new Rect(w/1.7f, h/2, 20, 20), "" + (maxRange/4));
+        GUI.Label(new Rect(w/1.52f, h/2, 20, 20), "" + (maxRange * 2 / 4));
+        GUI.Label(new Rect(w/1.37f, h/2, 20, 20), "" + (maxRange * 3 / 4));
+        GUI.Label(new Rect(w/1.26f, h/2, 20, 20), "" + (maxRange));
+
+    }
+
+
 
 
     // Use this for initialization
     void Start () {
+        GameObject addCircles;
+
+        addCircles = Instantiate(circle) as GameObject;
+        addCircles.GetComponent<Transform>().localScale =new Vector3(2.6f, 2.6f, 1);
+        addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
+        addCircles = Instantiate(circle) as GameObject;
+        addCircles.GetComponent<Transform>().localScale = new Vector3(2f,2f, 1);
+        addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
+        addCircles = Instantiate(circle) as GameObject;
+        addCircles.GetComponent<Transform>().localScale = new Vector3(1.4f, 1.4f, 1);
+        addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
+        addCircles = Instantiate(circle) as GameObject;
+        addCircles.GetComponent<Transform>().localScale = new Vector3(.8f, .8f, 1);
+        addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
+
+
+        isRunning = true;
+        ThreadStart ts = new ThreadStart(connect);
+        mThread = new Thread(ts);
+        mThread.Start();
+        print("Thread done...");
+
+
+        /*
         Int32 port = 13000;
         IPAddress localAddr = IPAddress.Parse("127.0.0.1");
 
         // TcpListener server = new TcpListener(port);
         server = new TcpListener(localAddr, port);
-
+        
         // Start listening for client requests.
         server.Start();
 
@@ -34,22 +78,69 @@ public class NetworkInput : MonoBehaviour {
         Console.WriteLine("Connected");
 
         stream = client.GetStream();
+        */
+
+    }
+
+    public void stopListening()
+    {
+        isRunning = false;
+    }
 
 
+    void connect()
+    {
+        try
+        {
+            server = new TcpListener(IPAddress.Parse("127.0.0.1"), 13000);
+            server.Start();
+            print("Server Start");
+            while (isRunning)
+            {
+                // check if new connections are pending, if not, be nice and sleep 100ms
+                if (!server.Pending())
+                {
+                    Thread.Sleep(100);
+                }
+                else
+                {
+                    print("1");
+                    TcpClient client = server.AcceptTcpClient();
+                    print("2");
+                    NetworkStream ns = client.GetStream();
+                    print("3");
+                    //probably need to do special cross thread call here try without first but with an actual packet of data.
+                    intake(CDTIReport.Deserialize(ns));
+                    
+                    client.Close();
+                }
+            }
+        }
+        catch (ThreadAbortException)
+        {
+            print("exception");
+        }
+        finally
+        {
+            isRunning = false;
+            server.Stop();
+        }
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         //try to read in the client info here.
-        if(stream.DataAvailable)
+        /*if(stream.DataAvailable)
         {
             intake(CDTIReport.Deserialize(stream));
-        }
+        }*/
 	}
 
     private void  intake(CDTIReport report)
     {
+
+
         clearPlanes();
 
         foreach (CDTIPlane plane in report.Planes)
@@ -144,5 +235,13 @@ public class NetworkInput : MonoBehaviour {
 
 
        // throw new NotImplementedException();
+    }
+
+    void OnApplicationQuit()
+    {
+        // stop listening thread
+        stopListening();
+        // wait fpr listening thread to terminate (max. 500ms)
+        mThread.Join(500);
     }
 }
