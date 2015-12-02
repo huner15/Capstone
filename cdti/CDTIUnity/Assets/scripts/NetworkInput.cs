@@ -24,6 +24,28 @@ public class NetworkInput : MonoBehaviour {
 
     public int maxRange = 20;
 
+    static System.IO.StreamWriter writer;
+
+    public static void logger(String str)
+    {
+        if (writer == null)
+        {
+            if (!System.IO.File.Exists("log.txt"))
+            {
+                System.IO.File.Create("log.txt");
+            }
+
+            writer = new System.IO.StreamWriter(System.IO.File.OpenWrite("log.txt"));
+        }
+        print(str);
+        writer.WriteLine(str);
+        writer.Flush();
+
+    }
+
+
+
+
     void OnGUI()
     {
         int h = Screen.height;
@@ -116,6 +138,7 @@ public class NetworkInput : MonoBehaviour {
                 yield return Ninja.JumpToUnity;
                 Msg message = Msg.Deserialize(ns);
                 CDTIReport report = new CDTIReport();
+                logger(message.Name);
                 CDTIPlane plane = new CDTIPlane();
                 plane.Position = new Vector();
                 plane.Position.X = message.Age;
