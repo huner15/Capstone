@@ -5,6 +5,8 @@ using System.Net;
 using System;
 using Example;
 using System.Threading;
+using CielaSpike;
+
 public class NetworkInput : MonoBehaviour {
 
     TcpListener server = null;
@@ -56,9 +58,11 @@ public class NetworkInput : MonoBehaviour {
 
 
         isRunning = true;
-        ThreadStart ts = new ThreadStart(connect);
-        mThread = new Thread(ts);
-        mThread.Start();
+        this.StartCoroutineAsync(connect());
+
+        //ThreadStart ts = new ThreadStart(connect);
+       // mThread = new Thread(ts);
+        //mThread.Start();
         print("Thread done...");
 
 
@@ -88,10 +92,9 @@ public class NetworkInput : MonoBehaviour {
     }
 
 
-    void connect()
+    IEnumerator connect()
     {
-        try
-        {
+       
             server = new TcpListener(IPAddress.Parse("127.0.0.1"), 13000);
             server.Start();
             print("Server Start");
@@ -110,21 +113,15 @@ public class NetworkInput : MonoBehaviour {
                     NetworkStream ns = client.GetStream();
                     print("3");
                     //probably need to do special cross thread call here try without first but with an actual packet of data.
+                    yield return Ninja.JumpToUnity;
                     intake(CDTIReport.Deserialize(ns));
-                    
+                    yield return Ninja.JumpBack;
                     client.Close();
                 }
             }
-        }
-        catch (ThreadAbortException)
-        {
-            print("exception");
-        }
-        finally
-        {
-            isRunning = false;
-            server.Stop();
-        }
+
+        server.Stop();
+        yield return null;
     }
 	
 	// Update is called once per frame
@@ -242,6 +239,6 @@ public class NetworkInput : MonoBehaviour {
         // stop listening thread
         stopListening();
         // wait fpr listening thread to terminate (max. 500ms)
-        mThread.Join(500);
+      //  mThread.Join(500);
     }
 }
