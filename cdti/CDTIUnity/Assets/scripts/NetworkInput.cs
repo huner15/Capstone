@@ -95,30 +95,38 @@ public class NetworkInput : MonoBehaviour {
     IEnumerator connect()
     {
        
-            server = new TcpListener(IPAddress.Parse("127.0.0.1"), 13000);
-            server.Start();
-            print("Server Start");
-            while (isRunning)
-            {
+        server = new TcpListener(IPAddress.Parse("127.0.0.1"), 13000);
+        server.Start();
+        print("Server Start");
+        while (isRunning)
+        {
                 // check if new connections are pending, if not, be nice and sleep 100ms
-                if (!server.Pending())
-                {
-                    Thread.Sleep(100);
-                }
-                else
-                {
-                    print("1");
-                    TcpClient client = server.AcceptTcpClient();
-                    print("2");
-                    NetworkStream ns = client.GetStream();
-                    print("3");
-                    //probably need to do special cross thread call here try without first but with an actual packet of data.
-                    yield return Ninja.JumpToUnity;
-                    intake(CDTIReport.Deserialize(ns));
-                    yield return Ninja.JumpBack;
-                    client.Close();
-                }
+            if (!server.Pending())
+            {
+                Thread.Sleep(100);
             }
+            else
+            {
+                print("1");
+                TcpClient client = server.AcceptTcpClient();
+                print("2");
+                NetworkStream ns = client.GetStream();
+                print("3");
+                //probably need to do special cross thread call here try without first but with an actual packet of data.
+                yield return Ninja.JumpToUnity;
+                Msg message = Msg.Deserialize(ns);
+                CDTIReport report = new CDTIReport();
+                CDTIPlane plane = new CDTIPlane();
+                plane.Position = new Vector();
+                plane.Position.X = message.Age;
+                plane.Position.Y = message.Age;
+                report.Planes.Add(plane);
+                intake(report);
+                // intake(CDTIReport.Deserialize(ns));
+                yield return Ninja.JumpBack;
+                client.Close();
+            }
+        }
 
         server.Stop();
         yield return null;
