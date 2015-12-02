@@ -21,7 +21,7 @@ public class NetworkInput : MonoBehaviour {
     private System.Collections.Generic.List<GameObject> aircraft = new System.Collections.Generic.List<GameObject>();
     private System.Collections.Generic.List<GameObject> aircraftHidden = new System.Collections.Generic.List<GameObject>();
     public GameObject circle;
-
+    private string message = "";
     public int maxRange = 20;
 
     static System.IO.StreamWriter writer;
@@ -55,7 +55,7 @@ public class NetworkInput : MonoBehaviour {
         GUI.Label(new Rect(w/1.52f, h/2, 20, 20), "" + (maxRange * 2 / 4));
         GUI.Label(new Rect(w/1.37f, h/2, 20, 20), "" + (maxRange * 3 / 4));
         GUI.Label(new Rect(w/1.26f, h/2, 20, 20), "" + (maxRange));
-
+        GUI.Label(new Rect(w / 2, 0, 100, 20), message);
     }
 
 
@@ -119,7 +119,7 @@ public class NetworkInput : MonoBehaviour {
        
         server = new TcpListener(IPAddress.Parse("127.0.0.1"), 13000);
         server.Start();
-        print("Server Start");
+        logger("server Start");
         while (isRunning)
         {
                 // check if new connections are pending, if not, be nice and sleep 100ms
@@ -131,20 +131,31 @@ public class NetworkInput : MonoBehaviour {
             {
                 print("1");
                 TcpClient client = server.AcceptTcpClient();
+                logger("connection established");
                 print("2");
                 NetworkStream ns = client.GetStream();
                 print("3");
                 //probably need to do special cross thread call here try without first but with an actual packet of data.
                 yield return Ninja.JumpToUnity;
                 Msg message = Msg.Deserialize(ns);
-                CDTIReport report = new CDTIReport();
                 logger(message.Name);
+                this.message = message.Name;
+                CDTIReport report = new CDTIReport();
                 CDTIPlane plane = new CDTIPlane();
                 plane.Position = new Vector();
                 plane.Position.X = message.Age;
                 plane.Position.Y = message.Age;
-                report.Planes.Add(plane);
-                intake(report);
+                plane.Position.Z = 0;
+                plane.Id = name;
+                plane.severity = CDTIPlane.Severity.PROXIMATE;
+                plane.Velocity = new Vector();
+                plane.Velocity.X = 0;
+                plane.Velocity.Y = 0;
+                plane.Velocity.Z = 0;
+                AddToScreen(plane);
+                //report.Planes.Add(plane);
+                
+               // intake(report);
                 // intake(CDTIReport.Deserialize(ns));
                 yield return Ninja.JumpBack;
                 client.Close();
@@ -167,7 +178,7 @@ public class NetworkInput : MonoBehaviour {
 
     private void  intake(CDTIReport report)
     {
-
+        logger("at intake");
 
         clearPlanes();
 
