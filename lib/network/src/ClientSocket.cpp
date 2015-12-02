@@ -9,8 +9,21 @@
 #include <google/protobuf/io/zero_copy_stream_impl_lite.h>
 #include <google/protobuf/descriptor.h>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 #define PROTOBUF_HEADER_LEN 4
+
+//TODO: GET RID OF THIS
+using namespace std;
+
+template <typename T>
+std::string to_string(T value)
+{
+    std::ostringstream os ;
+    os << value ;
+    return os.str() ;
+}
 
 ClientSocket::ClientSocket(std::string host, int port)
 {
@@ -20,9 +33,11 @@ ClientSocket::ClientSocket(std::string host, int port)
    }
    if(!Socket::connect(host, port))
    {
-      throw SocketException("Could not connet to" + host + ":" + std::to_string(port));
+      throw SocketException("Could not connet to" + host + ":" + to_string(port));
    }
 }
+
+
 
 const ClientSocket & ClientSocket::operator << (const std::string& s) const
 {

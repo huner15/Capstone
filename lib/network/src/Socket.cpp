@@ -1,6 +1,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <iostream>
+#include <sys/errno.h>
 
 #include "Socket.h"
 

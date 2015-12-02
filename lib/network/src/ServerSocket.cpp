@@ -9,7 +9,20 @@
 #include "ServerSocket.h"
 #include "SocketException.h"
 
+#include <string>
+#include <sstream>
+
 #define PROTOBUF_HEADER_LEN 4
+
+//TODO: GET RID OF THIS
+template <typename T>
+std::string to_string(T value)
+{
+   std::ostringstream os ;
+   os << value ;
+   return os.str() ;
+}
+
 
 ServerSocket::ServerSocket(int port)
 {
@@ -20,7 +33,7 @@ ServerSocket::ServerSocket(int port)
    }
    if(! Socket::bind(port))
    {
-      throw SocketException("Could not bind to port" + std::to_string(port));
+      throw SocketException("Could not bind to port" + to_string(port));
    }
    if(! Socket::listen())
    {
