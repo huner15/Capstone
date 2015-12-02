@@ -28,18 +28,18 @@ public class NetworkInput : MonoBehaviour {
 
     public static void logger(String str)
     {
-        if (writer == null)
-        {
-            if (!System.IO.File.Exists("log.txt"))
-            {
-                System.IO.File.Create("log.txt");
-            }
+      //  if (writer == null)
+       // {
+        //    if (!System.IO.File.Exists("log.txt"))
+         //   {
+         //       System.IO.File.Create("log.txt");
+          //  }
 
-            writer = new System.IO.StreamWriter(System.IO.File.OpenWrite("log.txt"));
-        }
+          //  writer = new System.IO.StreamWriter(System.IO.File.OpenWrite("log.txt"));
+        //}
         print(str);
-        writer.WriteLine(str);
-        writer.Flush();
+       // writer.WriteLine(str);
+       // writer.Flush();
 
     }
 
@@ -134,6 +134,12 @@ public class NetworkInput : MonoBehaviour {
                 logger("connection established");
                 print("2");
                 NetworkStream ns = client.GetStream();
+                ns.ReadByte();
+                ns.ReadByte();
+                ns.ReadByte();
+                ns.ReadByte();
+                
+                ns.Seek(4, System.IO.SeekOrigin.Begin);
                 print("3");
                 //probably need to do special cross thread call here try without first but with an actual packet of data.
                 yield return Ninja.JumpToUnity;
