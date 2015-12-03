@@ -1,0 +1,49 @@
+{
+  "absoluteOwnship" : {
+      "latitude" : "73.60",
+      "longitude" : "34.45",
+      "altitude" : "18000"
+  },
+   "flightPlans" : [
+     {
+       "startPosition": {
+         "x": "123",
+         "y": "24",
+         "z": "345"
+       },
+       "flightLegs": [
+         {
+           "durationOfManeuver": "5",
+           "durationAfterManeuver": "4",
+           "newRelativeVelocity": {
+             "x": "34",
+             "y": "3",
+             "z": "23"
+           }
+         }
+       ]
+     },
+     {
+       "startPosition": {
+         "x": "50",
+         "y": "60",
+         "z": "100"
+       },
+       "flightLegs": [
+         {
+           "durationOfManeuver": "7",
+           "durationAfterManeuver": "10",
+           "newRelativeVelocity": {
+             "x": "10",
+             "y": "10",
+             "z": "10"
+           }
+         }
+       ]
+     }]
+
+}
+
+
+
+
