@@ -24,23 +24,33 @@ public class NetworkInput : MonoBehaviour {
     private string message = "";
     public int maxRange = 20;
 
+    private Vector pos = new Vector();
+    private GameObject plane;
+
     static System.IO.StreamWriter writer;
 
     public static void logger(String str)
     {
-      //  if (writer == null)
-       // {
-        //    if (!System.IO.File.Exists("log.txt"))
-         //   {
-         //       System.IO.File.Create("log.txt");
-          //  }
-
-          //  writer = new System.IO.StreamWriter(System.IO.File.OpenWrite("log.txt"));
-        //}
         print(str);
-       // writer.WriteLine(str);
-       // writer.Flush();
+        try
+        {
+            if(writer == null)
+            {
+                if (!System.IO.File.Exists("log.txt"))
+                {
+                    System.IO.File.Create("log.txt");
+                }
 
+                writer = new System.IO.StreamWriter(System.IO.File.OpenWrite("log.txt"));
+             }
+
+             writer.WriteLine(str);
+             writer.Flush();
+        }
+        catch(Exception)
+        {
+            print("write failled");
+        }
     }
 
 
@@ -79,6 +89,13 @@ public class NetworkInput : MonoBehaviour {
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
 
 
+        plane = Instantiate(aircraftBuilder) as GameObject;
+        pos.X = 0;
+        pos.Y = -20;
+        pos.Z = 0;
+        
+
+
         isRunning = true;
         this.StartCoroutineAsync(connect());
 
@@ -86,7 +103,7 @@ public class NetworkInput : MonoBehaviour {
        // mThread = new Thread(ts);
         //mThread.Start();
         print("Thread done...");
-
+        
 
         /*
         Int32 port = 13000;
@@ -133,35 +150,52 @@ public class NetworkInput : MonoBehaviour {
                 TcpClient client = server.AcceptTcpClient();
                 logger("connection established");
                 print("2");
-                NetworkStream ns = client.GetStream();
-                ns.ReadByte();
-                ns.ReadByte();
-                ns.ReadByte();
-                ns.ReadByte();
-                
-                ns.Seek(4, System.IO.SeekOrigin.Begin);
-                print("3");
-                //probably need to do special cross thread call here try without first but with an actual packet of data.
                 yield return Ninja.JumpToUnity;
-                Msg message = Msg.Deserialize(ns);
-                logger(message.Name);
-                this.message = message.Name;
-                CDTIReport report = new CDTIReport();
-                CDTIPlane plane = new CDTIPlane();
-                plane.Position = new Vector();
-                plane.Position.X = message.Age;
-                plane.Position.Y = message.Age;
-                plane.Position.Z = 0;
-                plane.Id = name;
-                plane.severity = CDTIPlane.Severity.PROXIMATE;
-                plane.Velocity = new Vector();
-                plane.Velocity.X = 0;
-                plane.Velocity.Y = 0;
-                plane.Velocity.Z = 0;
-                AddToScreen(plane);
+                plane.GetComponent<SpriteRenderer>().sprite = getCorrectSprite(null);
+                plane.GetComponent<Transform>().position = figurePositon(null);
+                pos.Y += .5f;
+                logger("moved");
+                /* NetworkStream ns = client.GetStream();
+                 ns.ReadByte();
+                 ns.ReadByte();
+                 ns.ReadByte();
+                 ns.ReadByte();
+
+                 //ns.Seek(4, System.IO.SeekOrigin.Begin);
+                 print("3");
+                 //probably need to do special cross thread call here try without first but with an actual packet of data.
+                 yield return Ninja.JumpToUnity;
+                 /*
+                 try
+                 {
+                     Msg message = Msg.Deserialize(ns);
+                     logger(message.Name);
+                     this.message = message.Name;
+                     CDTIReport report = new CDTIReport();
+                     CDTIPlane plane = new CDTIPlane();
+                     plane.Position = new Vector();
+                     plane.Position.X = message.Age;
+                     plane.Position.Y = message.Age;
+                     plane.Position.Z = 0;
+                     plane.Id = name;
+                     plane.severity = CDTIPlane.Severity.PROXIMATE;
+                     plane.Velocity = new Vector();
+                     plane.Velocity.X = 0;
+                     plane.Velocity.Y = 0;
+                     plane.Velocity.Z = 0;
+                     AddToScreen(plane);
+                 }
+                 catch (NotImplementedException)
+                 {
+                     logger("tried to seek");
+                 }
+                 */
+
+
+
                 //report.Planes.Add(plane);
-                
-               // intake(report);
+
+                // intake(report);
                 // intake(CDTIReport.Deserialize(ns));
                 yield return Ninja.JumpBack;
                 client.Close();
@@ -222,7 +256,17 @@ public class NetworkInput : MonoBehaviour {
 
     private Vector3 figurePositon(CDTIPlane plane)
     {
+        
         Vector3 positon;
+
+        if (plane == null)
+        {
+            positon.x = pos.X / maxRange * 5;
+            positon.y = pos.Y / maxRange * 5;
+            positon.z = 0;
+            return positon;
+        }
+
 
         positon.x = plane.Position.X/maxRange*5;
         positon.y = plane.Position.Y/maxRange*5;
@@ -234,6 +278,10 @@ public class NetworkInput : MonoBehaviour {
 
     private Sprite getCorrectSprite(CDTIPlane plane)
     {
+        if(plane == null)
+        {
+            return airTrafficDirectional;
+        }
 
         Vector zeroVector = new Vector();
         zeroVector.X = 0;

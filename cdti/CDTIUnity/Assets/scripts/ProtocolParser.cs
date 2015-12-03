@@ -44,7 +44,7 @@ namespace SilentOrbit.ProtocolBuffers
         public static void SkipBytes(Stream stream)
         {
             int length = (int)ReadUInt32(stream);
-            if (stream.CanSeek)
+            if (stream.CanSeek && false)
                 stream.Seek(length, SeekOrigin.Current);
             else
                 ReadBytes(stream);
