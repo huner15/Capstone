@@ -1,9 +1,3 @@
-set(HEADER_FILES
-        foo.h
-        )
-
-set(SOURCE_FILES
-        foo.cpp
-        )
-
+file(GLOB HEADER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
+file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 add_library(cdti_lib ${HEADER_FILES} ${SOURCE_FILES})

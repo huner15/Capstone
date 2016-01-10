@@ -1,10 +1,19 @@
+#include <unistd.h>
 #include <iostream>
 #include <fstream>
 #include <string>
+//#include <thread>         // std::this_thread::sleep_for
+//#include <chrono>         // std::chrono::seconds
+
+
 #include "message.pb.h"
 #include "ClientSocket.h"
 #include "SocketException.h"
 #include "ProtobufSocketSerializer.h"
+
+
+
+
 
 int main(int argC, char *argV[]) {
     test::Msg msg;
@@ -23,6 +32,8 @@ int main(int argC, char *argV[]) {
         do {
             std::cout << "Enter Message: ";
             getline(std::cin, rawMessage);
+            //std::this_thread::sleep_for (std::chrono::seconds(5));
+            sleep(5);
             std::cout << "Enter age: ";
             std::string age;
             getline(std::cin, age);

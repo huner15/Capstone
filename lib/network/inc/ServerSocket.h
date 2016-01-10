@@ -5,7 +5,6 @@
 #include "Socket.h"
 #include <google/protobuf/message.h>
 
-
 /**
  * A Server Socket is a socket used primarely by a server application,
  * or whenever the socket expects to recieve a connection, instead of
@@ -70,6 +69,5 @@ private:
    void read_protobuf(::google::protobuf::Message & msg, const char * data) const;
 
 };
-
 
 #endif
