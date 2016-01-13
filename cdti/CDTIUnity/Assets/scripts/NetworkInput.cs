@@ -6,6 +6,7 @@ using System;
 using Example;
 using System.Threading;
 using CielaSpike;
+using System.IO;
 
 public class NetworkInput : MonoBehaviour {
 
@@ -146,6 +147,7 @@ public class NetworkInput : MonoBehaviour {
             }
             else
             {
+                File.Delete("temp.txt");
                 print("1");
                 TcpClient client = server.AcceptTcpClient();
                 logger("connection established");
@@ -155,16 +157,33 @@ public class NetworkInput : MonoBehaviour {
                 plane.GetComponent<Transform>().position = figurePositon(null);
                 pos.Y += .5f;
                 logger("moved");
-                /* NetworkStream ns = client.GetStream();
-                 ns.ReadByte();
-                 ns.ReadByte();
-                 ns.ReadByte();
-                 ns.ReadByte();
-
-                 //ns.Seek(4, System.IO.SeekOrigin.Begin);
-                 print("3");
+                NetworkStream ns = client.GetStream();
+                const int bufSize = 0x1000;
+                byte[] buf = new byte[bufSize];
+                ns.ReadByte();
+                ns.ReadByte();
+                ns.ReadByte();
+                ns.ReadByte();
+                MemoryStream ms = new MemoryStream();
+               // FileStream fs =  new FileStream("temp.txt", FileMode.CreateNew);
+                long totalBytes = 0;
+                int bytesRead = 0;
+                while((bytesRead = ns.Read(buf,0,bufSize)) > 0)
+                {
+                    ms.Write(buf, 0, bytesRead);
+                    totalBytes += bytesRead;
+                }
+                // fs.Close();
+                // fs = new FileStream("temp.txt", FileMode.Open);
+                ms.Position = 0;
+                Msg message = Msg.Deserialize(ms);
+                ms.Close();
+                //File.Delete("temp.txt");
+                logger(message.Name);
+                //ns.Seek(4, System.IO.SeekOrigin.Begin);
+                print("3");
                  //probably need to do special cross thread call here try without first but with an actual packet of data.
-                 yield return Ninja.JumpToUnity;
+                 //yield return Ninja.JumpToUnity;
                  /*
                  try
                  {
