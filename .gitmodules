@@ -1,0 +1,3 @@
+[submodule "lib/gp/capstone-shared"]
+	path = lib/gp/capstone-shared
+	url = https://fpoolev@bitbucket.org/mmurph18/capstone-shared.git
