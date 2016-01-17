@@ -1,7 +1,12 @@
-#include <string.h>
-#include <fcntl.h>
-#include <iostream>
-#include <sys/errno.h>
+/*
+ * California Polytechnic State University, San Luis Obispo
+ * Computer Engineering - CPE 402, 405, 406
+ * Author: Frank Poole
+ * Professor: David Janzen
+ * Date: 1-16-2016
+ * Disclaimer: The original version of the following code was taken from
+ * tldp.org/LDP/LG/issue74/misc/tougher
+ */
 
 #include "Socket.h"
 
@@ -10,7 +15,6 @@ Socket::Socket() : m_sock(-1) {
 }
 
 Socket::~Socket() {
-
     if (is_valid()) {
         ::close(m_sock);
     }
@@ -19,18 +23,11 @@ Socket::~Socket() {
 bool Socket::create() {
     int opt = 1;
     m_sock = socket(AF_INET, SOCK_STREAM, 0);
-
-    if (is_valid()) {
-        return ::setsockopt(m_sock, SOL_SOCKET, SO_REUSEADDR,
-                            (const char *) &opt, sizeof(opt)) != -1;
-    }
-    else {
-        return false;
-    }
+    return is_valid() && ::setsockopt(m_sock, SOL_SOCKET, SO_REUSEADDR,
+                                      (const char *) &opt, sizeof(opt)) != -1;
 }
 
 bool Socket::bind(const in_port_t port) {
-
     if (is_valid()) {
         m_addr.sin_family = AF_INET;
         m_addr.sin_addr.s_addr = INADDR_ANY;
@@ -44,13 +41,7 @@ bool Socket::bind(const in_port_t port) {
 }
 
 bool Socket::listen() const {
-
-    if (is_valid()) {
-        return ::listen(m_sock, MAX_CONNECTIONS) != -1;
-    }
-    else {
-        return false;
-    }
+    return is_valid() && ::listen(m_sock, MAX_CONNECTIONS) != -1;
 }
 
 bool Socket::accept(Socket &new_socket) const {
@@ -93,7 +84,6 @@ size_t Socket::recv(void *bfr, size_t len, int flags) const {
 }
 
 bool Socket::connect(const std::string host, const in_port_t port) {
-
     if (is_valid()) {
         m_addr.sin_family = AF_INET;
         m_addr.sin_port = htons(port);
