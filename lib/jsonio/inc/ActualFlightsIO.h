@@ -12,6 +12,8 @@ public:
 
     virtual Json::Value readFile();
 
+
+
     virtual void writeFile(Json::Value value);
 };
 

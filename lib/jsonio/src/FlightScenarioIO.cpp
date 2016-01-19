@@ -24,6 +24,51 @@ Json::Value FlightScenarioIO::readFile() {
     }
 }
 
+Json::Value FlightScenarioIO::getAbsoluteOwnshipData() {
+    Json::Value root = readFile();
+
+    return root["absoluteOwnship"];
+}
+
+Json::Value FlightScenarioIO::getFlightPlans() {
+    Json::Value root = readFile();
+
+    return root["flightPlans"];
+}
+
+std::vector<std::vector<int>> FlightScenarioIO::getStartPositions() {
+    Json::Value flightPlans = getFlightPlans();
+    std::vector<int> position;
+    std::vector<std::vector<int>> positions;
+
+    for ( int index = 0; index < flightPlans.size(); index++ ) {
+        position.push_back(flightPlans[index]["startPosition"]["x"].asInt());
+        position.push_back(flightPlans[index]["startPosition"]["y"].asInt());
+        position.push_back(flightPlans[index]["startPosition"]["z"].asInt());
+        //std::cout << flightPlans[index]["startPosition"]["x"];
+
+
+        positions.push_back(position);
+        position.empty();
+    }
+
+    return positions;
+}
+
+std::vector<Json::Value> FlightScenarioIO::getFlightLegs() {
+    Json::Value flightPlans = getFlightPlans();
+    std::vector<Json::Value> flightLegs;
+
+
+    for ( int index = 0; index < flightPlans.size(); index++ ) {
+        flightLegs.push_back(flightPlans[index]["flightLegs"]);
+    }
+
+    return flightLegs;
+}
+
+
+
 void FlightScenarioIO::writeFile(Json::Value value) {
     std::ofstream file_id;
     file_id.open("FlightScenarioOutput", fstream::out);
