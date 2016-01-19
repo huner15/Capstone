@@ -1,8 +1,6 @@
 {
 	"actualFlights" : [
-	{
-    	"actualFlight" : [
-    	{
+		{
         	"actualReport" : {
         	"tailNo" : "12ASX3", 
         	"id" : "2", 
@@ -221,4 +219,3 @@
         	"altitude" : "20000" 
         }}
     ]}
-]}

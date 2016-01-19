@@ -8,19 +8,48 @@
 
 #include "JsonIO.h"
 
+/**
+ * FlightScenarioIO is the utility library for reading and writing
+ * regarding the Flight Scenario files.
+ */
+
 class FlightScenarioIO : public JsonIO {
 public:
 
-    virtual Json::Value readFile();
+    /**
+     * Reads the JSON FlightScenario file and returns a reference
+     * to the root of the JSON file.
+     * @return The root of the JSON File
+     */
+     static Json::Value readFile();
 
-    virtual Json::Value getAbsoluteOwnshipData();
+    /**
+     * Accessor function to retrieve the initial Ownship data.
+     * @return Initial Ownship data in Json::Value form.
+     */
+    static Json::Value getAbsoluteOwnshipData();
 
-    virtual Json::Value getFlightPlans();
+    /**
+     * Accessor function for the list of flight plans.
+     * @return All the flight plans in the JSON in JSon::Value form.
+     */
+    static Json::Value getFlightPlans();
 
-    virtual std::vector<std::vector<int>> getStartPositions();
+    /**
+     * Accessor method to a vector containing the starting positions of all aircrafts.
+     * @return Vector containing the starting positions of all aircrafts
+     */
+    static std::vector<std::vector<int>> getStartPositions();
 
-    virtual std::vector<Json::Value> getFlightLegs();
+    /**
+     * Accesor method to all the flight legs.
+     * @return A vector containing all the flight legs in the flight scenario.
+     */
+    static std::vector<Json::Value> getFlightLegs();
 
+    /**
+     * TODO
+     */
     virtual void writeFile(Json::Value value);
 };
 

@@ -12,7 +12,7 @@
 class JsonIO {
     public:
         virtual ~JsonIO() {}
-        virtual Json::Value readFile() = 0;
+        static Json::Value readFile();
         virtual void writeFile(Json::Value) = 0;
 };
 

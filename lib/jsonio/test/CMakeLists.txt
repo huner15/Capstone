@@ -1,4 +1,6 @@
 include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(${gtest_SOURCE_DIR}/inc ${gtest_SOURCE_DIR})
-add_executable(run_flight_scenario_tests flight_scenario_tests.cpp)
+add_executable(run_flight_scenario_tests flight_scenario_tests.cpp actual_flights_tests.cpp)
+add_executable(run_actual_flights_tests actual_flights_tests.cpp)
 target_link_libraries(run_flight_scenario_tests gtest gtest_main jsonio_lib)
+target_link_libraries(run_actual_flights_tests gtest_main jsonio_lib)

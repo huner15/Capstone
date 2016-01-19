@@ -23,6 +23,19 @@ Json::Value ActualFlightsIO::readFile() {
     }
 }
 
+Json::Value ActualFlightsIO::getActualFlights() {
+    Json::Value root = readFile();
+
+    return root["actualFlight"];
+}
+
+std::vector<Json::Value> ActualFlightsIO::getActualReports() {
+    Json::Value actualFlights = getActualFlights();
+
+    return std::vector<Json::Value>
+            (std::begin(actualFlights["actualReport"]), std::end(actualFlights["actualReport"]));
+}
+
 void ActualFlightsIO::writeFile(Json::Value value) {
     std::ofstream file_id;
     file_id.open("ActualFlightOutput", fstream::out);
