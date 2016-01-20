@@ -1,0 +1,325 @@
+{
+  "simulationFlights": [
+    {
+      "adsbReport": {
+        "tailNo": "12ASX3",
+        "time": 1,
+        "latitude": 10,
+        "longitude": 12,
+        "altitude": 20000,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "radarReport": {
+        "id": 2,
+        "time": 1,
+        "range": 2,
+        "azimuth": 120,
+        "elevation": 30,
+        "altitude": 20000,
+        "latitude": 23,
+        "longitude": 34,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "tcasReport": {
+        "id": 1,
+        "altitude": 12000,
+        "bearing": 120,
+        "range": 2
+      },
+      "ownshipReport": {
+        "time": 1,
+        "altitude": 30500,
+        "latitude": 21,
+        "longitude": 78,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      }
+    },
+    {
+      "adsbReport": {
+        "tailNo": "12ASX3",
+        "time": 2,
+        "latitude": 12,
+        "longitude": 12,
+        "altitude": 20000,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "radarReport": {
+        "id": 2,
+        "time": 2,
+        "range": 2,
+        "azimuth": 120,
+        "elevation": 30,
+        "altitude": 20000,
+        "latitude": 12,
+        "longitude": 12,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "tcasReport": {
+        "id": 1,
+        "altitude": 12000,
+        "bearing": 120,
+        "range": 2
+      },
+      "ownshipReport": {
+        "time": 2,
+        "altitude": 30500,
+        "latitude": 21,
+        "longitude": 78,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      }
+    },
+    {
+      "adsbReport": {
+        "tailNo": "12ASX3",
+        "time": 3,
+        "latitude": 15,
+        "longitude": 12,
+        "altitude": 20000,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "radarReport": {
+        "id": 2,
+        "time": 3,
+        "range": 2,
+        "azimuth": 120,
+        "elevation": 30,
+        "altitude": 20000,
+        "latitude": 15,
+        "longitude": 12,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "tcasReport": {
+        "id": 1,
+        "altitude": 12000,
+        "bearing": 120,
+        "range": 2
+      },
+      "ownshipReport": {
+        "time": 3,
+        "altitude": 30500,
+        "latitude": 21,
+        "longitude": 80,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      }
+    },
+    {
+      "adsbReport": {
+        "tailNo": "12ASX3",
+        "time": 4,
+        "latitude": 17,
+        "longitude": 12,
+        "altitude": 20000,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "radarReport": {
+        "id": 2,
+        "time": 4,
+        "range": 2,
+        "azimuth": 120,
+        "elevation": 30,
+        "altitude": 20000,
+        "latitude": 17,
+        "longitude": 12,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "tcasReport": {
+        "id": 1,
+        "altitude": 12000,
+        "bearing": 120,
+        "range": 2
+      },
+      "ownshipReport": {
+        "time": 4,
+        "altitude": 30500,
+        "latitude": 21,
+        "longitude": 83,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      }
+    },
+    {
+      "adsbReport": {
+        "tailNo": "12ASX3",
+        "time": 5,
+        "latitude": 23,
+        "longitude": 12,
+        "altitude": 20000,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "radarReport": {
+        "id": 2,
+        "time": 5,
+        "range": 2,
+        "azimuth": 120,
+        "elevation": 30,
+        "altitude": 20000,
+        "latitude": 22,
+        "longitude": 12,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "tcasReport": {
+        "id": 1,
+        "altitude": 12000,
+        "bearing": 120,
+        "range": 2
+      },
+      "ownshipReport": {
+        "time": 5,
+        "altitude": 30500,
+        "latitude": 26,
+        "longitude": 80,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      }
+    },
+    {
+      "adsbReport": {
+        "tailNo": "12ASX3",
+        "time": 6,
+        "latitude": 26,
+        "longitude": 12,
+        "altitude": 20000,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "radarReport": {
+        "id": 2,
+        "time": 6,
+        "range": 2,
+        "azimuth": 120,
+        "elevation": 30,
+        "altitude": 20000,
+        "latitude": 25,
+        "longitude": 12,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "tcasReport": {
+        "id": 1,
+        "altitude": 12000,
+        "bearing": 120,
+        "range": 2
+      },
+      "ownshipReport": {
+        "time": 6,
+        "altitude": 30500,
+        "latitude": 28,
+        "longitude": 80,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      }
+    },
+    {
+      "adsbReport": {
+        "tailNo": "12ASX3",
+        "time": 7,
+        "latitude": 26,
+        "longitude": 12,
+        "altitude": 20000,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "radarReport": {
+        "id": 2,
+        "time": 7,
+        "range": 2,
+        "azimuth": 120,
+        "elevation": 30,
+        "altitude": 20000,
+        "latitude": 26,
+        "longitude": 12,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "tcasReport": {
+        "id": 1,
+        "altitude": 12000,
+        "bearing": 120,
+        "range": 2
+      },
+      "ownshipReport": {
+        "time": 7,
+        "altitude": 30500,
+        "latitude": 27,
+        "longitude": 80,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      }
+    },
+    {
+      "adsbReport": {
+        "tailNo": "12ASX3",
+        "time": 8,
+        "latitude": 40,
+        "longitude": 12,
+        "altitude": 20000,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "radarReport": {
+        "id": 2,
+        "time": 8,
+        "range": 2,
+        "azimuth": 120,
+        "elevation": 30,
+        "altitude": 20000,
+        "latitude": 30,
+        "longitude": 12,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      },
+      "tcasReport": {
+        "id": 1,
+        "altitude": 12000,
+        "bearing": 120,
+        "range": 2
+      },
+      "ownshipReport": {
+        "time": 8,
+        "altitude": 30500,
+        "latitude": 29,
+        "longitude": 80,
+        "north": 4,
+        "east": 56,
+        "down": 245
+      }
+    }
+  ]
+}
+

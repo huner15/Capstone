@@ -1,4 +1,4 @@
- //
+//
 // Created by KEVIN on 11/27/2015.
 //
 
@@ -9,7 +9,7 @@ using namespace std;
 Json::Value SimulationFlightsIO::readFile() {
     Json::Value root;   // will contains the root value after parsing.
     Json::Reader reader;
-    std::ifstream test("FlightScenarioOutput", std::ifstream::binary);
+    std::ifstream test("../../lib/jsonio/src/SimulationFlightInput.json", std::ifstream::binary);
     //test.close();
     bool parsingSuccessful = reader.parse(test, root, false);
     if (!parsingSuccessful) {
@@ -21,6 +21,57 @@ Json::Value SimulationFlightsIO::readFile() {
     else {
         return root;
     }
+}
+
+Json::Value SimulationFlightsIO::getSimulationFlights() {
+    Json::Value root = readFile();
+
+    return root["simulationFlights"];
+}
+
+std::vector<Json::Value> SimulationFlightsIO::getAllADSBReports() {
+    Json::Value simFlights = getSimulationFlights();
+    std::vector<Json::Value> adsbReports;
+
+    for ( int index = 0; index < simFlights.size(); index++ ) {
+        adsbReports.push_back(simFlights[index]["adsbReport"]);
+    }
+
+    return adsbReports;
+}
+
+std::vector<Json::Value> SimulationFlightsIO::getAllTCASReports() {
+    Json::Value simFlights = getSimulationFlights();
+    std::vector<Json::Value> tcasReports;
+
+    for ( int index = 0; index < simFlights.size(); index++ ) {
+        tcasReports.push_back(simFlights[index]["tcasReport"]);
+    }
+
+    return tcasReports;
+
+}
+
+std::vector<Json::Value> SimulationFlightsIO::getAllRadarReports() {
+    Json::Value simFlights = getSimulationFlights();
+    std::vector<Json::Value> radarReports;
+
+    for ( int index = 0; index < simFlights.size(); index++ ) {
+        radarReports.push_back(simFlights[index]["radarReport"]);
+    }
+
+    return radarReports;
+}
+
+std::vector<Json::Value> SimulationFlightsIO::getALlOwnshipReports() {
+    Json::Value simFlights = getSimulationFlights();
+    std::vector<Json::Value> ownReports;
+
+    for ( int index = 0; index < simFlights.size(); index++ ) {
+        ownReports.push_back(simFlights[index]["ownshipReport"]);
+    }
+
+    return ownReports;
 }
 
 void SimulationFlightsIO::writeFile(Json::Value value) {

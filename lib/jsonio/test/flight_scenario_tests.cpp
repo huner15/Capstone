@@ -9,7 +9,7 @@ int main() {
     FlightScenarioIO fio;
 
     Json::StyledWriter styledWriter;
-    //std::cout << styledWriter.write(fio.getAbsoluteOwnshipData());
+    std::cout << styledWriter.write(fio.getAbsoluteOwnshipData());
     //std::cout << styledWriter.write(fio.getFlightPlans());
 
 

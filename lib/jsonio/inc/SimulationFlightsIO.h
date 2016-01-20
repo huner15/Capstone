@@ -10,7 +10,17 @@
 class SimulationFlightsIO : public JsonIO {
 public:
 
-    virtual Json::Value readFile();
+    static Json::Value readFile();
+
+    static Json::Value getSimulationFlights();
+
+    static std::vector<Json::Value> getAllADSBReports();
+
+    static std::vector<Json::Value> getAllTCASReports();
+
+    static std::vector<Json::Value> getAllRadarReports();
+
+    static std::vector<Json::Value> getALlOwnshipReports();
 
     virtual void writeFile(Json::Value value);
 };
