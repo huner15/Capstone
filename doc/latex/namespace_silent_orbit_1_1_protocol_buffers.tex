@@ -1,0 +1,67 @@
+\hypertarget{namespace_silent_orbit_1_1_protocol_buffers}{}\section{Silent\+Orbit.\+Protocol\+Buffers Namespace Reference}
+\label{namespace_silent_orbit_1_1_protocol_buffers}\index{Silent\+Orbit.\+Protocol\+Buffers@{Silent\+Orbit.\+Protocol\+Buffers}}
+
+
+Memory\+Stream management  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_allocation_stack}{Allocation\+Stack}
+\begin{DoxyCompactList}\small\item\em Unoptimized stack, allocates a new Memory\+Stream for every request. \end{DoxyCompactList}\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_concurrent_bag_stack}{Concurrent\+Bag\+Stack}
+\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_key}{Key}
+\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_key_value}{Key\+Value}
+\begin{DoxyCompactList}\small\item\em Storage of unknown fields \end{DoxyCompactList}\item 
+interface \hyperlink{interface_silent_orbit_1_1_protocol_buffers_1_1_memory_stream_stack}{Memory\+Stream\+Stack}
+\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_position_stream}{Position\+Stream}
+\begin{DoxyCompactList}\small\item\em Wrapper for streams that does not support the Position property. Adds support for the Position property. \end{DoxyCompactList}\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_protocol_buffer_exception}{Protocol\+Buffer\+Exception}
+\begin{DoxyCompactList}\small\item\em $>$ This exception is thrown when badly formatted protocol buffer data is read. /summary$>$ \end{DoxyCompactList}\item 
+class {\bfseries Protocol\+Parser}
+\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_stream_read}{Stream\+Read}
+\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_thread_safe_stack}{Thread\+Safe\+Stack}
+\begin{DoxyCompactList}\small\item\em Thread safe stack of memory streams \end{DoxyCompactList}\item 
+class \hyperlink{class_silent_orbit_1_1_protocol_buffers_1_1_thread_unsafe_stack}{Thread\+Unsafe\+Stack}
+\begin{DoxyCompactList}\small\item\em Non-\/thread safe stack of memory streams Safe as long as only one thread is Serializing \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Wire} \{ \\*
+{\bfseries Varint} = 0, 
+{\bfseries Fixed64} = 1, 
+{\bfseries Length\+Delimited} = 2, 
+{\bfseries Fixed32} = 5, 
+\\*
+{\bfseries Varint} = 0, 
+{\bfseries Fixed64} = 1, 
+{\bfseries Length\+Delimited} = 2, 
+{\bfseries Fixed32} = 5
+ \}\hypertarget{namespace_silent_orbit_1_1_protocol_buffers_a028c6c6bce285110df2b8d94c97b6862}{}\label{namespace_silent_orbit_1_1_protocol_buffers_a028c6c6bce285110df2b8d94c97b6862}
+
+\item 
+enum {\bfseries Wire} \{ \\*
+{\bfseries Varint} = 0, 
+{\bfseries Fixed64} = 1, 
+{\bfseries Length\+Delimited} = 2, 
+{\bfseries Fixed32} = 5, 
+\\*
+{\bfseries Varint} = 0, 
+{\bfseries Fixed64} = 1, 
+{\bfseries Length\+Delimited} = 2, 
+{\bfseries Fixed32} = 5
+ \}\hypertarget{namespace_silent_orbit_1_1_protocol_buffers_a028c6c6bce285110df2b8d94c97b6862}{}\label{namespace_silent_orbit_1_1_protocol_buffers_a028c6c6bce285110df2b8d94c97b6862}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Memory\+Stream management 
+
+Memory\+Stream management. .N\+ET 4 features not added when the --net3 flag is being used 

@@ -1,0 +1,206 @@
+\hypertarget{class_socket}{}\section{Socket Class Reference}
+\label{class_socket}\index{Socket@{Socket}}
+
+
+{\ttfamily \#include $<$Socket.\+h$>$}
+
+Inheritance diagram for Socket\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_socket}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_socket_a6afde2dca985dacdfa770141192e2daf}{create} ()
+\item 
+bool \hyperlink{class_socket_ae5b928832ae34a66d3abf778c59ef09a}{bind} (const in\+\_\+port\+\_\+t port)
+\item 
+bool \hyperlink{class_socket_a0988791cca0cc0eeee0c854500d7f527}{listen} () const 
+\item 
+bool \hyperlink{class_socket_a068f789510d289f59a1fc1f51fbb9ed3}{accept} (\hyperlink{class_socket}{Socket} \&) const 
+\item 
+bool \hyperlink{class_socket_a4236aa7f4def254e1fb4d062eb0bd060}{connect} (const std\+::string host, const in\+\_\+port\+\_\+t port)
+\item 
+bool \hyperlink{class_socket_a3565cd4d62dc287135559e0e5f564d31}{send} (const std\+::string \&msg) const 
+\item 
+bool \hyperlink{class_socket_a645d148645e5985891bc299514f585a1}{send} (const void $\ast$msg, size\+\_\+t len) const 
+\item 
+size\+\_\+t \hyperlink{class_socket_ab220e684100ebb15da125890f7d69d5d}{recv} (std\+::string \&bfr, int flags=0) const 
+\item 
+size\+\_\+t \hyperlink{class_socket_a1a5cc5813b16a3235e177030ce2e09d2}{recv} (void $\ast$bfr, size\+\_\+t len, int flags=0) const 
+\item 
+bool \hyperlink{class_socket_a89233baf04fd377294b3b7993d04dfcc}{set\+\_\+non\+\_\+blocking} (const bool)
+\item 
+bool \hyperlink{class_socket_a157f83a7404aec259c58783cd9af6ea6}{is\+\_\+valid} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{class_socket}{Socket} is a logical endpoint for communications that exists on the transport layer. The \hyperlink{class_socket}{Socket} class includes functions for initializing connections with other hosts and sending and receiving data. 
+
+\subsection{Member Function Documentation}
+\index{Socket@{Socket}!accept@{accept}}
+\index{accept@{accept}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{accept(\+Socket \&) const }{accept(Socket &) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Socket} \&}]{new\+\_\+socket}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_socket_a068f789510d289f59a1fc1f51fbb9ed3}{}\label{class_socket_a068f789510d289f59a1fc1f51fbb9ed3}
+Accept a socket connection and bind the socket. \begin{DoxyReturn}{Returns}
+true if no errors occurred 
+\end{DoxyReturn}
+\index{Socket@{Socket}!bind@{bind}}
+\index{bind@{bind}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{bind(const in\+\_\+port\+\_\+t port)}{bind(const in_port_t port)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::bind (
+\begin{DoxyParamCaption}
+\item[{const in\+\_\+port\+\_\+t}]{port}
+\end{DoxyParamCaption}
+)}\hypertarget{class_socket_ae5b928832ae34a66d3abf778c59ef09a}{}\label{class_socket_ae5b928832ae34a66d3abf778c59ef09a}
+Bind a socket to a port. 
+\begin{DoxyParams}{Parameters}
+{\em port} & the port to bind the socket to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if no errors occurred 
+\end{DoxyReturn}
+\index{Socket@{Socket}!connect@{connect}}
+\index{connect@{connect}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{connect(const std\+::string host, const in\+\_\+port\+\_\+t port)}{connect(const std::string host, const in_port_t port)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::connect (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{host, }
+\item[{const in\+\_\+port\+\_\+t}]{port}
+\end{DoxyParamCaption}
+)}\hypertarget{class_socket_a4236aa7f4def254e1fb4d062eb0bd060}{}\label{class_socket_a4236aa7f4def254e1fb4d062eb0bd060}
+Connect to a socket. 
+\begin{DoxyParams}{Parameters}
+{\em host} & the host to connect to \\
+\hline
+{\em port} & the port to connect to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if connection was successful 
+\end{DoxyReturn}
+\index{Socket@{Socket}!create@{create}}
+\index{create@{create}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{create()}{create()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_socket_a6afde2dca985dacdfa770141192e2daf}{}\label{class_socket_a6afde2dca985dacdfa770141192e2daf}
+Create a new socket. \begin{DoxyReturn}{Returns}
+true if no errors occurred 
+\end{DoxyReturn}
+\index{Socket@{Socket}!is\+\_\+valid@{is\+\_\+valid}}
+\index{is\+\_\+valid@{is\+\_\+valid}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{is\+\_\+valid() const }{is_valid() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::is\+\_\+valid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_socket_a157f83a7404aec259c58783cd9af6ea6}{}\label{class_socket_a157f83a7404aec259c58783cd9af6ea6}
+Check of the socket is valid for use. \begin{DoxyReturn}{Returns}
+true if the socket is valid for use or return false if the socket has not been created 
+\end{DoxyReturn}
+\index{Socket@{Socket}!listen@{listen}}
+\index{listen@{listen}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{listen() const }{listen() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::listen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_socket_a0988791cca0cc0eeee0c854500d7f527}{}\label{class_socket_a0988791cca0cc0eeee0c854500d7f527}
+Listen for incoming network connections. \begin{DoxyReturn}{Returns}
+true if no errors occurred 
+\end{DoxyReturn}
+\index{Socket@{Socket}!recv@{recv}}
+\index{recv@{recv}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{recv(std\+::string \&bfr, int flags=0) const }{recv(std::string &bfr, int flags=0) const }}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t Socket\+::recv (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{bfr, }
+\item[{int}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_socket_ab220e684100ebb15da125890f7d69d5d}{}\label{class_socket_ab220e684100ebb15da125890f7d69d5d}
+Receive string data from the socket (Default, 500 bytes). 
+\begin{DoxyParams}{Parameters}
+{\em bfr} & the string to write to \\
+\hline
+{\em flags} & flags for socket reading options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes read 
+\end{DoxyReturn}
+\index{Socket@{Socket}!recv@{recv}}
+\index{recv@{recv}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{recv(void $\ast$bfr, size\+\_\+t len, int flags=0) const }{recv(void *bfr, size_t len, int flags=0) const }}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t Socket\+::recv (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{bfr, }
+\item[{size\+\_\+t}]{len, }
+\item[{int}]{flags = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_socket_a1a5cc5813b16a3235e177030ce2e09d2}{}\label{class_socket_a1a5cc5813b16a3235e177030ce2e09d2}
+Receive raw data from the socket. 
+\begin{DoxyParams}{Parameters}
+{\em bfr} & the buffer to write data into \\
+\hline
+{\em len} & the number of bytes to receive \\
+\hline
+{\em flags} & flags for socket reading options \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of bytes read 
+\end{DoxyReturn}
+\index{Socket@{Socket}!send@{send}}
+\index{send@{send}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{send(const std\+::string \&msg) const }{send(const std::string &msg) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::send (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{msg}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_socket_a3565cd4d62dc287135559e0e5f564d31}{}\label{class_socket_a3565cd4d62dc287135559e0e5f564d31}
+Send string data to connected hosts. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & the string message to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if no errors occurred 
+\end{DoxyReturn}
+\index{Socket@{Socket}!send@{send}}
+\index{send@{send}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{send(const void $\ast$msg, size\+\_\+t len) const }{send(const void *msg, size_t len) const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::send (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{msg, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_socket_a645d148645e5985891bc299514f585a1}{}\label{class_socket_a645d148645e5985891bc299514f585a1}
+Send raw data to connected hosts. 
+\begin{DoxyParams}{Parameters}
+{\em msg} & the raw data to send \\
+\hline
+{\em len} & the length of the data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if no errors occurred 
+\end{DoxyReturn}
+\index{Socket@{Socket}!set\+\_\+non\+\_\+blocking@{set\+\_\+non\+\_\+blocking}}
+\index{set\+\_\+non\+\_\+blocking@{set\+\_\+non\+\_\+blocking}!Socket@{Socket}}
+\subsubsection[{\texorpdfstring{set\+\_\+non\+\_\+blocking(const bool)}{set_non_blocking(const bool)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+::set\+\_\+non\+\_\+blocking (
+\begin{DoxyParamCaption}
+\item[{const bool}]{b}
+\end{DoxyParamCaption}
+)}\hypertarget{class_socket_a89233baf04fd377294b3b7993d04dfcc}{}\label{class_socket_a89233baf04fd377294b3b7993d04dfcc}
+Set the socket to non-\/blocking mode. 
+\begin{DoxyParams}{Parameters}
+{\em bool} & true if the socket should block, false if the socket shouldn\textquotesingle{}t block \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Dat/\+Clion\+Projects/saas/lib/network/inc/Socket.\+h\item 
+/\+Users/\+Dat/\+Clion\+Projects/saas/lib/network/src/Socket.\+cpp\end{DoxyCompactItemize}
