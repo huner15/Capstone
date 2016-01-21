@@ -3,6 +3,10 @@
 //
 
 
+#include <tcas.pb.h>
+#include <ownship.pb.h>
+#include <radar.pb.h>
+#include <adsb.pb.h>
 #include "SimulationFlightsIO.h"
 #include "SimulationReport.h"
 
