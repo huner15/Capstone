@@ -21,6 +21,11 @@ public:
     RadarReport getNextRadarReport();
     AdsBReport getNextAdsbReport();
 
+    bool hasNextOwnshipReport();
+    bool hasNextTcasReport();
+    bool hasNextRadarReport();
+    bool hasNextAdsbReport();
+
 
 private:
     std::vector<Json::Value> ownReports;

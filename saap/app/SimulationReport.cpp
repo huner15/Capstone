@@ -36,6 +36,22 @@ OwnshipReport SimulationReport::getNextOwnshipReport() {
 
 }
 
+bool SimulationReport::hasNextOwnshipReport() {
+    return ownIt < adsbReports.end();
+}
+
+
+bool SimulationReport::hasNextTcasReport() {
+    return tcasIt < tcasReports.end();
+}
+
+bool SimulationReport::hasNextRadarReport() {
+    return radarIt < radarReports.end();
+}
+bool SimulationReport::hasNextAdsbReport() {
+    return adsbIt < adsbReports.end();
+}
+
 TcasReport SimulationReport::getNextTcasReport() {
     Json::Value report = *tcasIt;
     TcasReport tcas;
