@@ -1,221 +1,236 @@
 {
 	"actualFlights" : [
 		{
-        	"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "0",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-        {
-        	"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "1",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-        {
-        	"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "2",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-    	{
-    		"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "3",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-    	{
-    		"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "4",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-    	{"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "5",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-    	{"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "6",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-    	{
-    		"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "7",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-        {
-    	"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "8",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-    	{
-    		"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "9",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }},
-    	{
-    		"actualReport" : {
-        	"tailNo" : "12ASX3", 
-        	"id" : "2", 
-        	"time" : "10",
-        	"vec3" : {
-        		"x" : "23", 
-        		"y" : "34", 
-        		"z" : "1"
-        	},
-        	"latitude" : "10",
-        	"longitude" : "12",
-        	"north" : "4",
-        	"east" : "56",
-        	"down" : "245",
-        	"range" : "2",
-        	"azimuth": "120",
-        	"elevation" : "30",
-        	"altitude" : "20000" 
-        }}
-    ]}
+			"actualFlight" : [
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:45",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:46",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00005,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:47",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00010,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:48",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00015,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:49",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00020,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:50",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00025,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:51",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00030,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:52",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00035,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:53",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00040,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:54",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00045,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}},
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX3",
+						"time" : {
+							"time": "09:34:55",
+							"day": "20",
+							"dayOfWeek": "Wednesday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 37.00050,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 20000
+					}}
+			],
+			"actualFlight" :[
+				{
+					"actualReport" : {
+						"tailNo" : "12ASX0",
+						"time" : {
+							"time": "12:13:10",
+							"day": "21",
+							"dayOfWeek": "Thursday",
+							"month": "January",
+							"year": "2016"
+						},
+						"longitude" : 40,
+						"latitude" : -120,
+						"velocity" : {
+							"north" : 150,
+							"east" : 0,
+							"down" : 0
+						},
+						"altitude" : 10000
+					}}
+			]}
+	]}
