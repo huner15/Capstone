@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonio',['JsonIO',['../class_json_i_o.html',1,'']]]
+  ['history',['History',['../struct_history.html',1,'']]]
 ];

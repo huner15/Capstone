@@ -23,7 +23,7 @@ virtual int \hyperlink{class_json_1_1_stream_writer_a237368cf13b41decc015640d25f
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-std\+::ostream $\ast$ {\bfseries sout\+\_\+}\hypertarget{class_json_1_1_stream_writer_ac087569ccd2b5a22348cae92ec2a8996}{}\label{class_json_1_1_stream_writer_ac087569ccd2b5a22348cae92ec2a8996}
+\hypertarget{class_json_1_1_stream_writer_ac087569ccd2b5a22348cae92ec2a8996}{}std\+::ostream $\ast$ {\bfseries sout\+\_\+}\label{class_json_1_1_stream_writer_ac087569ccd2b5a22348cae92ec2a8996}
 
 \end{DoxyCompactItemize}
 
@@ -35,7 +35,7 @@ Usage\+:
 \textcolor{keywordtype}{void} writeToStdout(\hyperlink{class_json_1_1_stream_writer_1_1_factory}{StreamWriter::Factory} \textcolor{keyword}{const}& factory, 
       \hyperlink{class_json_1_1_value}{Value} \textcolor{keyword}{const}& value) \{
   std::unique\_ptr<StreamWriter> \textcolor{keyword}{const} writer(
-    factory.\hyperlink{class_json_1_1_stream_writer_1_1_factory_a0fca8d713eb8949ca3ebb35e67f23b1a}{newStreamWriter}());
+    factory.\hyperlink{class_json_1_1_stream_writer_1_1_factory_a9d30ec53e8288cd53befccf1009c5f31}{newStreamWriter}());
   writer->write(value, &std::cout);
   std::cout << std::endl;  \textcolor{comment}{// add lf and flush}
 \}
@@ -43,16 +43,16 @@ Usage\+:
  
 
 \subsection{Member Function Documentation}
-\index{Json\+::\+Stream\+Writer@{Json\+::\+Stream\+Writer}!write@{write}}
+\hypertarget{class_json_1_1_stream_writer_a237368cf13b41decc015640d25f176ab}{}\index{Json\+::\+Stream\+Writer@{Json\+::\+Stream\+Writer}!write@{write}}
 \index{write@{write}!Json\+::\+Stream\+Writer@{Json\+::\+Stream\+Writer}}
-\subsubsection[{\texorpdfstring{write(\+Value const \&root, std\+::ostream $\ast$sout)=0}{write(Value const &root, std::ostream *sout)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Json\+::\+Stream\+Writer\+::write (
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}virtual int Json\+::\+Stream\+Writer\+::write (
 \begin{DoxyParamCaption}
 \item[{{\bf Value} const \&}]{root, }
 \item[{std\+::ostream $\ast$}]{sout}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_json_1_1_stream_writer_a237368cf13b41decc015640d25f176ab}{}\label{class_json_1_1_stream_writer_a237368cf13b41decc015640d25f176ab}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_json_1_1_stream_writer_a237368cf13b41decc015640d25f176ab}
 Write \hyperlink{class_json_1_1_value}{Value} into document as configured in sub-\/class. Do not take ownership of sout, but maintain a reference during function. \begin{DoxyPrecond}{Precondition}
-sout != N\+U\+LL 
+sout != N\+U\+L\+L 
 \end{DoxyPrecond}
 \begin{DoxyReturn}{Returns}
 zero on success (For now, we always return zero, so check the stream instead.) 
@@ -70,5 +70,5 @@ Implemented in \hyperlink{struct_json_1_1_built_styled_stream_writer_a2ecffc3d66
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/\+Dat/\+Clion\+Projects/saas/lib/jsoncpp/inc/json.\+h\item 
-/\+Users/\+Dat/\+Clion\+Projects/saas/lib/jsoncpp/src/jsoncpp.\+cpp\end{DoxyCompactItemize}
+/home/frank/dev/cpe402/saas/lib/jsoncpp/inc/json.\+h\item 
+/home/frank/dev/cpe402/saas/lib/jsoncpp/src/jsoncpp.\+cpp\end{DoxyCompactItemize}

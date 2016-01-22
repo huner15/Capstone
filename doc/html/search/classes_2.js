@@ -5,6 +5,8 @@ var searchData=
   ['charreader',['CharReader',['../class_json_1_1_char_reader.html',1,'Json']]],
   ['charreaderbuilder',['CharReaderBuilder',['../class_json_1_1_char_reader_builder.html',1,'Json']]],
   ['clientsocket',['ClientSocket',['../class_client_socket.html',1,'']]],
+  ['cluster',['Cluster',['../struct_cluster.html',1,'']]],
   ['commentstyle',['CommentStyle',['../struct_json_1_1_comment_style.html',1,'Json']]],
-  ['concurrentbagstack',['ConcurrentBagStack',['../class_silent_orbit_1_1_protocol_buffers_1_1_concurrent_bag_stack.html',1,'SilentOrbit::ProtocolBuffers']]]
+  ['concurrentbagstack',['ConcurrentBagStack',['../class_silent_orbit_1_1_protocol_buffers_1_1_concurrent_bag_stack.html',1,'SilentOrbit::ProtocolBuffers']]],
+  ['correlationaircraft',['CorrelationAircraft',['../struct_correlation_aircraft.html',1,'']]]
 ];

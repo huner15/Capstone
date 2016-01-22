@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['wait',['Wait',['../class_ciela_spike_1_1_task.html#aabec45633d71b685190331089f612392',1,'CielaSpike::Task']]],
-  ['write',['write',['../class_json_1_1_stream_writer.html#a237368cf13b41decc015640d25f176ab',1,'Json::StreamWriter::write()'],['../class_json_1_1_styled_writer.html#abd42ae0b8a788a46969fc51a28a496f5',1,'Json::StyledWriter::write()'],['../class_json_1_1_styled_stream_writer.html#a07807741c6c43ecd35885a87234d0805',1,'Json::StyledStreamWriter::write()'],['../struct_json_1_1_built_styled_stream_writer.html#a2ecffc3d66c4feddf208e5cd3b1c0f18',1,'Json::BuiltStyledStreamWriter::write()']]],
-  ['writefile',['writeFile',['../class_actual_flights_i_o.html#a181dc53214b2e3d7d21c28d928e5f07b',1,'ActualFlightsIO::writeFile()'],['../class_flight_scenario_i_o.html#a391009055a8c4973de8f61a4cef015a6',1,'FlightScenarioIO::writeFile()']]],
-  ['writestring',['writeString',['../namespace_json.html#afd767fe4c7e962d0ff3d1a6d1622619f',1,'Json']]]
+  ['validate',['validate',['../class_json_1_1_char_reader_builder.html#a3d233735a1e4b3c9a2cb9c68f972c02a',1,'Json::CharReaderBuilder::validate()'],['../class_json_1_1_stream_writer_builder.html#aa1dfed085a3d369e953e4a3c34da009e',1,'Json::StreamWriterBuilder::validate()']]],
+  ['value',['Value',['../class_json_1_1_value.html#ada6ba1369448fb0240bccc36efaa46f7',1,'Json::Value::Value(ValueType type=nullValue)'],['../class_json_1_1_value.html#ad87b849356816aca75995dd07302e49d',1,'Json::Value::Value(const char *value)'],['../class_json_1_1_value.html#a39fa09d1902efbd4350e1236db920571',1,'Json::Value::Value(const char *begin, const char *end)'],['../class_json_1_1_value.html#a081830e95f88a37054da7e46c65b0766',1,'Json::Value::Value(const StaticString &amp;value)'],['../class_json_1_1_value.html#aa4501dd4edf3ce3d5145fc656f088b21',1,'Json::Value::Value(const std::string &amp;value)'],['../class_json_1_1_value.html#a436dfd3670f95fd665f680eba5cebcf0',1,'Json::Value::Value(const Value &amp;other)']]]
 ];
