@@ -1,0 +1,77 @@
+{
+    "absoluteOwnship" :
+    {
+        "latitude" :  37,
+        "longitude" : -120,
+        "altitude" : 200000
+    },
+    "aircrafts" : [
+    {
+        "aircraft" :
+        {
+            "tailNo" : "12ASX3",
+            "hasADSB" : false,
+            "hasTCAS" : true,
+            "flightPlan" :
+            {
+                "startPosition" : 
+                {
+                    "x" : 30,
+                    "y" : 25,
+                    "z" : 20
+                },
+                "flightLegs" : [
+                {
+                    "flightLeg" :
+                    {
+                        "durationOfManeuver" : 0,
+                        "durationAfterManeuver" : 5,
+                        "newRelativeVelocity" : 
+                        {
+                            "x" : 28,
+                            "y" : 30,
+                            "z" : 25
+                        }
+                    },
+                    "flightLeg" :
+                    {
+                        "durationOfManeuver" : 2,
+                        "durationAfterManeuver" : 8,
+                        "newRelativeVelocity" : 
+                        {
+                            "x" : 30,
+                            "y" : 30,
+                            "z" : 25
+                        }
+                    },
+                    "flightLeg" :
+                    {
+                        "durationOfManeuver" : 10,
+                        "durationAfterManeuver" : 50,
+                        "newRelativeVelocity" : 
+                        {
+                            "x" : 30,
+                            "y" : 30,
+                            "z" : 25
+                        }
+                    },
+                    "flightLeg" :
+                    {
+                        "durationOfManeuver" : 3,
+                        "durationAfterManeuver" : 20,
+                        "newRelativeVelocity" : 
+                        {
+                            "x" : 30,
+                            "y" : 30,
+                            "z" : 25
+                        }
+                    }
+                }]
+            }
+        },
+        "aircraft" :
+        {
+        }
+    }]
+
+}
