@@ -14,14 +14,17 @@ typedef struct Cluster
     Vector prediction;
 } Cluster;
 
+enum Device {radar, TCAS, ADS_B};
+
 typedef struct SurveillanceReport
 {
+    Device type;
     int clusterCount;
-    //sfixed64 timestamp; // time of target report
-    //sfixed32 id; // ID of target
-    //sfixed32 range; // relative distance (Nautical Miles)
-    //sfixed32 bearing;
-    //sfixed32 altitude; // geometric altitude from GPS (feet)
+    int64_t timestamp; // time of target report
+    int32_t id; // ID of target
+    int32_t range; // relative distance (Nautical Miles)
+    int32_t bearing;
+    int32_t altitude; // geometric altitude from GPS (feet)
     float range; // intruder relative distance (feet)
     float azimuth; // intruder horizontal angle (+/- 180 degrees)
     float elevation;
