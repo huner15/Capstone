@@ -13,18 +13,18 @@
 using namespace std;
 
 SimulationReport::SimulationReport() {
-    adsbReports = SimulationFlightsIO::getAllADSBReports();
-    adsbIt = adsbReports.begin();
-    ownReports = SimulationFlightsIO::getALlOwnshipReports();
-    ownIt = ownReports.begin();
-    radarReports = SimulationFlightsIO::getAllRadarReports();
-    radarIt = radarReports.begin();
-    tcasReports = SimulationFlightsIO::getAllTCASReports();
-    tcasIt = tcasReports.begin();
+    adsb_reports_ = SimulationFlightsIO::GetAllADSBReports();
+    adsb_it_ = adsb_reports_.begin();
+    own_reports_ = SimulationFlightsIO::GetALlOwnshipReports();
+    own_it_ = own_reports_.begin();
+    radar_reports_ = SimulationFlightsIO::GetAllRadarReports();
+    radar_it_ = radar_reports_.begin();
+    tcas_reports_ = SimulationFlightsIO::GetAllTCASReports();
+    tcas_it_ = tcas_reports_.begin();
 }
 
-OwnshipReport SimulationReport::getNextOwnshipReport() {
-    Json::Value report = *ownIt;
+OwnshipReport SimulationReport::GetNextOwnshipReport() {
+    Json::Value report = *own_it_;
     OwnshipReport own;
     own.set_timestamp(report["time"].asInt());
     own.set_ownship_latitude(report["latitude"].asFloat());
@@ -34,30 +34,31 @@ OwnshipReport SimulationReport::getNextOwnshipReport() {
     own.set_east(report["east"].asFloat());
     own.set_down(report["down"].asFloat());
 
-    ownIt++;
+    own_it_++;
 
     return own;
 
 }
 
-bool SimulationReport::hasNextOwnshipReport() {
-    return ownIt < adsbReports.end();
+bool SimulationReport::HasNextOwnshipReport() {
+    return own_it_ < adsb_reports_.end();
 }
 
 
-bool SimulationReport::hasNextTcasReport() {
-    return tcasIt < tcasReports.end();
+bool SimulationReport::HasNextTcasReport() {
+    return tcas_it_ < tcas_reports_.end();
 }
 
-bool SimulationReport::hasNextRadarReport() {
-    return radarIt < radarReports.end();
-}
-bool SimulationReport::hasNextAdsbReport() {
-    return adsbIt < adsbReports.end();
+bool SimulationReport::HasNextRadarReport() {
+    return radar_it_ < radar_reports_.end();
 }
 
-TcasReport SimulationReport::getNextTcasReport() {
-    Json::Value report = *tcasIt;
+bool SimulationReport::HasNextAdsbReport() {
+    return adsb_it_ < adsb_reports_.end();
+}
+
+TcasReport SimulationReport::GetNextTcasReport() {
+    Json::Value report = *tcas_it_;
     TcasReport tcas;
 
     tcas.set_id(report["id"].asInt());
@@ -65,13 +66,13 @@ TcasReport SimulationReport::getNextTcasReport() {
     tcas.set_altitude(report["altitude"].asInt());
     tcas.set_bearing(report["bearing"].asInt());
 
-    tcasIt++;
+    tcas_it_++;
 
     return tcas;
 }
 
-RadarReport SimulationReport::getNextRadarReport() {
-    Json::Value report = *radarIt;
+RadarReport SimulationReport::GetNextRadarReport() {
+    Json::Value report = *radar_it_;
     RadarReport radar;
     radar.set_timestamp(report["time"].asInt());
     radar.set_range(report["range"].asFloat());
@@ -85,13 +86,13 @@ RadarReport SimulationReport::getNextRadarReport() {
     radar.set_longitude(report["longitude"].asFloat());
     radar.set_altitude(report["altitude"].asFloat());
 
-    radarIt++;
+    radar_it_++;
 
     return radar;
 }
 
-AdsBReport SimulationReport::getNextAdsbReport() {
-    Json::Value report = *adsbIt;
+AdsBReport SimulationReport::GetNextAdsbReport() {
+    Json::Value report = *adsb_it_;
     AdsBReport adsb;
     adsb.set_timestamp(report["time"].asInt());
     adsb.set_latitude(report["latitude"].asFloat());
@@ -103,7 +104,7 @@ AdsBReport SimulationReport::getNextAdsbReport() {
     adsb.set_down(report["down"].asFloat());
 
 
-    adsbIt++;
+    adsb_it_++;
 
     return adsb;
 

@@ -21,36 +21,37 @@ public:
      * to the root of the JSON file.
      * @return The root of the JSON File
      */
-     static Json::Value readFile();
+     static Json::Value ReadFile();
 
     /**
      * Accessor function to retrieve the initial Ownship data.
      * @return Initial Ownship data in Json::Value form.
      */
-    static Json::Value getAbsoluteOwnshipData();
+    static Json::Value GetAbsoluteOwnshipData();
 
     /**
      * Accessor function for the list of flight plans.
      * @return All the flight plans in the JSON in JSon::Value form.
      */
-    static Json::Value getFlightPlans();
+    static Json::Value GetFlightPlans();
 
     /**
      * Accessor method to a vector containing the starting positions of all aircrafts.
      * @return Vector containing the starting positions of all aircrafts
      */
-    static std::vector<std::vector<int>> getStartPositions();
+    static std::vector<std::vector<int>> GetStartPositions();
 
     /**
      * Accesor method to all the flight legs.
      * @return A vector containing all the flight legs in the flight scenario.
      */
-    static std::vector<Json::Value> getFlightLegs();
+    static std::vector<Json::Value> GetFlightLegs();
 
     /**
-     * TODO
+     * Write specified Json::Value to a formatted output log file.
+     * @param value is the Json::Value that you want to log.
      */
-    virtual void writeFile(Json::Value value);
+    static void WriteFile(Json::Value value);
 };
 
 #endif //SAMPLEJSONCPP_FLIGHTSCENARIOPROCESSOR_H

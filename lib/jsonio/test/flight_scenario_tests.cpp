@@ -7,40 +7,36 @@
 
 // Tests accessor function of absolute ownship data.
 TEST(OwnshipData, CheckCorrectData) {
-    Json::Value ownship = FlightScenarioIO::getAbsoluteOwnshipData();
+    Json::Value ownship = FlightScenarioIO::GetAbsoluteOwnshipData();
     EXPECT_FLOAT_EQ(ownship["latitude"].asFloat() , 73.60);
     EXPECT_FLOAT_EQ(ownship["longitude"].asFloat() , 34.45);
     EXPECT_FLOAT_EQ(ownship["altitude"].asFloat() , 18000);
 }
 
 TEST(GetsFlightPlans, CorrectNumberOfPositions) {
-    std::vector<std::vector<int>> startPositions =
-            FlightScenarioIO::getStartPositions();
+    std::vector<std::vector<int>> start_positions =
+            FlightScenarioIO::GetStartPositions();
 
-    ASSERT_EQ(2, startPositions.size());
-    ASSERT_EQ(123, startPositions.at(0).at(0));
-   /* for(int i = 0; i < startPositions.size(); i++) {
-        startPositions.at(i);
-    }*/
+    ASSERT_EQ(2, start_positions.size());
 }
 
 TEST(GetsFlightPlans, CorrectData) {
-    std::vector<std::vector<int>> startPositions =
-            FlightScenarioIO::getStartPositions();
+    std::vector<std::vector<int>> start_positions =
+            FlightScenarioIO::GetStartPositions();
 
-    ASSERT_EQ(123, startPositions.at(0).at(0));
-    ASSERT_EQ(24, startPositions.at(0).at(1));
-    ASSERT_EQ(345, startPositions.at(0).at(2));
+    ASSERT_EQ(123, start_positions.at(0).at(0));
+    ASSERT_EQ(24, start_positions.at(0).at(1));
+    ASSERT_EQ(345, start_positions.at(0).at(2));
 }
 
 TEST(GetsFlightLegs, CorrectNumberOfLegs) {
-    std::vector<Json::Value> flightLegs = FlightScenarioIO::getFlightLegs();
+    std::vector<Json::Value> flight_legs = FlightScenarioIO::GetFlightLegs();
 
-    ASSERT_EQ(2, flightLegs.size());
+    ASSERT_EQ(2, flight_legs.size());
 }
 
 TEST(GetsFlightLegs, CorrectData) {
-    std::vector<Json::Value> flightLegs = FlightScenarioIO::getFlightLegs();
+    std::vector<Json::Value> flightLegs = FlightScenarioIO::GetFlightLegs();
 
     ASSERT_EQ(5, flightLegs[0][0]["durationOfManeuver"].asFloat());
     ASSERT_EQ(4, flightLegs[0][0]["durationAfterManeuver"].asFloat());

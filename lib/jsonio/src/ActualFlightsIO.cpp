@@ -6,15 +6,16 @@
 
 using namespace std;
 
-Json::Value ActualFlightsIO::readFile() {
+Json::Value ActualFlightsIO::ReadFile() {
     Json::Value root;   // will contains the root value after parsing.
     Json::Reader reader;
     std::ifstream test("FlightScenarioOutput", std::ifstream::binary);
     //test.close();
     bool parsingSuccessful = reader.parse(test, root, false);
+
     if (!parsingSuccessful) {
         // report to the user the failure and their locations in the document.
-        std::cout << reader.getFormatedErrorMessages()
+        std::cout << reader.getFormattedErrorMessages()
         << "\n";
         return Json::nullValue;
     }
@@ -23,17 +24,17 @@ Json::Value ActualFlightsIO::readFile() {
     }
 }
 
-Json::Value ActualFlightsIO::getActualFlights() {
+Json::Value ActualFlightsIO::GetActualFlights() {
     Json::Value root = readFile();
 
     return root["actualFlight"];
 }
 
-std::vector<Json::Value> ActualFlightsIO::getActualReports() {
-    Json::Value actualFlights = getActualFlights();
+std::vector<Json::Value> ActualFlightsIO::GetActualReports() {
+    Json::Value actual_flights = GetActualFlights();
 
     return std::vector<Json::Value>
-            (std::begin(actualFlights["actualReport"]), std::end(actualFlights["actualReport"]));
+            (std::begin(actual_flights["actualReport"]), std::end(actual_flights["actualReport"]));
 }
 
 void ActualFlightsIO::writeFile(Json::Value value) {

@@ -20,20 +20,20 @@ public:
      * to the root of the JSON file.
      * @return The root of the JSON File
      */
-    static Json::Value readFile();
+    static Json::Value ReadFile();
 
     /**
      * Reads the JSON ActualFlights file and returns JSON Value
      * of Actual Flights.
      * @return JSON value of Actual Flights
      */
-    static Json::Value getActualFlights();
+    static Json::Value GetActualFlights();
 
     /**
      * Gets a Vector containing all actual reports in the file.
      * @return vector containing all the actual reports in Json::Value form.
      */
-    static std::vector<Json::Value> getActualReports();
+    static std::vector<Json::Value> GetActualReports();
 
     /**
      * TODO

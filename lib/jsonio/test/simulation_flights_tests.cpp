@@ -7,14 +7,14 @@
 
 TEST(GetSimulationFlights, CorrectNumberOfFlights) {
     Json::Value simulation_flights =
-            SimulationFlightsIO::getSimulationFlights();
+            SimulationFlightsIO::GetSimulationFlights();
 
     ASSERT_EQ(8, simulation_flights.size());
 }
 
 TEST(GetAdsBReports, CorrectData) {
     std::vector<Json::Value> adsb_reports =
-            SimulationFlightsIO::getAllADSBReports();
+            SimulationFlightsIO::GetAllADSBReports();
 
     ASSERT_EQ("12ASX3", adsb_reports[0]["tailNo"].asString());
     ASSERT_EQ(1, adsb_reports[0]["time"].asInt());
@@ -28,7 +28,7 @@ TEST(GetAdsBReports, CorrectData) {
 
 TEST(GetAdsBReports, CorectNumberOfReports) {
     std::vector<Json::Value> adsb_reports =
-            SimulationFlightsIO::getAllADSBReports();
+            SimulationFlightsIO::GetAllADSBReports();
 
     ASSERT_EQ(8, adsb_reports.size());
 }
@@ -37,14 +37,14 @@ TEST(GetAdsBReports, CorectNumberOfReports) {
 
 TEST(GetTcasReports, CorrectNumberOfReports) {
     std::vector<Json::Value> tcas_reports =
-            SimulationFlightsIO::getAllTCASReports();
+            SimulationFlightsIO::GetAllTCASReports();
 
     ASSERT_EQ(8, tcas_reports.size());
 }
 
 TEST(GetTcasReports, CorrectData) {
     std::vector<Json::Value> tcas_reports =
-            SimulationFlightsIO::getAllTCASReports();
+            SimulationFlightsIO::GetAllTCASReports();
 
     ASSERT_EQ(1, tcas_reports[0]["id"].asInt());
     ASSERT_EQ(12000, tcas_reports[0]["altitude"].asFloat());
@@ -54,14 +54,14 @@ TEST(GetTcasReports, CorrectData) {
 
 TEST(GetOwnshipReports, CorrectNumberOfReports) {
     std::vector<Json::Value> ownship_reports =
-            SimulationFlightsIO::getALlOwnshipReports();
+            SimulationFlightsIO::GetALlOwnshipReports();
 
     ASSERT_EQ(8, ownship_reports.size());
 }
 
 TEST(GetOwnshipReports, CorrectData) {
     std::vector<Json::Value> ownship_reports =
-            SimulationFlightsIO::getALlOwnshipReports();
+            SimulationFlightsIO::GetALlOwnshipReports();
 
     ASSERT_EQ(1, ownship_reports[0]["time"].asInt());
     ASSERT_EQ(30500, ownship_reports[0]["altitude"].asFloat());
@@ -74,14 +74,14 @@ TEST(GetOwnshipReports, CorrectData) {
 
 TEST(GetRadarReports, CorrectNumberOfReports) {
     std::vector<Json::Value> radar_reports =
-            SimulationFlightsIO::getAllRadarReports();
+            SimulationFlightsIO::GetAllRadarReports();
 
     ASSERT_EQ(8, radar_reports.size());
 }
 
 TEST(GetRadarReports, CorrectData) {
     std::vector<Json::Value> radar_reports =
-            SimulationFlightsIO::getAllRadarReports();
+            SimulationFlightsIO::GetAllRadarReports();
 
     ASSERT_EQ(1, radar_reports[0]["time"].asInt());
     ASSERT_EQ(2, radar_reports[0]["range"].asInt());

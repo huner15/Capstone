@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Json::Value SimulationFlightsIO::readFile() {
+Json::Value SimulationFlightsIO::ReadFile() {
     Json::Value root;   // will contains the root value after parsing.
     Json::Reader reader;
     std::ifstream test("../../lib/jsonio/src/SimulationFlightInput.json", std::ifstream::binary);
@@ -14,7 +14,7 @@ Json::Value SimulationFlightsIO::readFile() {
     bool parsingSuccessful = reader.parse(test, root, false);
     if (!parsingSuccessful) {
         // report to the user the failure and their locations in the document.
-        std::cout << reader.getFormatedErrorMessages()
+        std::cout << reader.getFormattedErrorMessages()
         << "\n";
         return Json::nullValue;
     }
@@ -23,14 +23,14 @@ Json::Value SimulationFlightsIO::readFile() {
     }
 }
 
-Json::Value SimulationFlightsIO::getSimulationFlights() {
-    Json::Value root = readFile();
+Json::Value SimulationFlightsIO::GetSimulationFlights() {
+    Json::Value root = ReadFile();
 
     return root["simulationFlights"];
 }
 
-std::vector<Json::Value> SimulationFlightsIO::getAllADSBReports() {
-    Json::Value simFlights = getSimulationFlights();
+std::vector<Json::Value> SimulationFlightsIO::GetAllADSBReports() {
+    Json::Value simFlights = GetSimulationFlights();
     std::vector<Json::Value> adsbReports;
 
     for ( int index = 0; index < simFlights.size(); index++ ) {
@@ -40,8 +40,8 @@ std::vector<Json::Value> SimulationFlightsIO::getAllADSBReports() {
     return adsbReports;
 }
 
-std::vector<Json::Value> SimulationFlightsIO::getAllTCASReports() {
-    Json::Value simFlights = getSimulationFlights();
+std::vector<Json::Value> SimulationFlightsIO::GetAllTCASReports() {
+    Json::Value simFlights = GetSimulationFlights();
     std::vector<Json::Value> tcasReports;
 
     for ( int index = 0; index < simFlights.size(); index++ ) {
@@ -52,8 +52,8 @@ std::vector<Json::Value> SimulationFlightsIO::getAllTCASReports() {
 
 }
 
-std::vector<Json::Value> SimulationFlightsIO::getAllRadarReports() {
-    Json::Value simFlights = getSimulationFlights();
+std::vector<Json::Value> SimulationFlightsIO::GetAllRadarReports() {
+    Json::Value simFlights = GetSimulationFlights();
     std::vector<Json::Value> radarReports;
 
     for ( int index = 0; index < simFlights.size(); index++ ) {
@@ -63,8 +63,8 @@ std::vector<Json::Value> SimulationFlightsIO::getAllRadarReports() {
     return radarReports;
 }
 
-std::vector<Json::Value> SimulationFlightsIO::getALlOwnshipReports() {
-    Json::Value simFlights = getSimulationFlights();
+std::vector<Json::Value> SimulationFlightsIO::GetALlOwnshipReports() {
+    Json::Value simFlights = GetSimulationFlights();
     std::vector<Json::Value> ownReports;
 
     for ( int index = 0; index < simFlights.size(); index++ ) {
