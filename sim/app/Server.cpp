@@ -13,6 +13,9 @@
 #include <radar.pb.h>
 #include <tcas.pb.h>
 
+// For build testing purposes
+#include "Vector.h"
+
 #include "ServerSocket.h"
 
 /** Expected number of command line arguments. */
