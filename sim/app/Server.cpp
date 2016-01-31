@@ -14,7 +14,7 @@
 #include <tcas.pb.h>
 
 // For build testing purposes
-#include "Vector.h"
+#include "vector.h"
 
 #include "ServerSocket.h"
 
