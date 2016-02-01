@@ -7,13 +7,14 @@
  */
 
 #include "gtest/gtest.h"
-#include "vector.h"
+
+#include "Vector.h"
 
 /*
  * Test 2D vector element accessing by referencing the underlying std::array.
  */
 TEST(Vector2D, ArrayReferencing) {
-    vector<double, 2> vector = {0.0, 1.0};
+    Vector<double, 2> vector = {0.0, 1.0};
     EXPECT_EQ(2, vector.array.size());
     EXPECT_EQ(0.0, vector.array[0]);
     EXPECT_EQ(1.0, vector.array[1]);
@@ -53,7 +54,7 @@ TEST(Vector2D, ZeroInitialization) {
  * Test 3D vector element accessing by referencing the underlying std::array.
  */
 TEST(Vector3D, ArrayReferencing) {
-    vector<double, 3> vector = {0.0, 1.0, 2.0};
+    Vector<double, 3> vector = {0.0, 1.0, 2.0};
     EXPECT_EQ(3, vector.array.size());
     EXPECT_EQ(0.0, vector.array[0]);
     EXPECT_EQ(1.0, vector.array[1]);
@@ -98,7 +99,7 @@ TEST(Vector3D, ZeroInitialization) {
  * Test 4D vector element accessing by referencing the underlying std::array.
  */
 TEST(Vector4D, ArrayReferencing) {
-    vector<double, 4> vector = {0.0, 1.0, 2.0, 3.0};
+    Vector<double, 4> vector = {0.0, 1.0, 2.0, 3.0};
     EXPECT_EQ(4, vector.array.size());
     EXPECT_EQ(0.0, vector.array[0]);
     EXPECT_EQ(1.0, vector.array[1]);

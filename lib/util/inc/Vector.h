@@ -29,7 +29,7 @@
  * @tparam N the fixed size of the vector
  */
 template<typename T, std::size_t N>
-struct vector {
+struct Vector {
     /** An array of fixed size. */
     std::array<T, N> array;
 };
@@ -39,7 +39,7 @@ struct vector {
  * underlying array using the fields x and y.
  */
 template<>
-struct vector<double, 2> {
+struct Vector<double, 2> {
     union {
         std::array<double, 2> array;
         struct {
@@ -53,7 +53,7 @@ struct vector<double, 2> {
  * the underlying array using the fields x, y, and z.
  */
 template<>
-struct vector<double, 3> {
+struct Vector<double, 3> {
     union {
         std::array<double, 3> array;
         struct {
@@ -67,7 +67,7 @@ struct vector<double, 3> {
  * the underlying array using the fields x, y, z, and w.
  */
 template<>
-struct vector<double, 4> {
+struct Vector<double, 4> {
     union {
         std::array<double, 4> array;
         struct {
@@ -80,18 +80,18 @@ struct vector<double, 4> {
  * Type definition for a two dimensional vector. Prefer using Vector2D to using
  * the underlying Vector<double, 2>.
  */
-typedef vector<double, 2> Vector2D;
+typedef Vector<double, 2> Vector2D;
 
 /**
  * Type definition for a three dimensional vector. Prefer using Vector3D to
  * using the underlying Vector<double, 3>.
  */
-typedef vector<double, 3> Vector3D;
+typedef Vector<double, 3> Vector3D;
 
 /**
  * Type definition for a four dimensional vector. Prefer using Vector4D to
  * using the underlying Vector<double, 4>.
  */
-typedef vector<double, 4> Vector4D;
+typedef Vector<double, 4> Vector4D;
 
 #endif
