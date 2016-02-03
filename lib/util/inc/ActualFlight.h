@@ -15,6 +15,14 @@
 
 class ActualFlight {
     std::vector<ActualReport> actualReports;
+
+    /*
+     * Need constructors.
+     * Might not need both actual flights and actualflight.
+     * Gonna need simlation flight files too
+     *
+     *
+     */
 };
 
 #endif
