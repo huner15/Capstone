@@ -2,7 +2,7 @@
 // Created by andrea on 1/19/16.
 //
 
-#include "Cluster.h"
+#include "../../inc/algorithm/Cluster.h"
 
 //Collection<Cluster> clusters;
 //Collection<SurveillanceReport> adsb;
@@ -12,6 +12,7 @@ SurveillanceReport ownship;
 
 /*
  * Main method of the correlation algorithm.
+ * Called from the ReportReceiver.
  * Takes in all of the SurveillanceReports,
  * adds SurveillanceReports to all of the
  * possible Clusters for each SurveillanceReport,
@@ -20,29 +21,8 @@ SurveillanceReport ownship;
  *
  * return: int 0 for success, 1 for error
  */
-int correlate(SurveillanceReport ownship);
-    //Collection<SurveillanceReport> adsb
-    //Collection<SurveillanceReport> tcas
-    //Collection<SurveillanceReport> radar
-
-/*
- * Generates possible clusters by creating
- * a Cluster with each possible SurveillanceReport
- * pairing based on the surveillance device
- * margins of error provided by General Atomics.
- *
- * return: int 0 for success, 1 for error
- */
-int generatePossibleClusters();
-
-/*
- * Calculates the location of the aircraft
- * represented by the given Cluster.
- *
- * return: CorrelationAircraft The represented
- * aircraft
- */
-CorrelationAircraft calcLocation(Cluster cluster);
+//int correlate(SurveillanceReport ownship, Collection<SurveillanceReport> adsb,
+//    Collection<SurveillanceReport> tcas, Collection<SurveillanceReport> radar);
 
 /*
  * Checks that all SurveillanceReports are in
@@ -55,18 +35,8 @@ CorrelationAircraft calcLocation(Cluster cluster);
 int checkClusterCount();
 
 /*
- * Checks that all Clusters have atleast one
- * SurveillanceReport and no more than one
- * SurveillanceReport of the same surveillance
- * device type (ADS-B, TCAS, and radar).
- *
- * return: int 0 for success, 1 for error
- */
-int checkValidClusters();
-
-/*
- * Converts a Cluster to a CorrelationAircraft so
- * it can be added to the current Snapshot.
+ * Converts a Cluster to a CorrelationAircraft, calculate
+ * correct location, heading, etc.
  * This means that this cluster has been determined
  * to be exactly one aircraft.
  *
@@ -75,34 +45,32 @@ int checkValidClusters();
 CorrelationAircraft convertAircraft(Cluster cluster);
 
 /*
- * Compares two TCAS and ADS-B SurveillanceReports
- * to determine if they represent the same or two
- * different aircraft.
- * If two different aircraft are represented,
- * a new Cluster is added for the second aircraft.
+ * Generates the distance between two SurveillanceReports
+ * based on their speed, heading, and distance.
  *
- * return: int 0 for success, 1 for error
+ * return: float The distance metric from 0 to 1 where 1 is the
+ * highest correlation.
  */
-int compTA(SurveillanceReport tcas, SurveillanceReport adsb);
+float calcDistance(SurveillanceReport reportOne, SurveillanceReport reportTwo)
+{
+    float distance = calcHeading(reportOne, reportTwo);
+    distance += calcEuclidDistance(reportOne, reportTwo);
+    distance += calcSpeed(reportOne, reportTwo);
 
-/*
- * Compares two radar and ADS-B SurveillanceReports
- * to determine if they represent the same or two
- * different aircraft.
- * If two different aircraft are represented,
- * a new Cluster is added for the second aircraft.
- *
- * return: int 0 for success, 1 for error
- */
-int compRA(SurveillanceReport radar, SurveillanceReport adsb);
+    return distance;
+}
 
-/*
- * Compares two TCAS and radar SurveillanceReports
- * to determine if they represent the same or two
- * different aircraft.
- * If two different aircraft are represented,
- * a new Cluster is added for the second aircraft.
- *
- * return: int 0 for success, 1 for error
- */
-int compTR(SurveillanceReport tcas, SurveillanceReport radar);
+float calcHeading(SurveillanceReport reportOne, SurveillanceReport reportTwo)
+{
+    return 0;
+}
+
+float calcEuclidDistance(SurveillanceReport reportOne, SurveillanceReport reportTwo)
+{
+    return 0;
+}
+
+float calcSpeed(SurveillanceReport reportOne, SurveillanceReport reportTwo)
+{
+    return 0;
+}

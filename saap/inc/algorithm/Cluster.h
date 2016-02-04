@@ -6,12 +6,14 @@
 
 #include "Prediction.h"
 
+using namespace std;
+
 typedef struct Cluster
 {
-    //Collection<Report> tcas;
-    //Collection<Report> adsb;
-    //Collection<Report> radar;
-    Vector prediction;
+    SurveillanceReport tcas;
+    SurveillanceReport adsb;
+    SurveillanceReport radar;
+    //Vector<Point> prediction;
 } Cluster;
 
 enum Device {radar, TCAS, ADS_B};
@@ -22,7 +24,6 @@ typedef struct SurveillanceReport
     int clusterCount;
     int64_t timestamp; // time of target report
     int32_t id; // ID of target
-    int32_t range; // relative distance (Nautical Miles)
     int32_t bearing;
     int32_t altitude; // geometric altitude from GPS (feet)
     float range; // intruder relative distance (feet)
@@ -35,5 +36,13 @@ typedef struct SurveillanceReport
     float east; // intruder velocity east (feet/sec)
     float down;
 } SurveillanceReport;
+
+float calcEuclidDistance(SurveillanceReport reportOne, SurveillanceReport reportTwo);
+
+float calcDistance(SurveillanceReport reportOne, SurveillanceReport reportTwo);
+
+float calcSpeed(SurveillanceReport reportOne, SurveillanceReport reportTwo);
+
+float calcHeading(SurveillanceReport reportOne, SurveillanceReport reportTwo);
 
 #endif //SAAS_CLUSTER_H
