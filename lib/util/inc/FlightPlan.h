@@ -1,18 +1,30 @@
-//
-// Created by Dat Tran on 2/2/16.
-//
+/*
+ * FlightPlan.h
+ * Specific Atomics
+ * Kevin Pham
+ * 2-2-16
+ * TODO: Decription
+ */
 
-#ifndef SAAS_FLIGHTPLAN_H
-#define SAAS_FLIGHTPLAN_H
+#ifndef FLIGHTPLAN_H_
+#define FLIGHTPLAN_H_
 
-#include <vector>
 #include "FlightLeg.h"
+#include <vector>
 
 class FlightPlan {
-private:
-    Vector3D start_position;
-    std::vector <FlightLeg> flight_legs;
 public:
+
+private:
+    /**
+     * The starting position of the Flight.
+     */
+    Vector3D _start_position;
+    /**
+     * A collection of all the FlightLegs of this FlightPlan.
+     */
+    std::vector<FlightLeg> _flight_legs;
+
 };
 
-#endif
+#endif //SAAS_FLIGHTPLAN_H

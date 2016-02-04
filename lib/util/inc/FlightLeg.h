@@ -1,16 +1,35 @@
-//
-// Created by Dat Tran on 2/2/16.
-//
+/*
+ * FlightLeg.h
+ * Specific Atomics
+ * Kevin Pham
+ * 2-2-16
+ * TODO: Decription
+ */
 
-#ifndef SAAS_FLIGHTLEG_H
-#define SAAS_FLIGHTLEG_H
+#ifndef FLIGHTLEG_H_
+#define FLIGHTLEG_H_
+
+#include "Vector.h"
 
 class FlightLeg {
-private:
-    double duration_of_manuever;
-    double duration_after_manuever;
-    Vector3D new_relative_velocity;
 public:
+
+private:
+
+    /**
+     * Duration that a turn will take to complete in seconds.
+     */
+    double _duration_of_maneuver;
+    /**
+     *  Duration that an aircraft will continue moving at a velocity
+     *  after the maneuver is complete in seconds.
+     */
+    double _duration_after_maneuver;
+    /**
+     * The next relative velocity that the aircraft will reach
+     * in this leg.
+     */
+    Vector3D _newRelativeVelocity;
 };
 
-#endif
+#endif //SAAS_FLIGHTLEG_H
