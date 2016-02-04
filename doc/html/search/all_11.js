@@ -15,7 +15,6 @@ var searchData=
   ['simulationflightsio',['SimulationFlightsIO',['../class_simulation_flights_i_o.html',1,'']]],
   ['simulationreport',['SimulationReport',['../class_simulation_report.html',1,'SimulationReport'],['../class_simulation_report.html#af1a596c7f3f123d5b174124123eaed04',1,'SimulationReport::SimulationReport()']]],
   ['size',['size',['../class_json_1_1_value.html#a4ca8ee6c48a34ca6c2f131956bab5e05',1,'Json::Value']]],
-  ['snapshot',['Snapshot',['../struct_snapshot.html',1,'']]],
   ['socket',['Socket',['../class_socket.html',1,'']]],
   ['socketexception',['SocketException',['../class_socket_exception.html',1,'']]],
   ['state',['State',['../class_ciela_spike_1_1_task.html#a0b9fb190966ab28515afb40541ba23cf',1,'CielaSpike::Task']]],
@@ -26,11 +25,10 @@ var searchData=
   ['strictmode',['strictMode',['../class_json_1_1_features.html#ae23176c14b2e79e81fb61fb1a8ab58ee',1,'Json::Features::strictMode()'],['../class_json_1_1_char_reader_builder.html#a9c19e3c5475f9072d527810d4bf56749',1,'Json::CharReaderBuilder::strictMode()']]],
   ['strictroot_5f',['strictRoot_',['../class_json_1_1_features.html#a1162c37a1458adc32582b585b552f9c3',1,'Json::Features']]],
   ['stringvalue',['stringValue',['../namespace_json.html#a7d654b75c16a57007925868e38212b4ea804ef857affea2d415843c73f261c258',1,'Json']]],
-  ['structurederror',['StructuredError',['../struct_json_1_1_reader_1_1_structured_error.html',1,'Json::Reader']]],
   ['structurederror',['StructuredError',['../struct_json_1_1_our_reader_1_1_structured_error.html',1,'Json::OurReader']]],
+  ['structurederror',['StructuredError',['../struct_json_1_1_reader_1_1_structured_error.html',1,'Json::Reader']]],
   ['styledstreamwriter',['StyledStreamWriter',['../class_json_1_1_styled_stream_writer.html',1,'Json']]],
   ['styledwriter',['StyledWriter',['../class_json_1_1_styled_writer.html',1,'Json']]],
-  ['surveillancereport',['SurveillanceReport',['../struct_surveillance_report.html',1,'']]],
   ['swap',['swap',['../class_json_1_1_value.html#aab841120d78e296e1bc06a373345e822',1,'Json::Value']]],
   ['swappayload',['swapPayload',['../class_json_1_1_value.html#a5263476047f20e2fc6de470e4de34fe5',1,'Json::Value']]]
 ];

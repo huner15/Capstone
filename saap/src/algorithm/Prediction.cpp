@@ -2,9 +2,8 @@
 // Created by andrea on 1/19/16.
 //
 
-#include "Prediction.h"
-#include "Cluster.h"
-#include "../../../../../.CLion12/system/cmake/generated/5c6d134d/5c6d134d/Debug/lib/gp/capstone-shared/cdti.pb.h"
+#include "../../inc/algorithm/Prediction.h"
+#include "../../inc/algorithm/Cluster.h"
 
 History history;
 int snapshotCounter = 0;
