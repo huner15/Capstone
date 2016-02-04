@@ -3,21 +3,28 @@
  * Specific Atomics
  * Frank Poole
  * 1-31-16
- * TODO: Decription
+ * TODO: Description
  */
 
 #ifndef GEOGRAPHIC_COORDINATE_H_
 #define GEOGRAPHIC_COORDINATE_H_
 
-#include "Vector.h"
-
 class GeographicCoordinate {
 private:
     /**
-     * The geographic coordinate of a point where x is the latitude, y is the
-     * longitude, and z is the altitude.
+     * The latitude of a geographic coordinate (+-180 degrees).
      */
-    Vector3D geographicCoordinate;
+    double _latitude;
+
+    /**
+     * The longitude of a geographic coordinate (+-180 degrees).
+     */
+    double _longitude;
+
+    /**
+     * The altitude of a geographic coordinate.
+     */
+    double _altitude;
 public:
 };
 

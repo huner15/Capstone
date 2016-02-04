@@ -13,10 +13,10 @@
 
 class SphericalCoordinate {
 private:
-    /** The spherical coordinate of a point relative to the point of origin
-     * where x is the range, y is the angle of elevation (elevation), and z is
-     * the azimuth. */
-    Vector3D sphericalCoordinate;
+    double range;
+    double elevation;
+    double azimuth;
+
 public:
 };
 

@@ -3,7 +3,7 @@
  * Specific Atomics
  * Kevin Pham
  * 2-2-16
- * TODO: Decription
+ * TODO: Description
  */
 
 #ifndef FLIGHTSCENARIO_H_
@@ -19,10 +19,11 @@ public:
 
 private:
     /**
-     * The ownships latitude, longitude, and altitude in
-     * a 3D Vector
+     * Aircraft that contains starting position and flight plan
+     * for ownship.
      */
-    Vector3D _ownship_start;
+    Aircraft _ownship;
+    
     /**
      * A collection of all the aircraft in this specific
      * FlightScenario

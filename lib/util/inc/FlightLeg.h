@@ -29,7 +29,7 @@ private:
      * The next relative velocity that the aircraft will reach
      * in this leg.
      */
-    Vector3D _newRelativeVelocity;
+    Vector3D _new_relative_velocity;
 };
 
 #endif //SAAS_FLIGHTLEG_H

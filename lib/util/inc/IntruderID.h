@@ -6,14 +6,14 @@
  * TODO: Decription
  */
 
-#ifndef INTRUDER_ID_H
-#define INTRUDER_ID_H
+#ifndef INTRUDER_ID_H_
+#define INTRUDER_ID_H_
 
 #include <string>
 
 class IntruderID {
 private:
-    std::string intruderID;
+    uint8_t _intruder_id;
 public:
 };
 

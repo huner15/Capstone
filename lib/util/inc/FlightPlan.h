@@ -10,6 +10,7 @@
 #define FLIGHTPLAN_H_
 
 #include "FlightLeg.h"
+#include "GeographicCoordinate.h"
 #include <vector>
 
 class FlightPlan {
@@ -19,7 +20,7 @@ private:
     /**
      * The starting position of the Flight.
      */
-    Vector3D _start_position;
+    GeographicCoordinate _start_position;
     /**
      * A collection of all the FlightLegs of this FlightPlan.
      */
