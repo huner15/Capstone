@@ -1,31 +1,31 @@
 /*
  * FlightPlan.h
  * Specific Atomics
- * Kevin Pham
- * 2-2-16
- * TODO: Decription
+ * Kevin Pham, Frank Poole
+ * 2-4-16
+ * TODO: Description
  */
 
-#ifndef FLIGHTPLAN_H_
-#define FLIGHTPLAN_H_
+#ifndef FLIGHT_PLAN_H_
+#define FLIGHT_PLAN_H_
 
-#include "FlightLeg.h"
-#include "GeographicCoordinate.h"
 #include <vector>
 
-class FlightPlan {
-public:
+#include "GeographicCoordinate.h"
+#include "FlightLeg.h"
 
+class FlightPlan {
 private:
-    /**
-     * The starting position of the Flight.
-     */
+    /** The starting position of the Flight. */
     GeographicCoordinate _start_position;
-    /**
-     * A collection of all the FlightLegs of this FlightPlan.
-     */
+
+    /** A collection of all the FlightLegs of this FlightPlan. */
     std::vector<FlightLeg> _flight_legs;
 
+public:
+    // TODO: Constructor
+
+    // TODO: Destructor
 };
 
-#endif //SAAS_FLIGHTPLAN_H
+#endif

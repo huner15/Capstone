@@ -2,8 +2,8 @@
  * SphericalCoordinate.h
  * Specific Atomics
  * Frank Poole
- * 1-31-16
- * TODO: Decription
+ * 2-4-16
+ * TODO: Description
  */
 
 #ifndef SPHERICAL_COORDINATE_H_
@@ -13,11 +13,14 @@
 
 class SphericalCoordinate {
 private:
-    double range;
-    double elevation;
-    double azimuth;
+    double _range;
+    double _elevation;
+    double _azimuth;
 
 public:
+    SphericalCoordinate(double range, double elevation, double azimuth);
+
+    ~SphericalCoordinate();
 };
 
 #endif

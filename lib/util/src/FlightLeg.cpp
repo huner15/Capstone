@@ -1,5 +1,10 @@
-//
-// Created by Dat Tran on 2/2/16.
-//
+/*
+ * FlightLeg.cpp
+ * Specific Atomics
+ * Dat Tran, Frank Poole
+ * 2-4-16
+ * TODO: Description
+ */
 
 #include "FlightLeg.h"
+

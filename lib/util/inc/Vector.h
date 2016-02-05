@@ -2,7 +2,7 @@
  * Vector.h
  * Specific Atomics
  * Frank Poole
- * 1-30-16
+ * 2-4-16
  * Vector is a wrapper class for std::array which allows for public field access
  * using the fields x, y z, and w.
  */
@@ -29,7 +29,8 @@
  * @tparam N the fixed size of the vector
  */
 template<typename T, std::size_t N>
-struct Vector {
+class Vector {
+private:
     /** An array of fixed size. */
     std::array<T, N> array;
 };

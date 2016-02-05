@@ -1,10 +1,10 @@
 /*
- * FlightScenario.cpp
+ * Flight.cpp
  * Specific Atomics
  * Frank Poole
  * 2-4-16
  * TODO: Description
  */
 
-#include "FlightScenario.h"
+#include "Flight.h"
 

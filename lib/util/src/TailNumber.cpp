@@ -2,9 +2,16 @@
  * TailNumber.cpp
  * Specific Atomics
  * Frank Poole
- * 1-31-16
- * TODO: Decription
+ * 2-4-16
+ * TODO: Description
  */
 
 #include "TailNumber.h"
 
+TailNumber::TailNumber(std::string tail_number) {
+    _tail_number = tail_number;
+}
+
+TailNumber::~TailNumber() {
+
+}

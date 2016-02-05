@@ -1,18 +1,24 @@
-//
-// Created by kevin on 2/3/16.
-//
+/*
+ * RadarID.h
+ * Specific Atomics
+ * Kevin Pham, Frank Poole
+ * 2-4-16
+ * TODO: Description
+ */
 
-#ifndef SAAS_RADARID_H
-#define SAAS_RADARID_H
+#ifndef RADAR_ID_H_
+#define RADAR_ID_H_
 
 #include <stdint.h>
 
 class RadarID {
-public:
-
 private:
-   uint16_t _radar_id;
+    uint16_t _radar_id;
+
+public:
+    RadarID(uint16_t radar_id);
+
+    ~RadarID();
 };
 
-
-#endif //SAAS_RADARID_H
+#endif

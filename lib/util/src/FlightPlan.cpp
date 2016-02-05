@@ -1,6 +1,10 @@
-//
-// Created by Dat Tran on 2/2/16.
-//
-
+/*
+ * FlightPlan.cpp
+ * Specific Atomics
+ * Dat Tran, Frank Poole
+ * 2-4-16
+ * TODO: Description
+ */
 
 #include "FlightPlan.h"
+

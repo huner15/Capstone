@@ -2,8 +2,8 @@
  * TailNumber.h
  * Specific Atomics
  * Frank Poole
- * 1-31-16
- * TODO: Decription
+ * 2-4-16
+ * TODO: Description
  */
 
 #ifndef TAIL_NUMBER_H_
@@ -13,8 +13,10 @@
 
 class TailNumber {
 private:
-    std::string tailNumber;
+    std::string _tail_number;
 public:
+    TailNumber(std::string tail_number);
+    ~TailNumber();
 };
 
 #endif

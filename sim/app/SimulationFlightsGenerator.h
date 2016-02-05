@@ -6,7 +6,7 @@
 #define SAAS_SIMULATIONFLIGHTSGENERATOR_H
 
 
-#include "../../lib/util/inc/ActualFlights.h"
+#include "Flights.h"
 
 
 /**
@@ -22,11 +22,11 @@ public:
 
     SimulationFlightsGenerator(std::string flight_scenario_file_name);
 
-    std::vector<ActualFlights> GenerateActualFlights();
+    std::vector<Flights> GenerateActualFlights();
 
     std::vector<SimulationFlights> GenerateSimulationFlights();
 
-    ActualReport CreateActualReport();
+    Report CreateActualReport();
 
 
 

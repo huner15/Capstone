@@ -2,8 +2,8 @@
  * IntruderID.h
  * Specific Atomics
  * Frank Poole
- * 1-31-16
- * TODO: Decription
+ * 2-4-16
+ * TODO: Description
  */
 
 #ifndef INTRUDER_ID_H_
@@ -11,10 +11,12 @@
 
 #include <string>
 
-class IntruderID {
+class TcasID {
 private:
     uint8_t _intruder_id;
 public:
+    TcasID(uint8_t intruder_id);
+    ~TcasID();
 };
 
 #endif

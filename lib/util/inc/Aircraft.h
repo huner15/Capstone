@@ -1,9 +1,9 @@
 /*
  * Aircraft.h
  * Specific Atomics
- * Kevin Pham
- * 2-2-16
- * TODO: Decription
+ * Kevin Pham, Frank Poole
+ * 2-4-16
+ * TODO: Description
  */
 
 #ifndef AIRCRAFT_H_
@@ -13,13 +13,8 @@
 #include "TailNumber.h"
 
 class Aircraft {
-public:
-
 private:
-
-    /**
-     * Unique string that identifies a specific aircraft
-     */
+    /** Unique string that identifies a specific aircraft. */
     TailNumber _tail_Number;
     
     /**
@@ -28,15 +23,16 @@ private:
      */
     FlightPlan _flight_plan;
 
-    /**
-     * Flag that determines whether an aircraft has Ads-B capabilities.
-     */
+    /** Flag that determines whether an aircraft has Ads-B capabilities. */
     bool _has_AdsB;
     
-    /**
-    * Flag that determines whether an aircraft has TCAS capabilities.
-    */
+    /** Flag that determines whether an aircraft has TCAS capabilities. */
     bool _has_Tcas;
+
+public:
+    // TODO: Constructor
+
+    // TODO: Destructor
 };
 
-#endif //SAAS_AIRCRAFT_H
+#endif
