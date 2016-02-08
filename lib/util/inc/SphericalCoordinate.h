@@ -18,6 +18,7 @@ private:
     double _azimuth;
 
 public:
+    SphericalCoordinate() {};
     SphericalCoordinate(double range, double elevation, double azimuth);
 
     ~SphericalCoordinate();

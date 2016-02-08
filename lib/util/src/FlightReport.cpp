@@ -8,7 +8,7 @@
 
 #include "FlightReport.h"
 
-/* This is causing an error, something with implicit construction...
+//This is causing an error, something with implicit construction...
 FlightReport::FlightReport(std::time_t time, TailNumber tail_number, TcasID tcas_id,
 RadarID radar_id, GeographicCoordinate geographic_coordinate,
 SphericalCoordinate spherical_coordinate, Vector3D velocity) {
@@ -20,7 +20,7 @@ SphericalCoordinate spherical_coordinate, Vector3D velocity) {
     _spherical_coordinate = spherical_coordinate;
     _velocity = velocity;
 }
-*/
+
 
 FlightReport::~FlightReport() {
 

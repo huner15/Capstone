@@ -15,6 +15,7 @@ class TailNumber {
 private:
     std::string _tail_number;
 public:
+    TailNumber() {};
     TailNumber(std::string tail_number);
     ~TailNumber();
 };

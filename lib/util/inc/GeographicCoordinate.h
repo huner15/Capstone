@@ -21,6 +21,7 @@ private:
     double _altitude;
 
 public:
+    GeographicCoordinate() {};
     GeographicCoordinate(double latitude, double longitude, double altitude);
 
     ~GeographicCoordinate();

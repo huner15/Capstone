@@ -16,6 +16,7 @@ private:
     uint16_t _radar_id;
 
 public:
+    RadarID() {};
     RadarID(uint16_t radar_id);
 
     ~RadarID();
