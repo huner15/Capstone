@@ -1,13 +1,13 @@
 /*
- * VectorTests.h
+ * VectorTests.cpp
  * Specific Atomics
  * Frank Poole
- * 1-30-16
+ * 2-8-16
  * VectorTests contains unit tests ensuring the functionality of Vector.
  */
 
-#include "gtest/gtest.h"
-#include "gmock/gmock.h"
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 #include "Vector.h"
 
