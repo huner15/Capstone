@@ -34,7 +34,27 @@ public:
     FlightLeg(double duration_of_maneuver, double duration_after_maneuver,
         Vector3D new_relative_velocity);
 
-    ~FlightLeg() ;
+    /**
+     * Accessor for the duration of maneuver for this flight leg.
+     * @return the duration of the maneuver
+     */
+    double GetDurationOfManeuver();
+
+    /**
+     * Accessor for the duration a velocity is maintained after the
+     * maneuver is completed.
+     * @return the duration after a maneuver is completed.
+     */
+    double GetDurationAfterManeuver();
+
+    /**
+     * Accessor for the 3D vector that represents the target velocity
+     * for this flight leg.
+     * @return the new target relative velocity for this flight leg.
+     */
+    Vector3D GetNewRelativeVelocity();
+
+    ~FlightLeg() {} ;
 };
 
 #endif

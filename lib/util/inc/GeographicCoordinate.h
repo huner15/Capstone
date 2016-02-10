@@ -24,6 +24,24 @@ public:
     GeographicCoordinate() {};
     GeographicCoordinate(double latitude, double longitude, double altitude);
 
+    /**
+     * Accessor for the Latitude of the Geographic Coordinate.
+     * @return latitude of the geographic coordinate.
+     */
+    double GetLatitude();
+
+    /**
+     * Accessor for the Longitude of the Geographic Coordinate.
+     * @return longitude of the geographic coordinate.
+     */
+    double GetLongitude();
+
+    /**
+     * Accessor for the altitude of the Geographic Coordinate.
+     * @return altitude of the geographic coordinate.
+     */
+    double GetAltitude();
+
     ~GeographicCoordinate();
 };
 

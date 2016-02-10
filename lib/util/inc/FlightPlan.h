@@ -25,8 +25,21 @@ private:
 public:
     FlightPlan() {};
     FlightPlan(GeographicCoordinate start_position,
-               std::vector<FlightLeg> flight_legs);
-    ~FlightPlan();
+                std::vector<FlightLeg> flight_legs);
+
+    /**
+     * Accessor for the starting position of this flight plan.
+     * @return The Geographic Coordinating indicating the starting position.
+     */
+    GeographicCoordinate GetStartPosition();
+
+    /**
+     * Accessor for the all the flight legs in this flight plan.
+     * @return A vector containing all the flight legs for this flight plan.
+     */
+    std::vector<FlightLeg> GetFlightLegs();
+
+    ~FlightPlan() {};
 };
 
 #endif
