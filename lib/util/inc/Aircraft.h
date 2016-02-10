@@ -2,7 +2,7 @@
  * Aircraft.h
  * Specific Atomics
  * Kevin Pham, Frank Poole
- * 2-4-16
+ * 2-9-16
  * TODO: Description
  */
 
@@ -15,7 +15,7 @@
 class Aircraft {
 private:
     /** Unique string that identifies a specific aircraft. */
-    TailNumber _tail_Number;
+    TailNumber _tail_number;
     
     /**
      * The FlightPlan that contains an aircraft's initial position and
@@ -30,9 +30,11 @@ private:
     bool _has_Tcas;
 
 public:
-    // TODO: Constructor
+    Aircraft(TailNumber tail_number, FlightPlan flight_plan, bool has_AdsB,
+        bool has_Tcas);
 
-    // TODO: Destructor
+    Aircraft() {};
+    ~Aircraft();
 };
 
 #endif

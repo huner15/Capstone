@@ -2,7 +2,7 @@
  * FlightPlan.h
  * Specific Atomics
  * Kevin Pham, Frank Poole
- * 2-4-16
+ * 2-9-16
  * TODO: Description
  */
 
@@ -23,9 +23,10 @@ private:
     std::vector<FlightLeg> _flight_legs;
 
 public:
-    // TODO: Constructor
-
-    // TODO: Destructor
+    FlightPlan() {};
+    FlightPlan(GeographicCoordinate start_position,
+               std::vector<FlightLeg> flight_legs);
+    ~FlightPlan();
 };
 
 #endif

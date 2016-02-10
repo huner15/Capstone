@@ -2,7 +2,7 @@
  * FlightLeg.h
  * Specific Atomics
  * Kevin Pham, Frank Poole
- * 2-4-16
+ * 2-9-16
  * TODO: Description
  */
 
@@ -30,6 +30,11 @@ private:
 
 public:
 
+    FlightLeg() {};
+    FlightLeg(double duration_of_maneuver, double duration_after_maneuver,
+        Vector3D new_relative_velocity);
+
+    ~FlightLeg() ;
 };
 
 #endif

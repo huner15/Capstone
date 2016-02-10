@@ -2,7 +2,7 @@
  * FlightScenario.h
  * Specific Atomics
  * Kevin Pham, Frank Poole
- * 2-4-16
+ * 2-9-16
  * TODO: Description
  */
 
@@ -20,12 +20,12 @@ private:
     Aircraft _ownship;
     
     /** A collection of all unique aircraft in the flight scenario. */
-    std::vector<Aircraft> aircraft;
+    std::vector<Aircraft> _aircraft;
 
 public:
-    // TODO: Constructor
-
-    // TODO: Destructor
+    FlightScenario(Aircraft ownhip, std::vector<Aircraft> aircraft);
+    FlightScenario() {};
+    ~FlightScenario();
 };
 
 #endif
