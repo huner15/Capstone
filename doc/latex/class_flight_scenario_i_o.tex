@@ -1,103 +1,102 @@
-\hypertarget{class_flight_scenario_i_o}{}\section{Flight\+Scenario\+IO Class Reference}
-\label{class_flight_scenario_i_o}\index{Flight\+Scenario\+IO@{Flight\+Scenario\+IO}}
+\hypertarget{class_flight_scenario_i_o}{}\section{Flight\+Scenario\+I\+O Class Reference}
+\label{class_flight_scenario_i_o}\index{Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}}
 
 
 {\ttfamily \#include $<$Flight\+Scenario\+I\+O.\+h$>$}
 
-Inheritance diagram for Flight\+Scenario\+IO\+:\begin{figure}[H]
+Inheritance diagram for Flight\+Scenario\+I\+O\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_flight_scenario_i_o}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-virtual void \hyperlink{class_flight_scenario_i_o_a391009055a8c4973de8f61a4cef015a6}{write\+File} (\hyperlink{class_json_1_1_value}{Json\+::\+Value} value)
-\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{class_json_1_1_value}{Json\+::\+Value} \hyperlink{class_flight_scenario_i_o_ab4cd400bd08c78fd6e88d8eaa7bbe6dc}{read\+File} ()
+static \hyperlink{class_json_1_1_value}{Json\+::\+Value} \hyperlink{class_flight_scenario_i_o_aecbc4f1b1b7f894e5492869b97e0fe80}{Read\+File} ()
 \item 
-static \hyperlink{class_json_1_1_value}{Json\+::\+Value} \hyperlink{class_flight_scenario_i_o_a98f00808674c8239c9aede07c29576b0}{get\+Absolute\+Ownship\+Data} ()
+static \hyperlink{class_json_1_1_value}{Json\+::\+Value} \hyperlink{class_flight_scenario_i_o_ac59acd7bc4300bfe2a9e89e0b5bf3552}{Get\+Absolute\+Ownship\+Data} ()
 \item 
-static \hyperlink{class_json_1_1_value}{Json\+::\+Value} \hyperlink{class_flight_scenario_i_o_a51ff32ca2f45f95b843fb7a9966e3734}{get\+Flight\+Plans} ()
+static \hyperlink{class_json_1_1_value}{Json\+::\+Value} \hyperlink{class_flight_scenario_i_o_a7754b53451b1fada9abde7fbc76d6f1c}{Get\+Flight\+Plans} ()
 \item 
-static std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \hyperlink{class_flight_scenario_i_o_a81094ac93be8c44464dff144262f9680}{get\+Start\+Positions} ()
+static std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \hyperlink{class_flight_scenario_i_o_af72948757583488975e1282dfdd3e8a4}{Get\+Start\+Positions} ()
 \item 
-static std\+::vector$<$ \hyperlink{class_json_1_1_value}{Json\+::\+Value} $>$ \hyperlink{class_flight_scenario_i_o_a3b65c0985f1adc92b3d5f9109c842c8d}{get\+Flight\+Legs} ()
+static std\+::vector$<$ \hyperlink{class_json_1_1_value}{Json\+::\+Value} $>$ \hyperlink{class_flight_scenario_i_o_a0d16fc884060e675aef902c37ee2b274}{Get\+Flight\+Legs} ()
+\item 
+static void \hyperlink{class_flight_scenario_i_o_ab8652a866e50bae73dd3be2cf4f92920}{Write\+File} (\hyperlink{class_json_1_1_value}{Json\+::\+Value} value)
 \end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
-\hyperlink{class_flight_scenario_i_o}{Flight\+Scenario\+IO} is the utility library for reading and writing regarding the Flight Scenario files. 
+\hyperlink{class_flight_scenario_i_o}{Flight\+Scenario\+I\+O} is the utility library for reading and writing regarding the \hyperlink{class_flight}{Flight} Scenario files. 
 
 \subsection{Member Function Documentation}
-\index{Flight\+Scenario\+IO@{Flight\+Scenario\+IO}!get\+Absolute\+Ownship\+Data@{get\+Absolute\+Ownship\+Data}}
-\index{get\+Absolute\+Ownship\+Data@{get\+Absolute\+Ownship\+Data}!Flight\+Scenario\+IO@{Flight\+Scenario\+IO}}
-\subsubsection[{\texorpdfstring{get\+Absolute\+Ownship\+Data()}{getAbsoluteOwnshipData()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Json\+::\+Value} Flight\+Scenario\+I\+O\+::get\+Absolute\+Ownship\+Data (
+\hypertarget{class_flight_scenario_i_o_ac59acd7bc4300bfe2a9e89e0b5bf3552}{}\index{Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}!Get\+Absolute\+Ownship\+Data@{Get\+Absolute\+Ownship\+Data}}
+\index{Get\+Absolute\+Ownship\+Data@{Get\+Absolute\+Ownship\+Data}!Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}}
+\subsubsection[{Get\+Absolute\+Ownship\+Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Json\+::\+Value} Flight\+Scenario\+I\+O\+::\+Get\+Absolute\+Ownship\+Data (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_flight_scenario_i_o_a98f00808674c8239c9aede07c29576b0}{}\label{class_flight_scenario_i_o_a98f00808674c8239c9aede07c29576b0}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_flight_scenario_i_o_ac59acd7bc4300bfe2a9e89e0b5bf3552}
 Accessor function to retrieve the initial Ownship data. \begin{DoxyReturn}{Returns}
 Initial Ownship data in \hyperlink{class_json_1_1_value}{Json\+::\+Value} form. 
 \end{DoxyReturn}
-\index{Flight\+Scenario\+IO@{Flight\+Scenario\+IO}!get\+Flight\+Legs@{get\+Flight\+Legs}}
-\index{get\+Flight\+Legs@{get\+Flight\+Legs}!Flight\+Scenario\+IO@{Flight\+Scenario\+IO}}
-\subsubsection[{\texorpdfstring{get\+Flight\+Legs()}{getFlightLegs()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Json\+::\+Value} $>$ Flight\+Scenario\+I\+O\+::get\+Flight\+Legs (
+\hypertarget{class_flight_scenario_i_o_a0d16fc884060e675aef902c37ee2b274}{}\index{Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}!Get\+Flight\+Legs@{Get\+Flight\+Legs}}
+\index{Get\+Flight\+Legs@{Get\+Flight\+Legs}!Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}}
+\subsubsection[{Get\+Flight\+Legs}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Json\+::\+Value} $>$ Flight\+Scenario\+I\+O\+::\+Get\+Flight\+Legs (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_flight_scenario_i_o_a3b65c0985f1adc92b3d5f9109c842c8d}{}\label{class_flight_scenario_i_o_a3b65c0985f1adc92b3d5f9109c842c8d}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_flight_scenario_i_o_a0d16fc884060e675aef902c37ee2b274}
 Accesor method to all the flight legs. \begin{DoxyReturn}{Returns}
 A vector containing all the flight legs in the flight scenario. 
 \end{DoxyReturn}
-\index{Flight\+Scenario\+IO@{Flight\+Scenario\+IO}!get\+Flight\+Plans@{get\+Flight\+Plans}}
-\index{get\+Flight\+Plans@{get\+Flight\+Plans}!Flight\+Scenario\+IO@{Flight\+Scenario\+IO}}
-\subsubsection[{\texorpdfstring{get\+Flight\+Plans()}{getFlightPlans()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Json\+::\+Value} Flight\+Scenario\+I\+O\+::get\+Flight\+Plans (
+\hypertarget{class_flight_scenario_i_o_a7754b53451b1fada9abde7fbc76d6f1c}{}\index{Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}!Get\+Flight\+Plans@{Get\+Flight\+Plans}}
+\index{Get\+Flight\+Plans@{Get\+Flight\+Plans}!Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}}
+\subsubsection[{Get\+Flight\+Plans}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Json\+::\+Value} Flight\+Scenario\+I\+O\+::\+Get\+Flight\+Plans (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_flight_scenario_i_o_a51ff32ca2f45f95b843fb7a9966e3734}{}\label{class_flight_scenario_i_o_a51ff32ca2f45f95b843fb7a9966e3734}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_flight_scenario_i_o_a7754b53451b1fada9abde7fbc76d6f1c}
 Accessor function for the list of flight plans. \begin{DoxyReturn}{Returns}
-All the flight plans in the J\+S\+ON in J\+Son\+::\+Value form. 
+All the flight plans in the J\+S\+O\+N in J\+Son\+::\+Value form. 
 \end{DoxyReturn}
-\index{Flight\+Scenario\+IO@{Flight\+Scenario\+IO}!get\+Start\+Positions@{get\+Start\+Positions}}
-\index{get\+Start\+Positions@{get\+Start\+Positions}!Flight\+Scenario\+IO@{Flight\+Scenario\+IO}}
-\subsubsection[{\texorpdfstring{get\+Start\+Positions()}{getStartPositions()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ std\+::vector$<$ int $>$ $>$ Flight\+Scenario\+I\+O\+::get\+Start\+Positions (
+\hypertarget{class_flight_scenario_i_o_af72948757583488975e1282dfdd3e8a4}{}\index{Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}!Get\+Start\+Positions@{Get\+Start\+Positions}}
+\index{Get\+Start\+Positions@{Get\+Start\+Positions}!Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}}
+\subsubsection[{Get\+Start\+Positions}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ std\+::vector$<$ int $>$ $>$ Flight\+Scenario\+I\+O\+::\+Get\+Start\+Positions (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_flight_scenario_i_o_a81094ac93be8c44464dff144262f9680}{}\label{class_flight_scenario_i_o_a81094ac93be8c44464dff144262f9680}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_flight_scenario_i_o_af72948757583488975e1282dfdd3e8a4}
 Accessor method to a vector containing the starting positions of all aircrafts. \begin{DoxyReturn}{Returns}
-Vector containing the starting positions of all aircrafts 
+\hyperlink{class_vector}{Vector} containing the starting positions of all aircrafts 
 \end{DoxyReturn}
-\index{Flight\+Scenario\+IO@{Flight\+Scenario\+IO}!read\+File@{read\+File}}
-\index{read\+File@{read\+File}!Flight\+Scenario\+IO@{Flight\+Scenario\+IO}}
-\subsubsection[{\texorpdfstring{read\+File()}{readFile()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Json\+::\+Value} Flight\+Scenario\+I\+O\+::read\+File (
+\hypertarget{class_flight_scenario_i_o_aecbc4f1b1b7f894e5492869b97e0fe80}{}\index{Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}!Read\+File@{Read\+File}}
+\index{Read\+File@{Read\+File}!Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}}
+\subsubsection[{Read\+File}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Json\+::\+Value} Flight\+Scenario\+I\+O\+::\+Read\+File (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_flight_scenario_i_o_ab4cd400bd08c78fd6e88d8eaa7bbe6dc}{}\label{class_flight_scenario_i_o_ab4cd400bd08c78fd6e88d8eaa7bbe6dc}
-Reads the J\+S\+ON Flight\+Scenario file and returns a reference to the root of the J\+S\+ON file. \begin{DoxyReturn}{Returns}
-The root of the J\+S\+ON File 
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_flight_scenario_i_o_aecbc4f1b1b7f894e5492869b97e0fe80}
+Reads the J\+S\+O\+N \hyperlink{class_flight_scenario}{Flight\+Scenario} file and returns a reference to the root of the J\+S\+O\+N file. \begin{DoxyReturn}{Returns}
+The root of the J\+S\+O\+N File 
 \end{DoxyReturn}
-\index{Flight\+Scenario\+IO@{Flight\+Scenario\+IO}!write\+File@{write\+File}}
-\index{write\+File@{write\+File}!Flight\+Scenario\+IO@{Flight\+Scenario\+IO}}
-\subsubsection[{\texorpdfstring{write\+File(\+Json\+::\+Value value)}{writeFile(Json::Value value)}}]{\setlength{\rightskip}{0pt plus 5cm}void Flight\+Scenario\+I\+O\+::write\+File (
+\hypertarget{class_flight_scenario_i_o_ab8652a866e50bae73dd3be2cf4f92920}{}\index{Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}!Write\+File@{Write\+File}}
+\index{Write\+File@{Write\+File}!Flight\+Scenario\+I\+O@{Flight\+Scenario\+I\+O}}
+\subsubsection[{Write\+File}]{\setlength{\rightskip}{0pt plus 5cm}void Flight\+Scenario\+I\+O\+::\+Write\+File (
 \begin{DoxyParamCaption}
 \item[{{\bf Json\+::\+Value}}]{value}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_flight_scenario_i_o_a391009055a8c4973de8f61a4cef015a6}{}\label{class_flight_scenario_i_o_a391009055a8c4973de8f61a4cef015a6}
-T\+O\+DO 
-
-Implements \hyperlink{class_json_i_o}{Json\+IO}.
-
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_flight_scenario_i_o_ab8652a866e50bae73dd3be2cf4f92920}
+Write specified \hyperlink{class_json_1_1_value}{Json\+::\+Value} to a formatted output log file. 
+\begin{DoxyParams}{Parameters}
+{\em value} & is the \hyperlink{class_json_1_1_value}{Json\+::\+Value} that you want to log. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/andrea/\+Clion\+Projects/saas/lib/jsonio/inc/Flight\+Scenario\+I\+O.\+h\item 
-/home/andrea/\+Clion\+Projects/saas/lib/jsonio/src/Flight\+Scenario\+I\+O.\+cpp\end{DoxyCompactItemize}
+/home/frank/dev/cpe402/saas/lib/jsonio/inc/Flight\+Scenario\+I\+O.\+h\item 
+/home/frank/dev/cpe402/saas/lib/jsonio/src/Flight\+Scenario\+I\+O.\+cpp\end{DoxyCompactItemize}

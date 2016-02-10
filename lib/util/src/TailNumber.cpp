@@ -2,71 +2,67 @@
  * TailNumber.cpp
  * Specific Atomics
  * Frank Poole
- * 2-4-16
- * TODO: Description
+ * 2-9-16
+ * Contains TailNumber function implementations.
  */
 
-#include <algorithm>
+#include <random>
+#include <stdexcept>
 
 #include "TailNumber.h"
 
-/*
-char genRandom() {
-    static const char alphabet[] =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    return alphabet[rand() % (sizeof(alphabet) - 1)];
-}
-*/
-
-/*
-std::string random_string( size_t length )
-{
-    auto randchar = []() -> char
-    {
-        const char charset[] =
-                "0123456789"
-                        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                        "abcdefghijklmnopqrstuvwxyz";
-        const size_t max_index = (sizeof(charset) - 1);
-        return charset[ rand() % max_index ];
-    };
-    std::string str(length,0);
-    std::generate_n( str.begin(), length, randchar );
-    return str;
-}
-*/
-
+/* Disclaimer: The following function is a modified version of the original
+ * version at http://stackoverflow.com/questions/440133/how-do-i-create-a-
+ * random-alpha-numeric-string-in-c
+ */
 std::string random_string(size_t length) {
-    static const std::string alphanums =
-            "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    static std::mt19937 rg{std::random_device{}()};
-    static std::uniform_int_distribution<> pick(0, alphanums.size() - 1);
+    if (length >= 0) {
+        std::string str;
+        str.reserve(length);
 
-    std::string s;
+        /* String containing all alphanumeric characters. */
+        static const std::string alphanumeric =
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                "abcdefghijklmnopqrstuvwxyz"
+                "0123456789";
 
-    s.reserve(length);
+        /* A Mersenne Twister pseudo-random generator of 32-bit numbers with a
+         * state size of 19937 bits. */
+        static std::mt19937 rg{std::random_device{}()};
 
-    while(length--)
-        s += alphanums[pick(rg)];
+        /* A integer distribution equal to the number of alphanumeric
+         * characters. */
+        static std::uniform_int_distribution<> pick(
+                0, (int) alphanumeric.size() - 1);
 
-    return s;
+        /* Add length number of random characters from the alphabet to the
+         * string by picking a character from a range using the specified
+         * generator. */
+        while (length--) {
+            str += alphanumeric[pick(rg)];
+        }
+
+        return str;
+    }
+    else {
+        throw std::out_of_range ("String length less than zero.");
+    }
 }
 
 TailNumber::TailNumber() {
-    /*
-    for (int i = 0; i < _length; ++i) {
-        _tail_number += genRandom();
-    }
-    */
     _tail_number = random_string(_length);
 }
 
 TailNumber::TailNumber(std::string tail_number) {
-    _tail_number = tail_number;
+    if (tail_number.length() == _length) {
+        _tail_number = tail_number;
+    }
+    else {
+        throw std::out_of_range ("Tail Number must be six characters.");
+    }
 }
 
 TailNumber::~TailNumber() {
-
 }
 
 std::string TailNumber::GetTailNumber() {

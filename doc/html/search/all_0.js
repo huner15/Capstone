@@ -4,6 +4,7 @@ var searchData=
   ['actualflightsio',['ActualFlightsIO',['../class_actual_flights_i_o.html',1,'']]],
   ['advisorylevel',['AdvisoryLevel',['../class_example_1_1_c_d_t_i_report.html#a55ef7e8b3e35eeeb0b273fd3c475ba31',1,'Example::CDTIReport']]],
   ['advisorymessage',['AdvisoryMessage',['../class_example_1_1_c_d_t_i_report.html#a6859a3fc5d356d9125d589e23a6cc2b9',1,'Example::CDTIReport']]],
+  ['aircraft',['Aircraft',['../class_aircraft.html',1,'']]],
   ['all',['all',['../class_json_1_1_features.html#a63894da6e2c100b38741fa933f3d33ae',1,'Json::Features::all()'],['../struct_json_1_1_comment_style.html#a51fc08f3518fd81eba12f340d19a3d0ca32302c0b97190c1808b3e38f367fef01',1,'Json::CommentStyle::All()']]],
   ['allocationstack',['AllocationStack',['../class_silent_orbit_1_1_protocol_buffers_1_1_allocation_stack.html',1,'SilentOrbit::ProtocolBuffers']]],
   ['allowcomments_5f',['allowComments_',['../class_json_1_1_features.html#a33afd389719624b6bdb23950b3c346c9',1,'Json::Features']]],

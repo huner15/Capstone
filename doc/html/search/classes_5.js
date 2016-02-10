@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['history',['History',['../struct_history.html',1,'']]]
+  ['geographiccoordinate',['GeographicCoordinate',['../class_geographic_coordinate.html',1,'']]]
 ];

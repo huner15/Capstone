@@ -1,9 +1,10 @@
 var searchData=
 [
+  ['radarid',['RadarID',['../class_radar_i_d.html',1,'']]],
   ['range',['Range',['../class_example_1_1_tcas_report.html#a32691ce0bb3b627f44655cf3013f5f20',1,'Example::TcasReport']]],
-  ['reader',['Reader',['../class_json_1_1_reader.html#a0b3c4e24c8393354bab57a6ba3ffc27f',1,'Json::Reader::Reader()'],['../class_json_1_1_reader.html#a45f17831118337309180313e93ac33f8',1,'Json::Reader::Reader(const Features &amp;features)']]],
   ['reader',['Reader',['../class_json_1_1_reader.html',1,'Json']]],
-  ['readfile',['readFile',['../class_actual_flights_i_o.html#ae69ccbdf62e74023d2e6bf71232a55f3',1,'ActualFlightsIO::readFile()'],['../class_flight_scenario_i_o.html#ab4cd400bd08c78fd6e88d8eaa7bbe6dc',1,'FlightScenarioIO::readFile()']]],
+  ['reader',['Reader',['../class_json_1_1_reader.html#a0b3c4e24c8393354bab57a6ba3ffc27f',1,'Json::Reader::Reader()'],['../class_json_1_1_reader.html#a45f17831118337309180313e93ac33f8',1,'Json::Reader::Reader(const Features &amp;features)']]],
+  ['readfile',['ReadFile',['../class_actual_flights_i_o.html#a86f2cdffea634247d0b08aceed8106f9',1,'ActualFlightsIO::ReadFile()'],['../class_flight_scenario_i_o.html#aecbc4f1b1b7f894e5492869b97e0fe80',1,'FlightScenarioIO::ReadFile()']]],
   ['realvalue',['realValue',['../namespace_json.html#a7d654b75c16a57007925868e38212b4eab837c7b869c14d8be712deb45c9e490e',1,'Json']]],
   ['recv',['recv',['../class_socket.html#ab220e684100ebb15da125890f7d69d5d',1,'Socket::recv(std::string &amp;bfr, int flags=0) const '],['../class_socket.html#a1a5cc5813b16a3235e177030ce2e09d2',1,'Socket::recv(void *bfr, size_t len, int flags=0) const ']]],
   ['removeindex',['removeIndex',['../class_json_1_1_value.html#ae9e67e08a85a2f3be3396ec0f4c47f65',1,'Json::Value']]],

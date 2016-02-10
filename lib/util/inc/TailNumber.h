@@ -1,9 +1,9 @@
-/*
- * TailNumber.h
- * Specific Atomics
- * Frank Poole
- * 2-8-16
- * TODO: Description
+/**
+ * @file TailNumber.h
+ * @author Specific Atomics
+ * @author Frank Poole
+ * @date 2-9-16
+ * @brief Tail Number describes a aircraft tail number.
  */
 
 #ifndef TAIL_NUMBER_H_
@@ -11,6 +11,13 @@
 
 #include <string>
 
+/**
+ * A tail number represents an aircraft tail number with a length of six
+ * alphanumeric characters. This model does not include real life naming
+ * restrictions specified by international and national organizations such as
+ * indexing characters by country of origin as this may divulge properties of
+ * the identified aircraft.
+ */
 class TailNumber {
 private:
     /** Tail number identifier. */
@@ -27,7 +34,8 @@ public:
 
     /**
      * Create a tail number using a specified six character string.
-     * @param tail_number the tail number
+     * @param tail_number a six character string
+     * @throws std::out_of_range exceptions if the tail number length is not six
      */
     TailNumber(std::string tail_number);
 
@@ -37,7 +45,7 @@ public:
     ~TailNumber();
 
     /**
-     * Return the tail number.
+     * Returns the tail number as a mutable string.
      * @returns the tail number
      */
     std::string GetTailNumber();
