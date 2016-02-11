@@ -1,5 +1,5 @@
 project(saap)
 
-add_subdirectory(inc)
-add_subdirectory(src)
-add_subdirectory(test)
+add_subdirectory(algorithm)
+add_subdirectory(categorization)
+add_subdirectory(reportReceiver)
