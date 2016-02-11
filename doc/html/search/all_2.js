@@ -19,6 +19,5 @@ var searchData=
   ['connect',['connect',['../class_socket.html#a4236aa7f4def254e1fb4d062eb0bd060',1,'Socket']]],
   ['correlationaircraft',['CorrelationAircraft',['../struct_correlation_aircraft.html',1,'']]],
   ['create',['create',['../class_socket.html#a6afde2dca985dacdfa770141192e2daf',1,'Socket']]],
-  ['current',['Current',['../class_ciela_spike_1_1_task.html#a1b998f7aa927571627df0e146693c5a4',1,'CielaSpike::Task']]],
-  ['capstone_20shared',['Capstone Shared',['../md__home_frank_dev_cpe402_saas_lib_gp_capstone-shared__r_e_a_d_m_e.html',1,'']]]
+  ['current',['Current',['../class_ciela_spike_1_1_task.html#a1b998f7aa927571627df0e146693c5a4',1,'CielaSpike::Task']]]
 ];

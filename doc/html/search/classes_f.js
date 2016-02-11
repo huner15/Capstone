@@ -17,5 +17,5 @@ var searchData=
   ['structurederror',['StructuredError',['../struct_json_1_1_our_reader_1_1_structured_error.html',1,'Json::OurReader']]],
   ['styledstreamwriter',['StyledStreamWriter',['../class_json_1_1_styled_stream_writer.html',1,'Json']]],
   ['styledwriter',['StyledWriter',['../class_json_1_1_styled_writer.html',1,'Json']]],
-  ['surveillancereport',['SurveillanceReport',['../struct_surveillance_report.html',1,'']]]
+  ['surveillancereport',['SurveillanceReport',['../class_surveillance_report.html',1,'']]]
 ];
