@@ -4,7 +4,7 @@
 #ifndef SAAS_PREDICTION_H
 #define SAAS_PREDICTION_H
 
-#include "../../../../../.CLion12/system/cmake/generated/5c6d134d/5c6d134d/Debug/lib/gp/capstone-shared/cdti.pb.h"
+#include "cdti.pb.h"
 
 /*
  * A struct to hold the last three Snapshots of the airspace.

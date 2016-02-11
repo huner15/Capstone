@@ -21,7 +21,7 @@ typedef struct Cluster
     /** Report from the radar hardware. */
     SurveillanceReport radar;
     /** Predicted aircraft location for the next second. */
-    Vector prediction;
+    std::Vector prediction;
 } Cluster;
 
 /**
@@ -35,7 +35,7 @@ enum Device {radar, TCAS, ADS_B};
  * A struct holding a report from a hardware sensor representing
  * a located aircraft by that sensor for the current second.
  */
-class SurveillanceReport : public FlightRport
+class SurveillanceReport : public FlightReport
 {
     Device type; /** Enum for what device this report is from. */
     int64_t timestamp; /** Timestamp for when this was received. */
