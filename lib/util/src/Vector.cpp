@@ -9,3 +9,6 @@
 
 #include "Vector.h"
 
+size_t Vector::Size() {
+    return array.size();
+}
