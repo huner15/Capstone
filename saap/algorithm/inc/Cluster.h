@@ -1,28 +1,15 @@
-//
-// Created by andrea on 1/19/16.
-//
+/**
+* @file Cluster.h
+* @author Specific Atomics
+* @author Andrea Savage
+* @date 1-19-16
+* @brief Holds the Clustering structs and cluster correlation headers.
+*/
+
 #ifndef SAAS_CLUSTER_H
 #define SAAS_CLUSTER_H
 
 #include "Prediction.h"
-
-using namespace std;
-
-/**
- * A struct representing one aircraft in the airspace.
- * All Surveillance Reports may not exist.
- */
-typedef struct Cluster
-{
-    /** Report from the TCAS hardware. */
-    SurveillanceReport tcas;
-    /** Report from the ADS-B hardware. */
-    SurveillanceReport adsb;
-    /** Report from the radar hardware. */
-    SurveillanceReport radar;
-    /** Predicted aircraft location for the next second. */
-    std::Vector prediction;
-} Cluster;
 
 /**
  * Enum representing the different device types a report
@@ -35,7 +22,7 @@ enum Device {radar, TCAS, ADS_B};
  * A struct holding a report from a hardware sensor representing
  * a located aircraft by that sensor for the current second.
  */
-class SurveillanceReport : public FlightReport
+typedef struct SurveillanceReport // : public FlightReport
 {
     Device type; /** Enum for what device this report is from. */
     int64_t timestamp; /** Timestamp for when this was received. */
@@ -56,6 +43,22 @@ class SurveillanceReport : public FlightReport
     float east; /** relative intruder velocity east (feet/sec). */
     float down; /** relative intruder velocity down (feet/sec). */
 } SurveillanceReport;
+
+/**
+ * A struct representing one aircraft in the airspace.
+ * All Surveillance Reports may not exist.
+ */
+typedef struct Cluster
+{
+    /** Report from the TCAS hardware. */
+    SurveillanceReport tcas;
+    /** Report from the ADS-B hardware. */
+    SurveillanceReport adsb;
+    /** Report from the radar hardware. */
+    SurveillanceReport radar;
+    /** Predicted aircraft location for the next second. */
+    Vector3D prediction;
+} Cluster;
 
 float calcEuclidDistance(SurveillanceReport reportOne, SurveillanceReport reportTwo);
 

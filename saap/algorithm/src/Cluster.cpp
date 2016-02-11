@@ -1,10 +1,19 @@
-//
-// Created by andrea on 1/19/16.
-//
+/**
+* @file Cluster.cpp
+* @author Specific Atomics
+* @author Andrea Savage
+* @date 1-19-16
+* @brief Calculates the distance matrices from three sets of input Surveillance
+ * Reports and then generates the Clusters.
+*/
 
-#include "../../inc/algorithm/Cluster.h"
+#include <Vector.h>
+#include <cmath>
+#include "Cluster.h"
 
-Vector clusters;
+#define REPORTS 10
+
+Vector<Cluster, REPORTS> clusters;
 
 /*
  * Main method of the correlation algorithm.
@@ -21,7 +30,8 @@ Vector clusters;
  * @param tcas The reports received from the TCAS hardware for the current second
  * @return int 0 for success, 1 for error
  */
-int correlate(SurveillanceReport ownship, Vector adsb, Vector tcas, Vector radar);
+int correlate(SurveillanceReport ownship, Vector<SurveillanceReport, REPORTS> adsb,
+              Vector<SurveillanceReport, REPORTS> tcas, Vector<SurveillanceReport, REPORTS> radar);
 
 /*
  * Checks that all SurveillanceReports are in
@@ -31,7 +41,7 @@ int correlate(SurveillanceReport ownship, Vector adsb, Vector tcas, Vector radar
  *
  * @return int 0 for success, 1 for error
  */
-int checkClusterCount();
+int check_cluster_count();
 
 /*
  * Converts a Cluster to a CorrelationAircraft, calculate
@@ -42,7 +52,7 @@ int checkClusterCount();
  * @param cluster The cluster to convert
  * @return CDTIReport The generated report
  */
-CorrelationAircraft convertAircraft(Cluster cluster);
+CorrelationAircraft convert_aircraft(Cluster cluster);
 
 /*
  * Generates the distance between two SurveillanceReports
@@ -53,7 +63,7 @@ CorrelationAircraft convertAircraft(Cluster cluster);
  * @return float The distance metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float calcDistance(SurveillanceReport reportOne, SurveillanceReport reportTwo)
+float calc_distance(SurveillanceReport reportOne, SurveillanceReport reportTwo)
 {
     float distance = calcHeading(reportOne, reportTwo);
     distance += calcEuclidDistance(reportOne, reportTwo);

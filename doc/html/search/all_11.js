@@ -1,6 +1,7 @@
 var searchData=
 [
   ['protocolbuffers',['ProtocolBuffers',['../namespace_silent_orbit_1_1_protocol_buffers.html',1,'SilentOrbit']]],
+  ['secondtolast',['secondToLast',['../struct_history.html#aab330598e0a8eff1467d79cee41aaa2f',1,'History']]],
   ['send',['send',['../class_socket.html#a3565cd4d62dc287135559e0e5f564d31',1,'Socket::send(const std::string &amp;msg) const '],['../class_socket.html#a645d148645e5985891bc299514f585a1',1,'Socket::send(const void *msg, size_t len) const ']]],
   ['serialize',['serialize',['../class_protobuf_socket_serializer.html#a37206eb18b2b1300b8fab46acd82bdde',1,'ProtobufSocketSerializer::serialize()'],['../class_example_1_1_vector.html#af60b9bcba3c2dddfc4ef780c5d2786c6',1,'Example.Vector.Serialize()'],['../class_example_1_1_c_d_t_i_plane.html#a56aa1ceb3a4ad073c405dd9fad2bdc57',1,'Example.CDTIPlane.Serialize()'],['../class_example_1_1_c_d_t_i_report.html#aa35a297b34ae5b717ad4a35b3d43dfaf',1,'Example.CDTIReport.Serialize()'],['../class_example_1_1_msg.html#a49aaee7375865354ce12aedca5a19f8e',1,'Example.Msg.Serialize()'],['../class_example_1_1_tcas_report.html#a54cf22e91a20b051dc9b50be3292f0c2',1,'Example.TcasReport.Serialize()']]],
   ['serializelengthdelimited',['SerializeLengthDelimited',['../class_example_1_1_vector.html#ad5dad3812b90c5fe6669407f8588fbf5',1,'Example.Vector.SerializeLengthDelimited()'],['../class_example_1_1_c_d_t_i_plane.html#a861c8211cc2b5f3bcaf3721dff13435c',1,'Example.CDTIPlane.SerializeLengthDelimited()'],['../class_example_1_1_c_d_t_i_report.html#a587ec4906faa62164e4dd7106ab43172',1,'Example.CDTIReport.SerializeLengthDelimited()'],['../class_example_1_1_msg.html#a68a58ceca8838160393c72a1013e78c0',1,'Example.Msg.SerializeLengthDelimited()'],['../class_example_1_1_tcas_report.html#a65c3a0268ceb68df8be04522cbadd029',1,'Example.TcasReport.SerializeLengthDelimited()']]],
@@ -29,11 +30,11 @@ var searchData=
   ['strictmode',['strictMode',['../class_json_1_1_features.html#ae23176c14b2e79e81fb61fb1a8ab58ee',1,'Json::Features::strictMode()'],['../class_json_1_1_char_reader_builder.html#a9c19e3c5475f9072d527810d4bf56749',1,'Json::CharReaderBuilder::strictMode()']]],
   ['strictroot_5f',['strictRoot_',['../class_json_1_1_features.html#a1162c37a1458adc32582b585b552f9c3',1,'Json::Features']]],
   ['stringvalue',['stringValue',['../namespace_json.html#a7d654b75c16a57007925868e38212b4ea804ef857affea2d415843c73f261c258',1,'Json']]],
-  ['structurederror',['StructuredError',['../struct_json_1_1_our_reader_1_1_structured_error.html',1,'Json::OurReader']]],
   ['structurederror',['StructuredError',['../struct_json_1_1_reader_1_1_structured_error.html',1,'Json::Reader']]],
+  ['structurederror',['StructuredError',['../struct_json_1_1_our_reader_1_1_structured_error.html',1,'Json::OurReader']]],
   ['styledstreamwriter',['StyledStreamWriter',['../class_json_1_1_styled_stream_writer.html',1,'Json']]],
   ['styledwriter',['StyledWriter',['../class_json_1_1_styled_writer.html',1,'Json']]],
-  ['surveillancereport',['SurveillanceReport',['../struct_surveillance_report.html',1,'']]],
+  ['surveillancereport',['SurveillanceReport',['../class_surveillance_report.html',1,'']]],
   ['swap',['swap',['../class_json_1_1_value.html#aab841120d78e296e1bc06a373345e822',1,'Json::Value']]],
   ['swappayload',['swapPayload',['../class_json_1_1_value.html#a5263476047f20e2fc6de470e4de34fe5',1,'Json::Value']]]
 ];

@@ -1,20 +1,15 @@
-//
-// Created by andrea on 1/19/16.
-//
+/**
+* @file Prediction.h
+* @author Specific Atomics
+* @author Andrea Savage
+* @date 1-19-16
+* @brief Holds the Prediction history structs.
+*/
+
 #ifndef SAAS_PREDICTION_H
 #define SAAS_PREDICTION_H
 
-#include "cdti.pb.h"
-
-/*
- * A struct to hold the last three Snapshots of the airspace.
- */
-typedef struct History
-{
-    Snapshot last; /** The most recent Snapshot. */
-    Snapshot secondToLast; /** The second to last Snapshot. */
-    Snapshot thirdToLast; /** The third most recent Snapchat. */
-} History;
+using namespace std;
 
 /**
  * A struct that holds the layout of the airspace during one
@@ -26,6 +21,16 @@ typedef struct Snapshot
     //Collection<CorrelationAircraft> aircraft; /** Collection of aircraft. */
     int64_t counterVal; /** Timestamp to order the Snapshots. */
 } Snapshot;
+
+/*
+ * A struct to hold the last three Snapshots of the airspace.
+ */
+typedef struct History
+{
+    Snapshot last; /** The most recent Snapshot. */
+    Snapshot secondToLast; /** The second to last Snapshot. */
+    Snapshot thirdToLast; /** The third most recent Snapchat. */
+} History;
 
 /**
  * A struct that represents an individual aircraft in the airspace around
@@ -57,9 +62,9 @@ typedef struct CorrelationAircraft
     float down; /** relative intruder velocity down (feet/sec). */
 
     /** Predicted vector the aircraft will be facing in following seconds. */
-    Vector predictedVector;
+    Vector3D predictedVector;
     /** Predicted location the aircraft will be at in following seconds. */
-    Vector predictedLoc;
+    Vector3D predictedLoc;
 } CorrelationAircraft;
 
 #endif //SAAS_PREDICTION_H

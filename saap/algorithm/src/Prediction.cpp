@@ -1,9 +1,14 @@
-//
-// Created by andrea on 1/19/16.
-//
+/**
+* @file Prediction.cpp
+* @author Specific Atomics
+* @author Andrea Savage
+* @date 1-19-16
+* @brief Tracks the last three Snapshot seconds of CorrelationAircraft in the History.
+*/
 
-#include "../../inc/algorithm/Prediction.h"
-#include "../../inc/algorithm/Cluster.h"
+#include <Vector.h>
+#include "Prediction.h"
+#include "Cluster.h"
 
 History history;
 int snapshotCounter = 0;
@@ -59,4 +64,4 @@ CorrelationAircraft searchRadarID(int radarID);
  * vector for
  * r@return Vector The predicted aircraft trajectory
  */
-Vector predictVector(CorrelationAircraft aircraft);
+Vector3D predictVector(CorrelationAircraft aircraft);
