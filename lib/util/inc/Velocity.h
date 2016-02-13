@@ -7,6 +7,9 @@
  * object.
  */
 
+#ifndef VELOCITY_H_
+#define VELOCITY_H_
+
 #include "Vector.h"
 
 /**
@@ -42,3 +45,5 @@ public:
      */
     Velocity(double east, double down, double north);
 };
+
+#endif
