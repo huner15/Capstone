@@ -10,10 +10,12 @@
 #include <Vector.h>
 #include <cmath>
 #include "Cluster.h"
+#include <vector>
 
 #define REPORTS 10
+using namespace std;
 
-Vector<Cluster, REPORTS> clusters;
+vector<Cluster> clusters;
 
 /*
  * Main method of the correlation algorithm.
