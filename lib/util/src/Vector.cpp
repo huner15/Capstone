@@ -9,6 +9,7 @@
 
 #include "Vector.h"
 
-size_t Vector::Size() {
+template<typename T, std::size_t N>
+size_t Vector<T, N>::Size() {
     return array.size();
 }
