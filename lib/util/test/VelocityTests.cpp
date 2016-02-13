@@ -11,6 +11,10 @@
 
 #include "Velocity.h"
 
+/**
+ * Test the Velocity default constructor by ensuring that all velocity axes are
+ * initialized to zero.
+ */
 TEST(VelocityDefaultConstructor, Assignment) {
     Velocity velocity;
 
@@ -19,6 +23,10 @@ TEST(VelocityDefaultConstructor, Assignment) {
     EXPECT_EQ(0, velocity.north);
 }
 
+/**
+ * Test the Velocity input constructor by ensuring that velocity axis assignment
+ * is valid.
+ */
 TEST(VelocityInputConstructor, Assignment) {
     Velocity velocity = Velocity (1, 2, 3);
 
