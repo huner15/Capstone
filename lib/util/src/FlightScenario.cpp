@@ -13,3 +13,12 @@ FlightScenario::FlightScenario(Aircraft ownship,
     _ownship = ownship;
     _aircraft = aircraft;
 }
+
+
+Aircraft FlightScenario::GetOwnship() {
+    return _ownship;
+}
+
+std::vector<Aircraft> FlightScenario::GetAircraft() {
+    return _aircraft;
+}

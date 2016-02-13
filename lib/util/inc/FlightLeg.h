@@ -54,6 +54,12 @@ public:
      */
     Vector3D GetNewRelativeVelocity();
 
+    /**
+     * Checks to see if two FlightLegs are equal.
+     * @return boolean stating whether two FlightLegs are equal
+     */
+    bool operator==(FlightLeg flightLeg) const;
+
     ~FlightLeg() {} ;
 };
 

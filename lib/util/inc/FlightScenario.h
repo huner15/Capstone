@@ -25,7 +25,20 @@ private:
 public:
     FlightScenario(Aircraft ownhip, std::vector<Aircraft> aircraft);
     FlightScenario() {};
-    ~FlightScenario();
+
+    /**
+     * Accessor function for the ownship data
+     * @return Aircraft with the ownship data
+     */
+    Aircraft GetOwnship();
+
+    /**
+     * Accessor function for all the aircraft in the run.
+     * @return vector with all the aircraft data in it.
+     */
+    std::vector<Aircraft> GetAircraft();
+
+    ~FlightScenario() {};
 };
 
 #endif

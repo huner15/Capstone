@@ -34,6 +34,12 @@ double GeographicCoordinate::GetAltitude() {
     return _altitude;
 }
 
+bool GeographicCoordinate::operator==(GeographicCoordinate coord) {
+    return (coord.GetLatitude() == _latitude
+        && coord.GetLongitude() == _longitude
+        && coord.GetAltitude() == _altitude);
+}
+
 GeographicCoordinate::~GeographicCoordinate() {
 
 }

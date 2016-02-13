@@ -42,6 +42,12 @@ public:
      */
     double GetAltitude();
 
+    /**
+     * Checks to see if two GeographicCoordinates are the same;
+     * @return bool stating whether the two GeographicCoordinates are the same.
+     */
+    bool operator==(GeographicCoordinate coord);
+
     ~GeographicCoordinate();
 };
 

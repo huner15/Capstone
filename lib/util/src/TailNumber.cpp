@@ -68,3 +68,7 @@ TailNumber::~TailNumber() {
 std::string TailNumber::Get() {
     return _tail_number;
 }
+
+bool TailNumber::operator==(TailNumber tail_number) {
+    return tail_number.GetTailNumber().compare(_tail_number) == 0;
+}

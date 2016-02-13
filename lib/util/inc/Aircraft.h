@@ -33,8 +33,18 @@ public:
     Aircraft(TailNumber tail_number, FlightPlan flight_plan, bool has_AdsB,
         bool has_Tcas);
 
+    TailNumber GetTailNumber();
+
+    FlightPlan GetFlightPlan();
+
+    bool HasAdsB();
+
+    bool HasTcas();
+
+    bool operator==(Aircraft aircraft);
+
     Aircraft() {};
-    ~Aircraft();
+    ~Aircraft() {};
 };
 
 #endif

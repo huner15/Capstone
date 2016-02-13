@@ -33,3 +33,11 @@ double FlightLeg::GetDurationAfterManeuver() {
 Vector3D FlightLeg::GetNewRelativeVelocity() {
     return _new_relative_velocity;
 }
+
+bool FlightLeg::operator==(FlightLeg flightLeg) const  {
+    return (_duration_of_maneuver == flightLeg.GetDurationOfManeuver()
+        && _duration_after_maneuver == flightLeg.GetDurationAfterManeuver()
+        && _new_relative_velocity.x == flightLeg.GetNewRelativeVelocity().x
+        && _new_relative_velocity.y == flightLeg.GetNewRelativeVelocity().y
+        && _new_relative_velocity.z == flightLeg.GetNewRelativeVelocity().z);
+}

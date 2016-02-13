@@ -25,7 +25,7 @@ private:
 public:
     FlightPlan() {};
     FlightPlan(GeographicCoordinate start_position,
-                std::vector<FlightLeg> flight_legs);
+                std::vector<FlightLeg> const  &flight_legs);
 
     /**
      * Accessor for the starting position of this flight plan.
@@ -38,6 +38,12 @@ public:
      * @return A vector containing all the flight legs for this flight plan.
      */
     std::vector<FlightLeg> GetFlightLegs();
+
+    /**
+     * Checks to see if two FlightPlans are the same
+     * @return boolean stating whether two FlightPlans are the same.
+     */
+    bool operator==(FlightPlan plan) const;
 
     ~FlightPlan() {};
 };

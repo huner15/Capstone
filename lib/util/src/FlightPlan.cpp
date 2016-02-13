@@ -9,10 +9,9 @@
 #include "FlightPlan.h"
 
 FlightPlan::FlightPlan(GeographicCoordinate start_position,
-                       std::vector<FlightLeg> flight_legs) {
+                       std::vector<FlightLeg> const &flight_legs) {
     _start_position = start_position;
     _flight_legs = flight_legs;
-
 
     //Checks to make sure there is atleast one flight leg to
     // determine initial velocity.
@@ -27,5 +26,10 @@ GeographicCoordinate FlightPlan::GetStartPosition() {
 
 std::vector<FlightLeg> FlightPlan::GetFlightLegs() {
     return _flight_legs;
+}
+
+bool FlightPlan::operator==(FlightPlan plan) const {
+    return (plan.GetStartPosition() == _start_position &&
+        plan._flight_legs == _flight_legs);
 }
 
