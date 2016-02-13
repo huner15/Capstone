@@ -1,9 +1,9 @@
 /*
- * VectorTests.cpp
- * Specific Atomics
- * Frank Poole
- * 2-8-16
- * VectorTests contains unit tests ensuring the functionality of Vector.
+ * @file VectorTests.cpp
+ * @author Specific Atomics
+ * @authors Frank Poole
+ * @date 2-8-16
+ * @brief VectorTests contains unit tests ensuring the functionality of Vector.
  */
 
 #include <gtest/gtest.h>

@@ -9,6 +9,11 @@
 #ifndef ACTUAL_REPORT_H_
 #define ACTUAL_REPORT_H_
 
+#include <ownship.pb.h>
+#include <adsb.pb.h>
+#include <radar.pb.h>
+#include <tcas.pb.h>
+
 #include <ctime>
 #include <vector>
 
@@ -19,10 +24,6 @@
 #include "SphericalCoordinate.h"
 #include "Vector.h"
 #include "RadarID.h"
-#include <ownship.pb.h>
-#include <adsb.pb.h>
-#include <radar.pb.h>
-#include <tcas.pb.h>
 
 class FlightReport {
 private:
