@@ -3,13 +3,19 @@
  * @author Specific Atomics
  * @authors Frank Poole
  * @date 2-13-16
- * @brief TODO:Description
+ * @brief Implements functionality of Velocity.
  */
 
 #include "Velocity.h"
 
-/*
-double North() {
-    return Vector3D::x;
+Velocity::Velocity() {
+    east = 0;
+    down = 0;
+    north = 0;
 }
- */
+
+Velocity::Velocity(double e, double d, double n) {
+    east = e;
+    down = d;
+    north = n;
+}

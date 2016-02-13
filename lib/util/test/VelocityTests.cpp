@@ -3,7 +3,7 @@
  * @author Specific Atomics
  * @authors Frank Poole
  * @date 2-13-16
- * @brief TODO:Description
+ * @brief Ensures the functionality of Velocity.
  */
 
 #include <gtest/gtest.h>
@@ -11,10 +11,18 @@
 
 #include "Velocity.h"
 
-TEST(Velocity, Assignment) {
+TEST(VelocityDefaultConstructor, Assignment) {
     Velocity velocity;
 
+    EXPECT_EQ(0, velocity.east);
+    EXPECT_EQ(0, velocity.down);
     EXPECT_EQ(0, velocity.north);
-    //EXPECT_EQ(0, velocity.east);
-    //EXPECT_EQ(0, velocity.down);
+}
+
+TEST(VelocityInputConstructor, Assignment) {
+    Velocity velocity = Velocity (1, 2, 3);
+
+    EXPECT_EQ(1, velocity.east);
+    EXPECT_EQ(2, velocity.down);
+    EXPECT_EQ(3, velocity.north);
 }
