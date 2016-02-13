@@ -1,9 +1,9 @@
 /*
- * TailNumberTests.cpp
- * Specific Atomics
- * Frank Poole
- * 2-9-16
- * Ensures the functionality of TailNumber.
+ * @file TailNumberTests.cpp
+ * @author Specific Atomics
+ * @authors Frank Poole
+ * @date 2-9-16
+ * @brief Ensures the functionality of TailNumber.
  */
 
 #include <gtest/gtest.h>
@@ -14,7 +14,7 @@
 /**
  * Ensures that generated tail numbers are six characters in length.
  */
-TEST(DefaultConstructor, Length) {
+TEST(TailNumberDefaultConstructor, Length) {
     TailNumber tail_number;
     EXPECT_EQ(6, tail_number.GetTailNumber().length());
 }
@@ -25,7 +25,7 @@ TEST(DefaultConstructor, Length) {
  * randomly generated alphanumeric characters, all three comparisons should be
  * inequivalent.
  */
-TEST(DefaultConstruction, RandomGeneration) {
+TEST(TailNumberDefaultConstruction, RandomGeneration) {
     TailNumber current_tail_number, last_tail_number;
 
     last_tail_number = current_tail_number;
@@ -44,12 +44,20 @@ TEST(DefaultConstruction, RandomGeneration) {
               current_tail_number.GetTailNumber());
 }
 
-TEST(InputConstructor, Assignment) {
+/*
+ * Test the tail number input constructor by evaluating the constructor field
+ * assignments.
+ */
+TEST(TailNumberInputConstructor, Assignment) {
     TailNumber tail_number ("123456");
     EXPECT_EQ("123456", tail_number.GetTailNumber());
 }
 
-TEST(InputConstructor, OutOfRangeException) {
+/**
+ * Test the tail number input constructor by ensuring that an exception is
+ * thrown when the input string is not six characters.
+ */
+TEST(TailNumberInputConstructor, OutOfRangeException) {
     try {
         TailNumber tail_number ("");
     }

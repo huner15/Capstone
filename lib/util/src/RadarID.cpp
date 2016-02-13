@@ -1,16 +1,15 @@
 /*
- * RadarID.cpp
- * Specific Atomics
- * Frank Poole
- * 2-4-16
- * TODO: Description
+ * @file RadarID.cpp
+ * @author Specific Atomics
+ * @authors Frank Poole
+ * @date 2-13-16
+ * @brief Contains implementation of Radar ID functions.
  */
 
 #include "RadarID.h"
 
 RadarID::RadarID() {
-    //srand (time(NULL));
-    //_radar_id = rand() % UINT16_MAX;
+    _radar_id = (uint16_t) (rand() % UINT16_MAX);
 }
 
 RadarID::RadarID(uint16_t radar_id) {
@@ -18,5 +17,8 @@ RadarID::RadarID(uint16_t radar_id) {
 }
 
 RadarID::~RadarID() {
+}
 
+uint16_t RadarID::Get() {
+    return _radar_id;
 }

@@ -1,9 +1,9 @@
 /*
- * TailNumber.cpp
- * Specific Atomics
- * Frank Poole
- * 2-9-16
- * Contains TailNumber function implementations.
+ * @file TailNumber.cpp
+ * @author Specific Atomics
+ * @authors Frank Poole
+ * @date 2-9-16
+ * @brief Contains TailNumber function implementations.
  */
 
 #include <random>

@@ -1,10 +1,10 @@
 /*
- * Vector.h
- * Specific Atomics
- * Frank Poole
- * 2-11-16
- * Vector is a wrapper class for std::array which allows for public field access
- * using the fields x, y z, and w.
+ * @file Vector.h
+ * @author Specific Atomics
+ * @authors Frank Poole
+ * @date 2-13-16
+ * @brief Vector is a wrapper class for std::array which allows for public field
+ * access using the fields x, y z, and w.
  */
 
 #ifndef VECTOR_H_

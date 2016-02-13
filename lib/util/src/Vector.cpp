@@ -1,10 +1,10 @@
 /*
- * Vector.cpp
- * Specific Atomics
- * Frank Poole
- * 1-30-16
- * Vector implements all functions defined in Vector.h. Add additional operator
- * overloads and math function implementations here if needed.
+ * @file Vector.cpp
+ * @author Specific Atomics
+ * @authors Frank Poole
+ * @date 2-13-16
+ * @brief Vector implements all functions defined in Vector.h. Add additional
+ * operator overloads and math function implementations here if needed.
  */
 
 #include "Vector.h"
