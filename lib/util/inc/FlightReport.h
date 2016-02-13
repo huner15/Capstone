@@ -19,6 +19,10 @@
 #include "SphericalCoordinate.h"
 #include "Vector.h"
 #include "RadarID.h"
+#include <ownship.pb.h>
+#include <adsb.pb.h>
+#include <radar.pb.h>
+#include <tcas.pb.h>
 
 class FlightReport {
 private:
@@ -35,6 +39,33 @@ public:
            SphericalCoordinate spherical_coordinate, Vector3D velocity);
 
     ~FlightReport();
+
+    /**
+     * Creates an ownship report from the data from this FlightReport.
+     * @return an ownship report made from the data in this FlightReport.
+     */
+
+    OwnshipReport createOwnshipReport();
+
+    /**
+     * Creates an ADS-B report from the data in this FlightReport.
+     * @return an ADS-B report made from the data in this FlightReport.
+     */
+
+    AdsBReport createAdsBReport();
+
+    /**
+     * Creates a radar report from the data in this FlightReport.
+     * @return a radar report made from the data in this FlightReport.
+     */
+
+    RadarReport createRadarReport();
+
+    /**
+     * Creates a TCAS report from the data in this FlightReport
+     * @return a radar report made from the data in this FlightReport.
+     */
+    TcasReport createTcasReport();
 
     /**
      * Compares all three components of velocity between this FlightReport
@@ -90,6 +121,7 @@ public:
      * @return the difference between this FlightReport's bearing and other's.
      */
     float CompareBearing (FlightReport other);
+
 
 
 };

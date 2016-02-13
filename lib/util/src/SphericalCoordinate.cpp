@@ -18,3 +18,15 @@ SphericalCoordinate::SphericalCoordinate(
 SphericalCoordinate::~SphericalCoordinate() {
 
 }
+
+double SphericalCoordinate::GetRange() {
+    return _range;
+}
+
+double SphericalCoordinate::GetElevation() {
+    return _elevation;
+}
+
+double SphericalCoordinate::GetAzimuth() {
+    return _azimuth;
+}
