@@ -49,6 +49,12 @@ public:
      * @returns the tail number
      */
     std::string Get();
+
+    /**
+     * Checks to se if two TailNumbers are the same
+     * @return boolean stating whether two booleans are the same.
+     */
+    bool operator==(TailNumber tail_number);
 };
 
 #endif
