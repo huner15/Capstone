@@ -16,7 +16,7 @@
  */
 TEST(TailNumberDefaultConstructor, Length) {
     TailNumber tail_number;
-    EXPECT_EQ(6, tail_number.GetTailNumber().length());
+    EXPECT_EQ(6, tail_number.Get().length());
 }
 
 /*
@@ -30,18 +30,18 @@ TEST(TailNumberDefaultConstruction, RandomGeneration) {
 
     last_tail_number = current_tail_number;
     current_tail_number = TailNumber ();
-    EXPECT_NE(last_tail_number.GetTailNumber(),
-              current_tail_number.GetTailNumber());
+    EXPECT_NE(last_tail_number.Get(),
+              current_tail_number.Get());
 
     last_tail_number = current_tail_number;
     current_tail_number = TailNumber ();
-    EXPECT_NE(last_tail_number.GetTailNumber(),
-              current_tail_number.GetTailNumber());
+    EXPECT_NE(last_tail_number.Get(),
+              current_tail_number.Get());
 
     last_tail_number = current_tail_number;
     current_tail_number = TailNumber ();
-    EXPECT_NE(last_tail_number.GetTailNumber(),
-              current_tail_number.GetTailNumber());
+    EXPECT_NE(last_tail_number.Get(),
+              current_tail_number.Get());
 }
 
 /*
@@ -50,7 +50,7 @@ TEST(TailNumberDefaultConstruction, RandomGeneration) {
  */
 TEST(TailNumberInputConstructor, Assignment) {
     TailNumber tail_number ("123456");
-    EXPECT_EQ("123456", tail_number.GetTailNumber());
+    EXPECT_EQ("123456", tail_number.Get());
 }
 
 /**

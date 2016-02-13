@@ -44,7 +44,7 @@ AdsBReport FlightReport::createAdsBReport() {
     adsBReport.set_latitude(_geographic_coordinate.GetLatitude());
     adsBReport.set_longitude(_geographic_coordinate.GetLongitude());
     adsBReport.set_altitude(_geographic_coordinate.GetAltitude());
-    adsBReport.set_tail_number(_tail_number);
+    adsBReport.set_tail_number(_tail_number.Get());
     adsBReport.set_north(12);
     adsBReport.set_east(13);
     adsBReport.set_down(14);
@@ -58,7 +58,7 @@ RadarReport FlightReport::createRadarReport() {
     radarReport.set_range(_spherical_coordinate.GetRange());
     radarReport.set_azimuth(_spherical_coordinate.GetAzimuth());
     radarReport.set_elevation(_spherical_coordinate.GetElevation());
-    radarReport.set_id(_radar_id);
+    radarReport.set_id(_radar_id.Get());
     radarReport.set_north(20);
     radarReport.set_east(21);
     radarReport.set_down(22);
@@ -70,7 +70,7 @@ RadarReport FlightReport::createRadarReport() {
 TcasReport FlightReport::createTcasReport() {
     TcasReport tcasReport;
 
-    tcasReport.set_id(_tcas_id);
+    tcasReport.set_id(_tcas_id.Get());
     tcasReport.set_range(_spherical_coordinate.GetRange());
     tcasReport.set_altitude(_geographic_coordinate.GetAltitude());
     tcasReport.set_bearing(29);

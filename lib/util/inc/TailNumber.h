@@ -48,7 +48,7 @@ public:
      * Returns the tail number as a mutable string.
      * @returns the tail number
      */
-    std::string GetTailNumber();
+    std::string Get();
 };
 
 #endif

@@ -16,8 +16,12 @@ private:
     uint8_t _intruder_id;
 public:
     TcasID() {};
+
     TcasID(uint8_t intruder_id);
+
     ~TcasID();
+
+    uint8_t Get();
 };
 
 #endif
