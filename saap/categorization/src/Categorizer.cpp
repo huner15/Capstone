@@ -6,7 +6,6 @@
 #include <bits/stl_bvector.h>
 #include <cmath>
 #include <cdti.pb.h>
-#include "../../../../.CLion12/system/cmake/generated/d5e848c9/d5e848c9/Debug/lib/gp/capstone-shared/cdti.pb.h"
 #include "../../../lib/util/inc/Vector.h"
 
 

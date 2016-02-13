@@ -3,12 +3,14 @@
 * @author Specific Atomics
 * @author Andrea Savage
 * @date 1-19-16
-* @brief Tracks the last three Snapshot seconds of CorrelationAircraft in the History.
+* @brief Tracks the last three Snapshot seconds of CorrelationAircraft in the
+ * History.
 */
 
-#include <Vector.h>
+#include "Velocity.h"
 #include "Prediction.h"
 #include "Cluster.h"
+#include "CorrelationAircraft.h"
 
 History history;
 int snapshotCounter = 0;
@@ -24,7 +26,7 @@ Snapshot curSnapshot;
  *
  * @return int 0 for success, 1 for an error
  */
-int addSnapshot();
+int AddSnapshot();
 
 /*
  * Converts a Cluster to a CDTIReport and adds
@@ -34,7 +36,7 @@ int addSnapshot();
  * @param aircraft The Correlation Aircraft to add
  * @return int 0 for success, 1 for an error
  */
-int addAircraft(CorrelationAircraft aircraft);
+int AddAircraft(CorrelationAircraft aircraft);
 
 /*
  * Looks for the given tailNum in the last three
@@ -44,7 +46,7 @@ int addAircraft(CorrelationAircraft aircraft);
  * @return Cluster the found cluster(s) or NULL
  * if none located.
  */
-CorrelationAircraft searchTailNum(int tailNum);
+CorrelationAircraft SearchTailNum(int tailNum);
 
 /*
  * Looks for the given radarID in the last three
@@ -54,7 +56,7 @@ CorrelationAircraft searchTailNum(int tailNum);
  * @return Cluster the found cluster(s) or NULL
  * if none located.
  */
-CorrelationAircraft searchRadarID(int radarID);
+CorrelationAircraft SearchRadarID(int radarID);
 
 /*
  * Calculates the prediction vector for the given
@@ -64,4 +66,4 @@ CorrelationAircraft searchRadarID(int radarID);
  * vector for
  * r@return Vector The predicted aircraft trajectory
  */
-Vector3D predictVector(CorrelationAircraft aircraft);
+Velocity PredictVector(CorrelationAircraft aircraft);

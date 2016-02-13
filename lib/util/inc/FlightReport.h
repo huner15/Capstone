@@ -1,7 +1,7 @@
 /*
  * FlightReport.h
  * Specific Atomics
- * Frank Poole
+ * Frank Poole Andy Savage
  * 2-4-16
  * TODO: Description
  */
@@ -22,8 +22,15 @@
 #include "RadarID.h"
 #include "GeographicCoordinate.h"
 #include "SphericalCoordinate.h"
-#include "Vector.h"
+#include "Velocity.h"
 #include "RadarID.h"
+
+/**
+ * Enum representing the different device types a report
+ * can be received from.
+ * radar, TCAS, or ADS_B
+ */
+enum Device {radar, TCAS, ADS_B};
 
 class FlightReport {
 private:
@@ -33,13 +40,16 @@ private:
     RadarID _radar_id;
     GeographicCoordinate _geographic_coordinate;
     SphericalCoordinate _spherical_coordinate;
-    Vector3D _velocity;
+    Velocity _velocity;
+    Device _type;
+
 public:
+    FlightReport();
+
     FlightReport(std::time_t time, TailNumber tail_number, TcasID tcas_id,
            RadarID radar_id, GeographicCoordinate geographic_coordinate,
-           SphericalCoordinate spherical_coordinate, Vector3D velocity);
-
-    ~FlightReport();
+           SphericalCoordinate spherical_coordinate, Velocity velocity,
+                 Device type);
 
     /**
      * Creates an ownship report from the data from this FlightReport.
@@ -122,8 +132,6 @@ public:
      * @return the difference between this FlightReport's bearing and other's.
      */
     float CompareBearing (FlightReport other);
-
-
 
 };
 

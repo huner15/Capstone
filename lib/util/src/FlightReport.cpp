@@ -11,7 +11,7 @@
 //This is causing an error, something with implicit construction...
 FlightReport::FlightReport(std::time_t time, TailNumber tail_number, TcasID tcas_id,
 RadarID radar_id, GeographicCoordinate geographic_coordinate,
-SphericalCoordinate spherical_coordinate, Vector3D velocity) {
+SphericalCoordinate spherical_coordinate, Velocity velocity, Device type) {
     _time = time;
     _tail_number = tail_number;
     _tcas_id = tcas_id;
@@ -19,10 +19,11 @@ SphericalCoordinate spherical_coordinate, Vector3D velocity) {
     _geographic_coordinate = geographic_coordinate;
     _spherical_coordinate = spherical_coordinate;
     _velocity = velocity;
+    _type = type;
 }
 
 
-FlightReport::~FlightReport() {
+FlightReport::FlightReport() {
 
 }
 
@@ -39,7 +40,6 @@ OwnshipReport FlightReport::createOwnshipReport() {
 
 AdsBReport FlightReport::createAdsBReport() {
     AdsBReport adsBReport;
-
     adsBReport.set_timestamp(_time);
     adsBReport.set_latitude(_geographic_coordinate.GetLatitude());
     adsBReport.set_longitude(_geographic_coordinate.GetLongitude());

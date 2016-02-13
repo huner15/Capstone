@@ -9,10 +9,11 @@
 #include "SphericalCoordinate.h"
 
 SphericalCoordinate::SphericalCoordinate(
-        double range, double elevation,double azimuth) {
+        double range, double elevation,double azimuth, double bearing) {
     _range = range;
     _elevation = elevation;
     _azimuth = azimuth;
+    _bearing = bearing;
 }
 
 SphericalCoordinate::~SphericalCoordinate() {
@@ -29,4 +30,8 @@ double SphericalCoordinate::GetElevation() {
 
 double SphericalCoordinate::GetAzimuth() {
     return _azimuth;
+}
+
+double SphericalCoordinate::GetBearing() {
+    return _bearing;
 }

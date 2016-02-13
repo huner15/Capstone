@@ -16,10 +16,12 @@ private:
     double _range;
     double _elevation;
     double _azimuth;
+    double _bearing;
 
 public:
     SphericalCoordinate() {};
-    SphericalCoordinate(double range, double elevation, double azimuth);
+    SphericalCoordinate(double range, double elevation, double azimuth,
+                        double bearing);
 
     ~SphericalCoordinate();
 
@@ -40,6 +42,12 @@ public:
      * @return azimuth of the spherical coordinate.
      */
     double GetAzimuth();
+
+    /**
+     * Accessor for the Bearing of the Spherical Coordinate.
+     * @return bearing of the spherical coordinate.
+     */
+    double GetBearing();
 };
 
 #endif
