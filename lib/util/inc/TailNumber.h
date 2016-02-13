@@ -10,6 +10,8 @@
 #define TAIL_NUMBER_H_
 
 #include <string>
+#include <random>
+#include <stdexcept>
 
 /**
  * A tail number represents an aircraft tail number with a length of six
