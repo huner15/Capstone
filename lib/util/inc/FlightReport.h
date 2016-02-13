@@ -10,6 +10,7 @@
 #define ACTUAL_REPORT_H_
 
 #include <ctime>
+#include <vector>
 
 #include "TailNumber.h"
 #include "TcasID.h"
@@ -45,7 +46,7 @@ public:
      */
 
 
-    Vector<float> CompareVelocity (FlightReport other);
+    std::vector<float> CompareVelocity (FlightReport other);
 
     /**
      * Compares the ranges between this FlightReport and another.
