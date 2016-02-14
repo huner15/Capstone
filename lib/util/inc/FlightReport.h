@@ -2,7 +2,7 @@
  * FlightReport.h
  * Specific Atomics
  * Frank Poole Andy Savage
- * 2-4-16
+ * 2-13-16
  * TODO: Description
  */
 
@@ -24,13 +24,7 @@
 #include "SphericalCoordinate.h"
 #include "Velocity.h"
 #include "RadarID.h"
-
-/**
- * Enum representing the different device types a report
- * can be received from.
- * radar, TCAS, or ADS_B
- */
-enum Device {radar, TCAS, ADS_B};
+#include "Device.h"
 
 class FlightReport {
 private:
@@ -117,14 +111,12 @@ public:
      */
     float CompareAltitude (FlightReport other);
 
-
     /**
      * Compares the azimuth between this FlightReport and another.
      * @param other The FlightReport we are comparing against
      * @return the difference between this FlightReport's azimuth and other's
      */
     float CompareAzimuth (FlightReport other);
-
 
     /**
      * Compares the bearing between this FlightReport and another.
