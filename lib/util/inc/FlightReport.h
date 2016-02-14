@@ -1,9 +1,9 @@
 /*
- * FlightReport.h
- * Specific Atomics
- * Frank Poole Andy Savage
- * 2-13-16
- * TODO: Description
+ * @file FlightReport.h
+ * @author Specific Atomics
+ * @authors Frank Poole, Andy Savage
+ * @date 2-13-16
+ * @brief TODO: Description
  */
 
 #ifndef ACTUAL_REPORT_H_
@@ -49,21 +49,18 @@ public:
      * Creates an ownship report from the data from this FlightReport.
      * @return an ownship report made from the data in this FlightReport.
      */
-
     OwnshipReport createOwnshipReport();
 
     /**
      * Creates an ADS-B report from the data in this FlightReport.
      * @return an ADS-B report made from the data in this FlightReport.
      */
-
     AdsBReport createAdsBReport();
 
     /**
      * Creates a radar report from the data in this FlightReport.
      * @return a radar report made from the data in this FlightReport.
      */
-
     RadarReport createRadarReport();
 
     /**
@@ -73,24 +70,11 @@ public:
     TcasReport createTcasReport();
 
     /**
-     * Compares all three components of velocity between this FlightReport
-     * and another. For any component of the velocity is missing from either
-     * report a null value is put in its place.
-     * @param other The FlightReport we are comparing against.
-     * @return A vector with the comparisons between the individual
-     * components of velocity.
-     */
-
-
-    std::vector<float> CompareVelocity (FlightReport other);
-
-    /**
      * Compares the ranges between this FlightReport and another.
      * @param other The FlightReport we are comparing against.
      * @return the difference between this FlightReport's range and other's
      */
     float CompareRange (FlightReport other);
-
 
     /**
      * Compares the latitude and longitude between this FlightReport and
@@ -102,7 +86,6 @@ public:
      * TCAS report.
      */
     float CompareLatitudeLongitude (FlightReport other);
-
 
     /**
      * Compares the altitudes between this FlightReport and another.
@@ -124,7 +107,6 @@ public:
      * @return the difference between this FlightReport's bearing and other's.
      */
     float CompareBearing (FlightReport other);
-
 };
 
 #endif

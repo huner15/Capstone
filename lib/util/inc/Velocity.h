@@ -1,4 +1,4 @@
-/*
+/**
  * @file Velocity.h
  * @author Specific Atomics
  * @authors Frank Poole
@@ -27,7 +27,7 @@ public:
     union {
         std::array<double, 3> array;
         struct {
-            double north, east, down;
+            double east, down, north;
         };
     };
 
@@ -44,6 +44,17 @@ public:
      * @param north the northwards velocity
      */
     Velocity(double east, double down, double north);
+
+    /**
+     * Compares all three dimensions of velocity between this Velocity and
+     * another. For any component of the velocity is missing from either report
+     * a null value is put in its place.
+     * @param other The FlightReport we are comparing against.
+     * @return A vector with the comparisons between the individual
+     * components of velocity.
+     */
+
+    Velocity operator- (const Velocity& other);
 };
 
 #endif

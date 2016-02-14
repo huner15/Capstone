@@ -14,8 +14,14 @@ Velocity::Velocity() {
     north = 0;
 }
 
-Velocity::Velocity(double e, double d, double n) {
-    east = e;
-    down = d;
-    north = n;
+Velocity::Velocity(double east, double down, double north) {
+    this->east = east;
+    this->down = down;
+    this->north = north;
+}
+
+Velocity Velocity::operator- (const Velocity& other) {
+    return Velocity(this->east - other.east,
+                    this->down - other.down,
+                    this->north - other.north);
 }
