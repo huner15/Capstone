@@ -47,7 +47,7 @@ public:
     /**
      * Return the TCAS object identification number.
      */
-    uint8_t Get();
+    uint8_t Get() const;
 };
 
 #endif

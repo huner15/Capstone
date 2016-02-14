@@ -22,15 +22,15 @@ GeographicCoordinate::GeographicCoordinate(
     }
 }
 
-double GeographicCoordinate::GetLatitude() {
+double GeographicCoordinate::GetLatitude() const {
     return _latitude;
 }
 
-double GeographicCoordinate::GetLongitude() {
+double GeographicCoordinate::GetLongitude() const {
     return _longitude;
 }
 
-double GeographicCoordinate::GetAltitude() {
+double GeographicCoordinate::GetAltitude() const {
     return _altitude;
 }
 

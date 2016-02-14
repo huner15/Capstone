@@ -19,6 +19,6 @@ RadarID::RadarID(uint16_t radar_id) {
 RadarID::~RadarID() {
 }
 
-uint16_t RadarID::Get() {
+uint16_t RadarID::Get() const {
     return _radar_id;
 }

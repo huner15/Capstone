@@ -15,10 +15,10 @@ FlightScenario::FlightScenario(Aircraft ownship,
 }
 
 
-Aircraft FlightScenario::GetOwnship() {
+Aircraft FlightScenario::GetOwnship() const {
     return _ownship;
 }
 
-std::vector<Aircraft> FlightScenario::GetAircraft() {
+std::vector<Aircraft> FlightScenario::GetAircraft() const {
     return _aircraft;
 }

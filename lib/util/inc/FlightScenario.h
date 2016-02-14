@@ -30,13 +30,13 @@ public:
      * Accessor function for the ownship data
      * @return Aircraft with the ownship data
      */
-    Aircraft GetOwnship();
+    Aircraft GetOwnship() const;
 
     /**
      * Accessor function for all the aircraft in the run.
      * @return vector with all the aircraft data in it.
      */
-    std::vector<Aircraft> GetAircraft();
+    std::vector<Aircraft> GetAircraft() const;
 
     ~FlightScenario() {};
 };

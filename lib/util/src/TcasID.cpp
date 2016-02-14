@@ -25,6 +25,6 @@ TcasID::TcasID(uint8_t tcas_id) {
 TcasID::~TcasID() {
 }
 
-uint8_t TcasID::Get() {
+uint8_t TcasID::Get() const {
     return _tcas_id;
 }

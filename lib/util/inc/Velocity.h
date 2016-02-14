@@ -46,14 +46,11 @@ public:
     Velocity(double east, double down, double north);
 
     /**
-     * Compares all three dimensions of velocity between this Velocity and
-     * another. For any component of the velocity is missing from either report
-     * a null value is put in its place.
-     * @param other The FlightReport we are comparing against.
-     * @return A vector with the comparisons between the individual
-     * components of velocity.
+     * Create a velocity representing the relative velocity of this velocity to
+     * another velocity.
+     * @param other the velocity to compare against
+     * @return a relative velocity
      */
-
     Velocity operator- (const Velocity& other);
 };
 

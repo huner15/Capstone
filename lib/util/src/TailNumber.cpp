@@ -62,7 +62,7 @@ TailNumber::TailNumber(std::string tail_number) {
 TailNumber::~TailNumber() {
 }
 
-std::string TailNumber::Get() {
+std::string TailNumber::Get() const {
     return _tail_number;
 }
 

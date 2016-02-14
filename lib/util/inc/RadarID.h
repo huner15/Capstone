@@ -45,7 +45,7 @@ public:
     /**
      * Return the radar identification.
      */
-    uint16_t Get();
+    uint16_t Get() const;
 };
 
 #endif

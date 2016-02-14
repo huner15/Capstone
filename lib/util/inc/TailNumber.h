@@ -50,7 +50,7 @@ public:
      * Returns the tail number as a mutable string.
      * @returns the tail number
      */
-    std::string Get();
+    std::string Get() const;
 
     /**
      * Checks to se if two TailNumbers are the same

@@ -28,19 +28,19 @@ public:
      * Accessor for the Latitude of the Geographic Coordinate.
      * @return latitude of the geographic coordinate.
      */
-    double GetLatitude();
+    double GetLatitude() const;
 
     /**
      * Accessor for the Longitude of the Geographic Coordinate.
      * @return longitude of the geographic coordinate.
      */
-    double GetLongitude();
+    double GetLongitude() const;
 
     /**
      * Accessor for the altitude of the Geographic Coordinate.
      * @return altitude of the geographic coordinate.
      */
-    double GetAltitude();
+    double GetAltitude() const;
 
     /**
      * Checks to see if two GeographicCoordinates are the same;
