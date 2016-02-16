@@ -13,3 +13,8 @@ template<typename T, std::size_t N>
 size_t Vector<T, N>::Size() {
     return array.size();
 }
+
+template<typename T, std::size_t N>
+double Vector<T, N>::get(int index) {
+    return array[index];
+}

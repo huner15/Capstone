@@ -1,6 +1,10 @@
-//
-// Created by michael on 2/6/16.
-//
+/*
+ * Categorizer.cpp
+ * Specific Atomics
+ * Michael Lenz
+ * 2-6-16
+ * Adds categories to planes.
+*/
 
 
 #include <bits/stl_bvector.h>
@@ -47,7 +51,8 @@ void CategorizePlane(CDTIPlane plane){
  */
 double calculateRange(CDTIPlane plane) {
     Vector pos = plane.position();
-    return std::sqrt(pos.x*pos.x + pos.y*pos.y);
+    Vector::Vector zero = Vector::Vector(0,0,0);
+    return SpecialMath::DistanceFormula<double, 3>(pos, zero);
 
 }
 /**
@@ -56,12 +61,8 @@ double calculateRange(CDTIPlane plane) {
  */
 double calculateCPA(CDTIPlane plane) {
     //since ownship is at (0,0) formula is |c|/sqrt(a^2+b^2)
-    double a, b, c;
-    a = plane.velocity().x;
-    b = plane.velocity().y;
-    c = plane.position().x *(plane.position().y + plane.velocity().y)
-        - (plane.position().x + plane.velocity().x) - plane.velocity().y;
-    return abs(c)/sqrt(a*a + b*b);
+    Vector::Vector zero = Vector::Vector(0,0,0);
+    return SpecialMath::LineDistance(plane.position(), plane.velocity(), zero);
 }
 
 
