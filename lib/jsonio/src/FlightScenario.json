@@ -2,7 +2,7 @@
     "absoluteOwnship" :
     {
         "latitude" :  37,
-        "longitude" : -120,
+        "longitude" : 120,
         "altitude" : 200000
     },
     "aircrafts" : [

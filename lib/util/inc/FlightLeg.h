@@ -10,6 +10,7 @@
 #define FLIGHT_LEG_H_
 
 #include "Vector.h"
+#include "Velocity.h"
 
 class FlightLeg {
 private:
@@ -32,7 +33,7 @@ public:
 
     FlightLeg() {};
     FlightLeg(double duration_of_maneuver, double duration_after_maneuver,
-        Vector3D new_relative_velocity);
+        Velocity new_relative_velocity);
 
     /**
      * Accessor for the duration of maneuver for this flight leg.

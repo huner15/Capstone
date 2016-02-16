@@ -7,9 +7,10 @@
  */
 
 #include "FlightLeg.h"
+#include "Velocity.h"
 
 FlightLeg::FlightLeg(double duration_of_maneuver, double duration_after_maneuver,
-                     Vector3D new_relative_velocity) {
+                     Velocity new_relative_velocity) {
     if(duration_after_maneuver >= 0 && duration_of_maneuver > 0) {
 
 

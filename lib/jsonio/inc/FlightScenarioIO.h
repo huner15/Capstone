@@ -7,6 +7,7 @@
 
 
 #include "JsonIO.h"
+#include "FlightScenario.h"
 
 /**
  * FlightScenarioIO is the utility library for reading and writing
@@ -14,6 +15,13 @@
  */
 
 class FlightScenarioIO : public JsonIO {
+private:
+    static Json::Value OpenFile(std::string file_name);
+
+    static Aircraft ReadOwnshipData(std::string file_name);
+
+    static std::vector<Aircraft> ReadAircraftData(std::string file_name);
+
 public:
 
     /**
@@ -21,19 +29,19 @@ public:
      * to the root of the JSON file.
      * @return The root of the JSON File
      */
-     static Json::Value ReadFile();
+     static FlightScenario ReadFile(std::string file_name);
 
     /**
      * Accessor function to retrieve the initial Ownship data.
      * @return Initial Ownship data in Json::Value form.
      */
-    static Json::Value GetAbsoluteOwnshipData();
+    static Json::Value GetAbsoluteOwnshipData(std::string file_name);
 
     /**
      * Accessor function for the list of flight plans.
      * @return All the flight plans in the JSON in JSon::Value form.
      */
-    static Json::Value GetFlightPlans();
+    static Json::Value GetFlightPlans(std::string file_name);
 
     /**
      * Accessor method to a vector containing the starting positions of all aircrafts.
@@ -52,6 +60,8 @@ public:
      * @param value is the Json::Value that you want to log.
      */
     static void WriteFile(Json::Value value);
+
+
 };
 
 #endif //SAMPLEJSONCPP_FLIGHTSCENARIOPROCESSOR_H
