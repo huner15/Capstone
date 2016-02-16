@@ -1,13 +1,14 @@
-/*
- * FlightPlanTests.cpp
- * Specific Atomics
- * Kevin Pham
- * 2-9-16
- * Tests for correct functionality in FlightPlan.
+/**
+ * @file FlightPlanTests.cpp
+ * @author Specific Atomics
+ * @authors Kevin Pham, Frank Poole (just the velocity bug)
+ * @date 2-16-16
+ * @brief Tests for correct functionality in FlightPlan.
  */
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+
 #include "FlightPlan.h"
 
 TEST(FlightPlanInputConstructor, ValidValues) {
@@ -52,7 +53,7 @@ TEST(FlightPlanInputConstructor, ValidValues) {
 
 TEST(FlightPlanInputConstructor, ExceptionHandling) {
     try {
-        FlightLeg flight_leg1 (5, 10, Vector3D {54.2, 43.7, 100.7});
+        FlightLeg flight_leg1 (5, 10, Velocity {54.2, 43.7, 100.7});
         GeographicCoordinate geographic_coordinate (130, 95, 2000);
         std::vector<FlightLeg> flight_legs;
 

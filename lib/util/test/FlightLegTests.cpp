@@ -1,13 +1,14 @@
-/*
- * FlightLegTests.cpp
- * Specific Atomics
- * Kevin Pham
- * 2-9-16
- * Tests for correct functionality in FlightLeg.
+/**
+ * @file FlightLegTests.cpp
+ * @author Specific Atomics
+ * @authors Kevin Pham, Frank Poole (just the velocity bug)
+ * @date 2-9-16
+ * @brief Tests for correct functionality in FlightLeg.
  */
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+
 #include "FlightLeg.h"
 
 /*
@@ -16,7 +17,7 @@
 TEST(InputConstructor, ValidValues) {
     double duration_of_maneuver = 5;
     double duration_after_maneuver = 10;
-    Vector3D velocity = {54.2, 43.7, 100.8};
+    Velocity velocity = {54.2, 43.7, 100.8};
 
     FlightLeg flight_leg (duration_of_maneuver,
                             duration_after_maneuver, velocity);
@@ -35,7 +36,7 @@ TEST(InputConstructor, ValidValues) {
 TEST(InputConstructor, InvalidDurationValues) {
     double duration_of_maneuver = 1;
     double duration_after_maneuver = -2.0;
-    Vector3D velocity = {54.2, 43.7, 100.8};
+    Velocity velocity = {54.2, 43.7, 100.8};
 
     try {
         FlightLeg flight_leg(duration_of_maneuver,
@@ -49,4 +50,3 @@ TEST(InputConstructor, InvalidDurationValues) {
     }
 
 }
-
