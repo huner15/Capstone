@@ -2,17 +2,20 @@
 // Created by KEVIN on 11/27/2015.
 //
 
+#include <FlightSimulation.h>
 #include "SimulationFlightsIO.h"
 
 using namespace std;
 
-Json::Value SimulationFlightsIO::ReadFile() {
-    Json::Value root;   // will contains the root value after parsing.
+Json::Value SimulationFlightsIO::OpenFile(std::string file_name) {
+    Json::Value root;   // will contain the root value after parsing.
     Json::Reader reader;
-    std::ifstream test("../../lib/jsonio/src/SimulationFlightInput.json", std::ifstream::binary);
-    //test.close();
-    bool parsingSuccessful = reader.parse(test, root, false);
-    if (!parsingSuccessful) {
+    std:string file_dir = "../../lib/jsonio/src/";
+    std::string file = file_dir + file_name;
+    std::ifstream test(file, std::ifstream::binary);
+    bool parsing_successful = reader.parse(test, root, false);
+
+    if (!parsing_successful) {
         // report to the user the failure and their locations in the document.
         std::cout << reader.getFormattedErrorMessages()
         << "\n";
@@ -23,11 +26,50 @@ Json::Value SimulationFlightsIO::ReadFile() {
     }
 }
 
-Json::Value SimulationFlightsIO::GetSimulationFlights() {
-    Json::Value root = ReadFile();
+FlightSimulation SimulationFlightsIO::ReadFile(std::string file_name) {
 
-    return root["simulationFlights"];
 }
+
+//TODO: Fix Time
+Flight SimulationFlightsIO::ReadFlightData(std::string file_name) {
+    Json::Value all_flights = GetFlights(file_name);
+    std::vector<FlightReport> all_flight_reports;
+
+    for(int i = 0; i < all_flights.size(); i++) {
+        Json::Value json_report = all_flights[i]["flight"]["flightReport"];
+        Json::Value json_geo_coord = json_report["geographicCoordinate"];
+        Json::Value json_sphr_coord = json_report["sphericalCoordinate"];
+        Json::Value json_velocity = json_report["velocity"];
+
+        TailNumber tail (json_report["tailNumber"].asString());
+        TcasID tcas_id (json_report["tcasID"].asUInt());
+        RadarID radar_id (json_report["radarID"].asUInt());
+        GeographicCoordinate geo_coord (json_geo_coord["latitude"].asDouble(),
+                                    json_geo_coord["longitude"].asDouble(),
+                                    json_geo_coord["altitude"].asDouble());
+        SphericalCoordinate sphr_coord (json_sphr_coord["range"].asDouble(),
+                                        json_sphr_coord["elavation"].asDouble(),
+                                        json_sphr_coord["azimuth"].asDouble());
+        Velocity velocity (json_velocity["east"].asDouble(),
+                           json_velocity["down"].asDouble(),
+                           json_velocity["north"].asDouble());
+        Device device (RADAR);
+        FlightReport report (std::time(null), tail, tcas_id, radar_id,
+                                geo_coord, sphr_coord, velocity, device);
+
+        all_flight_reports.push_back(report);
+    }
+
+    Flight flight (all_flight_reports);
+    return flight;
+}
+
+Json::Value SimulationFlightsIO::GetFlights(std::string file_name) {
+    Json::Value root = OpenFile(file_name);
+
+    return root["flightSimulation"];
+}
+/*
 
 std::vector<Json::Value> SimulationFlightsIO::GetAllADSBReports() {
     Json::Value simFlights = GetSimulationFlights();
@@ -93,4 +135,4 @@ void SimulationFlightsIO::writeFile(Json::Value value) {
     file_id << styledWriter.write(value);
 
     file_id.close();
-}
+}*/

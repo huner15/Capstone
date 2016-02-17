@@ -8,11 +8,13 @@
 #include "JsonIO.h"
 
 class SimulationFlightsIO : public JsonIO {
+private:
+    static Json::Value OpenFile(std::string file_name);
 public:
 
-    static Json::Value ReadFile();
+    static FlightSimulation ReadFile(std::string file_name);
 
-    static Json::Value GetSimulationFlights();
+    static Json::Value GetFlights(std::string file_name);
 
     static std::vector<Json::Value> GetAllADSBReports();
 

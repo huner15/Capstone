@@ -20,6 +20,8 @@ TEST(FlightScenarioIOReadFile, CheckCorrectOwnshipData) {
     std::vector<FlightLeg> ownship_flight_legs =
             ownship.GetFlightPlan().GetFlightLegs();
 
+    std::cout << ownship_flight_legs.at(0).GetNewRelativeVelocity().x << std::endl;
+
 }
 
 TEST(FlightScenarioIOReadFile, CorrectNumberOfAircraft) {
@@ -40,6 +42,27 @@ TEST(FlightScenarioIOReadFile, CorrectTailNumbers) {
 
     EXPECT_EQ(std::string("12ASX3"), all_aircraft.at(0).GetTailNumber().Get());
     EXPECT_EQ(std::string("123456"), all_aircraft.at(1).GetTailNumber().Get());
+}
+
+TEST(GetsFlightLegs, CorrectData) {
+
+    FlightScenario flightScenario = FlightScenarioIO::ReadFile("FlightScenarioInput.json");
+
+    for(int i =0 ; i< flightScenario.GetAircraft().size(); i++) {
+        std::cout << "latitude: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetStartPosition().GetLatitude() << std::endl;
+        std::cout << "longitude: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetStartPosition().GetLongitude() << std::endl;
+        std::cout << "alt: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetStartPosition().GetAltitude() << std::endl;
+        std::cout << "x: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().east << std::endl;
+        std::cout << "y: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().north << std::endl;
+        std::cout << "z: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().down << std::endl;
+        std::cout << "duration: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetFlightLegs().at(0).GetDurationOfManeuver() << std::endl;
+    }
+
+    /*ASSERT_EQ(5, flightLegs[0][0]["durationOfManeuver"].asFloat());
+    ASSERT_EQ(4, flightLegs[0][0]["durationAfterManeuver"].asFloat());
+    ASSERT_EQ(34, flightLegs[0][0]["newRelativeVelocity"]["x"].asFloat());
+    ASSERT_EQ(3, flightLegs[0][0]["newRelativeVelocity"]["y"].asFloat());
+    ASSERT_EQ(23, flightLegs[0][0]["newRelativeVelocity"]["z"].asFloat());*/
 }
 
 // Tests accessor function of absolute ownship data.
