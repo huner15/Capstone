@@ -1,8 +1,8 @@
 /*
  * SimulatedFlight.cpp
  * Specific Atomics
- * Frank Poole
- * 2-4-16
+ * Frank Poole, Dat Tran
+ * 2-16-16
  * TODO: Description
  */
 

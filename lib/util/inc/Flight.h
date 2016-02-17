@@ -1,8 +1,8 @@
 /*
  * ActualFlight.h
  * Specific Atomics
- * Frank Poole
- * 2-4-16
+ * Frank Poole, Dat Tran
+ * 2-16-16
  * TODO: Description
  */
 
@@ -10,16 +10,21 @@
 #define ACTUAL_FLIGHT_H_
 
 #include <vector>
-
 #include "FlightReport.h"
 
 class Flight {
 private:
-    std::vector<FlightReport> flightReports;
+    /** A collection of all the flight reports of the Flight*/
+    std::vector<FlightReport> _flight_reports;
 public:
-    // TODO: Constructor
+    Flight();
 
-    // TODO: Destructor
+    Flight(std::vector<FlightReport> const &flight_reports);
+
+    std::vector<FlightReport> GetFlightReports();
+
+    ~Flight();
+
 };
 
 #endif
