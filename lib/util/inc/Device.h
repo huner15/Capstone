@@ -14,6 +14,6 @@
  * Enum representing the different device types a report can be received from:
  * Radar, TCAS, or ADS-B.
  */
-enum Device {RADAR, TCAS, ADSB};
+enum Device {ADSB, TCAS, RADAR, OWNSHIP};
 
 #endif
