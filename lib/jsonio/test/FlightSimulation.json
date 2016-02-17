@@ -1,9 +1,9 @@
 {
-  "FlightSimulation" : [
+  "flightSimulation": [
     {
-      "Flight" : [
+      "flight": [
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -26,7 +26,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -49,7 +49,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -72,7 +72,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -95,7 +95,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -118,7 +118,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -141,7 +141,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -164,7 +164,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -187,7 +187,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -210,7 +210,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "12ASX3",
             "tcasID" : 0,
@@ -235,9 +235,9 @@
       ]
     },
     {
-      "Flight" : [
+      "flight": [
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -260,7 +260,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -283,7 +283,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -306,7 +306,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -329,7 +329,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -352,7 +352,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -375,7 +375,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -398,7 +398,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -421,7 +421,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
@@ -444,7 +444,7 @@
           }
         },
         {
-          "FlightReport" : {
+          "flightReport": {
             "time" : 123456,
             "tailNumber" : "84X950",
             "tcasID" : 0,
