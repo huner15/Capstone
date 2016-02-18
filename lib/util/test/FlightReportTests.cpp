@@ -7,7 +7,8 @@
  */
 
 #include <gtest/gtest.h>
-#include <FlightReport.h>
+
+#include "FlightReport.h"
 
 /*
  * Tests to see that FlightReport returns what it is given with its get
@@ -30,7 +31,7 @@ TEST(FlightReportConstructor, Assignment){
                                              device);
 
     EXPECT_EQ(1, flightReport.GetTime());
-    EXPECT_EQ(tailNumber, flightReport.GetTailNumber());
+    EXPECT_EQ(tailNumber.Get(), flightReport.GetTailNumber());
     EXPECT_EQ(tcasID, flightReport.GetTcasID());
     EXPECT_EQ(radarID, flightReport.GetRadarID());
     EXPECT_EQ(geographicCoordinate.GetAltitude(), flightReport

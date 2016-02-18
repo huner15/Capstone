@@ -1,40 +1,13 @@
 /**
- * California Polytechnic State University, San Luis Obispo
- * Computer Engineering - CPE 402, 405, 406
- * Author: Frank Poole
- * Professor: David Janzen
- * Date: 2-18-2016
+ * @file Server.cpp
+ * @author Specific Atomics
+ * @authors Frank Poole
+ * @date 2-18-16
+ * @brief TODO: Description
  */
 
-#include <string>
-#include <iostream>
-#include <pthread.h>
-#include <unistd.h>
-
-#include <adsb.pb.h>
-#include <ownship.pb.h>
-#include <radar.pb.h>
-#include <tcas.pb.h>
-
-#include "SimulationFlightsIO.h"
-
-#include "ServerSocket.h"
-
-/** Expected number of command line arguments. */
-const int EXPECTED_ARGUMENTS = 6;
-
-/** Total number of threads. */
-const int NUM_THREADS = 4;
-
-/** Self defined thread identification numbers. */
-const int OWNSHIP_THREAD_INDEX = 0;
-const int ADSB_THREAD_INDEX = 1;
-const int RADAR_THREAD_INDEX = 2;
-const int TCAS_THREAD_INDEX = 3;
-
-/** Time to sleep in seconds before sending the next report. */
-const int SLEEP_TIME = 1;
-
+#include "Server.h"
+/*
 typedef struct thread_args {
     int id;
     in_port_t port;
@@ -42,33 +15,25 @@ typedef struct thread_args {
     FlightSimulation *flightSimulation;
     bool isOwnship;
 } thread_args_t;
-
+*/
 void sendOwnshipReports(ServerSocket ownshipSocket,
                         FlightReport *flightReport) {
     OwnshipReport ownshipReport = flightReport->CreateOwnshipReport();
-
-    // Send the ownship report to the client.
     ownshipSocket << ownshipReport;
 }
 
 void sendAdsbReports(ServerSocket adsbSocket, FlightReport *flightReport) {
     AdsBReport adsbReport = flightReport->CreateAdsBReport();
-
-    // Send the ADS-B Report to the client.
     adsbSocket << adsbReport;
 }
 
 void sendRadarReports(ServerSocket radarSocket, FlightReport *flightReport) {
     RadarReport radarReport = flightReport->CreateRadarReport();
-
-    // Send the radar report to the client.
     radarSocket << radarReport;
 }
 
 void sendTcasReports(ServerSocket tcasSocket, FlightReport *flightReport) {
     TcasReport tcasReport = flightReport->CreateTcasReport();
-
-    // Send the tcas report to the client.
     tcasSocket << tcasReport;
 }
 
@@ -109,7 +74,6 @@ int startServer(in_port_t port, void(*send)(ServerSocket, FlightReport*),
 
                 // Wait one second before sending the next ownship report.
                 sleep(SLEEP_TIME);
-                //usleep(1000);
             }
         //}
     }
