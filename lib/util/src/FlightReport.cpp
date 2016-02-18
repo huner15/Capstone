@@ -33,9 +33,11 @@ OwnshipReport FlightReport::createOwnshipReport() {
     ownshipReport.set_ownship_latitude(_geographic_coordinate.GetLatitude());
     ownshipReport.set_ownship_longitude(_geographic_coordinate.GetLongitude());
     ownshipReport.set_ownship_altitude(_geographic_coordinate.GetAltitude());
-    ownshipReport.set_north(4);
-    ownshipReport.set_east(5);
-    ownshipReport.set_down(6);
+    ownshipReport.set_north(_velocity.north);
+    ownshipReport.set_east(_velocity.east);
+    ownshipReport.set_down(_velocity.down);
+
+    return ownshipReport;
 }
 
 AdsBReport FlightReport::createAdsBReport() {
@@ -45,10 +47,11 @@ AdsBReport FlightReport::createAdsBReport() {
     adsBReport.set_longitude(_geographic_coordinate.GetLongitude());
     adsBReport.set_altitude(_geographic_coordinate.GetAltitude());
     adsBReport.set_tail_number(_tail_number.Get());
-    adsBReport.set_north(12);
-    adsBReport.set_east(13);
-    adsBReport.set_down(14);
+    adsBReport.set_north(_velocity.north);
+    adsBReport.set_east(_velocity.east);
+    adsBReport.set_down(_velocity.down);
 
+    return adsBReport;
 }
 
 RadarReport FlightReport::createRadarReport() {
@@ -59,12 +62,14 @@ RadarReport FlightReport::createRadarReport() {
     radarReport.set_azimuth(_spherical_coordinate.GetAzimuth());
     radarReport.set_elevation(_spherical_coordinate.GetElevation());
     radarReport.set_id(_radar_id.Get());
-    radarReport.set_north(20);
-    radarReport.set_east(21);
-    radarReport.set_down(22);
+    radarReport.set_north(_velocity.north);
+    radarReport.set_east(_velocity.east);
+    radarReport.set_down(_velocity.down);
     radarReport.set_latitude(_geographic_coordinate.GetLatitude());
     radarReport.set_longitude(_geographic_coordinate.GetLongitude());
     radarReport.set_altitude(_geographic_coordinate.GetAltitude());
+
+    return radarReport;
 }
 
 TcasReport FlightReport::createTcasReport() {
@@ -73,5 +78,7 @@ TcasReport FlightReport::createTcasReport() {
     tcasReport.set_id(_tcas_id.Get());
     tcasReport.set_range(_spherical_coordinate.GetRange());
     tcasReport.set_altitude(_geographic_coordinate.GetAltitude());
-    tcasReport.set_bearing(29);
+    tcasReport.set_bearing(_spherical_coordinate.GetBearing());
+
+    return tcasReport;
 }
