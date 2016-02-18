@@ -151,7 +151,6 @@ TcasID FlightReport::GetTcasID() {
 }
 
 void FlightReport::PrintReport() {
-
     std::cout << "\ntime: " << _time << std::endl;
     std::cout << "tail number: " << _tail_number.Get() << std::endl;
     std::cout << "tcas id: " << (unsigned)_tcas_id.Get() << std::endl;

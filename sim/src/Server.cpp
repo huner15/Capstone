@@ -6,8 +6,8 @@
  * Date: 2-18-2016
  */
 
-#include <iostream>
 #include <string>
+#include <iostream>
 #include <pthread.h>
 #include <unistd.h>
 
@@ -74,6 +74,8 @@ void sendTcasReports(ServerSocket tcasSocket, FlightReport *flightReport) {
 
 int startServer(in_port_t port, void(*send)(ServerSocket, FlightReport*),
                 FlightSimulation *flightSimulation, bool isOwnship) {
+    std::cout << "Successfully started server on port: " << port << std::endl;
+
     try {
         // Create a server to start listening for connections on the port.
         ServerSocket server(port);
@@ -121,8 +123,6 @@ int startServer(in_port_t port, void(*send)(ServerSocket, FlightReport*),
 
 void *startThread(void *thread_args) {
     thread_args_t *args = (thread_args_t *) thread_args;
-    std::cout << "Successfully started server on port: " << args->port
-    << std::endl;
     startServer(args->port, args->send, args->flightSimulation,
                 args->isOwnship);
     pthread_exit(NULL);
