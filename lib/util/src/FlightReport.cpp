@@ -1,9 +1,11 @@
 /*
- * FlightReport.cpp
- * Specific Atomics
- * Frank Poole, Dat Tran
- * 2-4-16
- * TODO: Description
+ * @file FlightReport.cpp
+ * @author Specific Atomics
+ * @author Frank Poole
+ * @author Alanna Buss
+ * @author Dat Tran
+ * @date 2-4-16
+ * @brief TODO: Description
  */
 
 #include <cdti.pb.h>
@@ -29,9 +31,10 @@ FlightReport::FlightReport() {
 
 }
 
-OwnshipReport FlightReport::createOwnshipReport() {
-    OwnshipReport ownshipReport;
 
+
+OwnshipReport FlightReport::CreateOwnshipReport() {
+    OwnshipReport ownshipReport;
     ownshipReport.set_timestamp(_time);
     ownshipReport.set_ownship_latitude(_geographic_coordinate.GetLatitude());
     ownshipReport.set_ownship_longitude(_geographic_coordinate.GetLongitude());
@@ -43,9 +46,8 @@ OwnshipReport FlightReport::createOwnshipReport() {
     return ownshipReport;
 }
 
-AdsBReport FlightReport::createAdsBReport() {
+AdsBReport FlightReport::CreateAdsBReport() {
     AdsBReport adsBReport;
-
     adsBReport.set_timestamp(_time);
     adsBReport.set_latitude(_geographic_coordinate.GetLatitude());
     adsBReport.set_longitude(_geographic_coordinate.GetLongitude());
@@ -58,7 +60,7 @@ AdsBReport FlightReport::createAdsBReport() {
     return adsBReport;
 }
 
-RadarReport FlightReport::createRadarReport() {
+RadarReport FlightReport::CreateRadarReport() {
     RadarReport radarReport;
 
     radarReport.set_timestamp(_time);
@@ -76,14 +78,12 @@ RadarReport FlightReport::createRadarReport() {
     return radarReport;
 }
 
-TcasReport FlightReport::createTcasReport() {
+TcasReport FlightReport::CreateTcasReport() {
     TcasReport tcasReport;
 
     tcasReport.set_id(_tcas_id.Get());
     tcasReport.set_range(_spherical_coordinate.GetRange());
     tcasReport.set_altitude(_geographic_coordinate.GetAltitude());
-    tcasReport.set_bearing(_spherical_coordinate.GetBearing());
-
     return tcasReport;
 }
 
@@ -95,15 +95,23 @@ CDTIPlane FlightReport::CreateCdtiPlane() {
         cdti_plane.set_id(_tail_number.Get());
     }
     else if (_type == TCAS) {
-        cdti_plane.set_id("" + _tcas_id.Get());
+        cdti_plane.set_id(std::to_string(_tcas_id.Get()));
     }
     else if (_type == RADAR) {
-        cdti_plane.set_id("" + _radar_id.Get());
+        cdti_plane.set_id(std::to_string(_radar_id.Get()));
     }
     Saas_Util::Vector<double, 3> position = _spherical_coordinate
             .ToCartesianCoordinates();
-//    cdti_plane.set_allocated_position(&position);
- //   cdti_plane.set_allocated_velocity(&_velocity);
+    Vector pos;
+    pos.set_n(position.x);
+    pos.set_e(position.y);
+    pos.set_d(position.z);
+    Vector vel;
+    vel.set_n(_velocity.x);
+    vel.set_e(_velocity.y);
+    vel.set_d(_velocity.z);
+    cdti_plane.set_allocated_position(&pos);
+    cdti_plane.set_allocated_velocity(&vel);
 
     return cdti_plane;
 }

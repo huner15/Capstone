@@ -17,6 +17,7 @@
 using namespace std;
 
 vector<Cluster> clusters;
+vector<CorrelationAircraft> corrAircraft;
 
 /*
  * Main method of the correlation algorithm.
@@ -33,31 +34,51 @@ vector<Cluster> clusters;
  * @param tcas The reports received from the TCAS hardware for the current sec
  * @return int 0 for success, 1 for error
  */
-int Correlate(vector<FlightReport> adsb,
-    vector<FlightReport> tcas, vector<FlightReport> radar) {
-    vector<CorrelationAircraft> corrAircraft;
+int Correlate(vector<FlightReport>& adsb,
+    vector<FlightReport>& tcas, vector<FlightReport>& radar) {
 
-    //copy adsb vector to cluster
+    //Create individual clusters for all ads-b reports
+    for (int i = 0; i < adsb.size(); i++)
+    {
+       // clusters.push_back(0);
+        adsb.at(i);
+    }
+
     //for all tcas reports, run algorithm code (can be switched out)
-    //for all radar reports, run code
+    CompareReports(tcas);
 
-    //for all in clusters, call ConvertAircraft(), add to corrAircraft
+    //for all radar reports, run code
+    CompareReports(radar);
+
+    //Checks that all SurveillanceReports are in only one Cluster
+    if (CheckClusterCount())
+    {
+        printf("At least one SurveillanceReport is either not in a cluster or"
+                       " in multiple clusters.\n");
+    }
+
+    //for every clusters, call ConvertAircraft(), add to corrAircraft
+    for (int i = 0; i < clusters.size(); i++)
+    {
+        //ConvertAircraft();
+    }
 
     Categorize(corrAircraft);
 
 }
 
-CorrelationAircraft ConvertAircraft(Cluster cluster) {
+int ConvertAircraft(Cluster cluster) {
 //device type needs to be the highest ranking type in the cluster
     //ads-b, tcas, radar
 
     //compare all fields of each report in cluster, create correlationAircraft
+    //add to corrAircraft
 }
 
-int CompareReports(vector<FlightReport> reports)
+int CompareReports(vector<FlightReport>& reports)
 {
     //for each report
-    //
+    //use algorithm
 }
 
 /*
@@ -69,7 +90,7 @@ int CompareReports(vector<FlightReport> reports)
  * @return int 0 for success, 1 for error
  */
 int CheckClusterCount() {
-
+    return TRUE;
 }
 
 /*
@@ -81,7 +102,7 @@ int CheckClusterCount() {
  * @return float The distance metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float CalcDistance(FlightReport reportOne, FlightReport reportTwo)
+float CalcDistance(FlightReport& reportOne, FlightReport& reportTwo)
 {
     float distance = CalcHeading(reportOne, reportTwo);
     distance += CalcEuclidDistance(reportOne, reportTwo);
@@ -99,7 +120,7 @@ float CalcDistance(FlightReport reportOne, FlightReport reportTwo)
  * @return float The heading metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float CalcHeading(FlightReport reportOne, FlightReport reportTwo)
+float CalcHeading(FlightReport& reportOne, FlightReport& reportTwo)
 {
     return 0;
 }
@@ -113,7 +134,7 @@ float CalcHeading(FlightReport reportOne, FlightReport reportTwo)
  * @return float The Euclidean distance metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float CalcEuclidDistance(FlightReport reportOne, FlightReport
+float CalcEuclidDistance(FlightReport& reportOne, FlightReport&
 reportTwo)
 {
     return 0;
@@ -129,7 +150,7 @@ reportTwo)
  * @return float The speed metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float CalcSpeed(FlightReport reportOne, FlightReport reportTwo)
+float CalcSpeed(FlightReport& reportOne, FlightReport& reportTwo)
 {
     return 0;
 }
