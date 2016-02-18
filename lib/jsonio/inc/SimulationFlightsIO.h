@@ -10,6 +10,8 @@
 class SimulationFlightsIO : public JsonIO {
 private:
     static Json::Value OpenFile(std::string file_name);
+
+    static Flight ReadFlightData(std::string file_name);
 public:
 
     static FlightSimulation ReadFile(std::string file_name);

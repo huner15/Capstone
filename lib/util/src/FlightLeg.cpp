@@ -31,7 +31,7 @@ double FlightLeg::GetDurationAfterManeuver() {
     return _duration_after_maneuver;
 }
 
-Vector3D FlightLeg::GetNewRelativeVelocity() {
+Velocity FlightLeg::GetNewRelativeVelocity() {
     return _new_relative_velocity;
 }
 
