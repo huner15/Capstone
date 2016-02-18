@@ -3,12 +3,13 @@
  * Computer Engineering - CPE 402, 405, 406
  * Author: Frank Poole
  * Professor: David Janzen
- * Date: 1-17-2016
+ * Date: 2-18-2016
  */
 
 #include <iostream>
 #include <string>
 #include <pthread.h>
+#include <unistd.h>
 
 #include <adsb.pb.h>
 #include <ownship.pb.h>
@@ -37,112 +38,78 @@ const int SLEEP_TIME = 1;
 typedef struct thread_args {
     int id;
     in_port_t port;
-    void(*send)(ServerSocket, FlightSimulation*);
+    void(*send)(ServerSocket, FlightReport*);
     FlightSimulation *flightSimulation;
+    bool isOwnship;
 } thread_args_t;
 
 void sendOwnshipReports(ServerSocket ownshipSocket,
-                        FlightSimulation *flightSimulation) {
-    OwnshipReport ownshipReport;
-
-    std::vector<Flight> flights = flightSimulation->GetFlights();
-    for (std::vector<Flight>::size_type i = 0; i < flights.size(); i++) {
-        std::vector<FlightReport> reports = flights[i].GetFlightReports();
-        /* TODO: Implement once Flight iterator is implemented.
-        for (std::vector<FlightReport>::size_type j = 0;
-             j < reports.size(); j++) {
-            ownshipReport = reports[j].createOwnshipReport();
-        }
-        */
-    }
+                        FlightReport *flightReport) {
+    OwnshipReport ownshipReport = flightReport->createOwnshipReport();
 
     // Send the ownship report to the client.
     ownshipSocket << ownshipReport;
-
-    // Wait one second before sending the next ownship report.
-    sleep(SLEEP_TIME);
 }
 
-void sendAdsbReports(ServerSocket adsbSocket,
-                     FlightSimulation *flightSimulation) {
-    AdsBReport adsbReport;
+void sendAdsbReports(ServerSocket adsbSocket, FlightReport *flightReport) {
+    AdsBReport adsbReport = flightReport->createAdsBReport();
 
-    while (true) {
-        // Set ADS-B report data fields.
-        adsbReport.set_timestamp(7);
-        adsbReport.set_latitude(8);
-        adsbReport.set_longitude(9);
-        adsbReport.set_altitude(10);
-        adsbReport.set_tail_number("11");
-        adsbReport.set_north(12);
-        adsbReport.set_east(13);
-        adsbReport.set_down(14);
-
-        // Send the ADS-B Report to the client.
-        adsbSocket << adsbReport;
-
-        // Wait one second before sending the next adsb report.
-        sleep(SLEEP_TIME);
-    }
+    // Send the ADS-B Report to the client.
+    adsbSocket << adsbReport;
 }
 
-void sendRadarReports(ServerSocket radarSocket,
-                      FlightSimulation *flightSimulation) {
-    RadarReport radarReport;
+void sendRadarReports(ServerSocket radarSocket, FlightReport *flightReport) {
+    RadarReport radarReport = flightReport->createRadarReport();
 
-    while (true) {
-        // Set Radar report data fields.
-        radarReport.set_timestamp(15);
-        radarReport.set_range(16);
-        radarReport.set_azimuth(17);
-        radarReport.set_elevation(18);
-        radarReport.set_id(19);
-        radarReport.set_north(20);
-        radarReport.set_east(21);
-        radarReport.set_down(22);
-        radarReport.set_latitude(23);
-        radarReport.set_longitude(24);
-        radarReport.set_altitude(25);
-
-        // Send the radar report to the client.
-        radarSocket << radarReport;
-
-        // Wait one second before sending the next radar report.
-        sleep(SLEEP_TIME);
-    }
+    // Send the radar report to the client.
+    radarSocket << radarReport;
 }
 
-void sendTcasReports(ServerSocket tcasSocket,
-                     FlightSimulation *flightSimulation) {
-    TcasReport tcasReport;
+void sendTcasReports(ServerSocket tcasSocket, FlightReport *flightReport) {
+    TcasReport tcasReport = flightReport->createTcasReport();
 
-    while (true) {
-        // Set TCAS report data fields.
-        tcasReport.set_id(26);
-        tcasReport.set_range(27);
-        tcasReport.set_altitude(28);
-        tcasReport.set_bearing(29);
-
-        // Send the tcas report to the client.
-        tcasSocket << tcasReport;
-
-        // Wait one second before sending the next tcas report.
-        sleep(SLEEP_TIME);
-    }
+    // Send the tcas report to the client.
+    tcasSocket << tcasReport;
 }
 
-int startServer(in_port_t port, void(*send)(ServerSocket, FlightSimulation*),
-                FlightSimulation *flightSimulation) {
+int startServer(in_port_t port, void(*send)(ServerSocket, FlightReport*),
+                FlightSimulation *flightSimulation, bool isOwnship) {
     try {
         // Create a server to start listening for connections on the port.
         ServerSocket server(port);
 
-        while (true) {
+        //while (true) {
             ServerSocket client;
             server.accept(client);
             std::cout << "Client has connected." << std::endl;
-            send(client, flightSimulation);
-        }
+
+            std::vector<Flight> flights = flightSimulation->GetFlights();
+            Flight ownshipFlight = flights[0];
+
+            while (ownshipFlight.HasNextFlightReport()) {
+                std::cout << "true!!!" << std::endl;
+                if (isOwnship) {
+                    FlightReport ownshipReport =
+                            ownshipFlight.NextFlightReport();
+                    send(client, &ownshipReport);
+                }
+                else {
+                    for (std::vector<Flight>::size_type i = 1;
+                         i < flights.size(); i++) {
+                        Flight detectedFlight = flights[i];
+                        if (detectedFlight.HasNextFlightReport()) {
+                            FlightReport otherReport =
+                                    detectedFlight.NextFlightReport();
+                            send(client, &otherReport);
+                        }
+                    }
+                }
+
+                // Wait one second before sending the next ownship report.
+                sleep(SLEEP_TIME);
+                //usleep(1000);
+            }
+        //}
     }
     catch (SocketException &e) {
         std::cout << "Exception caught: " << e.description() << std::endl;
@@ -156,7 +123,8 @@ void *startThread(void *thread_args) {
     thread_args_t *args = (thread_args_t *) thread_args;
     std::cout << "Successfully started server on port: " << args->port
     << std::endl;
-    startServer(args->port, args->send, args->flightSimulation);
+    startServer(args->port, args->send, args->flightSimulation,
+                args->isOwnship);
     pthread_exit(NULL);
 }
 
@@ -178,21 +146,25 @@ int main(int argc, char *argv[]) {
         ownship_args.port = (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]);
         ownship_args.send = sendOwnshipReports;
         ownship_args.flightSimulation = &fs;
+        ownship_args.isOwnship = true;
 
         adsb_args.id = ADSB_THREAD_INDEX;
         adsb_args.port = (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]);
         adsb_args.send = sendAdsbReports;
         adsb_args.flightSimulation = &fs;
+        adsb_args.isOwnship = false;
 
         radar_args.id = RADAR_THREAD_INDEX;
         radar_args.port = (in_port_t) atoi(argv[RADAR_THREAD_INDEX + 2]);
         radar_args.send = sendRadarReports;
         radar_args.flightSimulation = &fs;
+        radar_args.isOwnship = false;
 
         tcas_args.id = TCAS_THREAD_INDEX;
         tcas_args.port = (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]);
         tcas_args.send = sendTcasReports;
         tcas_args.flightSimulation = &fs;
+        tcas_args.isOwnship = false;
 
         // Create a new thread for each device simulation.
         pthread_create(&threads[OWNSHIP_THREAD_INDEX], NULL, startThread,

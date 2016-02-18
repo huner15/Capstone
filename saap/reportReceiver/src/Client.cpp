@@ -10,7 +10,6 @@
 #include <iostream>
 #include <fstream>
 
-
 #include <ownship.pb.h>
 #include <radar.pb.h>
 #include <tcas.pb.h>

@@ -29,10 +29,9 @@ FlightReport::FlightReport() {
 
 }
 
-
-
 OwnshipReport FlightReport::createOwnshipReport() {
     OwnshipReport ownshipReport;
+
     ownshipReport.set_timestamp(_time);
     ownshipReport.set_ownship_latitude(_geographic_coordinate.GetLatitude());
     ownshipReport.set_ownship_longitude(_geographic_coordinate.GetLongitude());
@@ -46,6 +45,7 @@ OwnshipReport FlightReport::createOwnshipReport() {
 
 AdsBReport FlightReport::createAdsBReport() {
     AdsBReport adsBReport;
+
     adsBReport.set_timestamp(_time);
     adsBReport.set_latitude(_geographic_coordinate.GetLatitude());
     adsBReport.set_longitude(_geographic_coordinate.GetLongitude());
@@ -82,6 +82,8 @@ TcasReport FlightReport::createTcasReport() {
     tcasReport.set_id(_tcas_id.Get());
     tcasReport.set_range(_spherical_coordinate.GetRange());
     tcasReport.set_altitude(_geographic_coordinate.GetAltitude());
+    tcasReport.set_bearing(_spherical_coordinate.GetBearing());
+
     return tcasReport;
 }
 

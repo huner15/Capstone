@@ -30,6 +30,11 @@ double SphericalCoordinate::GetAzimuth() const {
     return _azimuth;
 }
 
+// TODO: Update to return a calulated bearing from azimuth.
+double SphericalCoordinate::GetBearing() const {
+    return _azimuth;
+}
+
 Saas_Util::Vector<double, 3> SphericalCoordinate::ToCartesianCoordinates() {
     Saas_Util::Vector<double, 3> cartesian;
     cartesian.x = _range * sin(_elevation) * cos(_azimuth);
