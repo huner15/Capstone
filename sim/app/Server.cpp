@@ -45,28 +45,28 @@ typedef struct thread_args {
 
 void sendOwnshipReports(ServerSocket ownshipSocket,
                         FlightReport *flightReport) {
-    OwnshipReport ownshipReport = flightReport->createOwnshipReport();
+    OwnshipReport ownshipReport = flightReport->CreateOwnshipReport();
 
     // Send the ownship report to the client.
     ownshipSocket << ownshipReport;
 }
 
 void sendAdsbReports(ServerSocket adsbSocket, FlightReport *flightReport) {
-    AdsBReport adsbReport = flightReport->createAdsBReport();
+    AdsBReport adsbReport = flightReport->CreateAdsBReport();
 
     // Send the ADS-B Report to the client.
     adsbSocket << adsbReport;
 }
 
 void sendRadarReports(ServerSocket radarSocket, FlightReport *flightReport) {
-    RadarReport radarReport = flightReport->createRadarReport();
+    RadarReport radarReport = flightReport->CreateRadarReport();
 
     // Send the radar report to the client.
     radarSocket << radarReport;
 }
 
 void sendTcasReports(ServerSocket tcasSocket, FlightReport *flightReport) {
-    TcasReport tcasReport = flightReport->createTcasReport();
+    TcasReport tcasReport = flightReport->CreateTcasReport();
 
     // Send the tcas report to the client.
     tcasSocket << tcasReport;

@@ -30,7 +30,7 @@ double SphericalCoordinate::GetAzimuth() const {
     return _azimuth;
 }
 
-// TODO: Update to return a calulated bearing from azimuth.
+// TODO: Update to return a calculated bearing from azimuth.
 double SphericalCoordinate::GetBearing() const {
     return _azimuth;
 }

@@ -10,12 +10,18 @@
 
 #include <cdti.pb.h>
 #include <iostream>
+
 #include "FlightReport.h"
 
-//This is causing an error, something with implicit construction...
-FlightReport::FlightReport(std::time_t time, TailNumber tail_number, TcasID tcas_id,
-RadarID radar_id, GeographicCoordinate geographic_coordinate,
-SphericalCoordinate spherical_coordinate, Velocity velocity, Device type) {
+FlightReport::FlightReport() {
+
+}
+
+FlightReport::FlightReport(std::time_t time, TailNumber tail_number,
+                           TcasID tcas_id, RadarID radar_id,
+                           GeographicCoordinate geographic_coordinate,
+                           SphericalCoordinate spherical_coordinate,
+                           Velocity velocity, Device type) {
     _time = time;
     _tail_number = tail_number;
     _tcas_id = tcas_id;
@@ -26,15 +32,9 @@ SphericalCoordinate spherical_coordinate, Velocity velocity, Device type) {
     _type = type;
 }
 
-
-FlightReport::FlightReport() {
-
-}
-
-
-
 OwnshipReport FlightReport::CreateOwnshipReport() {
     OwnshipReport ownshipReport;
+
     ownshipReport.set_timestamp(_time);
     ownshipReport.set_ownship_latitude(_geographic_coordinate.GetLatitude());
     ownshipReport.set_ownship_longitude(_geographic_coordinate.GetLongitude());
@@ -48,6 +48,7 @@ OwnshipReport FlightReport::CreateOwnshipReport() {
 
 AdsBReport FlightReport::CreateAdsBReport() {
     AdsBReport adsBReport;
+
     adsBReport.set_timestamp(_time);
     adsBReport.set_latitude(_geographic_coordinate.GetLatitude());
     adsBReport.set_longitude(_geographic_coordinate.GetLongitude());
@@ -84,9 +85,10 @@ TcasReport FlightReport::CreateTcasReport() {
     tcasReport.set_id(_tcas_id.Get());
     tcasReport.set_range(_spherical_coordinate.GetRange());
     tcasReport.set_altitude(_geographic_coordinate.GetAltitude());
+    tcasReport.set_bearing(_spherical_coordinate.GetBearing());
+
     return tcasReport;
 }
-
 
 CDTIPlane FlightReport::CreateCdtiPlane() {
     CDTIPlane cdti_plane;
@@ -162,8 +164,8 @@ void FlightReport::PrintReport() {
         _geographic_coordinate.GetAltitude()  << std::endl;
     std::cout << "spherical coordinate(range): " <<
         _spherical_coordinate.GetRange()  << std::endl;
-  //  std::cout << "spherical coordinate(bearing): " <<
-//        _spherical_coordinate.GetBearing()  << std::endl;
+    std::cout << "spherical coordinate(bearing): " <<
+        _spherical_coordinate.GetBearing()  << std::endl;
     std::cout << "geographic coordinate(azimuth): " <<
         _spherical_coordinate.GetAzimuth() << std::endl;
     std::cout << "geographic coordinate(elevation): " <<
@@ -173,5 +175,4 @@ void FlightReport::PrintReport() {
     std::cout << "velocity down: " << _velocity.down << std::endl;
     std::cout << "device: " << _type << std::endl;
     std::cout << "\n";
-
 }
