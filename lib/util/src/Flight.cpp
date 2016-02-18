@@ -20,6 +20,8 @@ std::vector<FlightReport> Flight::GetFlightReports() {
     return _flight_reports;
 }
 
+//std::vector<FlightReport>::iterator
+
 
 Flight::~Flight() {
 

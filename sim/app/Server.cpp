@@ -1,4 +1,4 @@
-/*
+/**
  * California Polytechnic State University, San Luis Obispo
  * Computer Engineering - CPE 402, 405, 406
  * Author: Frank Poole
@@ -6,6 +6,8 @@
  * Date: 1-17-2016
  */
 
+#include <iostream>
+#include <string>
 #include <pthread.h>
 
 #include <adsb.pb.h>
@@ -13,13 +15,12 @@
 #include <radar.pb.h>
 #include <tcas.pb.h>
 
-// For build testing purposes
-#include "Vector.h"
+#include "SimulationFlightsIO.h"
 
 #include "ServerSocket.h"
 
 /** Expected number of command line arguments. */
-const int EXPECTED_ARGUMENTS = 5;
+const int EXPECTED_ARGUMENTS = 6;
 
 /** Total number of threads. */
 const int NUM_THREADS = 4;
@@ -36,31 +37,34 @@ const int SLEEP_TIME = 1;
 typedef struct thread_args {
     int id;
     in_port_t port;
-    void(*send)(ServerSocket);
+    void(*send)(ServerSocket, FlightSimulation*);
+    FlightSimulation *flightSimulation;
 } thread_args_t;
 
-void sendOwnshipReports(ServerSocket ownshipSocket) {
+void sendOwnshipReports(ServerSocket ownshipSocket,
+                        FlightSimulation *flightSimulation) {
     OwnshipReport ownshipReport;
 
-    while (true) {
-        // Set ownship report data fields.
-        ownshipReport.set_timestamp(0);
-        ownshipReport.set_ownship_latitude(1);
-        ownshipReport.set_ownship_longitude(2);
-        ownshipReport.set_ownship_altitude(3);
-        ownshipReport.set_north(4);
-        ownshipReport.set_east(5);
-        ownshipReport.set_down(6);
-
-        // Send the ownship report to the client.
-        ownshipSocket << ownshipReport;
-
-        // Wait one second before sending the next ownship report.
-        sleep(SLEEP_TIME);
+    std::vector<Flight> flights = flightSimulation->GetFlights();
+    for (std::vector<Flight>::size_type i = 0; i < flights.size(); i++) {
+        std::vector<FlightReport> reports = flights[i].GetFlightReports();
+        /* TODO: Implement once Flight iterator is implemented.
+        for (std::vector<FlightReport>::size_type j = 0;
+             j < reports.size(); j++) {
+            ownshipReport = reports[j].createOwnshipReport();
+        }
+        */
     }
+
+    // Send the ownship report to the client.
+    ownshipSocket << ownshipReport;
+
+    // Wait one second before sending the next ownship report.
+    sleep(SLEEP_TIME);
 }
 
-void sendAdsbReports(ServerSocket adsbSocket) {
+void sendAdsbReports(ServerSocket adsbSocket,
+                     FlightSimulation *flightSimulation) {
     AdsBReport adsbReport;
 
     while (true) {
@@ -82,7 +86,8 @@ void sendAdsbReports(ServerSocket adsbSocket) {
     }
 }
 
-void sendRadarReports(ServerSocket radarSocket) {
+void sendRadarReports(ServerSocket radarSocket,
+                      FlightSimulation *flightSimulation) {
     RadarReport radarReport;
 
     while (true) {
@@ -107,7 +112,8 @@ void sendRadarReports(ServerSocket radarSocket) {
     }
 }
 
-void sendTcasReports(ServerSocket tcasSocket) {
+void sendTcasReports(ServerSocket tcasSocket,
+                     FlightSimulation *flightSimulation) {
     TcasReport tcasReport;
 
     while (true) {
@@ -125,17 +131,17 @@ void sendTcasReports(ServerSocket tcasSocket) {
     }
 }
 
-int startServer(in_port_t port, void(*send)(ServerSocket)) {
+int startServer(in_port_t port, void(*send)(ServerSocket, FlightSimulation*),
+                FlightSimulation *flightSimulation) {
     try {
         // Create a server to start listening for connections on the port.
         ServerSocket server(port);
-        std::cout << "Listening on: " << port << std::endl;
 
         while (true) {
             ServerSocket client;
             server.accept(client);
             std::cout << "Client has connected." << std::endl;
-            send(client);
+            send(client, flightSimulation);
         }
     }
     catch (SocketException &e) {
@@ -148,38 +154,47 @@ int startServer(in_port_t port, void(*send)(ServerSocket)) {
 
 void *startThread(void *thread_args) {
     thread_args_t *args = (thread_args_t *) thread_args;
-    std::cout << "Successfully started thread." << std::endl;
-    startServer(args->port, args->send);
+    std::cout << "Successfully started server on port: " << args->port
+    << std::endl;
+    startServer(args->port, args->send, args->flightSimulation);
     pthread_exit(NULL);
 }
 
 int main(int argc, char *argv[]) {
     if (argc != EXPECTED_ARGUMENTS) {
         std::cout <<
-        "usage: run_sim ownship_port adsb_port radar_port tcas_port" <<
+        "usage: run_sim flight_simulation.json"
+                " ownship_port adsb_port radar_port tcas_port" <<
         std::endl;
     }
     else {
         pthread_t threads[NUM_THREADS];
         thread_args_t ownship_args, adsb_args, radar_args, tcas_args;
+        std::string flight_simulation_file_name = argv[1];
+        FlightSimulation fs =
+                SimulationFlightsIO::ReadFile(flight_simulation_file_name);
 
         ownship_args.id = OWNSHIP_THREAD_INDEX;
-        ownship_args.port = (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 1]);
+        ownship_args.port = (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]);
         ownship_args.send = sendOwnshipReports;
+        ownship_args.flightSimulation = &fs;
 
         adsb_args.id = ADSB_THREAD_INDEX;
-        adsb_args.port = (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 1]);
+        adsb_args.port = (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]);
         adsb_args.send = sendAdsbReports;
+        adsb_args.flightSimulation = &fs;
 
         radar_args.id = RADAR_THREAD_INDEX;
-        radar_args.port = (in_port_t) atoi(argv[RADAR_THREAD_INDEX + 1]);
+        radar_args.port = (in_port_t) atoi(argv[RADAR_THREAD_INDEX + 2]);
         radar_args.send = sendRadarReports;
+        radar_args.flightSimulation = &fs;
 
         tcas_args.id = TCAS_THREAD_INDEX;
-        tcas_args.port = (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 1]);
+        tcas_args.port = (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]);
         tcas_args.send = sendTcasReports;
+        tcas_args.flightSimulation = &fs;
 
-        // Fork or thread would probably happen here.
+        // Create a new thread for each device simulation.
         pthread_create(&threads[OWNSHIP_THREAD_INDEX], NULL, startThread,
                        (void *) &ownship_args);
         pthread_create(&threads[ADSB_THREAD_INDEX], NULL, startThread,

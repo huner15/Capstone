@@ -23,6 +23,10 @@ public:
 
     std::vector<FlightReport> GetFlightReports();
 
+    bool hasNextFlightReport();
+
+    FlightReport nextFlightReport();
+
     ~Flight();
 
 };
