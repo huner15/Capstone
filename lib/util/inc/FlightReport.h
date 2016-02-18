@@ -124,6 +124,8 @@ public:
      * @return the device of the flight report
      */
     Device GetDevice();
+
+    void PrintReport();
 };
 
 #endif

@@ -7,6 +7,7 @@
  */
 
 #include <cdti.pb.h>
+#include <iostream>
 #include "FlightReport.h"
 
 //This is causing an error, something with implicit construction...
@@ -135,4 +136,32 @@ Velocity FlightReport::GetVelocity() {
 
 TcasID FlightReport::GetTcasID() {
     return _tcas_id;
+}
+
+void FlightReport::PrintReport() {
+
+    std::cout << "\ntime: " << _time << std::endl;
+    std::cout << "tail number: " << _tail_number.Get() << std::endl;
+    std::cout << "tcas id: " << (unsigned)_tcas_id.Get() << std::endl;
+    std::cout << "radar id: " << _radar_id.Get() << std::endl;
+    std::cout << "geographic coordinate(latitude): " <<
+            _geographic_coordinate.GetLatitude()  << std::endl;
+    std::cout << "geographic coordinate(longitude): " <<
+        _geographic_coordinate.GetLongitude()  << std::endl;
+    std::cout << "geographic coordinate(altitude): " <<
+        _geographic_coordinate.GetAltitude()  << std::endl;
+    std::cout << "spherical coordinate(range): " <<
+        _spherical_coordinate.GetRange()  << std::endl;
+  //  std::cout << "spherical coordinate(bearing): " <<
+//        _spherical_coordinate.GetBearing()  << std::endl;
+    std::cout << "geographic coordinate(azimuth): " <<
+        _spherical_coordinate.GetAzimuth() << std::endl;
+    std::cout << "geographic coordinate(elevation): " <<
+        _spherical_coordinate.GetElevation() << std::endl;
+    std::cout << "velocity north: " << _velocity.north << std::endl;
+    std::cout << "velocity east: " << _velocity.east << std::endl;
+    std::cout << "velocity down: " << _velocity.down << std::endl;
+    std::cout << "device: " << _type << std::endl;
+    std::cout << "\n";
+
 }

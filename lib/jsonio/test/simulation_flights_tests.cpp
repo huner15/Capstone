@@ -10,9 +10,10 @@ TEST(Test1, test1) {
     std::vector<Flight> flights = fs.GetFlights();
     //std::cout << fs.GetFlights().size() << std::endl;
     //std::cout << flights.size() << std::endl;
-    std::vector<FlightReport> reports = flights.at(0).GetFlightReports();
+    std::vector<FlightReport> reports = flights.at(1).GetFlightReports();
+    std::cout << reports.at(0).GetTcasID().Get() << std::endl;
     for(int i=0; i<reports.size(); i++) {
-        std::cout << reports.at(i).GetTailNumber().Get() << std::endl;
+        reports.at(i).PrintReport();
     }
 
 }
