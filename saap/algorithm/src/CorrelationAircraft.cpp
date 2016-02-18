@@ -28,7 +28,3 @@ CorrelationAircraft::CorrelationAircraft(std::time_t time, TailNumber
 CorrelationAircraft::CorrelationAircraft() {
 
 }
-
-CorrelationAircraft ConvertAircraft(Cluster cluster) {
-
-}

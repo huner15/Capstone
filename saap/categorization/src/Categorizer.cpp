@@ -5,42 +5,60 @@
  * 2-6-16
  * Adds categories to planes.
 */
-
-
-#include <bits/stl_bvector.h>
 #include <cmath>
 #include <cdti.pb.h>
-#include "../../../lib/util/inc/Vector.h"
+#include <CorrelationAircraft.h>
+#include <SpecialMath.h>
+#include "FlightReport.h"
 
 
-double calculateRange(CDTIPlane plane);
-double calculateCPA(CDTIPlane plane);
+
+double CalculateRange(CDTIPlane plane);
+double CalculateCPA(CDTIPlane plane);
 void CategorizePlane(CDTIPlane plane);
+std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft> aircraft);
+
 /*
- * Call to begin categorization
- * TODO set what this takes to wahtever comes out of the algorith
+ *
  */
-void categorize(){
-    std::vector<CDTIPlane>* planes = new std::vector<CDTIPlane>();
+void Categorize(std::vector<CorrelationAircraft> aircraft) {
+    std::vector<CDTIPlane>* planes = MakeCDTI(aircraft);
     //call something to translate whatever is given into a list of CDTIplanes
     for(int i = 0; i < planes->size(); i++){
-        CategorizePlane(planes->[i]);
+        CategorizePlane(planes->at(i));
     }
 }
+
+CDTIPlane MakeCDTIPlane(CorrelationAircraft aircraft)
+{
+    FlightReport report = aircraft;
+    return report.CreateCdtiPlane();
+}
+
+std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft> aircraft) {
+    std::vector<CDTIPlane>* planes;
+
+    for(int i = 0; i < aircraft.size(); i++)
+    {
+        planes->push_back(MakeCDTIPlane(aircraft[i]));
+    }
+}
+
+
+
 /**
- * desides where to Categorize a plane
+ * decides where to Categorize a plane
  */
 void CategorizePlane(CDTIPlane plane){
-    double range = calculateRange(plane);
-    double cpa = calculateCPA(plane);
-    if(range < 2 && abs(plane.position().z) < 300 && cpa < .5)
+    double range = CalculateRange(plane);
+    double cpa = CalculateCPA(plane);
+    if(range < 2 && abs(plane.position().d()) < 300 && cpa < .5)
         plane.set_severity(plane.RESOLUTION);
-    else if(range < 5 && abs(plane.position().z) < 500 && cpa < 1)
+    else if(range < 5 && abs(plane.position().d()) < 500 && cpa < 1)
         plane.set_severity(plane.TRAFFIC);
-    else if(range < 10 && abs(plane.position().z) < 1000)
+    else if(range < 10 && abs(plane.position().d()) < 1000)
         plane.set_severity(plane.PROXIMATE);
-    else
-        plane.set_severity(NULL);
+
 
 }
 
@@ -49,20 +67,32 @@ void CategorizePlane(CDTIPlane plane){
  * calculates range to ownship.
  * returns a double representing the planes distance to the ownship
  */
-double calculateRange(CDTIPlane plane) {
+double CalculateRange(CDTIPlane plane) {
     Vector pos = plane.position();
-    Vector::Vector zero = Vector::Vector(0,0,0);
-    return SpecialMath::DistanceFormula<double, 3>(pos, zero);
+    Saas_Util::Vector<double,3> zero;
+    Saas_Util::Vector<double,3> position;
+    position.x = pos.n();
+    position.y = pos.e();
+    position.z = pos.d();
+    return SpecialMath::DistanceFormula<double, 3>(position, zero);
 
 }
 /**
  * calculates closest point of approach
  * returns a double representing the closest point of approach.
  */
-double calculateCPA(CDTIPlane plane) {
+double CalculateCPA(CDTIPlane plane) {
     //since ownship is at (0,0) formula is |c|/sqrt(a^2+b^2)
-    Vector::Vector zero = Vector::Vector(0,0,0);
-    return SpecialMath::LineDistance(plane.position(), plane.velocity(), zero);
+    Saas_Util::Vector<double, 3> zero;
+    Saas_Util::Vector<double, 3> pos;
+    Saas_Util::Vector<double, 3> vel;
+    pos.x = plane.position().n();
+    pos.y = plane.position().e();
+    pos.z = plane.position().d();
+    vel.x = plane.velocity().n();
+    vel.y = plane.velocity().e();
+    vel.z = plane.velocity().d();
+    return SpecialMath::LineDistance(pos, vel, zero);
 }
 
 

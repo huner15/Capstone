@@ -30,8 +30,8 @@ double SphericalCoordinate::GetAzimuth() const {
     return _azimuth;
 }
 
-Vector<double, 3> SphericalCoordinate::ToCartesianCoordinates() {
-    Vector<double, 3> cartesian;
+Saas_Util::Vector<double, 3> SphericalCoordinate::ToCartesianCoordinates() {
+    Saas_Util::Vector<double, 3> cartesian;
     cartesian.x = _range * sin(_elevation) * cos(_azimuth);
     cartesian.y = _range * sin(_elevation) * sin(_azimuth);
     cartesian.z = _range * cos(_elevation);

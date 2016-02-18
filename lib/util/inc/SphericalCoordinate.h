@@ -55,7 +55,7 @@ public:
      * Converts spherical coordinates to cartesian coordinates
      * @return cartesian coordinates of the spherical coordinate
      */
-    Vector<double, 3> ToCartesianCoordinates();
+    Saas_Util::Vector<double, 3> ToCartesianCoordinates();
 
     /**
      * Return the distance between this and another spherical coordinate.

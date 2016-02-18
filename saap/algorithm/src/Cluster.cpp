@@ -8,8 +8,8 @@
 */
 
 #include <cmath>
+#include <Categorizer.h>
 #include "Cluster.h"
-#include <vector>
 #include "CorrelationAircraft.h"
 
 #define REPORTS 10
@@ -34,8 +34,31 @@ vector<Cluster> clusters;
  * @return int 0 for success, 1 for error
  */
 int Correlate(vector<FlightReport> adsb,
-    vector<FlightReport> tcas, FlightReport ownship,
-    vector<FlightReport> radar);
+    vector<FlightReport> tcas, vector<FlightReport> radar) {
+    vector<CorrelationAircraft> corrAircraft;
+
+    //copy adsb vector to cluster
+    //for all tcas reports, run algorithm code (can be switched out)
+    //for all radar reports, run code
+
+    //for all in clusters, call ConvertAircraft(), add to corrAircraft
+
+    Categorize(corrAircraft);
+
+}
+
+CorrelationAircraft ConvertAircraft(Cluster cluster) {
+//device type needs to be the highest ranking type in the cluster
+    //ads-b, tcas, radar
+
+    //compare all fields of each report in cluster, create correlationAircraft
+}
+
+int CompareReports(vector<FlightReport> reports)
+{
+    //for each report
+    //
+}
 
 /*
  * Checks that all SurveillanceReports are in
@@ -45,7 +68,9 @@ int Correlate(vector<FlightReport> adsb,
  *
  * @return int 0 for success, 1 for error
  */
-int CheckClusterCount();
+int CheckClusterCount() {
+
+}
 
 /*
  * Generates the distance between two SurveillanceReports

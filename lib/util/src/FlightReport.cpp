@@ -81,8 +81,6 @@ TcasReport FlightReport::createTcasReport() {
     tcasReport.set_id(_tcas_id.Get());
     tcasReport.set_range(_spherical_coordinate.GetRange());
     tcasReport.set_altitude(_geographic_coordinate.GetAltitude());
-    tcasReport.set_bearing(_spherical_coordinate.GetBearing());
-
     return tcasReport;
 }
 
@@ -99,9 +97,10 @@ CDTIPlane FlightReport::CreateCdtiPlane() {
     else if (_type == RADAR) {
         cdti_plane.set_id("" + _radar_id.Get());
     }
-    Vector<double, 3> position = _spherical_coordinate.ToCartesianCoordinates();
-    cdti_plane.set_allocated_position(&position);
-    cdti_plane.set_allocated_velocity(&_velocity);
+    Saas_Util::Vector<double, 3> position = _spherical_coordinate
+            .ToCartesianCoordinates();
+//    cdti_plane.set_allocated_position(&position);
+ //   cdti_plane.set_allocated_velocity(&_velocity);
 
     return cdti_plane;
 }

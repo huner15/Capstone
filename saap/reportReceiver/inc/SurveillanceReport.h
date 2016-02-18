@@ -11,7 +11,7 @@
 #define SAAS_CORRELATIONAIRCRAFT_H
 
 #include "Cluster.h"
-#include "FlightReport.h"
+#include "SurveillanceReport.h"
 #include "Velocity.h"
 
 using namespace std;
@@ -23,20 +23,21 @@ using namespace std;
  * that were evaluated to represent this aircraft.
  * All fields may not be populated.
  */
-class CorrelationAircraft: public FlightReport {
+class SurveillanceReport {
 protected:
-    /** Predicted vector the aircraft will be facing in following
-    * seconds. */
-    Velocity _predictedVector;
-    /** Predicted location the aircraft will be at in following seconds. */
-    Velocity _predictedLoc;
-public:
-    CorrelationAircraft();
+    /**
+     * An encapsulated Flight Report
+     */
+    FlightReport _flight_report;
 
-    CorrelationAircraft(std::time_t time, TailNumber tail_number, TcasID
-    tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
-    SphericalCoordinate spherical_coordinate, Velocity velocity,
-    Velocity predictedVector, Velocity predictedLoc, Device type);
+    /*
+     * Geographic location converted to Spherical coordinates.
+     */
+    GeographicCoordinate _converted_geographic;
+public:
+    SurveillanceReport();
+
+    SurveillanceReport::SurveillanceReport(FlightReport flight_report);
 };
 
 #endif //SAAS_CORRELATIONAIRCRAFT_H

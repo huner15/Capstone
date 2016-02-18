@@ -13,7 +13,7 @@
 #include <adsb.pb.h>
 #include <radar.pb.h>
 #include <tcas.pb.h>
-
+#include <cdti.pb.h>
 #include <ctime>
 #include <vector>
 
@@ -28,14 +28,15 @@
 
 class FlightReport {
 private:
-    std::time_t _time;
-    TailNumber _tail_number;
-    TcasID _tcas_id;
-    RadarID _radar_id;
+    std::time_t _time; /** Timestamp for when this was received. */
+    TailNumber _tail_number; /** tail number of aircraft */
+    TcasID _tcas_id; /** ID given by the TCAS hardware. */
+    RadarID _radar_id; /** ID given by the radar hardware. */
+    /** latitude, longitude (+/- 180 degrees), and altitude. */
     GeographicCoordinate _geographic_coordinate;
     SphericalCoordinate _spherical_coordinate;
-    Velocity _velocity;
-    Device _type;
+    Velocity _velocity;  /** relative intruder velocity (feet/sec). */
+    Device _type; /** Enum for what device this report is from. */
 
 public:
     FlightReport();
