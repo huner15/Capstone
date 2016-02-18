@@ -107,6 +107,54 @@ public:
      * @return the difference between this FlightReport's bearing and other's.
      */
     float CompareBearing (FlightReport other);
+
+    /**
+     * Accessor function for the time of the flight report.
+     * @return the time of the flight report
+     */
+    std::time_t GetTime();
+
+    /**
+     * Accessor function for the tail number of the flight report.
+     * @return the tailnumber of the flight report.
+     */
+    TailNumber GetTailNumber();
+
+    /**
+     * Accessor function for the TcasId of the flight report.
+     * @return the TcasId of the flight report
+     */
+    TcasID GetTcasID();
+
+    /**
+     * Accessor function for the RadarId of the flight report.
+     * @return the RadarId of the flight report.
+     */
+    RadarID GetRadarID();
+
+    /**
+     * Accessor function for the Geographic coordinate of the flight report.
+     * @return the geographic coordinate of the flight report.
+     */
+    GeographicCoordinate GetGeographicCoordinate();
+
+    /**
+     * Accessor function for the spherical coordinate of the flight report.
+     * @return the spherical coordinate of the flight report.
+     */
+    SphericalCoordinate GetSphericalCoordinate();
+
+    /**
+     * Accessor function for the velocity of the flight report.
+     * @return the velocity of the flight report.
+     */
+    Velocity GetVelocity();
+
+    /**
+     * Accessor function for the device of the flight report.
+     * @return the device of the flight report
+     */
+    Device GetDevice();
 };
 
 #endif

@@ -17,7 +17,7 @@
  * Allows for accessing velocity dimensions using the keywords north, east, and
  * down.
  */
-class Velocity : public Vector3D {
+class Velocity : public Saas_Util::Vector3D {
 private:
 public:
     /**

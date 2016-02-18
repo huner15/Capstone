@@ -10,11 +10,11 @@
 #include "Vector.h"
 
 template<typename T, std::size_t N>
-size_t Vector<T, N>::Size() {
+size_t Saas_Util::Vector<T, N>::Size() {
     return array.size();
 }
 
 template<typename T, std::size_t N>
-double Vector<T, N>::get(int index) {
+double Saas_Util::Vector<T, N>::get(int index) {
     return array[index];
 }

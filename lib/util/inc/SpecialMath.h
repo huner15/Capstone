@@ -16,13 +16,13 @@ namespace SpecialMath {
      * @return distance between a and b.
      */
     template<typename T, std::size_t N>
-    double DistanceFormula(Vector<T, N> a, Vector<T, N> b);
+    double DistanceFormula(Saas_Util::Vector<T, N> a, Saas_Util::Vector<T, N> b);
     /*
      * Calculates the distance between a point and a line represted as a point and a direction vector
      * @return distance between the reference point and the line.
      */
-    double LineDistance(Vector<double, 3> pointOnLine,Vector<double, 3> directionOfLine,
-                        Vector<double, 3> referencePoint);
+    double LineDistance(Saas_Util::Vector<double, 3> pointOnLine,Saas_Util::Vector<double, 3> directionOfLine,
+                        Saas_Util::Vector<double, 3> referencePoint);
 };
 
 

@@ -28,82 +28,84 @@
  * @tparam T the vector element type
  * @tparam N the fixed size of the vector
  */
-template<typename T, std::size_t N>
-class Vector {
-private:
-    /** An array of fixed size. */
-    std::array<T, N> array;
-public:
-    /**
-     * Return the size of the vector.
-     * @return the size of the vector
-     */
-    size_t Size();
-    /**
-     * Return a value from the vector.
-     * @return value at given index
-     */
-    double get(int index);
-};
+namespace Saas_Util {
+    template<typename T, std::size_t N>
+    class Vector {
+    private:
+        /** An array of fixed size. */
+        std::array<T, N> array;
+    public:
+        /**
+         * Return the size of the vector.
+         * @return the size of the vector
+         */
+        size_t Size();
+
+        /**
+         * Return a value from the vector.
+         * @return value at given index
+         */
+        double get(int index);
+    };
 
 /**
  * Two dimensional floating point vector specialization. Provides access to the
  * underlying array using the fields x and y.
  */
-template<>
-struct Vector<double, 2> {
-    union {
-        std::array<double, 2> array;
-        struct {
-            double x, y;
+    template<>
+    struct Vector<double, 2> {
+        union {
+            std::array<double, 2> array;
+            struct {
+                double x, y;
+            };
         };
     };
-};
 
 /**
  * Three dimensional floating point vector specialization. Provides access to
  * the underlying array using the fields x, y, and z.
  */
-template<>
-struct Vector<double, 3> {
-    union {
-        std::array<double, 3> array;
-        struct {
-            double x, y, z;
+    template<>
+    struct Vector<double, 3> {
+        union {
+            std::array<double, 3> array;
+            struct {
+                double x, y, z;
+            };
         };
     };
-};
 
 /**
  * Four dimensional floating point vector specialization. Provides access to
  * the underlying array using the fields x, y, z, and w.
  */
-template<>
-struct Vector<double, 4> {
-    union {
-        std::array<double, 4> array;
-        struct {
-            double x, y, z, w;
+    template<>
+    struct Vector<double, 4> {
+        union {
+            std::array<double, 4> array;
+            struct {
+                double x, y, z, w;
+            };
         };
     };
-};
 
 /**
  * Type definition for a two dimensional vector. Prefer using Vector2D to using
  * the underlying Vector<double, 2>.
  */
-typedef Vector<double, 2> Vector2D;
+    typedef Vector<double, 2> Vector2D;
 
 /**
  * Type definition for a three dimensional vector. Prefer using Vector3D to
  * using the underlying Vector<double, 3>.
  */
-typedef Vector<double, 3> Vector3D;
+    typedef Vector<double, 3> Vector3D;
 
 /**
  * Type definition for a four dimensional vector. Prefer using Vector4D to
  * using the underlying Vector<double, 4>.
  */
-typedef Vector<double, 4> Vector4D;
-
+    typedef Vector<double, 4> Vector4D;
+}
 #endif

@@ -13,7 +13,7 @@
 
 namespace SpecialMath {
     template<typename T, std::size_t N>
-    double DistanceFormula(Vector<T, N> a, Vector<T, N> b)
+    double DistanceFormula(Saas_Util::Vector<T, N> a, Saas_Util::Vector<T, N> b)
     {
         double toReturn = 0;
         for(int i = 0; i < N; i ++)
@@ -25,10 +25,10 @@ namespace SpecialMath {
 
     }
 
-    double LineDistance(Vector<double, 3> pointOnLine,Vector<double, 3> directionOfLine,
-                        Vector<double, 3> referencePoint){
-        Vector<double, 3> v = directionOfLine;
-        Vector<double, 3> w;
+    double LineDistance(Saas_Util::Vector<double, 3> pointOnLine,Saas_Util::Vector<double, 3> directionOfLine,
+                        Saas_Util::Vector<double, 3> referencePoint){
+        Saas_Util::Vector<double, 3> v = directionOfLine;
+        Saas_Util::Vector<double, 3> w;
         w.x = referencePoint.x - pointOnLine.x;
         w.y = referencePoint.y - pointOnLine.y;
         w.z = referencePoint.z - pointOnLine.z;

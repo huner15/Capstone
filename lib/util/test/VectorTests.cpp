@@ -10,7 +10,7 @@
 #include <gmock/gmock.h>
 
 #include "Vector.h"
-
+using namespace Saas_Util;
 /*
  * Test 2D vector element accessing by referencing the underlying std::array.
  */

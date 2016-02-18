@@ -27,6 +27,8 @@ FlightReport::FlightReport() {
 
 }
 
+
+
 OwnshipReport FlightReport::createOwnshipReport() {
     OwnshipReport ownshipReport;
     ownshipReport.set_timestamp(_time);
@@ -74,4 +76,36 @@ TcasReport FlightReport::createTcasReport() {
     tcasReport.set_range(_spherical_coordinate.GetRange());
     tcasReport.set_altitude(_geographic_coordinate.GetAltitude());
     tcasReport.set_bearing(29);
+}
+
+std::time_t FlightReport::GetTime() {
+    return _time;
+}
+
+Device FlightReport::GetDevice() {
+    return _type;
+}
+
+GeographicCoordinate FlightReport::GetGeographicCoordinate() {
+    return _geographic_coordinate;
+}
+
+RadarID FlightReport::GetRadarID() {
+    return _radar_id;
+}
+
+SphericalCoordinate FlightReport::GetSphericalCoordinate() {
+    return _spherical_coordinate;
+}
+
+TailNumber FlightReport::GetTailNumber() {
+    return _tail_number;
+}
+
+Velocity FlightReport::GetVelocity() {
+    return _velocity;
+}
+
+TcasID FlightReport::GetTcasID() {
+    return _tcas_id;
 }

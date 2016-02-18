@@ -11,6 +11,7 @@
 
 TEST(DistanceFormula, Everything)
 {
+    using namespace Saas_Util;{
     //TODO fix whatever is going on here
     Vector<double, 2> a;
     a.x = 0;
@@ -39,4 +40,5 @@ TEST(DistanceFormula, Everything)
     d.z = 5;
  //   EXPECT_EQ(sqrt(75), (SpecialMath::DistanceFormula<double, 3>(c, d)));
  //   EXPECT_EQ(sqrt(75), (SpecialMath::DistanceFormula<double, 3>(d, c)));
+    };
 }
