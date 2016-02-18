@@ -24,6 +24,6 @@ TEST(FlightInputConstructor, ValidValues) {
 
     while(flight.HasNextFlightReport()) {
         FlightReport report = flight.NextFlightReport();
-        std::cout << report.GetTailNumber().Get() << std::endl;
+        //std::cout << report.GetTailNumber().Get() << std::endl;
     }
 }
