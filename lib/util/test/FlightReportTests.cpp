@@ -7,8 +7,7 @@
  */
 
 #include <gtest/gtest.h>
-
-#include "FlightReport.h"
+#include <FlightReport.h>
 
 /*
  * Tests to see that FlightReport returns what it is given with its get
@@ -31,9 +30,9 @@ TEST(FlightReportConstructor, Assignment){
                                              device);
 
     EXPECT_EQ(1, flightReport.GetTime());
-    EXPECT_EQ(tailNumber.Get(), flightReport.GetTailNumber());
-    EXPECT_EQ(tcasID, flightReport.GetTcasID());
-    EXPECT_EQ(radarID, flightReport.GetRadarID());
+    EXPECT_EQ(tailNumber.Get(), flightReport.GetTailNumber().Get());
+    EXPECT_EQ(tcasID.Get(), flightReport.GetTcasID().Get());
+    EXPECT_EQ(radarID.Get(), flightReport.GetRadarID().Get());
     EXPECT_EQ(geographicCoordinate.GetAltitude(), flightReport
             .GetGeographicCoordinate().GetAltitude());
     EXPECT_EQ(geographicCoordinate.GetLatitude(), flightReport
@@ -113,7 +112,7 @@ TEST(FlightReportMakeADSBReport, Creation) {
     EXPECT_EQ(geographicCoordinate.GetLatitude(), adsBReport.latitude());
     EXPECT_EQ(geographicCoordinate.GetLongitude(), adsBReport.longitude());
     EXPECT_EQ(geographicCoordinate.GetAltitude(), adsBReport.altitude());
-    EXPECT_EQ(tailNumber, adsBReport.tail_number());
+    EXPECT_EQ(tailNumber.Get(), adsBReport.tail_number());
     EXPECT_EQ(velocity.north, adsBReport.north());
     EXPECT_EQ(velocity.down, adsBReport.down());
     EXPECT_EQ(velocity.east, adsBReport.east());
@@ -147,7 +146,7 @@ TEST(FlightReportMakeRadarReport, Creation) {
     EXPECT_EQ(velocity.north, radarReport.north());
     EXPECT_EQ(velocity.down, radarReport.down());
     EXPECT_EQ(velocity.east, radarReport.east());
-    EXPECT_EQ(radarID, radarReport.id());
+    EXPECT_EQ(radarID.Get(), radarReport.id());
     EXPECT_EQ(geographicCoordinate.GetAltitude(), radarReport.altitude());
     EXPECT_EQ(geographicCoordinate.GetLongitude(), radarReport.longitude());
     EXPECT_EQ(geographicCoordinate.GetLatitude(), radarReport.latitude());
@@ -174,7 +173,7 @@ TEST(FlightReportMakeTCASReport, Creation) {
 
     TcasReport tcasReport = flightReport.CreateTcasReport();
 
-    EXPECT_EQ(tcasID, tcasReport.id());
+    EXPECT_EQ(tcasID.Get(), tcasReport.id());
     EXPECT_EQ(sphericalCoordinate.GetRange(), tcasReport.range());
     EXPECT_EQ(sphericalCoordinate.GetBearing(), tcasReport.bearing());
     EXPECT_EQ(geographicCoordinate.GetAltitude(), tcasReport.altitude());
