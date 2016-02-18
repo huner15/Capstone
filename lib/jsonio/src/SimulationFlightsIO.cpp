@@ -10,7 +10,8 @@ using namespace std;
 Json::Value SimulationFlightsIO::OpenFile(std::string file_name) {
     Json::Value root;   // will contain the root value after parsing.
     Json::Reader reader;
-    std:string file_dir = "../../lib/jsonio/test/";
+    //std:string file_dir = "../../lib/jsonio/test/";
+    std::string file_dir = "";
     std::string file = file_dir + file_name;
     std::ifstream test(file, std::ifstream::binary);
     bool parsing_successful = reader.parse(test, root, false);
