@@ -69,7 +69,11 @@ Json::Value SimulationFlightsIO::GetFlights(std::string file_name) {
 
     return root["flightSimulation"];
 }
-/*
+
+
+Json::Value SimulationFlightsIO::GetSimulationFlights() {
+    return Json::nullValue;
+}
 
 std::vector<Json::Value> SimulationFlightsIO::GetAllADSBReports() {
     Json::Value simFlights = GetSimulationFlights();
@@ -135,4 +139,4 @@ void SimulationFlightsIO::writeFile(Json::Value value) {
     file_id << styledWriter.write(value);
 
     file_id.close();
-}*/
+}

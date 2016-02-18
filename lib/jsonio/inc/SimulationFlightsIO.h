@@ -6,6 +6,8 @@
 #define SAMPLEJSONCPP_SIMULATIONFLIGHTSIO_H
 
 #include "JsonIO.h"
+#include "Flight.h"
+#include "FlightSimulation.h"
 
 class SimulationFlightsIO : public JsonIO {
 private:
@@ -15,6 +17,8 @@ private:
 public:
 
     static FlightSimulation ReadFile(std::string file_name);
+
+    static Json::Value GetSimulationFlights();
 
     static Json::Value GetFlights(std::string file_name);
 
