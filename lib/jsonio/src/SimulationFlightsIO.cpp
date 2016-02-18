@@ -54,7 +54,7 @@ Flight SimulationFlightsIO::ReadFlightData(std::string file_name) {
                            json_velocity["down"].asDouble(),
                            json_velocity["north"].asDouble());
         Device device (RADAR);
-        FlightReport report (std::time(null), tail, tcas_id, radar_id,
+        FlightReport report (std::time(nullptr), tail, tcas_id, radar_id,
                                 geo_coord, sphr_coord, velocity, device);
 
         all_flight_reports.push_back(report);

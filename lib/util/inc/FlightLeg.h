@@ -27,7 +27,7 @@ private:
      * The next relative velocity that the aircraft will reach
      * in this leg.
      */
-    Vector3D _new_relative_velocity;
+    Velocity _new_relative_velocity;
 
 public:
 
@@ -53,7 +53,7 @@ public:
      * for this flight leg.
      * @return the new target relative velocity for this flight leg.
      */
-    Vector3D GetNewRelativeVelocity();
+    Velocity GetNewRelativeVelocity();
 
     /**
      * Checks to see if two FlightLegs are equal.
