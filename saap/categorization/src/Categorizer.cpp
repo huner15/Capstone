@@ -1,7 +1,7 @@
 /*
  * Categorizer.cpp
  * Specific Atomics
- * Michael Lenz
+ * Michael Lenz, Dat Tran
  * 2-6-16
  * Adds categories to planes.
 */
@@ -9,9 +9,11 @@
 #include <cdti.pb.h>
 #include <CorrelationAircraft.h>
 #include <SpecialMath.h>
+#include "ClientSocket.h"
 #include "FlightReport.h"
 
 
+ClientSocket socket_to_cdti("localhost", 13000);
 
 double CalculateRange(CDTIPlane plane);
 double CalculateCPA(CDTIPlane plane);
@@ -23,10 +25,15 @@ std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft> aircraft);
  */
 void Categorize(std::vector<CorrelationAircraft> aircraft) {
     std::vector<CDTIPlane>* planes = MakeCDTI(aircraft);
+    CDTIReport report;
+
     //call something to translate whatever is given into a list of CDTIplanes
     for(int i = 0; i < planes->size(); i++){
         CategorizePlane(planes->at(i));
+        report.mutable_planes()->AddAllocated(&(planes->at(i)));
     }
+
+    socket_to_cdti << report;
 }
 
 CDTIPlane MakeCDTIPlane(CorrelationAircraft aircraft)
@@ -42,6 +49,8 @@ std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft> aircraft) {
     {
         planes->push_back(MakeCDTIPlane(aircraft[i]));
     }
+
+    return planes;
 }
 
 
