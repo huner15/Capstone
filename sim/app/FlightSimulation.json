@@ -1,0 +1,472 @@
+{
+  "flightSimulation": [
+    {
+      "flight": [
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "12ASX3",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.7,
+              "longitude" : 37.2,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 0.00,
+              "elevation" : 0.00,
+              "azimuth" : 0.00
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        }
+      ]
+    },
+    {
+      "flight": [
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        },
+        {
+          "flightReport": {
+            "time" : 123456,
+            "tailNumber" : "84X950",
+            "tcasID" : 0,
+            "radarID" : 0,
+            "geographicCoordinate" : {
+              "latitude" : -120.8,
+              "longitude" : 37.9,
+              "altitude" : 10045.34
+            },
+            "sphericalCoordinate" : {
+              "range" : 3453.57,
+              "elevation" : -54.78,
+              "azimuth" : -89.29
+            },
+            "velocity" : {
+              "north" : 150.1,
+              "east" : -43.7,
+              "down" : -1.004
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
