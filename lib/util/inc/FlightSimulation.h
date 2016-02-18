@@ -11,15 +11,19 @@
 
 #include <vector>
 
-#include "SimulatedFlight.h"
+#include "Flight.h"
 
 class FlightSimulation {
 private:
-    std::vector<SimulatedFlight> _simulated_flights;
+    std::vector<Flight> _flights;
 public:
     // TODO: Constructor
+    FlightSimulation(std::vector<Flight> all_flights);
+
+    std::vector<Flight> GetFlights();
 
     // TODO: Destructor
+    ~FlightSimulation() {};
 };
 
 #endif

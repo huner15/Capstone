@@ -13,7 +13,7 @@ TcasID::TcasID() {
 }
 
 TcasID::TcasID(uint8_t tcas_id) {
-    if (tcas_id > 0 && tcas_id <= _max_tcas_id) {
+    if (tcas_id >= 0 && tcas_id <= _max_tcas_id) {
         _tcas_id = tcas_id;
     }
     else {

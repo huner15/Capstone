@@ -5,6 +5,19 @@
 #include <SimulationFlightsIO.h>
 #include <gtest/gtest.h>
 
+TEST(Test1, test1) {
+    FlightSimulation fs = SimulationFlightsIO::ReadFile("FlightSimulation.json");
+    std::vector<Flight> flights = fs.GetFlights();
+    //std::cout << fs.GetFlights().size() << std::endl;
+    //std::cout << flights.size() << std::endl;
+    std::vector<FlightReport> reports = flights.at(0).GetFlightReports();
+    for(int i=0; i<reports.size(); i++) {
+        std::cout << reports.at(i).GetTailNumber().Get() << std::endl;
+    }
+
+}
+
+
 TEST(GetSimulationFlights, CorrectNumberOfFlights) {
     Json::Value simulation_flights =
             SimulationFlightsIO::GetSimulationFlights();
