@@ -1,7 +1,7 @@
 /*
  * SphericalCoordinate.h
  * Specific Atomics
- * Frank Poole
+ * Frank Poole, Dat Tran
  * 2-13-16
  * TODO: Description
  */
@@ -50,6 +50,12 @@ public:
      * @return bearing of the spherical coordinate.
      */
     double GetBearing() const;
+
+    /**
+     * Converts spherical coordinates to cartesian coordinates
+     * @return cartesian coordinates of the spherical coordinate
+     */
+    Vector<double, 3> ToCartesianCoordinates();
 
     /**
      * Return the distance between this and another spherical coordinate.

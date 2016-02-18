@@ -1,11 +1,12 @@
 /*
  * FlightReport.cpp
  * Specific Atomics
- * Frank Poole
+ * Frank Poole, Dat Tran
  * 2-4-16
  * TODO: Description
  */
 
+#include <cdti.pb.h>
 #include "FlightReport.h"
 
 //This is causing an error, something with implicit construction...
@@ -81,4 +82,24 @@ TcasReport FlightReport::createTcasReport() {
     tcasReport.set_bearing(_spherical_coordinate.GetBearing());
 
     return tcasReport;
+}
+
+
+CDTIPlane FlightReport::CreateCdtiPlane() {
+    CDTIPlane cdti_plane;
+
+    if (_type == ADSB) {
+        cdti_plane.set_id(_tail_number.Get());
+    }
+    else if (_type == TCAS) {
+        cdti_plane.set_id("" + _tcas_id.Get());
+    }
+    else if (_type == RADAR) {
+        cdti_plane.set_id("" + _radar_id.Get());
+    }
+    Vector<double, 3> position = _spherical_coordinate.ToCartesianCoordinates();
+    cdti_plane.set_allocated_position(&position);
+    cdti_plane.set_allocated_velocity(&_velocity);
+
+    return cdti_plane;
 }

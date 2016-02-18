@@ -1,7 +1,7 @@
 /*
  * SphericalCoordinate.cpp
  * Specific Atomics
- * Frank Poole
+ * Frank Poole, Dat Tran
  * 2-13-16
  * TODO: Description
  */
@@ -28,6 +28,14 @@ double SphericalCoordinate::GetElevation() const {
 
 double SphericalCoordinate::GetAzimuth() const {
     return _azimuth;
+}
+
+Vector<double, 3> SphericalCoordinate::ToCartesianCoordinates() {
+    Vector<double, 3> cartesian;
+    cartesian.x = _range * sin(_elevation) * cos(_azimuth);
+    cartesian.y = _range * sin(_elevation) * sin(_azimuth);
+    cartesian.z = _range * cos(_elevation);
+    return cartesian;
 }
 
 // TODO: Implement GetBearing (using existing data, do not add a bearing

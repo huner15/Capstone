@@ -1,7 +1,7 @@
 /*
  * @file FlightReport.h
  * @author Specific Atomics
- * @authors Frank Poole, Andy Savage
+ * @authors Frank Poole, Andy Savage, Dat Tran
  * @date 2-13-16
  * @brief TODO: Description
  */
@@ -65,9 +65,15 @@ public:
 
     /**
      * Creates a TCAS report from the data in this FlightReport
-     * @return a radar report made from the data in this FlightReport.
+     * @return a TCAS report made from the data in this FlightReport.
      */
     TcasReport createTcasReport();
+
+    /**
+     * Creates a CDTI plane from the data in this FlightReport
+     * @return a CDTI plane made from the data in this FlightReport
+     */
+    CDTIPlane CreateCdtiPlane();
 
     /**
      * Compares the ranges between this FlightReport and another.
