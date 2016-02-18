@@ -9,6 +9,7 @@
 #include "Flight.h"
 #include "FlightSimulation.h"
 
+
 class SimulationFlightsIO : public JsonIO {
 private:
     static Json::Value OpenFile(std::string file_name);

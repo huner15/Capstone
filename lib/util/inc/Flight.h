@@ -16,6 +16,8 @@ class Flight {
 private:
     /** A collection of all the flight reports of the Flight*/
     std::vector<FlightReport> _flight_reports;
+    std::vector<FlightReport>::iterator _flight_reports_it;
+    std::vector<FlightReport>::iterator _flight_reports_end;
 public:
     Flight();
 
@@ -23,9 +25,9 @@ public:
 
     std::vector<FlightReport> GetFlightReports();
 
-    bool hasNextFlightReport();
+    bool HasNextFlightReport();
 
-    FlightReport nextFlightReport();
+    FlightReport NextFlightReport();
 
     ~Flight();
 
