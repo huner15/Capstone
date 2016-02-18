@@ -95,15 +95,23 @@ CDTIPlane FlightReport::CreateCdtiPlane() {
         cdti_plane.set_id(_tail_number.Get());
     }
     else if (_type == TCAS) {
-        cdti_plane.set_id("" + _tcas_id.Get());
+        cdti_plane.set_id(std::to_string(_tcas_id.Get()));
     }
     else if (_type == RADAR) {
-        cdti_plane.set_id("" + _radar_id.Get());
+        cdti_plane.set_id(std::to_string(_radar_id.Get()));
     }
     Saas_Util::Vector<double, 3> position = _spherical_coordinate
             .ToCartesianCoordinates();
-//    cdti_plane.set_allocated_position(&position);
- //   cdti_plane.set_allocated_velocity(&_velocity);
+    Vector pos;
+    pos.set_n(position.x);
+    pos.set_e(position.y);
+    pos.set_d(position.z);
+    Vector vel;
+    vel.set_n(_velocity.x);
+    vel.set_e(_velocity.y);
+    vel.set_d(_velocity.z);
+    cdti_plane.set_allocated_position(&pos);
+    cdti_plane.set_allocated_velocity(&vel);
 
     return cdti_plane;
 }
