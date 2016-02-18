@@ -75,44 +75,6 @@ public:
      */
     CDTIPlane CreateCdtiPlane();
 
-    /**
-     * Compares the ranges between this FlightReport and another.
-     * @param other The FlightReport we are comparing against.
-     * @return the difference between this FlightReport's range and other's
-     */
-    float CompareRange (FlightReport other);
-
-    /**
-     * Compares the latitude and longitude between this FlightReport and
-     * another. If a TCAS report is used for either of the FlightReports
-     * return 0.
-     * @param other The surveillance report we are comparing against.
-     * @return the difference between this FlightReport's longitude and
-     * latitude and other's. Returns 0 if either of the FlightReports is a
-     * TCAS report.
-     */
-    float CompareLatitudeLongitude (FlightReport other);
-
-    /**
-     * Compares the altitudes between this FlightReport and another.
-     * @param other The FlightReport we are comparing against.
-     * @return the difference between this FlightReport's altitude and other's
-     */
-    float CompareAltitude (FlightReport other);
-
-    /**
-     * Compares the azimuth between this FlightReport and another.
-     * @param other The FlightReport we are comparing against
-     * @return the difference between this FlightReport's azimuth and other's
-     */
-    float CompareAzimuth (FlightReport other);
-
-    /**
-     * Compares the bearing between this FlightReport and another.
-     * @param other The FlightReport we are comparing against.
-     * @return the difference between this FlightReport's bearing and other's.
-     */
-    float CompareBearing (FlightReport other);
 
     /**
      * Accessor function for the time of the flight report.
