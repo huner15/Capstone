@@ -9,6 +9,7 @@
 #ifndef INTRUDER_ID_H_
 #define INTRUDER_ID_H_
 
+#include <cstdlib>
 #include <string>
 #include <stdexcept>
 
