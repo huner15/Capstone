@@ -51,7 +51,7 @@ void sendOwnshipReports(ServerSocket ownshipSocket,
         /* TODO: Implement once Flight iterator is implemented.
         for (std::vector<FlightReport>::size_type j = 0;
              j < reports.size(); j++) {
-            ownshipReport = reports[j].createOwnshipReport();
+            ownshipReport = reports[j].CreateOwnshipReport();
         }
         */
     }

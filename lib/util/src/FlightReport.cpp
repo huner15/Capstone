@@ -1,9 +1,11 @@
 /*
- * FlightReport.cpp
- * Specific Atomics
- * Frank Poole, Dat Tran
- * 2-4-16
- * TODO: Description
+ * @file FlightReport.cpp
+ * @author Specific Atomics
+ * @author Frank Poole
+ * @author Alanna Buss
+ * @author Dat Tran
+ * @date 2-4-16
+ * @brief TODO: Description
  */
 
 #include <cdti.pb.h>
@@ -31,7 +33,7 @@ FlightReport::FlightReport() {
 
 
 
-OwnshipReport FlightReport::createOwnshipReport() {
+OwnshipReport FlightReport::CreateOwnshipReport() {
     OwnshipReport ownshipReport;
     ownshipReport.set_timestamp(_time);
     ownshipReport.set_ownship_latitude(_geographic_coordinate.GetLatitude());
@@ -44,7 +46,7 @@ OwnshipReport FlightReport::createOwnshipReport() {
     return ownshipReport;
 }
 
-AdsBReport FlightReport::createAdsBReport() {
+AdsBReport FlightReport::CreateAdsBReport() {
     AdsBReport adsBReport;
     adsBReport.set_timestamp(_time);
     adsBReport.set_latitude(_geographic_coordinate.GetLatitude());
@@ -58,7 +60,7 @@ AdsBReport FlightReport::createAdsBReport() {
     return adsBReport;
 }
 
-RadarReport FlightReport::createRadarReport() {
+RadarReport FlightReport::CreateRadarReport() {
     RadarReport radarReport;
 
     radarReport.set_timestamp(_time);
@@ -76,7 +78,7 @@ RadarReport FlightReport::createRadarReport() {
     return radarReport;
 }
 
-TcasReport FlightReport::createTcasReport() {
+TcasReport FlightReport::CreateTcasReport() {
     TcasReport tcasReport;
 
     tcasReport.set_id(_tcas_id.Get());

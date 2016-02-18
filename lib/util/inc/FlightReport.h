@@ -50,25 +50,25 @@ public:
      * Creates an ownship report from the data from this FlightReport.
      * @return an ownship report made from the data in this FlightReport.
      */
-    OwnshipReport createOwnshipReport();
+    OwnshipReport CreateOwnshipReport();
 
     /**
      * Creates an ADS-B report from the data in this FlightReport.
      * @return an ADS-B report made from the data in this FlightReport.
      */
-    AdsBReport createAdsBReport();
+    AdsBReport CreateAdsBReport();
 
     /**
      * Creates a radar report from the data in this FlightReport.
      * @return a radar report made from the data in this FlightReport.
      */
-    RadarReport createRadarReport();
+    RadarReport CreateRadarReport();
 
     /**
      * Creates a TCAS report from the data in this FlightReport
      * @return a TCAS report made from the data in this FlightReport.
      */
-    TcasReport createTcasReport();
+    TcasReport CreateTcasReport();
 
     /**
      * Creates a CDTI plane from the data in this FlightReport
