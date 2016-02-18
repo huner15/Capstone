@@ -1,14 +1,14 @@
 /**
-* @file CorrelationAircraft.h
+* @file SurveillanceReport.h
 * @author Specific Atomics
 * @author Andrea Savage
 * @date 2-13-16
-* @brief Constructs a CorrelationAircraft and converts a Cluster into one
- * most likely CorrelationAircraft.
+* @brief Constructs a SurveillanceReport and converts a Cluster into one
+ * most likely SurveillanceReport.
 */
 
-#ifndef SAAS_CORRELATIONAIRCRAFT_H
-#define SAAS_CORRELATIONAIRCRAFT_H
+#ifndef SURV_REPORT_H
+#define SURV_REPORT_H
 
 #include "Cluster.h"
 #include "SurveillanceReport.h"
@@ -37,7 +37,7 @@ protected:
 public:
     SurveillanceReport();
 
-    SurveillanceReport::SurveillanceReport(FlightReport flight_report);
+    SurveillanceReport(FlightReport flight_report);
 };
 
-#endif //SAAS_CORRELATIONAIRCRAFT_H
+#endif //SURV_REPORT_H

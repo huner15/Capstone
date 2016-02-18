@@ -11,7 +11,11 @@
 
 #include <stdint.h>
 #include "FlightReport.h"
+#include "CorrelationAircraft.h"
 #include <vector>
+
+#define TRUE 0
+#define FALSE 1
 
 using namespace std;
 
@@ -48,14 +52,14 @@ reportTwo);
      * @param cluster The cluster to convert
      * @return CDTIReport The generated report
      */
-//CorrelationAircraft ConvertAircraft(Cluster cluster);
+//CorrelationAircraft& ConvertAircraft(Cluster& cluster);
 
-float CalcDistance(FlightReport reportOne, FlightReport reportTwo);
+float CalcDistance(FlightReport& reportOne, FlightReport& reportTwo);
 
-float CalcSpeed(FlightReport reportOne, FlightReport reportTwo);
+float CalcSpeed(FlightReport& reportOne, FlightReport& reportTwo);
 
-float CalcHeading(FlightReport reportOne, FlightReport reportTwo);
+float CalcHeading(FlightReport& reportOne, FlightReport& reportTwo);
 
-int CompareReports(vector<FlightReport> reports);
+int CompareReports(vector<FlightReport>& reports);
 
 #endif //SAAS_CLUSTER_H

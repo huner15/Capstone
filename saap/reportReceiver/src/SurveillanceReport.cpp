@@ -9,14 +9,14 @@
 
 #include <FlightReport.h>
 #include "Cluster.h"
-#include "SurveillanceReport.h"
 #include "Velocity.h"
 #include <ctime>
+#include <SurveillanceReport.h>
 
 SurveillanceReport::SurveillanceReport(FlightReport flight_report) {
     _flight_report = flight_report;
 
-    _converted_geographic = flight_report.get_geographic_coordinate();
+    //_converted_geographic = flight_report.CalcGeographicCoordinate();
 }
 
 SurveillanceReport::SurveillanceReport() {
