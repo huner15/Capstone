@@ -20,6 +20,12 @@
 
 class ReportReceiver {
 public:
+    /*
+     * Takes in an OwnshipReport from the Simulation Server and sends it to
+     * Create Ownship to create a SurveillanceReport. Then changes out the
+     * ownship Surveillance report with the new one generated.
+     * @param report A report received from the Simulation Server
+     */
     void ReceiveOwnship (OwnshipReport report);
     void ReceiveTcas(TcasReport report);
     void ReceiveAdsb(AdsBReport report);
@@ -33,6 +39,11 @@ private:
     std::vector<SurveillanceReport> radarReports;
     SurveillanceReport ownship;
 
+    /*
+     * Takes the OwnshipReport and translates it to a Surveillance report.
+     * @param report A report received from the ReceiveOwnship.
+     * @return the created Surveillance Report
+     */
     SurveillanceReport createOwnshipSurveillanceReport(OwnshipReport report);
     SurveillanceReport createTcasSurveillanceReport(TcasReport report);
     SurveillanceReport createRadarSurveillanceReport(RadarReport report);

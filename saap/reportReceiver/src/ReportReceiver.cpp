@@ -8,9 +8,7 @@
 
 #include "ReportReceiver.h"
 
-/*
- * Takes the OwnshipReport and translates it to a Surveillance report.
- */
+
 SurveillanceReport ReportReceiver::createOwnshipSurveillanceReport(
         OwnshipReport report) {
 
@@ -24,13 +22,18 @@ SurveillanceReport ReportReceiver::createOwnshipSurveillanceReport(
     GeographicCoordinate geographicCoordinate = GeographicCoordinate
             (latitude, longitude, altitude);
     Velocity velocity = Velocity(east, down, north);
-    FlightReport flightReport = FlightReport(time, NULL, NULL, NULL,
-                                             geographicCoordinate, NULL,
+    FlightReport flightReport = FlightReport(time, TailNumber(""), NULL,
+                                             NULL,
+                                             geographicCoordinate,
+                                             SphericalCoordinate(0.0, 0.0,
+                                                                 0.0),
                                              velocity, OWNSHIP);
     SurveillanceReport surveillanceReport = SurveillanceReport(flightReport);
     return surveillanceReport;
 }
 
 void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
+    ownship = createOwnshipSurveillanceReport
+            (report);
 
 }
