@@ -18,7 +18,7 @@ public:
 
     void SendReports(ServerSocket client_socket);
 
-    void SendReport(ServerSocket client_socket, FlightReport *flight_report);
+    void SendReport(ServerSocket client_socket, FlightReport flight_report);
 };
 
 #endif

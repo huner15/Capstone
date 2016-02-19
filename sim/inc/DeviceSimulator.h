@@ -15,7 +15,6 @@
 class DeviceSimulator {
 protected:
     in_port_t _port;
-    //ServerSocket _server_socket;
 
     FlightSimulation *_flight_simulation;
 
@@ -27,7 +26,7 @@ public:
     virtual void SendReports(ServerSocket client_socket) = 0;
 
     virtual void SendReport(ServerSocket client_socket,
-                            FlightReport* flight_report) = 0;
+                            FlightReport flight_report) = 0;
 };
 
 #endif

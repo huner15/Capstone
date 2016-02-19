@@ -9,7 +9,7 @@
 #include "TcasSimulator.h"
 
 void TcasSimulator::SendReport(ServerSocket client_socket,
-                                FlightReport *flight_report) {
-    TcasReport tcas_report = flight_report->CreateTcasReport();
+                                FlightReport flight_report) {
+    TcasReport tcas_report = flight_report.CreateTcasReport();
     client_socket << tcas_report;
 }

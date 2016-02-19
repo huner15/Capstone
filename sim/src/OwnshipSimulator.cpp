@@ -14,13 +14,13 @@ void OwnshipSimulator::SendReports(ServerSocket client_socket) {
 
     while (ownship_flight.HasNextFlightReport()) {
         FlightReport ownship_report = ownship_flight.NextFlightReport();
-        this->SendReport(client_socket, &ownship_report);
+        this->SendReport(client_socket, ownship_report);
         sleep(1);
     }
 }
 
 void OwnshipSimulator::SendReport(ServerSocket client_socket,
-                                  FlightReport *flightReport) {
-    OwnshipReport ownship_report = flightReport->CreateOwnshipReport();
+                                  FlightReport flight_report) {
+    OwnshipReport ownship_report = flight_report.CreateOwnshipReport();
     client_socket << ownship_report;
 }

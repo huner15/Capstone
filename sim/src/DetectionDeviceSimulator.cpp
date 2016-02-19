@@ -17,7 +17,7 @@ void DetectionDeviceSimulator::SendReports(ServerSocket client_socket) {
             Flight detectedFlight = flights[i];
             if (detectedFlight.HasNextFlightReport()) {
                 FlightReport detected_report = detectedFlight.NextFlightReport();
-                this->SendReport(client_socket, &detected_report);
+                this->SendReport(client_socket, detected_report);
             }
         }
 

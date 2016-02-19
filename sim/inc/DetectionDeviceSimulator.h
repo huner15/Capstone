@@ -20,7 +20,7 @@ public:
     void SendReports(ServerSocket client_socket);
 
     virtual void SendReport(ServerSocket client_socket,
-                            FlightReport* flight_report) = 0;
+                            FlightReport flight_report) = 0;
 };
 
 #endif

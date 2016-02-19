@@ -85,7 +85,7 @@ public:
 
     /**
      * Accessor function for the tail number of the flight report.
-     * @return the tailnumber of the flight report.
+     * @return the tail number of the flight report.
      */
     TailNumber GetTailNumber();
 
