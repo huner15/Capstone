@@ -72,7 +72,9 @@ size_t Socket::recv(std::string &bfr, int flags) const {
 
 size_t Socket::recv(void *bfr, size_t len, int flags) const {
     ssize_t status = ::recv(m_sock, bfr, len, flags);
-
+    // TODO: Remove this print after debugging.
+    std::cout << "len: " << len << std::endl;
+    std::cout << "status: " << status << std::endl;
     if (status == -1) {
         std::cout << "Status == -1, errno == " << errno
         << "In Socket::recv" << std::endl;
