@@ -76,7 +76,7 @@ public:
     /**
      * Accept a connection and bind it to the new socket.
      */
-    void accept(ServerSocket &);
+    void accept(ServerSocket &sock);
 
 private:
     /**

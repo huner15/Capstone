@@ -21,8 +21,13 @@
 
 #include "SimulationFlightsIO.h"
 #include "ServerSocket.h"
+
 #include "DeviceSimulator.h"
+#include "DetectionDeviceSimulator.h"
+#include "OwnshipSimulator.h"
+#include "AdsbSimulator.h"
 #include "RadarSimulator.h"
+#include "TcasSimulator.h"
 
 /** Expected number of command line arguments. */
 const int EXPECTED_ARGUMENTS = 6;

@@ -9,19 +9,25 @@
 #ifndef DEVICE_SIMULATOR_H_
 #define DEVICE_SIMULATOR_H_
 
+#include "ServerSocket.h"
+#include "FlightSimulation.h"
+
 class DeviceSimulator {
-private:
-    int _id;
+protected:
     in_port_t _port;
+    //ServerSocket _server_socket;
+
     FlightSimulation *_flight_simulation;
 
 public:
-    DeviceSimulator() {};
+    DeviceSimulator(in_port_t port, FlightSimulation *flight_simulation);
 
-    DeviceSimulator(int id, in_port_t port, FlightSimulation *flightSimulation);
+    void Simulate();
 
-    virtual void sendReport(ServerSocket serverSocket,
-                            FlightReport* flightReport) = 0;
+    virtual void SendReports(ServerSocket client_socket) = 0;
+
+    virtual void SendReport(ServerSocket client_socket,
+                            FlightReport* flight_report) = 0;
 };
 
 #endif

@@ -7,88 +7,9 @@
  */
 
 #include "Server.h"
-/*
-typedef struct thread_args {
-    int id;
-    in_port_t port;
-    void(*send)(ServerSocket, FlightReport*);
-    FlightSimulation *flightSimulation;
-    bool isOwnship;
-} thread_args_t;
-*/
-void sendOwnshipReports(ServerSocket ownshipSocket,
-                        FlightReport *flightReport) {
-    OwnshipReport ownshipReport = flightReport->CreateOwnshipReport();
-    ownshipSocket << ownshipReport;
-}
 
-void sendAdsbReports(ServerSocket adsbSocket, FlightReport *flightReport) {
-    AdsBReport adsbReport = flightReport->CreateAdsBReport();
-    adsbSocket << adsbReport;
-}
-
-void sendRadarReports(ServerSocket radarSocket, FlightReport *flightReport) {
-    RadarReport radarReport = flightReport->CreateRadarReport();
-    radarSocket << radarReport;
-}
-
-void sendTcasReports(ServerSocket tcasSocket, FlightReport *flightReport) {
-    TcasReport tcasReport = flightReport->CreateTcasReport();
-    tcasSocket << tcasReport;
-}
-
-int startServer(in_port_t port, void(*send)(ServerSocket, FlightReport*),
-                FlightSimulation *flightSimulation, bool isOwnship) {
-    std::cout << "Successfully started server on port: " << port << std::endl;
-
-    try {
-        // Create a server to start listening for connections on the port.
-        ServerSocket server(port);
-
-        //while (true) {
-            ServerSocket client;
-            server.accept(client);
-            std::cout << "Client has connected." << std::endl;
-
-            std::vector<Flight> flights = flightSimulation->GetFlights();
-            Flight ownshipFlight = flights[0];
-
-            while (ownshipFlight.HasNextFlightReport()) {
-                std::cout << "true!!!" << std::endl;
-                if (isOwnship) {
-                    FlightReport ownshipReport =
-                            ownshipFlight.NextFlightReport();
-                    send(client, &ownshipReport);
-                }
-                else {
-                    for (std::vector<Flight>::size_type i = 1;
-                         i < flights.size(); i++) {
-                        Flight detectedFlight = flights[i];
-                        if (detectedFlight.HasNextFlightReport()) {
-                            FlightReport otherReport =
-                                    detectedFlight.NextFlightReport();
-                            send(client, &otherReport);
-                        }
-                    }
-                }
-
-                // Wait one second before sending the next ownship report.
-                sleep(SLEEP_TIME);
-            }
-        //}
-    }
-    catch (SocketException &e) {
-        std::cout << "Exception caught: " << e.description() << std::endl;
-        return EXIT_FAILURE;
-    }
-
-    return EXIT_SUCCESS;
-}
-
-void *startThread(void *thread_args) {
-    thread_args_t *args = (thread_args_t *) thread_args;
-    startServer(args->port, args->send, args->flightSimulation,
-                args->isOwnship);
+void *startSimulation(void *device_simulator) {
+    ((DeviceSimulator*) device_simulator)->Simulate();
     pthread_exit(NULL);
 }
 
@@ -101,17 +22,11 @@ int main(int argc, char *argv[]) {
     }
     else {
         pthread_t threads[NUM_THREADS];
-        thread_args_t ownship_args, adsb_args, radar_args, tcas_args;
-        std::string flight_simulation_file_name = argv[1];
-        FlightSimulation fs =
-                SimulationFlightsIO::ReadFile(flight_simulation_file_name);
+        FlightSimulation fs = SimulationFlightsIO::ReadFile(argv[1]);
 
-        ownship_args.id = OWNSHIP_THREAD_INDEX;
-        ownship_args.port = (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]);
-        ownship_args.send = sendOwnshipReports;
-        ownship_args.flightSimulation = &fs;
-        ownship_args.isOwnship = true;
-
+        OwnshipSimulator ownship_simulator(
+                (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]), &fs);
+        /*
         adsb_args.id = ADSB_THREAD_INDEX;
         adsb_args.port = (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]);
         adsb_args.send = sendAdsbReports;
@@ -129,22 +44,27 @@ int main(int argc, char *argv[]) {
         tcas_args.send = sendTcasReports;
         tcas_args.flightSimulation = &fs;
         tcas_args.isOwnship = false;
+        */
 
         // Create a new thread for each device simulation.
-        pthread_create(&threads[OWNSHIP_THREAD_INDEX], NULL, startThread,
-                       (void *) &ownship_args);
+        pthread_create(&threads[OWNSHIP_THREAD_INDEX], NULL, startSimulation,
+                       (void *) &ownship_simulator);
+        /*
         pthread_create(&threads[ADSB_THREAD_INDEX], NULL, startThread,
                        (void *) &adsb_args);
         pthread_create(&threads[RADAR_THREAD_INDEX], NULL, startThread,
                        (void *) &radar_args);
         pthread_create(&threads[TCAS_THREAD_INDEX], NULL, startThread,
                        (void *) &tcas_args);
+        */
 
         // Wait for all threads to complete.
         pthread_join(threads[OWNSHIP_THREAD_INDEX], NULL);
+        /*
         pthread_join(threads[ADSB_THREAD_INDEX], NULL);
         pthread_join(threads[RADAR_THREAD_INDEX], NULL);
         pthread_join(threads[TCAS_THREAD_INDEX], NULL);
+        */
     }
 
     // Deallocate any global objects allocated by the protobuf library.
