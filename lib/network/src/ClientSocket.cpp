@@ -107,7 +107,7 @@ const ClientSocket &ClientSocket::operator>>(
 
     // Read the protocol buffer size header (first four bytes).
     // TODO: This condition used to be ! instead of != 1.
-    if (!Socket::recv(&lenBfr, PROTOBUF_HEADER_LENGTH, MSG_PEEK)) {
+    if (Socket::recv(&lenBfr, PROTOBUF_HEADER_LENGTH, MSG_PEEK) == -1) {
         throw SocketException("Could not read header from socket.");
     }
 
@@ -115,7 +115,8 @@ const ClientSocket &ClientSocket::operator>>(
     ::google::protobuf::uint32 len = read_protobuf_header(lenBfr);
     char dataBuf[PROTOBUF_HEADER_LENGTH + len];
     // TODO: This condition used to be ! instead of != 1.
-    if (!Socket::recv(dataBuf, len + PROTOBUF_HEADER_LENGTH, MSG_WAITALL)) {
+    if (Socket::recv(dataBuf, len + PROTOBUF_HEADER_LENGTH, MSG_WAITALL)
+        == -1) {
         throw SocketException("Could not read from socket.");
     }
 
