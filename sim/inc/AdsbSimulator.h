@@ -17,7 +17,7 @@ public:
     AdsbSimulator(in_port_t port, FlightSimulation *flight_simulation):
             DetectionDeviceSimulator(port, flight_simulation) {};
 
-    void SendReport(ServerSocket client_socket, FlightReport flight_report);
+    void SendReport(ServerSocket& client_socket, FlightReport& flight_report);
 };
 
 #endif

@@ -8,8 +8,8 @@
 
 #include "RadarSimulator.h"
 
-void RadarSimulator::SendReport(ServerSocket client_socket,
-                                FlightReport flight_report) {
+void RadarSimulator::SendReport(ServerSocket& client_socket,
+                                FlightReport& flight_report) {
     RadarReport radar_report = flight_report.CreateRadarReport();
     client_socket << radar_report;
 }

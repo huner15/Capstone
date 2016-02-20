@@ -16,9 +16,9 @@ public:
     OwnshipSimulator(in_port_t port, FlightSimulation *flight_simulation):
             DeviceSimulator(port, flight_simulation) {};
 
-    void SendReports(ServerSocket client_socket);
+    void SendReports(ServerSocket& client_socket);
 
-    void SendReport(ServerSocket client_socket, FlightReport flight_report);
+    void SendReport(ServerSocket& client_socket, FlightReport& flight_report);
 };
 
 #endif

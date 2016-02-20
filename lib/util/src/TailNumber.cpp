@@ -47,16 +47,21 @@ std::string random_string(size_t length) {
 }
 
 TailNumber::TailNumber() {
-    _tail_number = random_string(_length);
+    _tail_number = random_string(_length).c_str();
 }
 
 TailNumber::TailNumber(std::string tail_number) {
+
     if (tail_number.length() == _length) {
-        _tail_number = tail_number;
+        _tail_number = tail_number.c_str();
     }
     else {
         throw std::out_of_range ("Tail Number must be six characters.");
     }
+}
+
+TailNumber::TailNumber(const TailNumber& other) {
+    _tail_number = other._tail_number.c_str();
 }
 
 TailNumber::~TailNumber() {

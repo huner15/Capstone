@@ -41,6 +41,8 @@ public:
      */
     TailNumber(std::string tail_number);
 
+    TailNumber(const TailNumber& other);
+
     /**
      * Deconstruct a tail number.
      */
@@ -51,6 +53,8 @@ public:
      * @returns the tail number
      */
     std::string Get() const;
+
+    //TailNumber& operator=(const TailNumber& other);
 
     /**
      * Checks to se if two TailNumbers are the same

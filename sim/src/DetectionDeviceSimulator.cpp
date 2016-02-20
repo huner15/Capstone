@@ -8,7 +8,7 @@
 
 #include "DetectionDeviceSimulator.h"
 
-void DetectionDeviceSimulator::SendReports(ServerSocket client_socket) {
+void DetectionDeviceSimulator::SendReports(ServerSocket& client_socket) {
     std::vector<Flight> flights = _flight_simulation->GetFlights();
     Flight ownship_flight = flights[0];
 

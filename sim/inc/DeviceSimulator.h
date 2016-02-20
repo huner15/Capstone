@@ -23,10 +23,10 @@ public:
 
     void Simulate();
 
-    virtual void SendReports(ServerSocket client_socket) = 0;
+    virtual void SendReports(ServerSocket& client_socket) = 0;
 
-    virtual void SendReport(ServerSocket client_socket,
-                            FlightReport flight_report) = 0;
+    virtual void SendReport(ServerSocket& client_socket,
+                            FlightReport& flight_report) = 0;
 };
 
 #endif
