@@ -27,11 +27,62 @@ public:
      * @param report A report received from the Simulation Server
      */
     void ReceiveOwnship (OwnshipReport report);
+    /*
+     * Takes in a TcasReport from the Simulation Server and sends it to
+     * CreateTcasSurveillanceReport to get the Surveillance report to add to
+     * the tcasReports.
+     */
     void ReceiveTcas(TcasReport report);
+    /*
+     * Takes in a AdsBReport from the Simulation Server and sends it to
+     * CreateAdsBSurveillanceReport to get the Surveillance report to add to
+     * the AdsBReports.
+     */
     void ReceiveAdsb(AdsBReport report);
+    /*
+    * Takes in a RadarReport from the Simulation Server and sends it to
+    * CreateRadarSurveillanceReport to get the Surveillance report to add to
+    * the RadarReports.
+    */
     void ReceiveRadar(RadarReport report);
 
+    /*
+     * Clears all the reports but ownship, so that they aren't confused with
+     * the next second's
+     */
     void clearReports();
+
+    /*
+     * Gets the tcasReports
+     * @return the current vector of tcasReports
+     */
+    std::vector<SurveillanceReport> getTcasReports(){
+        return tcasReports;
+    }
+
+    /*
+     * Gets the adsBReports
+     * @return the current vector of adsBReports
+     */
+    std::vector<SurveillanceReport> getAdsBReports(){
+        return adsbReports;
+    }
+
+    /*
+     * Gets the radarReports
+     * @return the current vector of radarReports
+     */
+    std::vector<SurveillanceReport> getRadarReports(){
+        return radarReports;
+    }
+
+    /*
+     * Gets the current ownship
+     * @return the current ownship
+     */
+    SurveillanceReport getOwnship (){
+        return ownship;
+    }
 
 private:
     std::vector<SurveillanceReport> tcasReports;
@@ -45,8 +96,24 @@ private:
      * @return the created Surveillance Report
      */
     SurveillanceReport createOwnshipSurveillanceReport(OwnshipReport report);
+
+    /*
+     * Takes the TcasReport and translates it into a Surveillance Report.
+     * @param report a Report received from ReceiveTcas.
+     * @return The created Surveillance Report
+     */
     SurveillanceReport createTcasSurveillanceReport(TcasReport report);
+    /*
+     * Takes the RadarReport and translates it to a Surveillance report.
+     * @param report A report received from the ReceiveRadar.
+     * @return the created Surveillance Report
+     */
     SurveillanceReport createRadarSurveillanceReport(RadarReport report);
+    /*
+     * Takes the AdsBReport and translates it to a Surveillance report.
+     * @param report A report received from the ReceiveAdsB.
+     * @return the created Surveillance Report
+     */
     SurveillanceReport createAdsBSurveillanceReport(AdsBReport report);
 
 };
