@@ -38,7 +38,7 @@ public:
     /**
      * Close the socket.
      */
-    virtual ~ClientSocket() { };
+    virtual ~ClientSocket() {};
 
     /**
      * Send string data to the connected host.

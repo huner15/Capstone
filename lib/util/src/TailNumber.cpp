@@ -47,13 +47,13 @@ std::string random_string(size_t length) {
 }
 
 TailNumber::TailNumber() {
-    _tail_number = random_string(_length).c_str();
+    _tail_number = random_string(_length);
 }
 
 TailNumber::TailNumber(std::string tail_number) {
 
     if (tail_number.length() == _length) {
-        _tail_number = tail_number.c_str();
+        _tail_number = tail_number;
     }
     else {
         throw std::out_of_range ("Tail Number must be six characters.");
@@ -61,7 +61,7 @@ TailNumber::TailNumber(std::string tail_number) {
 }
 
 TailNumber::TailNumber(const TailNumber& other) {
-    _tail_number = other._tail_number.c_str();
+    _tail_number = other.Get();
 }
 
 TailNumber::~TailNumber() {
@@ -73,4 +73,14 @@ std::string TailNumber::Get() const {
 
 bool TailNumber::operator==(TailNumber tail_number) {
     return tail_number.Get().compare(_tail_number) == 0;
+}
+
+TailNumber& TailNumber::operator = (const TailNumber &other) {
+    if (this != &other) {
+        //_tail_number = other._tail_number;
+        //copy(_tail_number, other._tail_number);
+        _tail_number = std::string(other._tail_number);
+    }
+
+    return *this;
 }

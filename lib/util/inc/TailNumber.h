@@ -48,6 +48,8 @@ public:
      */
     ~TailNumber();
 
+    TailNumber& operator = (const TailNumber &other);
+
     /**
      * Returns the tail number as a mutable string.
      * @returns the tail number
@@ -60,7 +62,7 @@ public:
      * Checks to se if two TailNumbers are the same
      * @return boolean stating whether two booleans are the same.
      */
-    bool operator==(TailNumber tail_number);
+    bool operator == (TailNumber tail_number);
 };
 
 #endif

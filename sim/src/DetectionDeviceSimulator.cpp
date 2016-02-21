@@ -13,10 +13,12 @@ void DetectionDeviceSimulator::SendReports(ServerSocket& client_socket) {
     Flight ownship_flight = flights[0];
 
     while (ownship_flight.HasNextFlightReport()) {
+        ownship_flight.NextFlightReport();
         for (std::vector<Flight>::size_type i = 1; i < flights.size(); i++) {
-            Flight detectedFlight = flights[i];
-            if (detectedFlight.HasNextFlightReport()) {
-                FlightReport detected_report = detectedFlight.NextFlightReport();
+            Flight detected_flight = flights[i];
+            if (detected_flight.HasNextFlightReport()) {
+                FlightReport detected_report =
+                        detected_flight.NextFlightReport();
                 this->SendReport(client_socket, detected_report);
             }
         }

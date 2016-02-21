@@ -22,6 +22,7 @@ void DeviceSimulator::Simulate() {
         server_socket.accept(client_socket);
         std::cout << "Client has connected on port: " << _port << std::endl;
         this->SendReports(client_socket);
+        std::cout << "Closing connection on port: " << _port << std::endl;
     }
     catch (SocketException &e) {
         std::cout << "Exception caught: " << e.description() << std::endl;

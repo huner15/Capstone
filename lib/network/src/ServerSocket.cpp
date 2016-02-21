@@ -24,7 +24,6 @@ ServerSocket::ServerSocket(const in_port_t port) {
 }
 
 ServerSocket::~ServerSocket() {
-
 }
 
 const ServerSocket &ServerSocket::operator<<(const std::string &s) const {
