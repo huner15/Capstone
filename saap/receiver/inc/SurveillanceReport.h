@@ -34,6 +34,7 @@ protected:
      * Geographic location converted to Spherical coordinates.
      */
     GeographicCoordinate _converted_geographic;
+
 public:
     SurveillanceReport();
 
