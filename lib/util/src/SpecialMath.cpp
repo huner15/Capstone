@@ -27,14 +27,27 @@ namespace SpecialMath {
 
     double LineDistance(Saas_Util::Vector<double, 3> pointOnLine,Saas_Util::Vector<double, 3> directionOfLine,
                         Saas_Util::Vector<double, 3> referencePoint){
-        Saas_Util::Vector<double, 3> v = directionOfLine;
+        Saas_Util::Vector<double, 3> v;
         Saas_Util::Vector<double, 3> w;
+        Saas_Util::Vector<double, 3> endPoint;
+        endPoint.x = pointOnLine.x + directionOfLine.x*10;
+        endPoint.y = pointOnLine.y + directionOfLine.y*10;
+        endPoint.z = pointOnLine.z + directionOfLine.z*10;
         w.x = referencePoint.x - pointOnLine.x;
         w.y = referencePoint.y - pointOnLine.y;
         w.z = referencePoint.z - pointOnLine.z;
-
+        v.x = endPoint.x - pointOnLine.x;
+        v.y = endPoint.y - pointOnLine.y;
+        v.z = endPoint.z - pointOnLine.z;
         double c1 = dot(w, v);
+        if(c1 <= 0)
+            return DistanceFormula(referencePoint, pointOnLine);
+
+
+
         double c2 = dot(v, v);
+        if(c2 <= c1)
+            return DistanceFormula(referencePoint, endPoint);
         double b = c1/c2;
 
         v.x = pointOnLine.x + b*v.x;
@@ -43,6 +56,8 @@ namespace SpecialMath {
         w.x = referencePoint.x;
         w.y = referencePoint.y;
         w.z = referencePoint.z;
+        
+
         return DistanceFormula<double, 3>(w, v);
     }
 

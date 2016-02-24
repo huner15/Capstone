@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['down',['down',['../struct_correlation_aircraft.html#ad2d19311c4e6cbcdb5a3a5508771422a',1,'CorrelationAircraft']]]
+  ['adsb',['adsb',['../struct_cluster.html#ac346650a431d01761d2f91f4d658f20f',1,'Cluster']]],
+  ['allowcomments_5f',['allowComments_',['../class_json_1_1_features.html#a33afd389719624b6bdb23950b3c346c9',1,'Json::Features']]],
+  ['allowdroppednullplaceholders_5f',['allowDroppedNullPlaceholders_',['../class_json_1_1_features.html#a5076aa72c05c7596ac339ede36c97a6a',1,'Json::Features']]],
+  ['allownumerickeys_5f',['allowNumericKeys_',['../class_json_1_1_features.html#aff3cb16b79d15d3d761b11a0dd6d4d6b',1,'Json::Features']]]
 ];

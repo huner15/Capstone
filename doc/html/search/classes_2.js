@@ -8,5 +8,5 @@ var searchData=
   ['cluster',['Cluster',['../struct_cluster.html',1,'']]],
   ['commentstyle',['CommentStyle',['../struct_json_1_1_comment_style.html',1,'Json']]],
   ['concurrentbagstack',['ConcurrentBagStack',['../class_silent_orbit_1_1_protocol_buffers_1_1_concurrent_bag_stack.html',1,'SilentOrbit::ProtocolBuffers']]],
-  ['correlationaircraft',['CorrelationAircraft',['../struct_correlation_aircraft.html',1,'']]]
+  ['correlationaircraft',['CorrelationAircraft',['../class_correlation_aircraft.html',1,'']]]
 ];
