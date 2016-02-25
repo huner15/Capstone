@@ -14,7 +14,7 @@
 class AdsbSimulator: public DetectionDeviceSimulator {
 private:
 public:
-    AdsbSimulator(in_port_t port, FlightSimulation *flight_simulation):
+    AdsbSimulator(in_port_t port, FlightSimulation& flight_simulation):
             DetectionDeviceSimulator(port, flight_simulation) {};
 
     void SendReport(ServerSocket& client_socket, FlightReport& flight_report);

@@ -16,10 +16,10 @@ class DeviceSimulator {
 protected:
     in_port_t _port;
 
-    FlightSimulation *_flight_simulation;
+    FlightSimulation& _flight_simulation;
 
 public:
-    DeviceSimulator(in_port_t port, FlightSimulation *flight_simulation);
+    DeviceSimulator(in_port_t port, FlightSimulation& flight_simulation);
 
     void Simulate();
 

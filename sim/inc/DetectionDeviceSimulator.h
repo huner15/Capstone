@@ -14,7 +14,7 @@
 class DetectionDeviceSimulator: public DeviceSimulator {
 public:
     DetectionDeviceSimulator(in_port_t port,
-                             FlightSimulation *flight_simulation):
+                             FlightSimulation& flight_simulation):
             DeviceSimulator(port, flight_simulation) {};
 
     void SendReports(ServerSocket& client_socket);

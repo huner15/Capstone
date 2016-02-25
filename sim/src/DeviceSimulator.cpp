@@ -9,9 +9,9 @@
 #include "DeviceSimulator.h"
 
 DeviceSimulator::DeviceSimulator(in_port_t port,
-                                 FlightSimulation *flight_simulation) {
+                                 FlightSimulation& flight_simulation):
+        _flight_simulation(flight_simulation) {
     _port = port;
-    _flight_simulation = flight_simulation;
 }
 
 void DeviceSimulator::Simulate() {

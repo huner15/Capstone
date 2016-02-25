@@ -9,7 +9,7 @@
 #include "OwnshipSimulator.h"
 
 void OwnshipSimulator::SendReports(ServerSocket& client_socket) {
-    std::vector<Flight> flights = _flight_simulation->GetFlights();
+    std::vector<Flight> flights = _flight_simulation.GetFlights();
     Flight ownship_flight = flights[0];
 
     while (ownship_flight.HasNextFlightReport()) {

@@ -14,7 +14,7 @@
 class RadarSimulator: public DetectionDeviceSimulator {
 private:
 public:
-    RadarSimulator(in_port_t port, FlightSimulation *flight_simulation):
+    RadarSimulator(in_port_t port, FlightSimulation& flight_simulation):
             DetectionDeviceSimulator(port, flight_simulation) {};
 
     void SendReport(ServerSocket& client_socket, FlightReport& flight_report);

@@ -13,7 +13,7 @@
 
 class OwnshipSimulator: public DeviceSimulator {
 public:
-    OwnshipSimulator(in_port_t port, FlightSimulation *flight_simulation):
+    OwnshipSimulator(in_port_t port, FlightSimulation& flight_simulation):
             DeviceSimulator(port, flight_simulation) {};
 
     void SendReports(ServerSocket& client_socket);

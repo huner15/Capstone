@@ -26,13 +26,13 @@ int main(int argc, char *argv[]) {
 
         // Create a simulator of each device type using the simulation data.
         OwnshipSimulator ownship_simulator(
-                (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]), &fs);
+                (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]), fs);
         AdsbSimulator adsb_simulator(
-                (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]), &fs);
+                (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]), fs);
         RadarSimulator radar_simulator(
-                (in_port_t) atoi(argv[RADAR_THREAD_INDEX + 2]), &fs);
+                (in_port_t) atoi(argv[RADAR_THREAD_INDEX + 2]), fs);
         TcasSimulator tcas_simulator(
-                (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]), &fs);
+                (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]), fs);
 
         // Create a new thread for each device simulation.
         pthread_create(&threads[OWNSHIP_THREAD_INDEX], NULL, startSimulation,
