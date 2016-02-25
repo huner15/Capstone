@@ -12,16 +12,21 @@
 #include <string>
 
 #include "ClientSocket.h"
+#include "ReportReceiver.h"
 
 class DeviceReceiver {
 private:
     std::string _host;
     in_port_t _port;
 
-public:
-    DeviceReceiver() {};
+protected:
+    ReportReceiver _report_receiver;
 
-    DeviceReceiver(std::string host, in_port_t port);
+public:
+    DeviceReceiver();
+
+    DeviceReceiver(std::string host, in_port_t port,
+                   ReportReceiver& report_receiver);
 
     void Receive();
 

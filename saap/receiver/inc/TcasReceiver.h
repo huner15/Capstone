@@ -14,8 +14,10 @@
 
 class TcasReceiver: public DeviceReceiver {
 public:
-    TcasReceiver(std::string host, in_port_t port):
-    DeviceReceiver(host, port) {};
+    TcasReceiver(std::string host, in_port_t port,
+                 ReportReceiver& report_receiver):
+            DeviceReceiver(host, port, report_receiver) {
+    };
 
     void ReceiveReport(ClientSocket& client_socket);
 

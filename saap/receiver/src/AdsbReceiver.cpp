@@ -8,11 +8,15 @@
 
 #include "AdsbReceiver.h"
 
+AdsbReceiver::AdsbReceiver(std::string host, in_port_t port,
+                           ReportReceiver &report_receiver):
+        DeviceReceiver(host, port, report_receiver) {
+}
+
 void AdsbReceiver::ReceiveReport(ClientSocket& client_socket) {
     AdsBReport adsb_report;
     client_socket >> adsb_report;
-    PrintReport(adsb_report);
-    std::cout << std::endl;
+    _report_receiver.ReceiveAdsb(adsb_report);
 }
 
 void AdsbReceiver::PrintReport(AdsBReport& adsb_report) {

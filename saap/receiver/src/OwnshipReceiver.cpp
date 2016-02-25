@@ -8,11 +8,15 @@
 
 #include "OwnshipReceiver.h"
 
+OwnshipReceiver::OwnshipReceiver(std::string host, in_port_t port,
+                                 ReportReceiver& report_receiver):
+        DeviceReceiver(host, port, report_receiver) {
+}
+
 void OwnshipReceiver::ReceiveReport(ClientSocket &client_socket) {
-    OwnshipReport ownshipReport;
-    client_socket >> ownshipReport;
-    PrintReport(ownshipReport);
-    std::cout << std::endl;
+    OwnshipReport ownship_report;
+    client_socket >> ownship_report;
+    _report_receiver.ReceiveOwnship(ownship_report);
 }
 
 void OwnshipReceiver::PrintReport(OwnshipReport& ownship_report) {

@@ -22,7 +22,7 @@ SurveillanceReport ReportReceiver::CreateOwnshipSurveillanceReport(
     GeographicCoordinate geographic_coordinate = GeographicCoordinate
             (latitude, longitude, altitude);
     Velocity velocity = Velocity(east, down, north);
-    FlightReport flight_report = FlightReport(time, TailNumber(""), NULL,
+    FlightReport flight_report = FlightReport(time, TailNumber("      "), NULL,
                                               NULL,
                                               geographic_coordinate,
                                               SphericalCoordinate(0.0, 0.0,
@@ -44,8 +44,9 @@ SurveillanceReport ReportReceiver::CreateTcasSurveillanceReport(
     SphericalCoordinate spherical_coordinate = SphericalCoordinate(range, 0.0,
                                                                    bearing);
 
-    FlightReport flight_report = FlightReport(NULL, TailNumber(""), tcas_id,
-                                              NULL, geographic_coordinate,
+    FlightReport flight_report = FlightReport(NULL, TailNumber("      "),
+                                              tcas_id, NULL,
+                                              geographic_coordinate,
                                               spherical_coordinate, velocity,
                                               TCAS);
 
@@ -98,7 +99,7 @@ SurveillanceReport ReportReceiver::CreateRadarSurveillanceReport(
                                                                    azimuth);
     Velocity velocity = Velocity(east, down, north);
 
-    FlightReport flight_report = FlightReport(time, TailNumber(""), NULL,
+    FlightReport flight_report = FlightReport(time, TailNumber("      "), NULL,
                                               radar_id, geographic_coordinate,
                                               spherical_coordinate, velocity,
                                               RADAR);

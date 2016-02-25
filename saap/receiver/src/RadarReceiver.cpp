@@ -8,11 +8,15 @@
 
 #include "RadarReceiver.h"
 
+RadarReceiver::RadarReceiver(std::string host, in_port_t port,
+                             ReportReceiver &report_receiver):
+        DeviceReceiver(host, port, report_receiver) {
+}
+
 void RadarReceiver::ReceiveReport(ClientSocket& client_socket) {
     RadarReport radar_report;
     client_socket >> radar_report;
-    PrintReport(radar_report);
-    std::cout << std::endl;
+    _report_receiver.ReceiveRadar(radar_report);
 }
 
 void RadarReceiver::PrintReport(RadarReport& radar_report) {

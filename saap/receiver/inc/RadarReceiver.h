@@ -14,8 +14,8 @@
 
 class RadarReceiver: public DeviceReceiver {
 public:
-    RadarReceiver(std::string host, in_port_t port):
-    DeviceReceiver(host, port) {};
+    RadarReceiver(std::string host, in_port_t port,
+                  ReportReceiver& report_receiver);
 
     void ReceiveReport(ClientSocket& client_socket);
 

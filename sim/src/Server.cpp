@@ -8,7 +8,7 @@
 
 #include "Server.h"
 
-void* startSimulation(void *device_simulator) {
+void* StartSimulation(void *device_simulator) {
     ((DeviceSimulator *) device_simulator)->Simulate();
     pthread_exit(NULL);
 }
@@ -35,13 +35,13 @@ int main(int argc, char *argv[]) {
                 (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]), fs);
 
         // Create a new thread for each device simulation.
-        pthread_create(&threads[OWNSHIP_THREAD_INDEX], NULL, startSimulation,
+        pthread_create(&threads[OWNSHIP_THREAD_INDEX], NULL, StartSimulation,
                        (void *) &ownship_simulator);
-        pthread_create(&threads[ADSB_THREAD_INDEX], NULL, startSimulation,
+        pthread_create(&threads[ADSB_THREAD_INDEX], NULL, StartSimulation,
                        (void *) &adsb_simulator);
-        pthread_create(&threads[RADAR_THREAD_INDEX], NULL, startSimulation,
+        pthread_create(&threads[RADAR_THREAD_INDEX], NULL, StartSimulation,
                        (void *) &radar_simulator);
-        pthread_create(&threads[TCAS_THREAD_INDEX], NULL, startSimulation,
+        pthread_create(&threads[TCAS_THREAD_INDEX], NULL, StartSimulation,
                        (void *) &tcas_simulator);
 
         // Wait for all threads to complete.

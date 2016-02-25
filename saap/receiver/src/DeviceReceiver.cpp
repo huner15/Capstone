@@ -8,7 +8,9 @@
 
 #include "DeviceReceiver.h"
 
-DeviceReceiver::DeviceReceiver(std::string host, in_port_t port) {
+DeviceReceiver::DeviceReceiver(std::string host, in_port_t port,
+                               ReportReceiver& report_receiver):
+        _report_receiver(report_receiver) {
     _host = host;
     _port = port;
 }

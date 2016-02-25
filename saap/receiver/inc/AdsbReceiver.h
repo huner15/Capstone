@@ -14,8 +14,8 @@
 
 class AdsbReceiver: public DeviceReceiver {
 public:
-    AdsbReceiver(std::string host, in_port_t port):
-    DeviceReceiver(host, port) {};
+    AdsbReceiver(std::string host, in_port_t port,
+                 ReportReceiver& report_receiver);
 
     void ReceiveReport(ClientSocket& client_socket);
 

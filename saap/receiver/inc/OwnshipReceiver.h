@@ -15,8 +15,8 @@
 class OwnshipReceiver: public DeviceReceiver {
 private:
 public:
-    OwnshipReceiver(std::string host, in_port_t port):
-            DeviceReceiver(host, port) {};
+    OwnshipReceiver(std::string host, in_port_t port,
+                    ReportReceiver& report_receiver);
 
     void ReceiveReport(ClientSocket& client_socket);
 

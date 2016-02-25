@@ -11,8 +11,7 @@
 void TcasReceiver::ReceiveReport(ClientSocket &client_socket) {
     TcasReport tcas_report;
     client_socket >> tcas_report;
-    PrintReport(tcas_report);
-    std::cout << std::endl;
+    _report_receiver.ReceiveTcas(tcas_report);
 }
 
 void TcasReceiver::PrintReport(TcasReport &tcas_report) {
