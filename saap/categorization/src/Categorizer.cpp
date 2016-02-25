@@ -23,7 +23,7 @@ std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft> aircraft);
 /*
  *
  */
-void Categorize(std::vector<CorrelationAircraft> aircraft) {
+void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     std::vector<CDTIPlane>* planes = MakeCDTI(aircraft);
     CDTIReport report;
 
@@ -36,18 +36,18 @@ void Categorize(std::vector<CorrelationAircraft> aircraft) {
     socket_to_cdti << report;
 }
 
-CDTIPlane MakeCDTIPlane(CorrelationAircraft aircraft)
+CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft)
 {
-    FlightReport report = aircraft;
+    FlightReport report = *aircraft;
     return report.CreateCdtiPlane();
 }
 
-std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft> aircraft) {
+std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
     std::vector<CDTIPlane>* planes;
 
-    for(int i = 0; i < aircraft.size(); i++)
+    for(int i = 0; i < aircraft->size(); i++)
     {
-        planes->push_back(MakeCDTIPlane(aircraft[i]));
+        planes->push_back(MakeCDTIPlane(aircraft->[i]));
     }
 
     return planes;

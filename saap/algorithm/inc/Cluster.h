@@ -20,46 +20,29 @@
 using namespace std;
 
 /**
- * A struct representing one aircraft in the airspace.
+ * A class representing one aircraft in the airspace.
  * All Surveillance Reports may not exist.
  */
-typedef struct Cluster
-{
+class Cluster : public Cluster {
+protected:
     /** Report from the TCAS hardware. */
-    FlightReport tcas;
+    FlightReport *_tcas;
     /** Report from the ADS-B hardware. */
-    FlightReport adsb;
+    FlightReport *_adsb;
     /** Report from the radar hardware. */
-    FlightReport radar;
+    FlightReport *_radar;
     /** Predicted aircraft location for the next second. */
-    Velocity prediction;
-} Cluster;
+    Velocity _prediction;
+public:
+    Cluster();
 
-int Correlate(std::vector<FlightReport> adsb,
-              std::vector<FlightReport> tcas, std::vector<FlightReport> radar);
+    ~Cluster();
 
-int CheckClusterCount();
+    void SetRadar(FlightReport *radar);
 
-float CalcEuclidDistance(FlightReport reportOne, FlightReport
-reportTwo);
+    void SetADSB(FlightReport *adsb);
 
-/*
-     * Converts a Cluster to a CorrelationAircraft, calculate
-     * correct location, heading, etc.
-     * This means that this cluster has been determined
-     * to be exactly one aircraft.
-     *
-     * @param cluster The cluster to convert
-     * @return CDTIReport The generated report
-     */
-//CorrelationAircraft& ConvertAircraft(Cluster& cluster);
-
-float CalcDistance(FlightReport& reportOne, FlightReport& reportTwo);
-
-float CalcSpeed(FlightReport& reportOne, FlightReport& reportTwo);
-
-float CalcHeading(FlightReport& reportOne, FlightReport& reportTwo);
-
-int CompareReports(vector<FlightReport>& reports);
+    void SetTCAS(FlightReport *tcas);
+};
 
 #endif //SAAS_CLUSTER_H

@@ -28,3 +28,7 @@ CorrelationAircraft::CorrelationAircraft(std::time_t time, TailNumber
 CorrelationAircraft::CorrelationAircraft() {
 
 }
+
+CorrelationAircraft::~CorrelationAircraft() {
+    ~FlightReport();
+}

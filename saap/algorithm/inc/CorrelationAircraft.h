@@ -24,6 +24,7 @@ using namespace std;
  * All fields may not be populated.
  */
 class CorrelationAircraft: public FlightReport {
+
 protected:
     /** Predicted vector the aircraft will be facing in following
     * seconds. */
@@ -37,6 +38,8 @@ public:
     tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
     SphericalCoordinate spherical_coordinate, Velocity velocity,
     Velocity predictedVector, Velocity predictedLoc, Device type);
+
+    ~CorrelationAircraft();
 };
 
 #endif //SAAS_CORRELATIONAIRCRAFT_H
