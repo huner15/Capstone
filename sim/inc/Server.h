@@ -2,8 +2,9 @@
  * @file Server.h
  * @author Specific Atomics
  * @authors Frank Poole
- * @date 2-18-16
- * @brief TODO: Description
+ * @date 2-25-16
+ * @brief The simulation server maintains multiple device simulators on
+ * individual threads to simulate flight data.
  */
 
 #ifndef SERVER_H_
@@ -14,13 +15,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#include <adsb.pb.h>
-#include <ownship.pb.h>
-#include <radar.pb.h>
-#include <tcas.pb.h>
-
 #include "SimulationFlightsIO.h"
-#include "ServerSocket.h"
 
 #include "DeviceSimulator.h"
 #include "DetectionDeviceSimulator.h"
@@ -41,9 +36,15 @@ const int ADSB_THREAD_INDEX = 1;
 const int RADAR_THREAD_INDEX = 2;
 const int TCAS_THREAD_INDEX = 3;
 
-/** Time to sleep in seconds before sending the next report. */
-const int SLEEP_TIME = 1;
-
+/**
+ * Start a multithreaded simulation server which simulates ADS-B, TCAS, Radar,
+ * and Ownship devices on separate network ports.
+ * usage: run_sim flight_simulation.json ownship_port adsb_port radar_port
+ * tcas_port"
+ * @param argc the number of command line arguments (including the
+ * executable's name)
+ * @param argv the command line arguments
+ */
 int main(int argc, char *argv[]);
 
 #endif

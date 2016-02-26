@@ -2,8 +2,9 @@
  * @file DetectionDeviceSimulator.cpp
  * @author Specific Atomics
  * @authors Frank Poole
- * @date 2-18-16
- * @brief TODO: Description
+ * @date 2-25-16
+ * @brief DetectionDeviceSimulator implements the functionality of an abstract
+ * device which may send multiple reports per cycle.
  */
 
 #include "DetectionDeviceSimulator.h"
@@ -23,6 +24,6 @@ void DetectionDeviceSimulator::SendReports(ServerSocket& client_socket) {
             }
         }
 
-        sleep(1);
+        sleep(_SLEEP_TIME);
     }
 }

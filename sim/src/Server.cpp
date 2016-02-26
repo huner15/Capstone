@@ -2,8 +2,9 @@
  * @file Server.cpp
  * @author Specific Atomics
  * @authors Frank Poole
- * @date 2-18-16
- * @brief TODO: Description
+ * @date 2-25-16
+ * @brief Server implements the functionality of a multi-surveillance device
+ * simulator.
  */
 
 #include "Server.h"
