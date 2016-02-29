@@ -14,7 +14,7 @@
 #include "FlightSimulation.h"
 
 /**
- * A Device Simulator is an abstract representation of an aircraft surveillance
+ * A DeviceSimulator is an abstract representation of an aircraft surveillance
  * device simulator. A device simulation occurs on a separate TCP/IP network
  * port and is designed to exist on a separate thread. The simulation behavior
  * is dependent on the behavior of SendReports() which in turn is dependent on

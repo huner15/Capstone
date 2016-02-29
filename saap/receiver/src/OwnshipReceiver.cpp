@@ -2,8 +2,8 @@
  * @file OwnshipReceiver.cpp
  * @author Specific Atomics
  * @author Frank Poole
- * @date 2-21-16
- * @brief TODO make description
+ * @date 2-28-16
+ * @brief Implements the functionality of OwnshipReceiver.
  */
 
 #include "OwnshipReceiver.h"

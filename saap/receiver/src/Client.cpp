@@ -3,7 +3,8 @@
  * @author Specific Atomics
  * @author Frank Poole
  * @date 2-21-16
- * @brief TODO: Description
+ * @brief Starts the correlation engine - including receivers for ADS-B, TCAS,
+ * Radar, and Ownship devices.
  */
 
 #include "Client.h"

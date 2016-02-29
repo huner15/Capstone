@@ -3,7 +3,7 @@
  * @author Specific Atomics
  * @author Frank Poole
  * @date 2-21-16
- * @brief TODO make description
+ * @brief Declares constants used by the client application.
  */
 
 #ifndef CLIENT_H_
