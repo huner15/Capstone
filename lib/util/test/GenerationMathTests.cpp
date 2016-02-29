@@ -48,3 +48,25 @@ TEST(DistanceBetweenTwoCoordinates, FarAway) {
             coord1, coord2),5);
 }
 
+TEST(ToDegrees, WholeNumbers) {
+    ASSERT_NEAR(180, GenerationMath::ToDegrees(3.14159), .01);
+    ASSERT_NEAR(57.2958, GenerationMath::ToDegrees(1), .01);
+}
+
+
+TEST(AbsoluteBearingBetweenTwoCoordinates, SameLatitude) {
+    GeographicCoordinate coord1 (16, 16, 25000);
+    GeographicCoordinate coord2 (12, 12, 25000);
+    ASSERT_NEAR(224.63804446443481, GenerationMath::AbsoluteBearingBetweenTwoCoordinates(
+            coord1, coord2),.001);
+}
+
+TEST(DestinationPoint, GoStraightNorth) {
+    GeographicCoordinate coord1 (16, 16, 25000);
+    Velocity vel (100, 100, 100);
+    GeographicCoordinate dest = GenerationMath::DestinationPoint(coord1, vel, 0);
+    //std::cout << "\n" << dest.GetLatitude() << " " << dest.GetLongitude() << std::endl;
+    ASSERT_NEAR(16.004, dest.GetLatitude(),.005);
+    ASSERT_NEAR(16.0, dest.GetLongitude(),.005);
+}
+

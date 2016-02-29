@@ -10,6 +10,7 @@
 #define GENERATIONMATH_H_
 
 #include "GeographicCoordinate.h"
+#include "Velocity.h"
 
 class GenerationMath {
 private:
@@ -21,6 +22,14 @@ public:
 
     static double ToRadians(double degrees);
 
+    static double ToDegrees(double radians);
+
+    static double AbsoluteBearingBetweenTwoCoordinates(
+            GeographicCoordinate coord1, GeographicCoordinate coord2);
+
+    static GeographicCoordinate DestinationPoint(
+            GeographicCoordinate start,
+            Velocity velocity, double current_bearing);
 
 
 };
