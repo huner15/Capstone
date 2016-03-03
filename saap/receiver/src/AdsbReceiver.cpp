@@ -17,6 +17,7 @@ void AdsbReceiver::ReceiveReport(ClientSocket& client_socket) {
     AdsBReport adsb_report;
     client_socket >> adsb_report;
     _report_receiver.ReceiveAdsb(adsb_report);
+    PrintReport(adsb_report);
 }
 
 void AdsbReceiver::PrintReport(AdsBReport& adsb_report) {
