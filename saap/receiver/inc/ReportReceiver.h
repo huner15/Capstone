@@ -19,37 +19,108 @@
 
 class ReportReceiver {
 private:
-    std::vector<SurveillanceReport> _tcas_reports;
-    std::vector<SurveillanceReport> _adsb_reports;
-    std::vector<SurveillanceReport> _radar_reports;
-    SurveillanceReport _ownship;
+
+
+
+    class HeldReports {
+    private:
+        std::vector<SurveillanceReport *> _tcas_reports;
+        std::vector<SurveillanceReport *> _adsb_reports;
+        std::vector<SurveillanceReport *> _radar_reports;
+        FlightReport _ownship;
+
+        /*
+         * Clears the _tcas_reports so it doesn't have overlapping reports.
+         */
+        void clearTcas();
+        /*
+        * Clears the _adsb_reports so it doesn't have overlapping reports.
+        */
+        void clearAdsb();
+        /*
+        * Clears the _radar_reports so it doesn't have overlapping reports.
+        */
+        void clearRadar();
+        /*
+         * Creates a copy of the specified vector. This copy uses the ownship
+         * FlightReport to make the Surveillance report relative. This should
+         * only be called on a copy of the held report.
+         */
+        std::vector<SurveillanceReport *>* makeCopyOfVector
+                (std::vector<SurveillanceReport *>);
+
+
+    public:
+        //HeldReports(CorrelationEngine corEngine);
+
+        std::vector<SurveillanceReport *>* getTcas();
+        std::vector<SurveillanceReport *>* getAdsb();
+        std::vector<SurveillanceReport *>* getRadar();
+
+        /*
+         * Adds a SurveillanceReport pointer to the Tcas Reports
+         */
+        void addTcasReport(SurveillanceReport * report);
+        /*
+         * Adds a SurveillanceReport pointer to the Adsb Reports
+         */
+        void addAdsBReport(SurveillanceReport * report);
+        /*
+         * Adds a SurveillanceReport pointer to the Radar Reports
+         */
+        void addRadarReport(SurveillanceReport * report);
+        /*
+         * Changes the current ownship FlightReport
+         */
+        void changeOwnship(FlightReport report);
+        /*
+         * This should only be called on a copy of Held Reports and
+         */
+        void callCorrelate();
+        HeldReports makeCopy();
+    };
+
+    bool _is_copying;
+    pthread_cond_t _held_report_cv;
+    pthread_mutex_t _radar_mutex;
+    pthread_mutex_t _tcas_mutex;
+    pthread_mutex_t _adsb_mutex;
+    pthread_mutex_t _ownship_mutex;
+    HeldReports _held_reports;
 
     /*
      * Takes the OwnshipReport and translates it to a Surveillance report.
      * @param report A report received from the ReceiveOwnship.
      * @return the created Surveillance Report
      */
-    SurveillanceReport CreateOwnshipSurveillanceReport(OwnshipReport report);
+    FlightReport CreateOwnshipFlightReport(OwnshipReport report);
 
     /*
      * Takes the TcasReport and translates it into a Surveillance Report.
      * @param report a Report received from ReceiveTcas.
      * @return The created Surveillance Report
      */
-    SurveillanceReport CreateTcasSurveillanceReport(TcasReport report);
+    SurveillanceReport* CreateTcasSurveillanceReport(TcasReport report);
     /*
      * Takes the RadarReport and translates it to a Surveillance report.
      * @param report A report received from the ReceiveRadar.
      * @return the created Surveillance Report
      */
-    SurveillanceReport CreateRadarSurveillanceReport(RadarReport report);
+    SurveillanceReport* CreateRadarSurveillanceReport(RadarReport report);
     /*
      * Takes the AdsBReport and translates it to a Surveillance report.
      * @param report A report received from the ReceiveAdsB.
      * @return the created Surveillance Report
      */
-    SurveillanceReport CreateAdsbSurveillanceReport(AdsBReport report);
+    SurveillanceReport* CreateAdsbSurveillanceReport(AdsBReport report);
 public:
+
+    /*
+     * Initializes the thread for countdown, creates all the locks and
+     * creates the correct correlation engine.
+     */
+    ReportReceiver();
+
     /*
      * Takes in an OwnshipReport from the Simulation Server and sends it to
      * Create Ownship to create a SurveillanceReport. Then changes out the
@@ -76,43 +147,6 @@ public:
     */
     void ReceiveRadar(RadarReport report);
 
-    /*
-     * Clears all the reports but ownship, so that they aren't confused with
-     * the next second's
-     */
-    void ClearReports();
-
-    /*
-     * Gets the tcasReports
-     * @return the current vector of tcasReports
-     */
-    std::vector<SurveillanceReport> GetTcasReports() {
-        return _tcas_reports;
-    }
-
-    /*
-     * Gets the adsBReports
-     * @return the current vector of adsBReports
-     */
-    std::vector<SurveillanceReport> GetAdsbReports() {
-        return _adsb_reports;
-    }
-
-    /*
-     * Gets the radarReports
-     * @return the current vector of radarReports
-     */
-    std::vector<SurveillanceReport> GetRadarReports() {
-        return _radar_reports;
-    }
-
-    /*
-     * Gets the current ownship
-     * @return the current ownship
-     */
-    SurveillanceReport GetOwnship() {
-        return _ownship;
-    }
 };
 
 
