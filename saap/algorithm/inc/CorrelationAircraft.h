@@ -23,7 +23,7 @@ using namespace std;
  * that were evaluated to represent this aircraft.
  * All fields may not be populated.
  */
-class CorrelationAircraft: public FlightReport {
+class CorrelationAircraft {
 
 protected:
     /** Predicted vector the aircraft will be facing in following
@@ -31,6 +31,17 @@ protected:
     Velocity _predictedVector;
     /** Predicted location the aircraft will be at in following seconds. */
     Velocity _predictedLoc;
+
+    std::time_t _time; /** Timestamp for when this was received. */
+    TailNumber _tail_number; /** tail number of aircraft */
+    TcasID _tcas_id; /** ID given by the TCAS hardware. */
+    RadarID _radar_id; /** ID given by the radar hardware. */
+    /** latitude, longitude (+/- 180 degrees), and altitude. */
+    GeographicCoordinate _geographic_coordinate;
+    SphericalCoordinate _spherical_coordinate;
+    Velocity _velocity;  /** relative intruder velocity (feet/sec). */
+    Device _type; /** Enum for what device this report is from. */
+
 public:
     CorrelationAircraft();
 
@@ -40,6 +51,12 @@ public:
     Velocity predictedVector, Velocity predictedLoc, Device type);
 
     ~CorrelationAircraft();
+
+    /**
+    * Creates a CDTI plane from the data in this FlightReport
+    * @return a CDTI plane made from the data in this FlightReport
+    */
+    CDTIPlane CreateCdtiPlane();
 };
 
 #endif //SAAS_CORRELATIONAIRCRAFT_H

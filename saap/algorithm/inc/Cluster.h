@@ -10,8 +10,8 @@
 #define SAAS_CLUSTER_H
 
 #include <stdint.h>
-#include "FlightReport.h"
 #include "CorrelationAircraft.h"
+#include "SurveillanceReport.h"
 #include <vector>
 
 #define TRUE 0
@@ -23,26 +23,26 @@ using namespace std;
  * A class representing one aircraft in the airspace.
  * All Surveillance Reports may not exist.
  */
-class Cluster : public Cluster {
-protected:
+class Cluster {
+public:
     /** Report from the TCAS hardware. */
-    FlightReport *_tcas;
+    SurveillanceReport *_tcas;
     /** Report from the ADS-B hardware. */
-    FlightReport *_adsb;
+    SurveillanceReport *_adsb;
     /** Report from the radar hardware. */
-    FlightReport *_radar;
+    SurveillanceReport *_radar;
     /** Predicted aircraft location for the next second. */
     Velocity _prediction;
-public:
+
     Cluster();
 
     ~Cluster();
 
-    void SetRadar(FlightReport *radar);
+    void SetRadar(SurveillanceReport *radar);
 
-    void SetADSB(FlightReport *adsb);
+    void SetADSB(SurveillanceReport *adsb);
 
-    void SetTCAS(FlightReport *tcas);
+    void SetTCAS(SurveillanceReport *tcas);
 };
 
 #endif //SAAS_CLUSTER_H

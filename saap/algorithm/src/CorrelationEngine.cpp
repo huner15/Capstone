@@ -30,7 +30,7 @@ CorrelationEngine::~CorrelationEngine() {
  * Called from the ReportReceiver.
  * Takes in all of the SurveillanceReports,
  * adds SurveillanceReports to all of the
- * possible Clusters for each FlightReport,
+ * possible Clusters for each SurveillanceReport,
  * generates Clusters, and evaluates each
  * detected aircraft location.
  *
@@ -40,33 +40,33 @@ CorrelationEngine::~CorrelationEngine() {
  * @param tcas The reports received from the TCAS hardware for the current sec
  * @return int 0 for success, 1 for error
  */
-int Correlate(vector<SurveillanceReport *> *adsb,
+int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
         vector<SurveillanceReport *> *tcas,
-        vector<SurveillanceReport *> *radar) {
+        vector<SurveillanceReport *> *radar, bool ifRelative) {
     Cluster *cluster;
 
     _corr_aircraft.clear();
     _clusters.clear();
 
-    // RunAlgorithm();
+    RunAlgorithm();
 
     //Create individual clusters for all ads-b reports
     for (int i = 0; i < adsb->size(); i++)
     {
         cluster = newCluster();
-        cluster->adsb = adsb->at(i);
+        cluster->_adsb = adsb->at(i);
     }
     //Create individual clusters for all radar reports
     for (int i = 0; i < radar->size(); i++)
     {
         cluster = newCluster();
-        cluster->radar = radar->at(i);
+        cluster->_radar = radar->at(i);
     }
     //Create individual clusters for all tcas reports
     for (int i = 0; i < tcas->size(); i++)
     {
         cluster = newCluster();
-        cluster->tcas = tcas->at(i);
+        cluster->_tcas = tcas->at(i);
     }
 
     //Checks that all SurveillanceReports are in only one Cluster
@@ -87,7 +87,7 @@ int Correlate(vector<SurveillanceReport *> *adsb,
 
     //Delete Correlate and Cluster data
     for (int i = 0; i < _corr_aircraft.size(); i++) {
-        freeAircraft.push_back(_corr_aircraft.at(i));
+        _free_aircraft.push_back(_corr_aircraft.at(i));
     }
 
     _corr_aircraft.clear();
@@ -97,24 +97,23 @@ int Correlate(vector<SurveillanceReport *> *adsb,
 
 }
 
-int ConvertAircraft(Cluster *cluster) {
+int CorrelationEngine::ConvertAircraft(Cluster *cluster) {
     Device type;
     CorrelationAircraft *aircraft;
 
     //Set Device type based on the ranking: ads-b, tcas, radar
-    if (cluster->adsb != NULL) {
+    if (cluster->_adsb != NULL) {
         type = ADSB;
     }
-    else if (cluster->tcas != NULL) {
+    else if (cluster->_tcas != NULL) {
         type = TCAS;
     }
-    else if (cluster->radar != NULL) {
+    else if (cluster->_radar != NULL) {
         type = RADAR;
     }
     else {
         printf("Trying to convert empty Cluster to CorrelationAircraft\n");
     }
-
 
     //Set prediction vectors
     //Velocity predictedVector, Velocity predictedLoc
@@ -123,7 +122,8 @@ int ConvertAircraft(Cluster *cluster) {
 //    tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
 //            SphericalCoordinate spherical_coordinate, Velocity velocity,
 
-    aircraft = new CorrelationAircraft(type, );
+    aircraft = new CorrelationAircraft();
+
     _corr_aircraft.push_back(aircraft);
 }
 
@@ -135,13 +135,13 @@ int ConvertAircraft(Cluster *cluster) {
  *
  * @return int 0 for success, 1 for error
  */
-int CheckClusterCount() {
+int CorrelationEngine::CheckClusterCount() {
     int result = 0;
 
     for (int i = 0; i < _clusters.size(); i++)
     {
-        if (_clusters.at(i)->tcas == NULL & _clusters.at(i)->radar == NULL
-            && _clusters.at(i)->adsb == NULL)
+        if (_clusters.at(i)->_tcas == NULL & _clusters.at(i)->_radar == NULL
+            && _clusters.at(i)->_adsb == NULL)
         {
             result = 1;
         }
@@ -155,7 +155,7 @@ int CheckClusterCount() {
  * mallocs a new one.
  * @return Cluster * the pointer to the new Cluster to use
  */
-Cluster *newCluster()
+Cluster *CorrelationEngine::newCluster()
 {
     Cluster *cluster;
 
@@ -167,10 +167,10 @@ Cluster *newCluster()
         _free_clusters.pop_back();
     }
 
-    cluster->adsb = NULL;
-    cluster->radar = NULL;
-    cluster->tcas = NULL;
-    cluster->prediction = Velocity(0, 0, 0);
+    cluster->_adsb = NULL;
+    cluster->_radar = NULL;
+    cluster->_tcas = NULL;
+    cluster->_prediction = Velocity(0, 0, 0);
 
     return cluster;
 }
@@ -180,7 +180,7 @@ Cluster *newCluster()
  * mallocs a new one.
  * @return Cluster * the pointer to the new Cluster to use
  */
-CorrelationAircraft *newCorrAircraft()
+CorrelationAircraft *CorrelationEngine::newCorrAircraft()
 {
     CorrelationAircraft *aircraft;
 
@@ -204,7 +204,8 @@ CorrelationAircraft *newCorrAircraft()
  * @return float The distance metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float CalcDistance(FlightReport *reportOne, FlightReport *reportTwo)
+float CorrelationEngine::CalcDistance(SurveillanceReport *reportOne,
+    SurveillanceReport *reportTwo)
 {
     float distance = CalcHeading(reportOne, reportTwo);
     distance += CalcEuclidDistance(reportOne, reportTwo);
@@ -222,7 +223,8 @@ float CalcDistance(FlightReport *reportOne, FlightReport *reportTwo)
  * @return float The heading metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float CalcHeading(FlightReport *reportOne, FlightReport *reportTwo)
+float CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
+    SurveillanceReport *reportTwo)
 {
     return 0;
 }
@@ -236,7 +238,8 @@ float CalcHeading(FlightReport *reportOne, FlightReport *reportTwo)
  * @return float The Euclidean distance metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float CalcEuclidDistance(FlightReport *reportOne, FlightReport *reportTwo)
+float CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
+    SurveillanceReport *reportTwo)
 {
     return 0;
 }
@@ -251,7 +254,8 @@ float CalcEuclidDistance(FlightReport *reportOne, FlightReport *reportTwo)
  * @return float The speed metric from 0 to 1 where 1 is the
  * highest correlation.
  */
-float CalcSpeed(FlightReport *reportOne, FlightReport *reportTwo)
+float CorrelationEngine::CalcSpeed(SurveillanceReport *reportOne,
+    SurveillanceReport *reportTwo)
 {
     return 0;
 }

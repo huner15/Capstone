@@ -12,18 +12,42 @@
 
 using namespace std;
 
-class CorrelationEngine : public CorrelationEngine {
-protected:
+class CorrelationEngine {
+public:
     vector<Cluster *> _clusters;
     vector<Cluster *> _free_clusters;
     vector<CorrelationAircraft *> _corr_aircraft;
     vector<CorrelationAircraft *> _free_aircraft;
-public:
+
     CorrelationEngine();
 
     ~CorrelationEngine();
 
     void RunAlgorithm();
+
+    int Correlate(vector<SurveillanceReport *> *adsb,
+        vector<SurveillanceReport *> *tcas,vector<SurveillanceReport *> *radar,
+        bool ifRelative);
+
+    int ConvertAircraft(Cluster *cluster);
+
+    int CheckClusterCount();
+
+    Cluster *newCluster();
+
+    CorrelationAircraft *newCorrAircraft();
+
+    float CalcDistance(SurveillanceReport *reportOne, SurveillanceReport
+        *reportTwo);
+
+    float CalcHeading(SurveillanceReport *reportOne,
+                                          SurveillanceReport *reportTwo);
+
+    float CalcSpeed(SurveillanceReport *reportOne,
+                                          SurveillanceReport *reportTwo);
+
+    float CalcEuclidDistance(SurveillanceReport *reportOne,
+                                                SurveillanceReport *reportTwo);
 };
 
 #endif

@@ -57,14 +57,12 @@ SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
     SphericalCoordinate spherical_coordinate = SphericalCoordinate(range, 0.0,
                                                                    bearing);
 
-    FlightReport flight_report;
-    flight_report = FlightReport(NULL, TailNumber("      "),
+    return new SurveillanceReport(NULL, TailNumber("      "),
                                  tcas_id, NULL,
                                  geographic_coordinate,
                                  spherical_coordinate, velocity,
                                  TCAS);
 
-    return new SurveillanceReport(flight_report);
 }
 
 SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
@@ -83,12 +81,11 @@ SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
     SphericalCoordinate spherical_coordinate = SphericalCoordinate(0.0, 0.0,
                                                                    0.0);
 
-    FlightReport flight_report = FlightReport(time, tail_number, NULL, NULL,
+    return new SurveillanceReport (time, tail_number, NULL, NULL,
                                               geographic_coordinate,
                                               spherical_coordinate, velocity,
                                               ADSB);
 
-    return new SurveillanceReport(flight_report);
 
 }
 
@@ -113,13 +110,11 @@ SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
                                                                    azimuth);
     Velocity velocity = Velocity(east, down, north);
 
-    FlightReport flight_report;
-    flight_report = FlightReport(time, TailNumber("      "), NULL,
+    return new SurveillanceReport (time, TailNumber("      "), NULL,
                                  radar_id, geographic_coordinate,
                                  spherical_coordinate, velocity,
                                  RADAR);
 
-    return new SurveillanceReport(flight_report);
 }
 
 void ReportReceiver::ReceiveOwnship(OwnshipReport report) {

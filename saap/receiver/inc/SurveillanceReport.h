@@ -10,9 +10,16 @@
 #ifndef SURV_REPORT_H
 #define SURV_REPORT_H
 
-#include "Cluster.h"
+#include <ctime>
 #include "SurveillanceReport.h"
+#include "TailNumber.h"
+#include "TcasID.h"
+#include "RadarID.h"
+#include "GeographicCoordinate.h"
+#include "SphericalCoordinate.h"
 #include "Velocity.h"
+#include "RadarID.h"
+#include "Device.h"
 
 using namespace std;
 
@@ -25,20 +32,22 @@ using namespace std;
  */
 class SurveillanceReport {
 protected:
-    /**
-     * An encapsulated Flight Report
-     */
-    FlightReport _flight_report;
-
-    /*
-     * Geographic location converted to Spherical coordinates.
-     */
-    GeographicCoordinate _converted_geographic;
+    std::time_t _time; /** Timestamp for when this was received. */
+    TailNumber _tail_number; /** tail number of aircraft */
+    TcasID _tcas_id; /** ID given by the TCAS hardware. */
+    RadarID _radar_id; /** ID given by the radar hardware. */
+    /** latitude, longitude (+/- 180 degrees), and altitude. */
+    GeographicCoordinate _geographic_coordinate;
+    SphericalCoordinate _spherical_coordinate;
+    Velocity _velocity;  /** relative intruder velocity (feet/sec). */
+    Device _type; /** Enum for what device this report is from. */
 
 public:
     SurveillanceReport();
 
-    SurveillanceReport(FlightReport flight_report);
+    SurveillanceReport(std::time_t time, TailNumber tail_number, TcasID
+    tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
+    SphericalCoordinate spherical_coordinate, Velocity velocity, Device type);
 };
 
 #endif //SURV_REPORT_H

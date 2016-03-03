@@ -15,7 +15,7 @@
 #include <tcas.pb.h>
 #include <cdti.pb.h>
 #include "SurveillanceReport.h"
-
+#include "FlightReport.h"
 
 class ReportReceiver {
 private:

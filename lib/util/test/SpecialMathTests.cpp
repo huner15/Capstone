@@ -44,7 +44,7 @@ TEST(DistanceFormula, Everything)
 }
 
 TEST(LineDistance, Everything) {
-    using namespace Saas_Util;{
+    using namespace Saas_Util; {
         Vector<double, 3> a;
         a.x = 0;
         a.y = 1;

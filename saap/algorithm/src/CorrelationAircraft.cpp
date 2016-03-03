@@ -7,11 +7,8 @@
  * most likely CorrelationAircraft.
 */
 
-#include <FlightReport.h>
 #include "Cluster.h"
 #include "CorrelationAircraft.h"
-#include "Velocity.h"
-#include <ctime>
 
 CorrelationAircraft::CorrelationAircraft(std::time_t time, TailNumber
         tail_number, TcasID tcas_id,
@@ -20,8 +17,15 @@ CorrelationAircraft::CorrelationAircraft(std::time_t time, TailNumber
         Velocity predictedVector, Velocity predictedLoc, Device type) {
     _predictedLoc = predictedLoc;
     _predictedVector = predictedVector;
-    FlightReport(time, tail_number, tcas_id, radar_id, geographic_coordinate,
-            spherical_coordinate, velocity, type);
+
+    _time = time;
+    _tail_number = tail_number;
+    _tcas_id = tcas_id;
+    _radar_id = radar_id;
+    _geographic_coordinate = geographic_coordinate;
+    _spherical_coordinate = spherical_coordinate;
+    _velocity = velocity;
+    _type = type;
 }
 
 
@@ -30,5 +34,5 @@ CorrelationAircraft::CorrelationAircraft() {
 }
 
 CorrelationAircraft::~CorrelationAircraft() {
-    ~FlightReport();
+    //~FlightReport();
 }

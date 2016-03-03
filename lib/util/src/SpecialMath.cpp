@@ -16,7 +16,7 @@ namespace SpecialMath {
     double DistanceFormula(Saas_Util::Vector<T, N> a, Saas_Util::Vector<T, N> b)
     {
         double toReturn = 0;
-        for(int i = 0; i < N; i ++)
+        for(int i = 0; i < N; i++)
         {
             double square = a.array[i] - b.array[i];
             toReturn += square * square;

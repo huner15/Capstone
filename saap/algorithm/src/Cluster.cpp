@@ -8,25 +8,28 @@
 */
 
 #include "Cluster.h"
+#include "SurveillanceReport.h"
 
 Cluster::Cluster() {
-
+    _adsb = NULL;
+    _tcas = NULL;
+    _radar = NULL;
 }
 
 Cluster::~Cluster() {
 
 }
 
-void Cluster::SetADSB(FlightReport *adsb) {
-_adsb = adsb;
+void Cluster::SetADSB(SurveillanceReport *adsb) {
+    _adsb = adsb;
 }
 
-void Cluster::SetTCAS(FlightReport *tcas) {
-_tcas = tcas;
+void Cluster::SetTCAS(SurveillanceReport *tcas) {
+    _tcas = tcas;
 }
 
-void Cluster::SetRadar(FlightReport *radar) {
-_radar = radar;
+void Cluster::SetRadar(SurveillanceReport *radar) {
+    _radar = radar;
 }
 
 

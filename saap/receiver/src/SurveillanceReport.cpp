@@ -7,18 +7,22 @@
  * most likely SurveillanceReport.
 */
 
-#include <FlightReport.h>
-#include "Cluster.h"
-#include "Velocity.h"
-#include <ctime>
-#include <SurveillanceReport.h>
-
-SurveillanceReport::SurveillanceReport(FlightReport flight_report) {
-    _flight_report = flight_report;
-
-    //_converted_geographic = flight_report.CalcGeographicCoordinate();
-}
+#include "SurveillanceReport.h"
 
 SurveillanceReport::SurveillanceReport() {
 
+}
+
+SurveillanceReport::SurveillanceReport(std::time_t time, TailNumber tail_number,
+    TcasID tcas_id, RadarID radar_id, GeographicCoordinate
+    geographic_coordinate, SphericalCoordinate spherical_coordinate, Velocity
+    velocity, Device type) {
+    _time = time;
+    _tail_number = tail_number;
+    _tcas_id = tcas_id;
+    _radar_id = radar_id;
+    _geographic_coordinate = geographic_coordinate;
+    _spherical_coordinate = spherical_coordinate;
+    _velocity = velocity;
+    _type = type;
 }

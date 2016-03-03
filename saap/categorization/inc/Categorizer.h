@@ -9,6 +9,7 @@
 #include <CorrelationAircraft.h>
 #include <SpecialMath.h>
 #include "FlightReport.h"
+
 void Categorize(std::vector<CorrelationAircraft *> *aircraft);
 
 #endif //SAAS_CATEGORIZOR_H

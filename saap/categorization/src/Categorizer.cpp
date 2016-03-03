@@ -18,19 +18,19 @@ ClientSocket socket_to_cdti("localhost", 13000);
 double CalculateRange(CDTIPlane plane);
 double CalculateCPA(CDTIPlane plane);
 void CategorizePlane(CDTIPlane plane);
-std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft> aircraft);
+std::vector<CDTIPlane> MakeCDTI(std::vector<CorrelationAircraft*>* aircraft);
 
 /*
  *
  */
 void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
-    std::vector<CDTIPlane>* planes = MakeCDTI(aircraft);
+    std::vector<CDTIPlane> planes = MakeCDTI(aircraft);
     CDTIReport report;
 
     //call something to translate whatever is given into a list of CDTIplanes
-    for(int i = 0; i < planes->size(); i++){
-        CategorizePlane(planes->at(i));
-        report.mutable_planes()->AddAllocated(&(planes->at(i)));
+    for(int i = 0; i < planes.size(); i++){
+        CategorizePlane(planes.at(i));
+        report.mutable_planes()->AddAllocated(&(planes.at(i)));
     }
 
     socket_to_cdti << report;
@@ -38,22 +38,19 @@ void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
 
 CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft)
 {
-    FlightReport report = *aircraft;
-    return report.CreateCdtiPlane();
+    return aircraft->CreateCdtiPlane();
 }
 
-std::vector<CDTIPlane>* MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
-    std::vector<CDTIPlane>* planes;
+std::vector<CDTIPlane> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
+    std::vector<CDTIPlane> planes;
 
     for(int i = 0; i < aircraft->size(); i++)
     {
-        planes->push_back(MakeCDTIPlane(aircraft->[i]));
+        planes.push_back(MakeCDTIPlane(aircraft->at(i)));
     }
 
     return planes;
 }
-
-
 
 /**
  * decides where to Categorize a plane

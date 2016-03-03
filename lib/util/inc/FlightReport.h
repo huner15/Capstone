@@ -44,7 +44,7 @@ public:
     FlightReport(std::time_t time, TailNumber tail_number, TcasID tcas_id,
            RadarID radar_id, GeographicCoordinate geographic_coordinate,
            SphericalCoordinate spherical_coordinate, Velocity velocity,
-                 Device type);
+           Device type);
 
     /**
      * Creates an ownship report from the data from this FlightReport.
