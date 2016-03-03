@@ -6,6 +6,7 @@ using System;
 using Example;
 using System.Threading;
 using CielaSpike;
+using System.IO;
 
 public class NetworkInput : MonoBehaviour {
 
@@ -23,7 +24,7 @@ public class NetworkInput : MonoBehaviour {
     public GameObject circle;
     private string message = "";
     public int maxRange = 20;
-
+    private CDTIReport lastReport = null;
     private Vector pos = new Vector();
     private GameObject plane;
 
@@ -69,6 +70,27 @@ public class NetworkInput : MonoBehaviour {
     }
 
 
+    public void zoomIn()
+    {
+        if (maxRange > 4)
+            maxRange -= 4;
+        zoomCommon();
+    }
+    public void zoomOut()
+    {
+
+        maxRange += 4;
+        zoomCommon();
+    }
+    private void zoomCommon()
+    {
+       
+        if (lastReport != null)
+        {
+            intake(lastReport);
+        }
+    }
+
 
 
     // Use this for initialization
@@ -76,16 +98,16 @@ public class NetworkInput : MonoBehaviour {
         GameObject addCircles;
 
         addCircles = Instantiate(circle) as GameObject;
-        addCircles.GetComponent<Transform>().localScale =new Vector3(2.6f, 2.6f, 1);
+        addCircles.GetComponent<Transform>().localScale =new Vector3(2.64f, 2.64f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
         addCircles = Instantiate(circle) as GameObject;
-        addCircles.GetComponent<Transform>().localScale = new Vector3(2f,2f, 1);
+        addCircles.GetComponent<Transform>().localScale = new Vector3(1.98f,1.98f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
         addCircles = Instantiate(circle) as GameObject;
-        addCircles.GetComponent<Transform>().localScale = new Vector3(1.4f, 1.4f, 1);
+        addCircles.GetComponent<Transform>().localScale = new Vector3(1.33f, 1.33f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
         addCircles = Instantiate(circle) as GameObject;
-        addCircles.GetComponent<Transform>().localScale = new Vector3(.8f, .8f, 1);
+        addCircles.GetComponent<Transform>().localScale = new Vector3(.67f, .67f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
 
 
@@ -146,58 +168,58 @@ public class NetworkInput : MonoBehaviour {
             }
             else
             {
-                print("1");
+                File.Delete("temp.txt");
+              
                 TcpClient client = server.AcceptTcpClient();
                 logger("connection established");
-                print("2");
-                yield return Ninja.JumpToUnity;
-                plane.GetComponent<SpriteRenderer>().sprite = getCorrectSprite(null);
-                plane.GetComponent<Transform>().position = figurePositon(null);
-                pos.Y += .5f;
-                logger("moved");
-                /* NetworkStream ns = client.GetStream();
-                 ns.ReadByte();
-                 ns.ReadByte();
-                 ns.ReadByte();
-                 ns.ReadByte();
-
-                 //ns.Seek(4, System.IO.SeekOrigin.Begin);
-                 print("3");
-                 //probably need to do special cross thread call here try without first but with an actual packet of data.
-                 yield return Ninja.JumpToUnity;
-                 /*
-                 try
-                 {
-                     Msg message = Msg.Deserialize(ns);
-                     logger(message.Name);
-                     this.message = message.Name;
-                     CDTIReport report = new CDTIReport();
-                     CDTIPlane plane = new CDTIPlane();
-                     plane.Position = new Vector();
-                     plane.Position.X = message.Age;
-                     plane.Position.Y = message.Age;
-                     plane.Position.Z = 0;
-                     plane.Id = name;
-                     plane.severity = CDTIPlane.Severity.PROXIMATE;
-                     plane.Velocity = new Vector();
-                     plane.Velocity.X = 0;
-                     plane.Velocity.Y = 0;
-                     plane.Velocity.Z = 0;
-                     AddToScreen(plane);
-                 }
-                 catch (NotImplementedException)
-                 {
-                     logger("tried to seek");
-                 }
-                 */
-
-
-
-                //report.Planes.Add(plane);
-
-                // intake(report);
-                // intake(CDTIReport.Deserialize(ns));
-                yield return Ninja.JumpBack;
+          
+                NetworkStream ns = client.GetStream();
+                const int bufSize = 0x1000;
+                byte[] buf = new byte[bufSize];
+                bool rep = false;
+                Example.CDTIReport report = null;
+               // MemoryStream ms = new MemoryStream();
+                Thread.Sleep(400);
+                long totalBytes = 0;
+                int bytesRead = 0;
+                while((bytesRead = ns.Read(buf,0,bufSize)) > 0)
+                {
+                    File.Delete("temp.txt");
+                    FileStream file = new FileStream("temp.txt", FileMode.Create);
+                    file.Write(buf, 0, bytesRead);
+                   // ms.Write(buf, 0, bytesRead);
+                    totalBytes += bytesRead;
+                    file.Close();
+                    print(bytesRead);
+                    
+                    FileStream fs = new FileStream("temp.txt", FileMode.Open);
+                    try
+                    {
+                       
+                        report = Example.CDTIReport.Deserialize(fs);
+                        fs.Close();
+                        print(report.Planes.Count);
+                        print(report.Ownship);
+                        print(report.Timestamp);
+                        print(report.AdvisoryMessage);
+                        rep = true;
+                        lastReport = report;
+                        
+                    }
+                    catch(Exception)
+                    {
+                        fs.Close();
+                    }
+                    if(rep)
+                    {
+                        yield return Ninja.JumpToUnity;
+                        intake(report);
+                        // intake(CDTIReport.Deserialize(ns));
+                        yield return Ninja.JumpBack;
+                        rep = false;
+                    }
+                }
+                
                 client.Close();
             }
         }
@@ -226,6 +248,7 @@ public class NetworkInput : MonoBehaviour {
         {
             AddToScreen(plane);
         }
+        AddToScreen(report.Ownship);
 
 
     }
@@ -246,12 +269,27 @@ public class NetworkInput : MonoBehaviour {
 
         toAdd.GetComponent<SpriteRenderer>().sprite = getCorrectSprite(plane);
         toAdd.GetComponent<Transform>().position = figurePositon(plane);
-
+        toAdd.GetComponent<Transform>().rotation = figureRotation(plane);
 
 
 
         aircraft.Add(toAdd);
         //throw new NotImplementedException();
+    }
+
+    private Quaternion figureRotation(CDTIPlane plane)
+    {
+        float theta = 0;
+
+        theta = (float)( Math.Atan2(plane.Velocity.Y, plane.Velocity.X) * 180 / 3.14 - 90);
+        print(theta);
+        if (plane.Velocity.X == 0 && plane.Velocity.Y == 0)
+        {
+            theta = 0;
+        }
+        return Quaternion.AngleAxis(theta , new Vector3(0, 0, 1));  
+
+        
     }
 
     private Vector3 figurePositon(CDTIPlane plane)
@@ -264,6 +302,7 @@ public class NetworkInput : MonoBehaviour {
             positon.x = pos.X / maxRange * 5;
             positon.y = pos.Y / maxRange * 5;
             positon.z = 0;
+            
             return positon;
         }
 
@@ -271,6 +310,7 @@ public class NetworkInput : MonoBehaviour {
         positon.x = plane.Position.X/maxRange*5;
         positon.y = plane.Position.Y/maxRange*5;
         positon.z = 0;
+       
         //add writing for the elevation later
         return positon;
        // throw new NotImplementedException();
@@ -283,13 +323,9 @@ public class NetworkInput : MonoBehaviour {
             return airTrafficDirectional;
         }
 
-        Vector zeroVector = new Vector();
-        zeroVector.X = 0;
-        zeroVector.Y = 0;
-        zeroVector.Z = 0;
         switch (plane.severity) {
             case (CDTIPlane.Severity.PROXIMATE):
-                if (plane.Velocity == zeroVector)
+                if (plane.Velocity.X == 0 && plane.Velocity.Y == 0)
                 {
                     return proximateTrafficNonDirectional;
                 }
@@ -301,7 +337,7 @@ public class NetworkInput : MonoBehaviour {
                 return resolutionAdvisoryDirectional;
 
             default:
-                if (plane.Velocity == zeroVector)
+                if (plane.Velocity.X == 0 && plane.Velocity.Y == 0)
                 {
                     return airTrafficNonDirectional;
                 }
@@ -312,7 +348,6 @@ public class NetworkInput : MonoBehaviour {
             
                 
 
-        throw new NotImplementedException();
     }
 
     private void clearPlanes()
