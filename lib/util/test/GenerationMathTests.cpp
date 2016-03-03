@@ -64,7 +64,7 @@ TEST(AbsoluteBearingBetweenTwoCoordinates, SameLatitude) {
 TEST(AbsoluteBearingBetweenTwoCoordinates, BiggerNumbers) {
     GeographicCoordinate coord1 (2, 67, 25000);
     GeographicCoordinate coord2 (45, 78, 25000);
-    ASSERT_NEAR(224.63804446443481, GenerationMath::AbsoluteBearingBetweenTwoCoordinates(
+    ASSERT_NEAR(11.18329583708925, GenerationMath::AbsoluteBearingBetweenTwoCoordinates(
             coord1, coord2),.001);
 }
 
@@ -86,14 +86,5 @@ TEST(DestinationPoint, GoStraightEast) {
     ASSERT_NEAR(16.004, dest.GetLongitude(),.005);
 }
 
-TEST(DestinationPoint, GoStraightWest) {
-    GeographicCoordinate coord1 (2, 67, 25000);
-    //std::cout << "Distance:: " <<
-      //      GenerationMath::DistanceBetweenTwoCoordinates(coord1, GeographicCoordinate(2.02702, 67.0053, 10)) << std::endl;
-    Velocity vel (10000, 10000, 1000);
-    GeographicCoordinate dest = GenerationMath::DestinationPoint(coord1, vel, 11.183295);
-    //std::cout << "\n" << dest.GetLatitude() << " " << dest.GetLongitude() << std::endl;
-    ASSERT_NEAR(16.00, dest.GetLatitude(),.005);
-    ASSERT_NEAR(16.004, dest.GetLongitude(),.005);
-}
+
 
