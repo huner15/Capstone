@@ -15,7 +15,6 @@
 #include <tcas.pb.h>
 #include <cdti.pb.h>
 #include "SurveillanceReport.h"
-#include "FlightReport.h"
 
 class ReportReceiver {
 private:
@@ -27,7 +26,7 @@ private:
         std::vector<SurveillanceReport *> _tcas_reports;
         std::vector<SurveillanceReport *> _adsb_reports;
         std::vector<SurveillanceReport *> _radar_reports;
-        FlightReport _ownship;
+        SurveillanceReport _ownship;
 
         /*
          * Clears the _tcas_reports so it doesn't have overlapping reports.
@@ -72,7 +71,7 @@ private:
         /*
          * Changes the current ownship FlightReport
          */
-        void changeOwnship(FlightReport report);
+        void changeOwnship(SurveillanceReport report);
         /*
          * This should only be called on a copy of Held Reports and
          */
@@ -93,7 +92,8 @@ private:
      * @param report A report received from the ReceiveOwnship.
      * @return the created Surveillance Report
      */
-    FlightReport CreateOwnshipFlightReport(OwnshipReport report);
+    SurveillanceReport CreateOwnshipSurveillanceReport(OwnshipReport
+                                                           report);
 
     /*
      * Takes the TcasReport and translates it into a Surveillance Report.

@@ -23,7 +23,9 @@ ReportReceiver::ReportReceiver() {
 
 }
 
-FlightReport ReportReceiver::CreateOwnshipFlightReport(OwnshipReport report) {
+SurveillanceReport ReportReceiver::CreateOwnshipSurveillanceReport
+        (OwnshipReport
+                                                          report) {
 
     std::time_t time = report.timestamp();
     double latitude = report.ownship_longitude();
@@ -35,7 +37,7 @@ FlightReport ReportReceiver::CreateOwnshipFlightReport(OwnshipReport report) {
     GeographicCoordinate geographic_coordinate = GeographicCoordinate
             (latitude, longitude, altitude);
     Velocity velocity = Velocity(east, down, north);
-    return FlightReport(time, TailNumber("      "), NULL,
+    return SurveillanceReport(time, TailNumber("      "), NULL,
                                               NULL,
                                               geographic_coordinate,
                                               SphericalCoordinate(0.0, 0.0,
@@ -122,7 +124,7 @@ void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
     while(_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_ownship_mutex);
     }
-    _held_reports.changeOwnship(CreateOwnshipFlightReport(report));
+    _held_reports.changeOwnship(CreateOwnshipSurveillanceReport(report));
     pthread_mutex_unlock(&_ownship_mutex);
 }
 
@@ -156,7 +158,7 @@ void ReportReceiver::ReceiveRadar(RadarReport report) {
 
 //Held Report data from here down
 
-void ReportReceiver::HeldReports::changeOwnship(FlightReport report) {
+void ReportReceiver::HeldReports::changeOwnship(SurveillanceReport report) {
     _ownship = report;
 }
 
