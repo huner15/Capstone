@@ -3,7 +3,7 @@
  * @author Specific Atomics
  * @author Frank Poole
  * @date 2-21-16
- * @brief TODO make description
+ * @brief Implements the functionality of a DeviceReceiver.
  */
 
 #include "DeviceReceiver.h"

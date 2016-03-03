@@ -2,8 +2,8 @@
  * @file DeviceSimulator.cpp
  * @author Specific Atomics
  * @authors Frank Poole
- * @date 2-18-16
- * @brief TODO: Description
+ * @date 2-25-16
+ * @brief DeviceSimulator implements the functionality of a surveillance device.
  */
 
 #include "DeviceSimulator.h"

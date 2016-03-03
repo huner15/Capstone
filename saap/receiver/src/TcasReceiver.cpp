@@ -2,8 +2,8 @@
  * @file TcasReceiver.cpp
  * @author Specific Atomics
  * @author Frank Poole
- * @date 2-21-16
- * @brief TODO: Description
+ * @date 2-28-16
+ * @brief Implements the functionality of TcasReceiver.
  */
 
 #include "TcasReceiver.h"
