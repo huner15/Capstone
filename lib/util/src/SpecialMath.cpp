@@ -1,4 +1,4 @@
-/*
+/**
  * SpecialMath.cpp
  * Specific Atomics
  * Michael Lenz

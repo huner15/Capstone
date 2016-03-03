@@ -2,23 +2,26 @@
  * @file OwnshipSimulator.cpp
  * @author Specific Atomics
  * @authors Frank Poole
- * @date 2-18-16
- * @brief TODO: Description
+ * @date 2-25-16
+ * @brief OwnshipSimulator implements the functionality of an Ownship navigation
+ * device.
  */
 
 #include "OwnshipSimulator.h"
+
+OwnshipSimulator::OwnshipSimulator(in_port_t port,
+                                   FlightSimulation &flight_simulation):
+        DeviceSimulator(port, flight_simulation) {
+};
 
 void OwnshipSimulator::SendReports(ServerSocket& client_socket) {
     std::vector<Flight> flights = _flight_simulation.GetFlights();
     Flight ownship_flight = flights[0];
 
     while (ownship_flight.HasNextFlightReport()) {
-
         FlightReport flight_report = ownship_flight.NextFlightReport();
-
         this->SendReport(client_socket, flight_report);
-        //std::cout << "TailNumber: " << flight_report.GetTailNumber().Get().c_str() << std::endl;
-        sleep(1);
+        sleep(_SLEEP_TIME);
     }
 }
 
