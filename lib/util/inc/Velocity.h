@@ -52,6 +52,14 @@ public:
      * @return a relative velocity
      */
     Velocity operator- (const Velocity& other);
+
+    /**
+     * Create a velocity representing the relative velocity of this velocity to
+     * another velocity.
+     * @param other the velocity to compare against
+     * @return a relative velocity
+     */
+    Velocity operator+ (const Velocity& other);
 };
 
 #endif

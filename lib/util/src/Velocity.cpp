@@ -25,3 +25,9 @@ Velocity Velocity::operator- (const Velocity& other) {
                     this->down - other.down,
                     this->north - other.north);
 }
+
+Velocity Velocity::operator+ (const Velocity& other) {
+    return Velocity(this->east + other.east,
+                    this->down + other.down,
+                    this->north + other.north);
+}

@@ -12,9 +12,18 @@
         "durationOfManeuver": 5,
         "durationAfterManeuver": 4,
         "newRelativeVelocity": {
-          "x": 34,
+          "x": 3400,
           "y": 3,
-          "z": 23
+          "z": 1000
+        }
+      },
+      {
+        "durationOfManeuver": 5,
+        "durationAfterManeuver": 4,
+        "newRelativeVelocity": {
+          "x": 1500,
+          "y": 200,
+          "z": 3000
         }
       }
     ]
@@ -35,7 +44,7 @@
            "durationAfterManeuver": 4,
            "newRelativeVelocity": {
              "x": 34,
-             "y": 3,
+             "y": 0,
              "z": 23
            }
          }
@@ -56,7 +65,7 @@
            "durationAfterManeuver": 10,
            "newRelativeVelocity": {
              "x": 10,
-             "y": 10,
+             "y": 0,
              "z": 10
            }
          }

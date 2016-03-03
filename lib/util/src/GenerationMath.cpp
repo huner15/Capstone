@@ -9,10 +9,12 @@
 #include <GeographicCoordinate.h>
 #include <math.h>
 #include <iostream>
+#include <iomanip>
 #include "GenerationMath.h"
 
-#define EARTH_RAD2 20903520
-#define EARTH_RAD 3961
+#define EARTH_RAD2 20903520.0
+#define EARTH_RAD 3961.0
+#define PI 3.14159265359
 
 double GenerationMath::DistanceBetweenTwoCoordinates(
         GeographicCoordinate coord1, GeographicCoordinate coord2) {
@@ -78,7 +80,8 @@ GeographicCoordinate GenerationMath::DestinationPoint(
                                        sin(start_lat) * sin(dest_lat));
     dest_lat = ToDegrees(dest_lat);
     dest_long = ToDegrees(dest_long);
-    return GeographicCoordinate (dest_lat, dest_long, 10000);
+    return GeographicCoordinate (dest_lat, dest_long,
+                                 start.GetAltitude()-velocity.down);
 }
 
 double GenerationMath::ToRadians(double degrees) {
@@ -86,5 +89,6 @@ double GenerationMath::ToRadians(double degrees) {
 }
 
 double GenerationMath::ToDegrees(double radians) {
+    std::cout << "radians: " << radians << " degrees: " << std::defaultfloat << std::setprecision(10) << (radians * 180.0 / PI) << std::endl;
     return radians * 180.0 / M_PI;
 }

@@ -14,6 +14,7 @@ add_subdirectory(lib)
 add_subdirectory(sim)
 add_subdirectory(saap)
 add_subdirectory(cdti)
+add_subdirectory(gen)
 
 # Add a target to generate API documentation with Doxygen.
 find_package(Doxygen)
