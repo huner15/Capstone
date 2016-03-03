@@ -1,15 +1,15 @@
-/*
- * California Polytechnic State University, San Luis Obispo
- * Computer Engineering - CPE 402, 405, 406
- * Author: Frank Poole
- * Professor: David Janzen
- * Date: 1-16-2016
- * Disclaimer: The original version of the following code was taken from
- * tldp.org/LDP/LG/issue74/misc/tougher
+/**
+ * @file Socket.h
+ * @author Specific Atomics
+ * @authors Frank Poole
+ * @date 3-2-16
+ * @brief A Socket is a logical endpoint for communications that exists on the
+ * transport layer. Disclaimer: The original version of the following code was
+ * taken from tldp.org/LDP/LG/issue74/misc/tougher
  */
 
-#ifndef Socket_H
-#define Socket_H
+#ifndef Socket_H_
+#define Socket_H_
 
 #include <string>
 #include <string.h>
