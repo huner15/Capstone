@@ -7,7 +7,7 @@
  */
 
 #include <gtest/gtest.h>
-#include <ReportReceiver.h>
+#include "ReportReceiver.h"
 
 /*
  * Tests to see that the ownship surveillance report creator is properly
