@@ -52,30 +52,61 @@ private:
     public:
         //HeldReports(CorrelationEngine corEngine);
 
+        HeldReports();
+
+        /*
+         * Gets the current vector of Surveillance Report * for Tcas.
+         * @return the current vector for tcas.
+         */
         std::vector<SurveillanceReport *>* getTcas();
+
+        /*
+         * Gets the current vector of Surveillance Report * for adsb
+         * @return the current vector for adsb
+         */
         std::vector<SurveillanceReport *>* getAdsb();
+
+        /*
+         * Gets the current vector of Surveillance Report * for radar
+         * @return the current vector for radar
+         */
         std::vector<SurveillanceReport *>* getRadar();
 
         /*
+         * Gets the Current Surveillance Report for ownship
+         */
+        SurveillanceReport getOwnship();
+
+        /*
          * Adds a SurveillanceReport pointer to the Tcas Reports
+         * @param report The tcas report that needs to be added.
          */
         void addTcasReport(SurveillanceReport * report);
+
         /*
          * Adds a SurveillanceReport pointer to the Adsb Reports
+         * @param report the adsb report that needs to be added
          */
         void addAdsBReport(SurveillanceReport * report);
+
         /*
          * Adds a SurveillanceReport pointer to the Radar Reports
+         * @param report the radar report that needs to be added.
          */
         void addRadarReport(SurveillanceReport * report);
+
         /*
          * Changes the current ownship FlightReport
+         * @param report the ownship report to replace the last.
          */
         void changeOwnship(SurveillanceReport report);
+
+
+
         /*
-         * This should only be called on a copy of Held Reports and
+         * Makes a copy of the current HeldReport.
+         * @return the copy of the held report
          */
-        void callCorrelate();
         HeldReports makeCopy();
     };
 
@@ -113,6 +144,8 @@ private:
      * @return the created Surveillance Report
      */
     SurveillanceReport* CreateAdsbSurveillanceReport(AdsBReport report);
+
+
 public:
 
     /*
@@ -128,18 +161,21 @@ public:
      * @param report A report received from the Simulation Server
      */
     void ReceiveOwnship(OwnshipReport report);
+
     /*
      * Takes in a TcasReport from the Simulation Server and sends it to
      * CreateTcasSurveillanceReport to get the Surveillance report to add to
      * the tcasReports.
      */
     void ReceiveTcas(TcasReport report);
+
     /*
      * Takes in a AdsBReport from the Simulation Server and sends it to
      * CreateAdsBSurveillanceReport to get the Surveillance report to add to
      * the AdsBReports.
      */
     void ReceiveAdsb(AdsBReport report);
+
     /*
     * Takes in a RadarReport from the Simulation Server and sends it to
     * CreateRadarSurveillanceReport to get the Surveillance report to add to
@@ -147,6 +183,10 @@ public:
     */
     void ReceiveRadar(RadarReport report);
 
+    /*
+     * Gets the current ownship report.
+     */
+    SurveillanceReport getOwnship();
 };
 
 

@@ -155,6 +155,10 @@ void ReportReceiver::ReceiveRadar(RadarReport report) {
     pthread_mutex_unlock(&_radar_mutex);
 }
 
+SurveillanceReport ReportReceiver::getOwnship() {
+    _held_reports.getOwnship();
+}
+
 
 //Held Report data from here down
 
@@ -172,4 +176,26 @@ void ReportReceiver::HeldReports::addRadarReport(SurveillanceReport *report) {
 
 void ReportReceiver::HeldReports::addTcasReport(SurveillanceReport *report) {
     _tcas_reports.push_back(report);
+}
+
+ReportReceiver::HeldReports::HeldReports() {
+    _adsb_reports = std::vector<SurveillanceReport *>();
+    _radar_reports = std::vector<SurveillanceReport *>();
+    _tcas_reports = std::vector<SurveillanceReport *>();
+}
+
+SurveillanceReport ReportReceiver::HeldReports::getOwnship() {
+    return _ownship;
+}
+
+std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getAdsb() {
+    return &_adsb_reports;
+}
+
+std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getRadar() {
+    return &_radar_reports;
+}
+
+std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getTcas() {
+    return &_tcas_reports;
 }

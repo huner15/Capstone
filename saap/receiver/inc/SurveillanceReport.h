@@ -48,6 +48,9 @@ public:
     SurveillanceReport(std::time_t time, TailNumber tail_number, TcasID
     tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
     SphericalCoordinate spherical_coordinate, Velocity velocity, Device type);
+
+    std::time_t getTime(){return _time;}
+    double getLatitude(){return _geographic_coordinate.GetLatitude();}
 };
 
 #endif //SURV_REPORT_H
