@@ -11,14 +11,14 @@
 #include "ServerSocket.h"
 
 ServerSocket::ServerSocket(const in_port_t port) {
-    if (!Socket::create()) {
+    if (!Socket::Create()) {
         throw SocketException("Could not create server socket.");
     }
-    if (!Socket::bind(port)) {
+    if (!Socket::Bind(port)) {
         throw SocketException(
                 (std::string) "Could not bind to port " + std::to_string(port));
     }
-    if (!Socket::listen()) {
+    if (!Socket::Listen()) {
         throw new SocketException("Could not listen on socket.");
     }
 }
@@ -27,7 +27,7 @@ ServerSocket::~ServerSocket() {
 }
 
 const ServerSocket &ServerSocket::operator<<(const std::string &s) const {
-    if (!Socket::send(s)) {
+    if (!Socket::Send(s)) {
         throw SocketException("Could not write to socket.");
     }
 
@@ -35,7 +35,7 @@ const ServerSocket &ServerSocket::operator<<(const std::string &s) const {
 }
 
 const ServerSocket &ServerSocket::operator>>(std::string &s) const {
-    if (!Socket::recv(s)) {
+    if (!Socket::Recv(s)) {
         throw SocketException("Could not read from socket.");
     }
 
@@ -60,7 +60,7 @@ const ServerSocket &ServerSocket::operator<<(
     char *packet;
     size_t len = ProtobufSocketSerializer::serialize(msg, packet);
 
-    if (!Socket::send(packet, len)) {
+    if (!Socket::Send(packet, len)) {
         throw SocketException("Could not write to socket.");
     }
 
@@ -101,14 +101,14 @@ const ServerSocket &ServerSocket::operator>>(
         ::google::protobuf::Message &msg) const {
     // Read the first four bytes.
     char lenBfr[PROTOBUF_HEADER_LENGTH];
-    if (!Socket::recv(&lenBfr, PROTOBUF_HEADER_LENGTH, MSG_PEEK)) {
+    if (!Socket::Recv(&lenBfr, PROTOBUF_HEADER_LENGTH, MSG_PEEK)) {
         throw SocketException("Could not read header from socket.");
     }
 
     // Read the protocol buffer data.
     ::google::protobuf::uint32 len = read_protobuf_header(lenBfr);
     char dataBuf[len + PROTOBUF_HEADER_LENGTH];
-    if (!Socket::recv(dataBuf, len + PROTOBUF_HEADER_LENGTH, MSG_WAITALL)) {
+    if (!Socket::Recv(dataBuf, len + PROTOBUF_HEADER_LENGTH, MSG_WAITALL)) {
         throw SocketException("Could not read from socket.");
     }
     read_protobuf(msg, dataBuf);
@@ -117,7 +117,7 @@ const ServerSocket &ServerSocket::operator>>(
 }
 
 void ServerSocket::accept(ServerSocket &sock) {
-    if (!Socket::accept(sock)) {
+    if (!Socket::Accept(sock)) {
         throw SocketException("Could not accept socket.");
     }
 }

@@ -19,18 +19,18 @@ std::string to_string(T value) {
 }
 
 ClientSocket::ClientSocket(std::string host, const in_port_t port) {
-    if (!Socket::create()) {
+    if (!Socket::Create()) {
         throw SocketException("Could not create client socket.");
     }
 
-    if (!Socket::connect(host, port)) {
+    if (!Socket::Connect(host, port)) {
         throw SocketException("Could not connect to" + host + ":" +
                               to_string(port) + ".");
     }
 }
 
 const ClientSocket &ClientSocket::operator<<(const std::string &s) const {
-    if (!Socket::send(s)) {
+    if (!Socket::Send(s)) {
         throw SocketException("Could not write to socket.");
     }
 
@@ -38,7 +38,7 @@ const ClientSocket &ClientSocket::operator<<(const std::string &s) const {
 }
 
 const ClientSocket &ClientSocket::operator>>(std::string &s) const {
-    if (!Socket::recv(s)) {
+    if (!Socket::Recv(s)) {
         throw SocketException("Could not read from socket.");
     }
 
@@ -50,7 +50,7 @@ const ClientSocket &ClientSocket::operator<<(
     char *packet;
     size_t len = ProtobufSocketSerializer::serialize(msg, packet);
 
-    if (!Socket::send(packet, len)) {
+    if (!Socket::Send(packet, len)) {
         throw SocketException("Could not write to socket.");
     }
 
@@ -106,14 +106,14 @@ const ClientSocket &ClientSocket::operator>>(
     char lenBfr[PROTOBUF_HEADER_LENGTH];
 
     // Read the protocol buffer size header (first four bytes).
-    if (!Socket::recv(&lenBfr, PROTOBUF_HEADER_LENGTH, MSG_PEEK)) {
+    if (!Socket::Recv(&lenBfr, PROTOBUF_HEADER_LENGTH, MSG_PEEK)) {
         throw SocketException("Could not read header from socket.");
     }
 
     // Read the protocol buffer data.
     ::google::protobuf::uint32 len = read_protobuf_header(lenBfr);
     char dataBuf[PROTOBUF_HEADER_LENGTH + len];
-    if (!Socket::recv(dataBuf, len + PROTOBUF_HEADER_LENGTH, MSG_WAITALL)) {
+    if (!Socket::Recv(dataBuf, len + PROTOBUF_HEADER_LENGTH, MSG_WAITALL)) {
         throw SocketException("Could not read from socket.");
     }
 
