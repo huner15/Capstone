@@ -48,7 +48,11 @@ public:
      */
     bool operator==(GeographicCoordinate coord);
 
+    static GeographicCoordinate Average(GeographicCoordinate one,
+        GeographicCoordinate two, GeographicCoordinate three);
+
     ~GeographicCoordinate();
 };
+
 
 #endif

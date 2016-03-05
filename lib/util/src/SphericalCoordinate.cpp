@@ -55,3 +55,8 @@ double SphericalCoordinate::operator-(const SphericalCoordinate &other) {
                                                  cos(this->GetElevation()) *
                                                  cos(other.GetElevation()))));
 }
+
+SphericalCoordinate SphericalCoordinate:: Average(SphericalCoordinate one,
+    SphericalCoordinate two, SphericalCoordinate three) {
+    return SphericalCoordinate();
+}

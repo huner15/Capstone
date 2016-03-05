@@ -31,3 +31,7 @@ Velocity Velocity::operator+ (const Velocity& other) {
                     this->down + other.down,
                     this->north + other.north);
 }
+
+Velocity Velocity::Average(Velocity one, Velocity two, Velocity three) {
+    return Velocity (0, 0, 0);
+}

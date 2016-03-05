@@ -26,3 +26,59 @@ SurveillanceReport::SurveillanceReport(std::time_t time, TailNumber tail_number,
     _velocity = velocity;
     _type = type;
 }
+
+std::time_t SurveillanceReport::GetTime() {
+    return _time;
+}
+
+Device SurveillanceReport::GetDevice() {
+    return _type;
+}
+
+GeographicCoordinate SurveillanceReport::GetGeographicCoordinate() {
+    return _geographic_coordinate;
+}
+
+RadarID SurveillanceReport::GetRadarID() {
+    return _radar_id;
+}
+
+SphericalCoordinate SurveillanceReport::GetSphericalCoordinate() {
+    return _spherical_coordinate;
+}
+
+TailNumber SurveillanceReport::GetTailNumber() {
+    return _tail_number;
+}
+
+Velocity SurveillanceReport::GetVelocity() {
+    return _velocity;
+}
+
+TcasID SurveillanceReport::GetTcasID() {
+    return _tcas_id;
+}
+
+double SurveillanceReport::GetRange() const {
+    return _spherical_coordinate.GetRange();
+}
+
+double SurveillanceReport::GetElevation() const {
+    return _spherical_coordinate.GetElevation();
+}
+
+double SurveillanceReport::GetAzimuth() const {
+    return _spherical_coordinate.GetAzimuth();
+}
+
+double SurveillanceReport::GetLatitude() const {
+    return _geographic_coordinate.GetLatitude();
+}
+
+double SurveillanceReport::GetLongitude() const {
+    return _geographic_coordinate.GetLongitude();
+}
+
+double SurveillanceReport::GetAltitude() const {
+    return _geographic_coordinate.GetAltitude();
+}

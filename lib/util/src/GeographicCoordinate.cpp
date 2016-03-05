@@ -40,6 +40,11 @@ bool GeographicCoordinate::operator==(GeographicCoordinate coord) {
         && coord.GetAltitude() == _altitude);
 }
 
+GeographicCoordinate GeographicCoordinate::Average(GeographicCoordinate one,
+    GeographicCoordinate two, GeographicCoordinate three) {
+    return GeographicCoordinate();
+}
+
 GeographicCoordinate::~GeographicCoordinate() {
 
 }

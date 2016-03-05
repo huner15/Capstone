@@ -14,6 +14,10 @@
 #include "FlightReport.h"
 #include "Velocity.h"
 
+#define MAXAZIMUTHDEGREES 360
+#define MAXELEVATIONDEGREES 180
+#define MAXRADARERROR 50
+
 using namespace std;
 
 /**

@@ -49,8 +49,65 @@ public:
     tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
     SphericalCoordinate spherical_coordinate, Velocity velocity, Device type);
 
-    std::time_t getTime(){return _time;}
-    double getLatitude(){return _geographic_coordinate.GetLatitude();}
+    /**
+     * Accessor function for the time of the flight report.
+     * @return the time of the flight report
+     */
+    std::time_t GetTime();
+
+    /**
+     * Accessor function for the tail number of the flight report.
+     * @return the tail number of the flight report.
+     */
+    TailNumber GetTailNumber();
+
+    /**
+     * Accessor function for the TcasId of the flight report.
+     * @return the TcasId of the flight report
+     */
+    TcasID GetTcasID();
+
+    /**
+     * Accessor function for the RadarId of the flight report.
+     * @return the RadarId of the flight report.
+     */
+    RadarID GetRadarID();
+
+    /**
+     * Accessor function for the Geographic coordinate of the flight report.
+     * @return the geographic coordinate of the flight report.
+     */
+    GeographicCoordinate GetGeographicCoordinate();
+
+    /**
+     * Accessor function for the spherical coordinate of the flight report.
+     * @return the spherical coordinate of the flight report.
+     */
+    SphericalCoordinate GetSphericalCoordinate();
+
+    /**
+     * Accessor function for the velocity of the flight report.
+     * @return the velocity of the flight report.
+     */
+    Velocity GetVelocity();
+
+    /**
+     * Accessor function for the device of the flight report.
+     * @return the device of the flight report
+     */
+    Device GetDevice();
+
+    double GetRange() const;
+
+    double GetElevation() const;
+
+    double GetAzimuth() const;
+
+    double GetLatitude() const;
+
+    double GetLongitude() const;
+
+    double GetAltitude() const;
 };
 
 #endif //SURV_REPORT_H

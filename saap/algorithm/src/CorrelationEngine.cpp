@@ -2,20 +2,15 @@
 * @file CorrelationEngine.cpp
 * @author Specific Atomics
 * @author Andrea Savage
-* @date 2-23-16
+* @date 3-4-16
 * @brief The main correlation engine class with most of the distance logic that
  * all of the interchangeable algorithms will be based on.
 */
 
 #include <Categorizer.h>
 #include "CorrelationEngine.h"
-#include "SurveillanceReport.h"
 
 using namespace std;
-
-void CorrelationEngine::RunAlgorithm() {
-
-}
 
 CorrelationEngine::CorrelationEngine() {
 
@@ -25,49 +20,119 @@ CorrelationEngine::~CorrelationEngine() {
 
 }
 
-/*
- * Main method of the correlation algorithm.
- * Called from the ReportReceiver.
- * Takes in all of the SurveillanceReports,
- * adds SurveillanceReports to all of the
- * possible Clusters for each SurveillanceReport,
- * generates Clusters, and evaluates each
- * detected aircraft location.
- *
- * @param ownship The report received from the ownship for the current second
- * @param adsb The reports received from the ADS-B hardware for the current sec
- * @param radar The reports received from the radar hardware for the current sec
- * @param tcas The reports received from the TCAS hardware for the current sec
- * @return int 0 for success, 1 for error
- */
-int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
-        vector<SurveillanceReport *> *tcas,
-        vector<SurveillanceReport *> *radar, bool ifRelative) {
+void CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
+    vector<SurveillanceReport *> *tcas,
+    vector<SurveillanceReport *> *radar) {
     Cluster *cluster;
 
-    _corr_aircraft.clear();
-    _clusters.clear();
-
-    RunAlgorithm();
+    printf("Running top level algorithm\n");
 
     //Create individual clusters for all ads-b reports
     for (int i = 0; i < adsb->size(); i++)
     {
-        cluster = newCluster();
+        cluster = NewCluster();
         cluster->_adsb = adsb->at(i);
     }
     //Create individual clusters for all radar reports
     for (int i = 0; i < radar->size(); i++)
     {
-        cluster = newCluster();
-        cluster->_radar = radar->at(i);
+        if (CompareRadarToClusters(radar->at(i)) == FALSE) {
+            cluster = NewCluster();
+            cluster->_radar = radar->at(i);
+        }
     }
     //Create individual clusters for all tcas reports
     for (int i = 0; i < tcas->size(); i++)
     {
-        cluster = newCluster();
-        cluster->_tcas = tcas->at(i);
+        if (CompareTcasToClusters(tcas->at(i)) == FALSE) {
+            cluster = NewCluster();
+            cluster->_tcas = tcas->at(i);
+        }
     }
+}
+
+double CorrelationEngine::CompareRadarToClusters(SurveillanceReport *report)
+{
+    int index = -1;
+    double result = 0, val;
+
+    for (int i = 0; i < _clusters.size(); i++)
+    {
+        if (_clusters.at(i)->_adsb != NULL) {
+            if ((val = CalcDistance(_clusters.at(i)->_adsb, report)) > result)
+            {
+                result = val;
+                index = i;
+            }
+        }
+
+        if (_clusters.at(i)->_tcas != NULL) {
+            if ((val = CalcDistance(_clusters.at(i)->_tcas, report)) > result)
+            {
+                result = val;
+                index = i;
+            }
+        }
+    }
+
+    if (result >= MINDISTANCE)
+    {
+        _clusters.at(index)->_radar = report;
+        result = TRUE;
+    }
+    else
+    {
+        result = FALSE;
+    }
+
+    return result;
+}
+
+double CorrelationEngine::CompareTcasToClusters(SurveillanceReport *report)
+{
+    int index = -1;
+    double result = 0, val;
+
+    for (int i = 0; i < _clusters.size(); i++)
+    {
+        if (_clusters.at(i)->_adsb != NULL) {
+            if ((val = CalcDistance(_clusters.at(i)->_adsb, report)) > result)
+            {
+                result = val;
+                index = i;
+            }
+        }
+
+        if (_clusters.at(i)->_radar != NULL) {
+            if ((val = CalcDistance(_clusters.at(i)->_radar, report)) > result)
+            {
+                result = val;
+                index = i;
+            }
+        }
+    }
+
+    if (result >= MINDISTANCE)
+    {
+        _clusters.at(index)->_tcas = report;
+        result = TRUE;
+    }
+    else
+    {
+        result = FALSE;
+    }
+
+    return result;
+}
+
+int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
+        vector<SurveillanceReport *> *tcas,
+        vector<SurveillanceReport *> *radar, bool is_relative) {
+    _corr_aircraft.clear();
+    _clusters.clear();
+    _is_relative = is_relative;
+
+    RunAlgorithm(adsb, radar, tcas);
 
     //Checks that all SurveillanceReports are in only one Cluster
     if (CheckClusterCount())
@@ -115,26 +180,37 @@ int CorrelationEngine::ConvertAircraft(Cluster *cluster) {
         printf("Trying to convert empty Cluster to CorrelationAircraft\n");
     }
 
+    std::time_t time = cluster->_adsb->GetTime();
+    TailNumber tail_number = cluster->_adsb->GetTailNumber();
+    TcasID tcas_id = cluster->_tcas->GetTcasID();
+    RadarID radar_id = cluster->_radar->GetRadarID();
+
+    GeographicCoordinate geographic_coordinate =
+        GeographicCoordinate::Average(cluster->_adsb->GetGeographicCoordinate(),
+        cluster->_tcas->GetGeographicCoordinate(),
+        cluster->_radar->GetGeographicCoordinate());
+
+    SphericalCoordinate spherical_coordinate =
+        SphericalCoordinate::Average(cluster->_adsb->GetSphericalCoordinate(),
+        cluster->_tcas->GetSphericalCoordinate(),
+        cluster->_radar->GetSphericalCoordinate());
+
+    Velocity velocity = Velocity::Average(cluster->_adsb->GetVelocity(),
+        cluster->_tcas->GetVelocity(), cluster->_radar->GetVelocity());
+
     //Set prediction vectors
-    //Velocity predictedVector, Velocity predictedLoc
+    Velocity predictedVector = Velocity(0, 0, 0);
+    Velocity predictedLoc = Velocity(0, 0, 0);
 
-//    std::time_t time, TailNumber tail_number, TcasID
-//    tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
-//            SphericalCoordinate spherical_coordinate, Velocity velocity,
-
-    aircraft = new CorrelationAircraft();
+    aircraft = new CorrelationAircraft(time, tail_number, tcas_id, radar_id,
+        geographic_coordinate, spherical_coordinate, velocity, predictedVector,
+        predictedLoc, type);
 
     _corr_aircraft.push_back(aircraft);
+
+    return 0;
 }
 
-/*
- * Checks that all SurveillanceReports are in
- * exactly one Cluster.
- * Ran after all CorrelatedAircraft are
- * calculated by the algorithm.
- *
- * @return int 0 for success, 1 for error
- */
 int CorrelationEngine::CheckClusterCount() {
     int result = 0;
 
@@ -150,12 +226,7 @@ int CorrelationEngine::CheckClusterCount() {
     return result;
 }
 
-/*
- * Gets an empty Cluster pointer from the existing list or
- * mallocs a new one.
- * @return Cluster * the pointer to the new Cluster to use
- */
-Cluster *CorrelationEngine::newCluster()
+Cluster *CorrelationEngine::NewCluster()
 {
     Cluster *cluster;
 
@@ -175,12 +246,7 @@ Cluster *CorrelationEngine::newCluster()
     return cluster;
 }
 
-/*
- * Gets an empty Cluster pointer from the existing list or
- * mallocs a new one.
- * @return Cluster * the pointer to the new Cluster to use
- */
-CorrelationAircraft *CorrelationEngine::newCorrAircraft()
+CorrelationAircraft *CorrelationEngine::NewCorrAircraft()
 {
     CorrelationAircraft *aircraft;
 
@@ -195,67 +261,131 @@ CorrelationAircraft *CorrelationEngine::newCorrAircraft()
     return aircraft;
 }
 
-/*
- * Generates the distance between two SurveillanceReports
- * based on their speed, heading, and distance.
- *
- * @param reportOne The first report to compare
- * @param reportTwo The second report to compare
- * @return float The distance metric from 0 to 1 where 1 is the
- * highest correlation.
- */
-float CorrelationEngine::CalcDistance(SurveillanceReport *reportOne,
+double CorrelationEngine::CalcDistance(SurveillanceReport *reportOne,
     SurveillanceReport *reportTwo)
 {
-    float distance = CalcHeading(reportOne, reportTwo);
+    double distance = CalcHeading(reportOne, reportTwo);
     distance += CalcEuclidDistance(reportOne, reportTwo);
-    distance += CalcSpeed(reportOne, reportTwo);
+    distance += CalcVelocity(reportOne, reportTwo);
 
     return cbrt(distance);
 }
 
-/**
- * Helper function that calculates the heading correlation ranking between two
- * Surveillance Reports for the distance metric.
- *
- * @param reportOne The first report to compare
- * @param reportTwo The second report to compare
- * @return float The heading metric from 0 to 1 where 1 is the
- * highest correlation.
- */
-float CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
-    SurveillanceReport *reportTwo)
-{
-    return 0;
+double CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
+    SurveillanceReport *reportTwo) {
+    double range, azimuth, elevation, metric;
+    double difference, latitude, longitude, altitude;
+
+    //ADS-B could not be converted to spherical coordinates
+    if (_is_relative == FALSE && (reportOne->GetDevice() == ADSB
+        || reportTwo->GetDevice() == ADSB)) {
+        //no way to calculate heading for unconverted adsb
+        metric = 1;
+    }
+    //compare most reports by spherical coordinates
+    else {
+        //calculate range correlation
+        difference = reportOne->GetRange() - reportTwo->GetRange();
+        range = (MAXRADARERROR - difference) / MAXRADARERROR;
+
+        //calculate azimuth correlation
+        difference = reportOne->GetAzimuth() - reportTwo->GetAzimuth();
+        azimuth = (MAXAZIMUTHDEGREES - difference) / MAXAZIMUTHDEGREES;
+
+        //calculate elevation correlation
+        difference = reportOne->GetElevation() - reportTwo->GetElevation();
+        elevation = (MAXELEVATIONDEGREES - difference) / MAXELEVATIONDEGREES;
+
+        metric = (range + elevation + azimuth) / 3;
+    }
+
+    return metric;
 }
 
-/**
- * Helper function that calculates the Euclidean distance correlation ranking
- * between two Surveillance Reports for the distance metric.
- *
- * @param reportOne The first report to compare
- * @param reportTwo The second report to compare
- * @return float The Euclidean distance metric from 0 to 1 where 1 is the
- * highest correlation.
- */
-float CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
-    SurveillanceReport *reportTwo)
-{
-    return 0;
+double CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
+    SurveillanceReport *reportTwo) {
+    double range, azimuth, elevation, difference;
+    double metric, latitude, longitude, altitude;
+
+    //ADS-B could not be converted to spherical coordinates
+    if (_is_relative == FALSE && (reportOne->GetDevice() == ADSB
+        || reportTwo->GetDevice() == ADSB)) {
+        //Compare ADSB and radar reports by geographical coordinates
+        if ((reportOne->GetDevice() == RADAR ||
+             reportTwo->GetDevice() == RADAR)) {
+            //calculate latitude correlation
+            difference = reportOne->GetLatitude() - reportTwo->GetLatitude();
+            latitude = (MAXLATITUDE - difference) / MAXLATITUDE;
+
+            //calculate longitude correlation
+            difference = reportOne->GetLongitude() - reportTwo->GetLongitude();
+            longitude = (MAXLONGITUDE - difference) / MAXLONGITUDE;
+
+            //calculate altitude correlation
+            difference = reportOne->GetAltitude() - reportTwo->GetAltitude();
+            altitude = (MAXALTITUDE - difference) / MAXALTITUDE;
+
+            metric = (latitude + longitude + altitude) / 3;
+        }
+            //no way to compare unconverted ADS-B and TCAS
+        else {
+            metric = 1;
+        }
+    }
+        //compare most reports by spherical coordinates
+    else {
+        //calculate range correlation
+        difference = reportOne->GetRange() - reportTwo->GetRange();
+        range = (MAXRADARERROR - difference) / MAXRADARERROR;
+
+        metric = range;
+    }
+
+    return metric;
 }
 
+double CorrelationEngine::CalcVelocity(SurveillanceReport *reportOne,
+    SurveillanceReport *reportTwo) {
+    Velocity oneVelocity = reportOne->GetVelocity();
+    Velocity twoVelocity = reportTwo->GetVelocity();
+    double metric = 0, error, difference;
 
-/**
- * Helper function that calculates the speed correlation ranking between two
- * Surveillance Reports for the distance metric.
- *
- * @param reportOne The first report to compare
- * @param reportTwo The second report to compare
- * @return float The speed metric from 0 to 1 where 1 is the
- * highest correlation.
- */
-float CorrelationEngine::CalcSpeed(SurveillanceReport *reportOne,
-    SurveillanceReport *reportTwo)
-{
-    return 0;
+    //or TCAS report has a prediction
+    if (reportOne->GetDevice() != TCAS && reportTwo->GetDevice() != TCAS) {
+        difference = abs(oneVelocity.north - twoVelocity.north);
+        difference += abs(oneVelocity.east - twoVelocity.east);
+        difference += abs(oneVelocity.down - twoVelocity.down);
+
+        error = CalcVelocityError(reportOne->GetDevice());
+        error += CalcVelocityError(reportTwo->GetDevice());
+        metric = (error * difference) / error;
+    }
+    else {
+        metric = 1;
+    }
+
+    if (metric < 0) {
+        metric = 0;
+    }
+
+    return metric;
+}
+
+double CorrelationEngine::CalcVelocityError(Device type) {
+    double error = 30;
+
+    switch(type)
+    {
+        case ADSB:
+            error = 15; //feet per second
+            break;
+        case TCAS:
+        case RADAR:
+            error = 20; //feet per second
+            break;
+        default:
+            printf("Error: invalid device type\n");
+    }
+
+    return error;
 }
