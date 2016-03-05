@@ -8,8 +8,8 @@
  * taken from tldp.org/LDP/LG/issue74/misc/tougher
  */
 
-#ifndef Socket_H_
-#define Socket_H_
+#ifndef SOCKET_H_
+#define SOCKET_H_
 
 #include <string>
 #include <string.h>
