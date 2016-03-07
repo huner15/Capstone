@@ -108,6 +108,8 @@ public:
     double GetLongitude() const;
 
     double GetAltitude() const;
+
+    double GetBearing() const;
 };
 
 #endif //SURV_REPORT_H

@@ -93,3 +93,84 @@ TEST(ReportReceiverOwnshipSurveillanceReport, TwoReports){
     EXPECT_EQ(14, surveillanceReport->GetVelocity().east);
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
 }
+
+TEST(ReportReceiverTcasSurveillanceReports, OneReport){
+
+    TcasReport tcasReport = TcasReport();
+    TcasID tcasID = TcasID();
+    tcasReport.set_id(tcasID.Get());
+    tcasReport.set_altitude(1);
+    tcasReport.set_bearing(2);
+    tcasReport.set_range(3);
+
+    ReportReceiver reportReceiver = ReportReceiver();
+
+    vector<SurveillanceReport *>* reports = reportReceiver.getTcas();
+
+    EXPECT_EQ(0, reports->size());
+
+    reportReceiver.ReceiveTcas(tcasReport);
+    reports = reportReceiver.getTcas();
+    EXPECT_EQ(1, reports->size());
+
+    SurveillanceReport * surveillanceReport = reports->at(0);
+
+    EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
+    EXPECT_EQ(1, surveillanceReport->GetAltitude());
+    EXPECT_EQ(2, surveillanceReport->GetBearing());
+    EXPECT_EQ(3, surveillanceReport->GetRange());
+    EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
+}
+
+TEST(ReportReceiverTcasSurveillanceReport, TwoReports){
+    TcasReport tcasReport = TcasReport();
+    TcasID tcasID = TcasID();
+    tcasReport.set_id(tcasID.Get());
+    tcasReport.set_altitude(1);
+    tcasReport.set_bearing(2);
+    tcasReport.set_range(3);
+
+    ReportReceiver reportReceiver = ReportReceiver();
+
+    vector<SurveillanceReport *>* reports = reportReceiver.getTcas();
+
+    EXPECT_EQ(0, reports->size());
+
+    reportReceiver.ReceiveTcas(tcasReport);
+    reports = reportReceiver.getTcas();
+    EXPECT_EQ(1, reports->size());
+
+    SurveillanceReport * surveillanceReport = reports->at(0);
+
+    EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
+    EXPECT_EQ(1, surveillanceReport->GetAltitude());
+    EXPECT_EQ(2, surveillanceReport->GetBearing());
+    EXPECT_EQ(3, surveillanceReport->GetRange());
+    EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
+
+    TcasReport tcasReport1 = TcasReport();
+    TcasID tcasID1 = TcasID();
+    tcasReport1.set_id(tcasID1.Get());
+    tcasReport1.set_altitude(4);
+    tcasReport1.set_bearing(5);
+    tcasReport1.set_range(6);
+
+    reportReceiver.ReceiveTcas(tcasReport1);
+    reports = reportReceiver.getTcas();
+
+    EXPECT_EQ(2, reports->size());
+
+    surveillanceReport = reports->at(0);
+    EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
+    EXPECT_EQ(1, surveillanceReport->GetAltitude());
+    EXPECT_EQ(2, surveillanceReport->GetBearing());
+    EXPECT_EQ(3, surveillanceReport->GetRange());
+    EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
+
+    surveillanceReport = reports->at(1);
+    EXPECT_EQ(tcasID1.Get(), surveillanceReport->GetTcasID().Get());
+    EXPECT_EQ(4, surveillanceReport->GetAltitude());
+    EXPECT_EQ(5, surveillanceReport->GetBearing());
+    EXPECT_EQ(6, surveillanceReport->GetRange());
+    EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
+}

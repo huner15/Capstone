@@ -82,3 +82,7 @@ double SurveillanceReport::GetLongitude() const {
 double SurveillanceReport::GetAltitude() const {
     return _geographic_coordinate.GetAltitude();
 }
+
+double SurveillanceReport::GetBearing() const {
+    return _spherical_coordinate.GetBearing();
+}
