@@ -36,9 +36,9 @@ TEST(ReportReceiverOwnshipSurveillanceReports, SingleReport) {
     EXPECT_EQ(2.0, surveillanceReport->GetLatitude());
     EXPECT_EQ(3, surveillanceReport->GetLongitude());
     EXPECT_EQ(4, surveillanceReport->GetAltitude());
-    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(6, surveillanceReport->GetVelocity().down);
-    EXPECT_EQ(7, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
 
 }
@@ -69,9 +69,9 @@ TEST(ReportReceiverOwnshipSurveillanceReports, TwoReports){
     EXPECT_EQ(2.0, surveillanceReport->GetLatitude());
     EXPECT_EQ(3, surveillanceReport->GetLongitude());
     EXPECT_EQ(4, surveillanceReport->GetAltitude());
-    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(6, surveillanceReport->GetVelocity().down);
-    EXPECT_EQ(7, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
 
     OwnshipReport ownshipReport2 = OwnshipReport();
@@ -92,9 +92,9 @@ TEST(ReportReceiverOwnshipSurveillanceReports, TwoReports){
     EXPECT_EQ(9, surveillanceReport->GetLatitude());
     EXPECT_EQ(10, surveillanceReport->GetLongitude());
     EXPECT_EQ(11, surveillanceReport->GetAltitude());
-    EXPECT_EQ(12, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(13, surveillanceReport->GetVelocity().down);
-    EXPECT_EQ(14, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(12, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(13, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(14, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
 }
 
@@ -219,9 +219,9 @@ TEST(ReportReceiverAdsbSurveillanceReports, OneReport){
     EXPECT_EQ(3, surveillanceReport->GetLongitude());
     EXPECT_EQ(4, surveillanceReport->GetAltitude());
     EXPECT_EQ(tailNumber.Get(), surveillanceReport->GetTailNumber().Get());
-    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(6, surveillanceReport->GetVelocity().down);
-    EXPECT_EQ(7, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
 
 }
@@ -258,9 +258,9 @@ TEST(ReportReceiverAdsbSurveillanceReports, TwoReports){
     EXPECT_EQ(3, surveillanceReport->GetLongitude());
     EXPECT_EQ(4, surveillanceReport->GetAltitude());
     EXPECT_EQ(tailNumber.Get(), surveillanceReport->GetTailNumber().Get());
-    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(6, surveillanceReport->GetVelocity().down);
-    EXPECT_EQ(7, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
 
     AdsBReport adsBReport1 = AdsBReport();
@@ -286,9 +286,9 @@ TEST(ReportReceiverAdsbSurveillanceReports, TwoReports){
     EXPECT_EQ(3, surveillanceReport->GetLongitude());
     EXPECT_EQ(4, surveillanceReport->GetAltitude());
     EXPECT_EQ(tailNumber.Get(), surveillanceReport->GetTailNumber().Get());
-    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(6, surveillanceReport->GetVelocity().down);
-    EXPECT_EQ(7, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
 
     surveillanceReport = reports->at(1);
@@ -298,9 +298,9 @@ TEST(ReportReceiverAdsbSurveillanceReports, TwoReports){
     EXPECT_EQ(10, surveillanceReport->GetLongitude());
     EXPECT_EQ(11, surveillanceReport->GetAltitude());
     EXPECT_EQ(tailNumber1.Get(), surveillanceReport->GetTailNumber().Get());
-    EXPECT_EQ(12, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(13, surveillanceReport->GetVelocity().down);
-    EXPECT_EQ(14, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(12, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(13, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(14, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
 }
 
@@ -339,9 +339,9 @@ TEST(ReportReceiverRadarSurveillanceReports, OneReport){
     EXPECT_EQ(3, surveillanceReport->GetAzimuth());
     EXPECT_EQ(4, surveillanceReport->GetElevation());
     EXPECT_EQ(radarID.Get(), surveillanceReport->GetRadarID().Get());
-    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(6, surveillanceReport->GetVelocity().east);
-    EXPECT_EQ(7, surveillanceReport->GetVelocity().down);
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->down);
     EXPECT_EQ(8, surveillanceReport->GetLatitude());
     EXPECT_EQ(9, surveillanceReport->GetLongitude());
     EXPECT_EQ(10, surveillanceReport->GetAltitude());
@@ -383,9 +383,9 @@ TEST(ReportReceiverRadarSurveillanceReports, TwoReports){
     EXPECT_EQ(3, surveillanceReport->GetAzimuth());
     EXPECT_EQ(4, surveillanceReport->GetElevation());
     EXPECT_EQ(radarID.Get(), surveillanceReport->GetRadarID().Get());
-    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(6, surveillanceReport->GetVelocity().east);
-    EXPECT_EQ(7, surveillanceReport->GetVelocity().down);
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->down);
     EXPECT_EQ(8, surveillanceReport->GetLatitude());
     EXPECT_EQ(9, surveillanceReport->GetLongitude());
     EXPECT_EQ(10, surveillanceReport->GetAltitude());
@@ -415,9 +415,9 @@ TEST(ReportReceiverRadarSurveillanceReports, TwoReports){
     EXPECT_EQ(3, surveillanceReport->GetAzimuth());
     EXPECT_EQ(4, surveillanceReport->GetElevation());
     EXPECT_EQ(radarID.Get(), surveillanceReport->GetRadarID().Get());
-    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(6, surveillanceReport->GetVelocity().east);
-    EXPECT_EQ(7, surveillanceReport->GetVelocity().down);
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->down);
     EXPECT_EQ(8, surveillanceReport->GetLatitude());
     EXPECT_EQ(9, surveillanceReport->GetLongitude());
     EXPECT_EQ(10, surveillanceReport->GetAltitude());
@@ -429,9 +429,9 @@ TEST(ReportReceiverRadarSurveillanceReports, TwoReports){
     EXPECT_EQ(13, surveillanceReport->GetAzimuth());
     EXPECT_EQ(14, surveillanceReport->GetElevation());
     EXPECT_EQ(radarID1.Get(), surveillanceReport->GetRadarID().Get());
-    EXPECT_EQ(15, surveillanceReport->GetVelocity().north);
-    EXPECT_EQ(16, surveillanceReport->GetVelocity().east);
-    EXPECT_EQ(17, surveillanceReport->GetVelocity().down);
+    EXPECT_EQ(15, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(16, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(17, surveillanceReport->GetVelocity()->down);
     EXPECT_EQ(18, surveillanceReport->GetLatitude());
     EXPECT_EQ(19, surveillanceReport->GetLongitude());
     EXPECT_EQ(20, surveillanceReport->GetAltitude());
