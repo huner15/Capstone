@@ -14,7 +14,7 @@
 TEST(FlightPlanInputConstructor, ValidValues) {
     FlightLeg flight_leg1 (5, 10, Velocity {54.2, 43.7, 100.7});
     FlightLeg flight_leg2 (3, 2, Velocity {2.5, 143.8, 29.1});
-    GeographicCoordinate geographic_coordinate (130, 95, 2000);
+    GeographicCoordinate geographic_coordinate (30, 95, 2000);
     std::vector<FlightLeg> flight_legs;
 
     flight_legs.push_back(flight_leg1);
@@ -22,7 +22,7 @@ TEST(FlightPlanInputConstructor, ValidValues) {
 
     FlightPlan flight_plan (geographic_coordinate, flight_legs);
 
-    EXPECT_EQ(130, flight_plan.GetStartPosition().GetLatitude());
+    EXPECT_EQ(30, flight_plan.GetStartPosition().GetLatitude());
     EXPECT_EQ(95, flight_plan.GetStartPosition().GetLongitude());
     EXPECT_EQ(2000, flight_plan.GetStartPosition().GetAltitude());
 
@@ -54,7 +54,7 @@ TEST(FlightPlanInputConstructor, ValidValues) {
 TEST(FlightPlanInputConstructor, ExceptionHandling) {
     try {
         FlightLeg flight_leg1 (5, 10, Velocity {54.2, 43.7, 100.7});
-        GeographicCoordinate geographic_coordinate (130, 95, 2000);
+        GeographicCoordinate geographic_coordinate (30, 95, 2000);
         std::vector<FlightLeg> flight_legs;
 
         flight_legs.push_back(flight_leg1);

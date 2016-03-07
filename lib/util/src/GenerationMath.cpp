@@ -64,20 +64,23 @@ GeographicCoordinate GenerationMath::DestinationPoint(
 
     double distance = sqrt(velocity.east * velocity.east +
                                    velocity.north * velocity.north);
-
+    //std::cout << "\ndistance traveled: " << distance << std::endl;
     double start_lat = ToRadians(start.GetLatitude());
     double start_long = ToRadians(start.GetLongitude());
     double angular_dist = (distance / EARTH_RAD2);
-
+    /*std::cout << "lat: (actual)" << start.GetLatitude() << std::endl;
+    std::cout << "start lat: " << start_lat << " start long: " << start_long << std::endl;
+    std::cout << "angular dist: " << angular_dist << std::endl;
+    std::cout << "current bearing: " << ToRadians(current_bearing) << std::endl;*/
     double dest_lat = asin( sin(start_lat) * cos(angular_dist) +
                                  cos(start_lat) * sin(angular_dist)
                                  * cos(ToRadians(current_bearing)));
-
     double dest_long = start_long
                        + atan2(sin(ToRadians(current_bearing)) * sin(angular_dist)
                                * cos(start_lat),
                                cos(angular_dist) -
                                        sin(start_lat) * sin(dest_lat));
+    //std::cout << "dest lat (radians): " << dest_lat << std::endl;
     dest_lat = ToDegrees(dest_lat);
     dest_long = ToDegrees(dest_long);
     return GeographicCoordinate (dest_lat, dest_long,
@@ -89,6 +92,6 @@ double GenerationMath::ToRadians(double degrees) {
 }
 
 double GenerationMath::ToDegrees(double radians) {
-    std::cout << "radians: " << radians << " degrees: " << std::defaultfloat << std::setprecision(10) << (radians * 180.0 / PI) << std::endl;
+    //std::cout << "radians: " << radians << " degrees: " << std::defaultfloat << std::setprecision(10) << (radians * 180.0 / PI) << std::endl;
     return radians * 180.0 / M_PI;
 }

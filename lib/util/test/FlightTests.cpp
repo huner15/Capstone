@@ -18,12 +18,10 @@
  * Checks to make sure that a valid FlightLeg can be created.
  */
 TEST(FlightInputConstructor, ValidValues) {
-    FlightSimulation fs = SimulationFlightsIO::ReadFile("FlightSimulation.json");
+    /*FlightSimulation fs = SimulationFlightsIO::ReadFile(
+            "FlightSimulationInput.json");
     std::vector<Flight> flights = fs.GetFlights();
     Flight flight = flights.at(0);
 
-    while(flight.HasNextFlightReport()) {
-        FlightReport report = flight.NextFlightReport();
-        //std::cout << report.GetTailNumber().Get() << std::endl;
-    }
+    Flight ownship_flight = flights[0];*/
 }

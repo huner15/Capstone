@@ -31,7 +31,7 @@
    "flightPlans" : [
      {
        "startPosition": {
-         "latitude": 123,
+         "latitude": 89,
          "longitude": 24,
          "altitude": 345
        },
@@ -52,8 +52,8 @@
      },
      {
        "startPosition": {
-         "latitude": 50,
-         "longitude": 60,
+         "latitude": 73.59,
+         "longitude": 34.45,
          "altitude": 100
        },
        "tailNo" : "123456",

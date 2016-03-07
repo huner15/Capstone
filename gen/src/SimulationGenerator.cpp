@@ -31,7 +31,7 @@ Json::Value SimulationGenerator::FormatOwnshipReport(std::time_t time,
                                                      double latitude,
                                                      double longitude,
                                                      double north, double east,
-                                                     double down) {
+                                                     double down, int index) {
     Json::Value own_report;
     own_report["time"] = ctime(&time);
     own_report["altitude"] = altitude;
@@ -40,6 +40,7 @@ Json::Value SimulationGenerator::FormatOwnshipReport(std::time_t time,
     own_report["north"] = north;
     own_report["east"] = east;
     own_report["down"] = down;
+    own_report["index"] = index;
     return own_report;
 }
 
@@ -49,7 +50,7 @@ Json::Value SimulationGenerator::FormatAdsbReport(TailNumber tail_number,
                                                   double latitude,
                                                   double longitude,
                                                   double north, double east,
-                                                  double down) {
+                                                  double down, int index) {
     Json::Value adsb_report;
     adsb_report["tailNumber"] = tail_number.Get();
     adsb_report["time"] = ctime(&time);
@@ -59,18 +60,20 @@ Json::Value SimulationGenerator::FormatAdsbReport(TailNumber tail_number,
     adsb_report["north"] = north;
     adsb_report["east"] = east;
     adsb_report["down"] = down;
+    adsb_report["index"] = index;
     return adsb_report;
 
 }
 
 Json::Value SimulationGenerator::FormatTcasReport(TcasID id, double altitude,
                                                   double bearing,
-                                                  double range) {
+                                                  double range, int index) {
     Json::Value tcas_report;
     tcas_report["id"] = id.Get();
     tcas_report["altitude"] = altitude;
     tcas_report["bearing"] = bearing;
     tcas_report["range"] = range;
+    tcas_report["index"] = index;
 
     return tcas_report;
 }
@@ -82,7 +85,7 @@ Json::Value SimulationGenerator::FormatRadarReport(RadarID id, std::time_t time,
                                                    double latitude,
                                                    double longitude,
                                                    double north, double east,
-                                                   double down) {
+                                                   double down, int index) {
     Json::Value radar_report;
     radar_report["id"] = id.Get();
     radar_report["time"] = ctime(&time);
@@ -95,6 +98,7 @@ Json::Value SimulationGenerator::FormatRadarReport(RadarID id, std::time_t time,
     radar_report["north"] = north;
     radar_report["east"] = east;
     radar_report["down"] = down;
+    radar_report["index"] = index;
     return radar_report;
 }
 
@@ -133,8 +137,8 @@ Json::Value SimulationGenerator::WriteTcasReports() {
                 reports.append(
                         FormatTcasReport(TcasID(),
                                          cur_pos.GetAltitude() -
-                                         own_pos.GetLatitude(),
-                                         rel_bearing, range));
+                                         own_pos.GetAltitude(),
+                                         rel_bearing, range, time));
             }
         }
 
@@ -179,19 +183,22 @@ Json::Value SimulationGenerator::WriteRadarReports() {
                                 own_pos, new_pos)
                         - _ownship_bearings.at(time);
 
-                double elevation = atan(
+                double elevation = GenerationMath::ToDegrees(atan(
                         (new_pos.GetAltitude() -
-                         own_pos.GetAltitude()) / range);
+                         own_pos.GetAltitude()) / range));
 
                 //std::cout << "New bearing: " << cur_bearing << std::endl;
                 cur_pos = new_pos;
                 time++;
-                reports.append(
+                if (azimuth <= 180.0 && azimuth >= -180.0 &&
+                    elevation <= 90.0 && elevation >= -90.0) {
+                    reports.append(
                         FormatRadarReport(RadarID(), time, range, azimuth,
                                           elevation, own_pos.GetAltitude(),
                                           own_pos.GetLatitude(),
                                           own_pos.GetLongitude(),
-                                          vel.north, vel.east, vel.down));
+                                          vel.north, vel.east, vel.down, time));
+                }
             }
         }
 
@@ -218,7 +225,7 @@ Json::Value SimulationGenerator::WriteAdsbReports() {
         for (int i = 0; i < flight_legs.size(); i++) {
             int duration = flight_legs.at(i).GetDurationAfterManeuver() +
                            flight_legs.at(i).GetDurationOfManeuver();
-            Velocity vel = flight_legs.at(i).GetNewRelativeVelocity() -
+            Velocity vel = flight_legs.at(i).GetNewRelativeVelocity() +
                            _ownship_velocities.at(time);
             for (int j = 0; j < duration; j++) {
                 GeographicCoordinate new_pos = GenerationMath::
@@ -236,7 +243,7 @@ Json::Value SimulationGenerator::WriteAdsbReports() {
                                          cur_pos.GetLatitude(),
                                          cur_pos.GetLongitude(),
                                          vel.north, vel.east,
-                                         vel.down));
+                                         vel.down, time));
             }
         }
 
@@ -275,7 +282,8 @@ Json::Value SimulationGenerator::WriteOwnshipReports() {
             reports.append(FormatOwnshipReport(time, cur_pos.GetAltitude(),
                                                cur_pos.GetLatitude(),
                                                cur_pos.GetLongitude(),
-                                               vel.north, vel.east, vel.down));
+                                               vel.north, vel.east, vel.down,
+            time));
         }
     }
 

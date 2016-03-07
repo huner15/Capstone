@@ -11,9 +11,9 @@
 #include "GeographicCoordinate.h"
 
 TEST(GeographicCoordinateInputConstructor, ValidInput) {
-    GeographicCoordinate coordinate (-145, 84, 25100);
+    GeographicCoordinate coordinate (-74, 84, 25100);
 
-    EXPECT_EQ(-145, coordinate.GetLatitude());
+    EXPECT_EQ(-74, coordinate.GetLatitude());
     EXPECT_EQ(84, coordinate.GetLongitude());
     EXPECT_EQ(25100, coordinate.GetAltitude());
 }

@@ -30,22 +30,25 @@ public:
 
     Json::Value FormatOwnshipReport(std::time_t time, double altitude,
                                     double latitude, double longitude,
-                                    double north, double east, double down);
+                                    double north, double east, double down,
+                                    int index);
 
     Json::Value FormatAdsbReport(TailNumber tail_number ,std::time_t time,
                                  double altitude, double latitude,
                                  double longitude,
-                                 double north, double east, double down);
+                                 double north, double east, double down,
+                                int index);
 
     Json::Value FormatTcasReport(TcasID id, double altitude, double bearing,
-                                 double range);
+                                 double range,int index);
 
 
     Json::Value FormatRadarReport(RadarID id ,std::time_t time, double range,
                                   double azimuth, double elevation,
                                   double altitude, double latitude,
                                   double longitude,
-                                  double north, double east, double down);
+                                  double north, double east, double down,
+                                  int index);
 
 
     Json::Value WriteOwnshipReports();

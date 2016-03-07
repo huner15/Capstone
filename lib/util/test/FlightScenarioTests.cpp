@@ -14,7 +14,7 @@ TEST(FlightScenarioInputConstructor, ValidValues) {
     TailNumber tailNumber ("AAAAAA");
     FlightLeg flight_leg1 (5, 10, Velocity {54.2, 43.7, 100.7});
     FlightLeg flight_leg2 (3, 2, Velocity {2.5, 143.8, 29.1});
-    GeographicCoordinate geographic_coordinate (130, 95, 2000);
+    GeographicCoordinate geographic_coordinate (30, 95, 2000);
     std::vector<FlightLeg> flight_legs;
 
     flight_legs.push_back(flight_leg1);
