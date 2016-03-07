@@ -92,9 +92,9 @@ SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
             pow(coords.at(3)->_elevation, 2) + pow(coords.at(3)->_azimuth, 2));
 
         //if difference is twice as big as other distance, must be an outlier
-        removeVal = (abs(vOne - vTwo) >= 2 * abs(vTwo - vThree)) ? 1 : 0;
-        removeVal = (abs(vTwo - vThree) >= 2 * abs(vThree - vOne)) ? 2 : 0;
-        removeVal = (abs(vThree - vOne) >= 2 * abs(vOne - vTwo)) ? 3 : 0;
+        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 1 : 0;
+        removeVal = (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 2 : 0;
+        removeVal = (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 3 : 0;
 
         if (removeVal != 0) {
             count--;
