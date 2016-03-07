@@ -12,7 +12,7 @@
 
 /*
  * Tests to see that the ownship surveillance report creator is properly
- * functioning.
+ * functioning for one Report
  */
 TEST(ReportReceiverOwnshipSurveillanceReports, SingleReport) {
     OwnshipReport ownshipReport = OwnshipReport();
@@ -43,6 +43,10 @@ TEST(ReportReceiverOwnshipSurveillanceReports, SingleReport) {
 
 }
 
+/*
+ * Tests to see that the ownship surveillance report creator is properly
+ * functioning for two Reports
+ */
 TEST(ReportReceiverOwnshipSurveillanceReport, TwoReports){
     OwnshipReport ownshipReport = OwnshipReport();
     std::time_t time = std::time_t(1);
@@ -94,6 +98,10 @@ TEST(ReportReceiverOwnshipSurveillanceReport, TwoReports){
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
 }
 
+/*
+ * Tests to see that the tcas surveillance report creator is properly
+ * functioning for one Report
+ */
 TEST(ReportReceiverTcasSurveillanceReports, OneReport){
 
     TcasReport tcasReport = TcasReport();
@@ -122,6 +130,10 @@ TEST(ReportReceiverTcasSurveillanceReports, OneReport){
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
 }
 
+/*
+ * Tests to see that the tcas surveillance report creator is properly
+ * functioning for two Reports
+ */
 TEST(ReportReceiverTcasSurveillanceReport, TwoReports){
     TcasReport tcasReport = TcasReport();
     TcasID tcasID = TcasID();
@@ -173,4 +185,121 @@ TEST(ReportReceiverTcasSurveillanceReport, TwoReports){
     EXPECT_EQ(5, surveillanceReport->GetBearing());
     EXPECT_EQ(6, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
+}
+
+/*
+ * Tests to see that the adsb surveillance report creator is properly
+ * functioning for one Report
+ */
+TEST(ReportReceiverAdsbSurveillanceReport, OneReport){
+    AdsBReport adsBReport = AdsBReport();
+    std::time_t time = std::time_t(1);
+    adsBReport.set_timestamp(time);
+    adsBReport.set_latitude(2);
+    adsBReport.set_longitude(3);
+    adsBReport.set_altitude(4);
+    TailNumber tailNumber = TailNumber();
+    adsBReport.set_tail_number(tailNumber.Get());
+    adsBReport.set_north(5);
+    adsBReport.set_down(6);
+    adsBReport.set_east(7);
+
+    ReportReceiver reportReceiver = ReportReceiver();
+    vector<SurveillanceReport *>* reports = reportReceiver.getAdsB();
+
+    EXPECT_EQ(0, reports->size());
+    reportReceiver.ReceiveAdsb(adsBReport);
+    reports = reportReceiver.getAdsB();
+    EXPECT_EQ(1, reports->size());
+
+    SurveillanceReport * surveillanceReport = reports->at(0);
+
+    EXPECT_EQ(time, surveillanceReport->GetTime());
+    EXPECT_EQ(2, surveillanceReport->GetLatitude());
+    EXPECT_EQ(3, surveillanceReport->GetLongitude());
+    EXPECT_EQ(4, surveillanceReport->GetAltitude());
+    EXPECT_EQ(tailNumber.Get(), surveillanceReport->GetTailNumber().Get());
+    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity().down);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
+
+}
+
+/*
+ * Tests to see that the adsb surveillance report creator is properly
+ * functioning for two Reports
+ */
+TEST(ReportReceiverAdsbSurveillanceReport, TwoReports){
+    AdsBReport adsBReport = AdsBReport();
+    std::time_t time = std::time_t(1);
+    adsBReport.set_timestamp(time);
+    adsBReport.set_latitude(2);
+    adsBReport.set_longitude(3);
+    adsBReport.set_altitude(4);
+    TailNumber tailNumber = TailNumber();
+    adsBReport.set_tail_number(tailNumber.Get());
+    adsBReport.set_north(5);
+    adsBReport.set_down(6);
+    adsBReport.set_east(7);
+
+    ReportReceiver reportReceiver = ReportReceiver();
+    vector<SurveillanceReport *>* reports = reportReceiver.getAdsB();
+
+    EXPECT_EQ(0, reports->size());
+    reportReceiver.ReceiveAdsb(adsBReport);
+    reports = reportReceiver.getAdsB();
+    EXPECT_EQ(1, reports->size());
+
+    SurveillanceReport * surveillanceReport = reports->at(0);
+
+    EXPECT_EQ(time, surveillanceReport->GetTime());
+    EXPECT_EQ(2, surveillanceReport->GetLatitude());
+    EXPECT_EQ(3, surveillanceReport->GetLongitude());
+    EXPECT_EQ(4, surveillanceReport->GetAltitude());
+    EXPECT_EQ(tailNumber.Get(), surveillanceReport->GetTailNumber().Get());
+    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity().down);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
+
+    AdsBReport adsBReport1 = AdsBReport();
+    std::time_t time1 = std::time_t(8);
+    adsBReport1.set_timestamp(time1);
+    adsBReport1.set_latitude(9);
+    adsBReport1.set_longitude(10);
+    adsBReport1.set_altitude(11);
+    TailNumber tailNumber1 = TailNumber();
+    adsBReport1.set_tail_number(tailNumber1.Get());
+    adsBReport1.set_north(12);
+    adsBReport1.set_down(13);
+    adsBReport1.set_east(14);
+
+    reportReceiver.ReceiveAdsb(adsBReport1);
+    reports = reportReceiver.getAdsB();
+    EXPECT_EQ(2, reports->size());
+
+    surveillanceReport = reports->at(0);
+
+    EXPECT_EQ(time, surveillanceReport->GetTime());
+    EXPECT_EQ(2, surveillanceReport->GetLatitude());
+    EXPECT_EQ(3, surveillanceReport->GetLongitude());
+    EXPECT_EQ(4, surveillanceReport->GetAltitude());
+    EXPECT_EQ(tailNumber.Get(), surveillanceReport->GetTailNumber().Get());
+    EXPECT_EQ(5, surveillanceReport->GetVelocity().north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity().down);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
+
+    surveillanceReport = reports->at(1);
+
+    EXPECT_EQ(time1, surveillanceReport->GetTime());
+    EXPECT_EQ(9, surveillanceReport->GetLatitude());
+    EXPECT_EQ(10, surveillanceReport->GetLongitude());
+    EXPECT_EQ(11, surveillanceReport->GetAltitude());
+    EXPECT_EQ(tailNumber1.Get(), surveillanceReport->GetTailNumber().Get());
+    EXPECT_EQ(12, surveillanceReport->GetVelocity().north);
+    EXPECT_EQ(13, surveillanceReport->GetVelocity().down);
+    EXPECT_EQ(14, surveillanceReport->GetVelocity().east);
+    EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
 }

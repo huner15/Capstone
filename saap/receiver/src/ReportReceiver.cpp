@@ -162,6 +162,10 @@ vector<SurveillanceReport *>* ReportReceiver::getTcas() {
     return _held_reports.getTcas();
 }
 
+vector<SurveillanceReport *>* ReportReceiver::getAdsB() {
+    return _held_reports.getAdsb();
+}
+
 
 //Held Report data from here down
 

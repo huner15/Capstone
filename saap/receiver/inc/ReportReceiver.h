@@ -197,6 +197,12 @@ public:
      */
     vector<SurveillanceReport *>* getTcas();
 
+    /*
+     * Gets the current vector pointer of adsb reports.
+     * @return the vector pointer of adsb surveillance report pointers
+     */
+    vector<SurveillanceReport *>* getAdsB();
+
 
 };
 
