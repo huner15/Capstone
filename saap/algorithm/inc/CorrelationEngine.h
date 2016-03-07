@@ -13,7 +13,7 @@
 #include "SurveillanceReport.h"
 #include "Cluster.h"
 #include "CorrelationAircraft.h"
-#include <Categorizer.h>
+#include "Categorizer.h"
 #include <pthread.h>
 
 #define TRUE 0
