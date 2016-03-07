@@ -7,7 +7,7 @@
  */
 
 #include "ReportReceiver.h"
-
+#include <iostream>
 
 ReportReceiver::ReportReceiver() {
     //TODO Make held reports use the constructor that takes in a correlation
@@ -23,12 +23,11 @@ ReportReceiver::ReportReceiver() {
 
 }
 
-SurveillanceReport ReportReceiver::CreateOwnshipSurveillanceReport
-        (OwnshipReport
-                                                          report) {
+SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
+        (OwnshipReport report){
 
     std::time_t time = report.timestamp();
-    double latitude = report.ownship_longitude();
+    float latitude = report.ownship_latitude();
     double longitude = report.ownship_longitude();
     double altitude = report.ownship_altitude();
     double north = report.north();
@@ -37,7 +36,7 @@ SurveillanceReport ReportReceiver::CreateOwnshipSurveillanceReport
     GeographicCoordinate geographic_coordinate = GeographicCoordinate
             (latitude, longitude, altitude);
     Velocity velocity = Velocity(east, down, north);
-    return SurveillanceReport(time, TailNumber("      "), NULL,
+    return new SurveillanceReport(time, TailNumber("      "), NULL,
                                               NULL,
                                               geographic_coordinate,
                                               SphericalCoordinate(0.0, 0.0,
@@ -155,47 +154,52 @@ void ReportReceiver::ReceiveRadar(RadarReport report) {
     pthread_mutex_unlock(&_radar_mutex);
 }
 
-SurveillanceReport ReportReceiver::getOwnship() {
-    _held_reports.getOwnship();
+SurveillanceReport * ReportReceiver::getOwnship() {
+    return _held_reports.getOwnship();
+}
+
+vector<SurveillanceReport *>* ReportReceiver::getTcas() {
+    return _held_reports.getTcas();
 }
 
 
 //Held Report data from here down
 
-void ReportReceiver::HeldReports::changeOwnship(SurveillanceReport report) {
+void ReportReceiver::HeldReports::changeOwnship(SurveillanceReport * report) {
     _ownship = report;
 }
 
 void ReportReceiver::HeldReports::addAdsBReport(SurveillanceReport * report) {
-    _adsb_reports.push_back(report);
+    _adsb_reports->push_back(report);
 }
 
 void ReportReceiver::HeldReports::addRadarReport(SurveillanceReport *report) {
-    _radar_reports.push_back(report);
+    _radar_reports->push_back(report);
 }
 
 void ReportReceiver::HeldReports::addTcasReport(SurveillanceReport *report) {
-    _tcas_reports.push_back(report);
+    _tcas_reports->push_back(report);
 }
 
 ReportReceiver::HeldReports::HeldReports() {
-    _adsb_reports = std::vector<SurveillanceReport *>();
-    _radar_reports = std::vector<SurveillanceReport *>();
-    _tcas_reports = std::vector<SurveillanceReport *>();
+    _ownship = new SurveillanceReport();
+    _adsb_reports = new std::vector<SurveillanceReport *>();
+    _radar_reports = new std::vector<SurveillanceReport *>();
+    _tcas_reports = new std::vector<SurveillanceReport *>();
 }
 
-SurveillanceReport ReportReceiver::HeldReports::getOwnship() {
+SurveillanceReport* ReportReceiver::HeldReports::getOwnship() {
     return _ownship;
 }
 
 std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getAdsb() {
-    return &_adsb_reports;
+    return _adsb_reports;
 }
 
 std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getRadar() {
-    return &_radar_reports;
+    return _radar_reports;
 }
 
 std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getTcas() {
-    return &_tcas_reports;
+    return _tcas_reports;
 }

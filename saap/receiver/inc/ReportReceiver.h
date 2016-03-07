@@ -23,10 +23,10 @@ private:
 
     class HeldReports {
     private:
-        std::vector<SurveillanceReport *> _tcas_reports;
-        std::vector<SurveillanceReport *> _adsb_reports;
-        std::vector<SurveillanceReport *> _radar_reports;
-        SurveillanceReport _ownship;
+        std::vector<SurveillanceReport *>* _tcas_reports;
+        std::vector<SurveillanceReport *>* _adsb_reports;
+        std::vector<SurveillanceReport *>* _radar_reports;
+        SurveillanceReport * _ownship;
 
         /*
          * Clears the _tcas_reports so it doesn't have overlapping reports.
@@ -75,7 +75,7 @@ private:
         /*
          * Gets the Current Surveillance Report for ownship
          */
-        SurveillanceReport getOwnship();
+        SurveillanceReport* getOwnship();
 
         /*
          * Adds a SurveillanceReport pointer to the Tcas Reports
@@ -99,7 +99,7 @@ private:
          * Changes the current ownship FlightReport
          * @param report the ownship report to replace the last.
          */
-        void changeOwnship(SurveillanceReport report);
+        void changeOwnship(SurveillanceReport * report);
 
 
 
@@ -108,6 +108,8 @@ private:
          * @return the copy of the held report
          */
         HeldReports makeCopy();
+
+
     };
 
     bool _is_copying;
@@ -123,7 +125,7 @@ private:
      * @param report A report received from the ReceiveOwnship.
      * @return the created Surveillance Report
      */
-    SurveillanceReport CreateOwnshipSurveillanceReport(OwnshipReport
+    SurveillanceReport * CreateOwnshipSurveillanceReport(OwnshipReport
                                                            report);
 
     /*
@@ -185,8 +187,17 @@ public:
 
     /*
      * Gets the current ownship report.
+     * @return the ownship surveillance report
      */
-    SurveillanceReport getOwnship();
+    SurveillanceReport* getOwnship();
+
+    /*
+     * Gets the current vector pointer of tcas reports.
+     * @return the vector pointer of tcas surveillance report pointers.
+     */
+    vector<SurveillanceReport *>* getTcas();
+
+
 };
 
 
