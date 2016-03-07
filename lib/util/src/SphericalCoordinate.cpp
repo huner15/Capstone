@@ -1,8 +1,8 @@
 /*
  * SphericalCoordinate.cpp
  * Specific Atomics
- * Frank Poole, Dat Tran
- * 2-13-16
+ * Frank Poole, Dat Tran, Andrea Savage
+ * 3-6-16
  * TODO: Description
  */
 
@@ -56,7 +56,64 @@ double SphericalCoordinate::operator-(const SphericalCoordinate &other) {
                                                  cos(other.GetElevation()))));
 }
 
-SphericalCoordinate SphericalCoordinate:: Average(SphericalCoordinate one,
-    SphericalCoordinate two, SphericalCoordinate three) {
-    return SphericalCoordinate();
+SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
+    *one, SphericalCoordinate *two, SphericalCoordinate *three) {
+    double range = 0, elevation = 0, azimuth = 0, count = 0;
+    double vOne, vTwo, vThree, removeVal;
+    std::vector<SphericalCoordinate *> coords;
+
+    if (one != NULL) {
+        count++;
+        coords.push_back(one);
+    }
+    if (two != NULL) {
+        count++;
+        coords.push_back(two);
+    }
+    if (three != NULL) {
+        count++;
+        coords.push_back(three);
+    }
+
+    for (int i = 0; i < coords.size(); i++)
+    {
+        range += coords.at(i)->_range;
+        elevation += coords.at(i)->_elevation;
+        azimuth += coords.at(i)->_azimuth;
+    }
+
+    //Remove outlier if have all three coordinates and it exists
+    if (count == 3) {
+        vOne = cbrt(pow(coords.at(1)->_range, 2) +
+            pow(coords.at(1)->_elevation, 2) + pow(coords.at(1)->_azimuth, 2));
+        vTwo = cbrt(pow(coords.at(2)->_range, 2) +
+            pow(coords.at(2)->_elevation, 2) + pow(coords.at(2)->_azimuth, 2));
+        vThree = cbrt(pow(coords.at(3)->_range, 2) +
+            pow(coords.at(3)->_elevation, 2) + pow(coords.at(3)->_azimuth, 2));
+
+        //if difference is twice as big as other distance, must be an outlier
+        removeVal = (abs(vOne - vTwo) >= 2 * abs(vTwo - vThree)) ? 1 : 0;
+        removeVal = (abs(vTwo - vThree) >= 2 * abs(vThree - vOne)) ? 2 : 0;
+        removeVal = (abs(vThree - vOne) >= 2 * abs(vOne - vTwo)) ? 3 : 0;
+
+        if (removeVal != 0) {
+            count--;
+            range -= coords.at(removeVal)->_range;
+            elevation -= coords.at(removeVal)->_elevation;
+            azimuth -= coords.at(removeVal)->_azimuth;
+        }
+    }
+
+    //No coordinates exist
+    if (count == 0)
+    {
+        return NULL;
+    }
+
+    //geometric mean
+    range = pow(range, 1 / count);
+    elevation = pow(elevation, 1 / count);
+    azimuth = pow(azimuth, 1 / count);
+
+    return new SphericalCoordinate(range, elevation, azimuth);
 }

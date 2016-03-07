@@ -1,8 +1,8 @@
 /*
  * GeographicCoordinate.cpp
  * Specific Atomics
- * Frank Poole, Kevin Pham
- * 2-9-16
+ * Frank Poole, Kevin Pham, Andrea Savage
+ * 3-6-16
  * TODO: Description
  */
 
@@ -40,11 +40,68 @@ bool GeographicCoordinate::operator==(GeographicCoordinate coord) {
         && coord.GetAltitude() == _altitude);
 }
 
-GeographicCoordinate GeographicCoordinate::Average(GeographicCoordinate one,
-    GeographicCoordinate two, GeographicCoordinate three) {
-    return GeographicCoordinate();
-}
-
 GeographicCoordinate::~GeographicCoordinate() {
 
+}
+
+GeographicCoordinate *GeographicCoordinate::Average(GeographicCoordinate
+    *one, GeographicCoordinate *two, GeographicCoordinate *three) {
+    double latitude = 0, longitude = 0, altitude = 0, count = 0;
+    double vOne, vTwo, vThree, removeVal;
+    std::vector<GeographicCoordinate *> coords;
+
+    if (one != NULL) {
+        count++;
+        coords.push_back(one);
+    }
+    if (two != NULL) {
+        count++;
+        coords.push_back(two);
+    }
+    if (three != NULL) {
+        count++;
+        coords.push_back(three);
+    }
+
+    for (int i = 0; i < coords.size(); i++)
+    {
+        latitude += coords.at(i)->_latitude;
+        longitude += coords.at(i)->_longitude;
+        altitude += coords.at(i)->_altitude;
+    }
+
+    //Remove outlier if have all three coordinates and it exists
+    if (count == 3) {
+        vOne = cbrt(pow(coords.at(1)->_latitude, 2) +
+            pow(coords.at(1)->_longitude, 2) + pow(coords.at(1)->_altitude, 2));
+        vTwo = cbrt(pow(coords.at(2)->_latitude, 2) +
+            pow(coords.at(2)->_longitude, 2) + pow(coords.at(2)->_altitude, 2));
+        vThree = cbrt(pow(coords.at(3)->_latitude, 2) +
+            pow(coords.at(3)->_longitude, 2) + pow(coords.at(3)->_altitude, 2));
+
+        //if difference is twice as big as other distance, must be an outlier
+        removeVal = (abs(vOne - vTwo) >= 2 * abs(vTwo - vThree)) ? 1 : 0;
+        removeVal = (abs(vTwo - vThree) >= 2 * abs(vThree - vOne)) ? 2 : 0;
+        removeVal = (abs(vThree - vOne) >= 2 * abs(vOne - vTwo)) ? 3 : 0;
+
+        if (removeVal != 0) {
+            count--;
+            latitude -= coords.at(removeVal)->_latitude;
+            longitude -= coords.at(removeVal)->_longitude;
+            altitude -= coords.at(removeVal)->_altitude;
+        }
+    }
+
+    //No coordinates exist
+    if (count == 0)
+    {
+        return NULL;
+    }
+
+    //geometric mean
+    latitude = pow(latitude, 1 / count);
+    longitude = pow(longitude, 1 / count);
+    altitude = pow(altitude, 1 / count);
+
+    return new GeographicCoordinate(latitude, longitude, altitude);
 }

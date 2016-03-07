@@ -2,7 +2,7 @@
 * @file Cluster.cpp
 * @author Specific Atomics
 * @author Andrea Savage
-* @date 1-19-16
+* @date 3-5-16
 * @brief Cluster class so that new can be used to instantiate Cluster
  * objects.
 */

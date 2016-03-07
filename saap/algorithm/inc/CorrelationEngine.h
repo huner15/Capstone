@@ -2,68 +2,81 @@
 * @file CorrelationEngine.h
 * @author Specific Atomics
 * @author Andrea Savage
-* @date 3-4-16
+* @date 3-5-16
 * @brief The main correlation engine class with most of the distance logic that
  * all of the interchangeable algorithms will be based on.
 */
 
-#ifndef SAAS_CORRELATIONENGINE_H
-#define SAAS_CORRELATIONENGINE_H
+#ifndef CORRELATIONENGINE_H_
+#define CORRELATIONENGINE_H_
 
-#include <Categorizer.h>
 #include "SurveillanceReport.h"
 #include "Cluster.h"
 #include "CorrelationAircraft.h"
+#include <Categorizer.h>
+#include <pthread.h>
 
 #define TRUE 0
 #define FALSE 1
-#define MINDISTANCE 0.9
-#define MAXLATITUDE 0.0001 //degrees
-#define MAXLONGITUDE 0.0001 //degrees
-#define MAXALTITUDE 50 //feet
+#define MINDISTANCE 0.9 //Minimum distance to cluster by
+#define MAXLATITUDEERROR 0.0001 //degrees
+#define MAXLONGITUDEERROR 0.0001 //degrees
+#define MAXALTITUDEERROR 50 //feet
+#define MAXAZIMUTHERROR 360 //degrees
+#define MAXELEVATIONERROR 180 //degrees
+#define MAXRADARERROR 50 //feet
+#define EXITVAL -1
 
 using namespace std;
 
 class CorrelationEngine {
 protected:
-    vector<Cluster *> _clusters;
-    vector<Cluster *> _free_clusters;
+    vector<Cluster *> _clusters; //Holds the Clusters generated for this second
+    vector<Cluster *> _free_clusters; //Holds the unused Cluster objects
+    //Holds the Correlation Aircraft objects generated this second
     vector<CorrelationAircraft *> _corr_aircraft;
+    //Holds the unused Correlation Aircraft objects
     vector<CorrelationAircraft *> _free_aircraft;
+    //Whether or not ADS-B reports where converted to relative this second
     bool _is_relative;
 
-public:
-    CorrelationEngine();
+    //mutex locks for using the cluster and corrAircraft vectors
+    pthread_mutex_t cluster_mutex;
+    pthread_mutex_t corr_aircraft_mutex;
 
-    ~CorrelationEngine();
-
-    /**
-     * Runs the Algorithm to create all of the Clusters.
-     * Will be overridden by each class that extends this class.
-     * @param adsb The reports received from the ADS-B hardware for the current sec
-     * @param radar The reports received from the radar hardware for the current sec
-     * @param tcas The reports received from the TCAS hardware for the current sec
-     */
-    void RunAlgorithm(vector<SurveillanceReport *> *adsb,
-        vector<SurveillanceReport *> *tcas,
-        vector<SurveillanceReport *> *radar);
-
-    /**
-     * Main method of the correlation algorithm.
-     * Called from the ReportReceiver.
-     * Takes in all of the SurveillanceReports, adds SurveillanceReports to
-     * all of the possible Clusters for each SurveillanceReport, generates
-     * Clusters, and evaluates each detected aircraft location.
+    /*
+     * Checks that all Clusters have atleast one SurveillanceReport.
+     * Ran after all CorrelatedAircraft are calculated by the algorithm.
      *
-     * @param adsb The reports received from the ADS-B hardware for the current sec
-     * @param radar The reports received from the radar hardware for the current sec
-     * @param tcas The reports received from the TCAS hardware for the current sec
-     * @param is_relative if ADS-B has a calculated Spherical Coordinate
      * @return int 0 for success, 1 for error
      */
-    int Correlate(vector<SurveillanceReport *> *adsb,
-        vector<SurveillanceReport *> *tcas,vector<SurveillanceReport *> *radar,
-        bool is_relative);
+    int CheckClusterCount();
+
+    /*
+     * Gets an empty Cluster pointer from the existing list or
+     * mallocs a new one.
+     * @return Cluster * the pointer to the new Cluster to use
+     */
+    Cluster *NewCluster();
+
+    /*
+     * Gets an empty CorrelationAircraft pointer from the existing list or
+     * mallocs a new one.
+     * @return Cluster * the pointer to the new Cluster to use
+     */
+    CorrelationAircraft *NewCorrAircraft();
+
+private:
+    /**
+     * Compares two geographical coordinates to calculate the spherical
+     * coordinate relation between the two points.
+     * @param aircraft the first geographical point
+     * @param ownship the second geographical point
+     * @return SphericalCoordinate the calculated relative coordinate of
+     * aircraft
+     */
+    SphericalCoordinate ConvertGeoToSpher(GeographicCoordinate *aircraft,
+                                          GeographicCoordinate *ownship);
 
     /**
      * Compares the given TCAS report to all of the current clusters to
@@ -84,6 +97,54 @@ public:
     double CompareRadarToClusters(SurveillanceReport *report);
 
     /**
+     * Helper function that calculates the error of the given device type.
+     *
+     * @param reportOne The report to evaluate
+     * @return float The error of this report device type
+     */
+    double CalcVelocityError(Device type);
+
+public:
+    CorrelationEngine();
+
+    ~CorrelationEngine();
+
+    /**
+     * Runs the Algorithm to create all of the Clusters.
+     * Will be overridden by each class that extends this class.
+     * @param adsb The reports received from the ADS-B hardware for the
+     * current sec
+     * @param radar The reports received from the radar hardware for the
+     * current sec
+     * @param tcas The reports received from the TCAS hardware for the
+     * current sec
+     * @return 0 for success, -1 for error
+     */
+    int RunAlgorithm(vector<SurveillanceReport *> *adsb,
+        vector<SurveillanceReport *> *tcas,
+        vector<SurveillanceReport *> *radar);
+
+    /**
+     * Main method of the correlation algorithm.
+     * Called from the ReportReceiver.
+     * Takes in all of the SurveillanceReports, adds SurveillanceReports to
+     * all of the possible Clusters for each SurveillanceReport, generates
+     * Clusters, and evaluates each detected aircraft location.
+     *
+     * @param adsb The reports received from the ADS-B hardware for the
+     * current sec
+     * @param radar The reports received from the radar hardware for the
+     * current sec
+     * @param tcas The reports received from the TCAS hardware for the
+     * current sec
+     * @param is_relative if ADS-B has a calculated Spherical Coordinate
+     * @return int 0 for success, 1 for error
+     */
+    int Correlate(vector<SurveillanceReport *> *adsb,
+        vector<SurveillanceReport *> *tcas,vector<SurveillanceReport *> *radar,
+        bool is_relative);
+
+    /**
      * Converts a given Cluster into a CorrelateAircraft by averaging
      * the reports' fields excluding outliers.
      * @param cluster The cluster to get data from
@@ -92,30 +153,8 @@ public:
     int ConvertAircraft(Cluster *cluster);
 
     /*
-     * Checks that all Clusters have atleast one SurveillanceReport.
-     * Ran after all CorrelatedAircraft are calculated by the algorithm.
-     *
-     * @return int 0 for success, 1 for error
-     */
-    int CheckClusterCount();
-
-    /*
-     * Gets an empty Cluster pointer from the existing list or
-     * mallocs a new one.
-     * @return Cluster * the pointer to the new Cluster to use
-     */
-    Cluster *NewCluster();
-
-    /*
-     * Gets an empty Cluster pointer from the existing list or
-     * mallocs a new one.
-     * @return Cluster * the pointer to the new Cluster to use
-     */
-    CorrelationAircraft *NewCorrAircraft();
-
-    /*
      * Generates the distance between two SurveillanceReports
-     * based on their speed, heading, and distance.
+     * based on their velocity, heading, and distance.
      *
      * @param reportOne The first report to compare
      * @param reportTwo The second report to compare
@@ -126,8 +165,8 @@ public:
         *reportTwo);
 
     /**
-     * Helper function that calculates the heading correlation ranking between two
-     * Surveillance Reports for the distance metric.
+     * Helper function that calculates the heading correlation ranking between
+     * two Surveillance Reports for the distance metric.
      *
      * @param reportOne The first report to compare
      * @param reportTwo The second report to compare
@@ -138,8 +177,8 @@ public:
                                           SurveillanceReport *reportTwo);
 
     /**
-     * Helper function that calculates the velocity correlation ranking between two
-     * Surveillance Reports for the distance metric.
+     * Helper function that calculates the velocity correlation ranking between
+     * two Surveillance Reports for the distance metric.
      *
      * @param reportOne The first report to compare
      * @param reportTwo The second report to compare
@@ -150,8 +189,8 @@ public:
                                           SurveillanceReport *reportTwo);
 
     /**
-     * Helper function that calculates the Euclidean distance correlation ranking
-     * between two Surveillance Reports for the distance metric.
+     * Helper function that calculates the Euclidean distance correlation
+     * ranking between two Surveillance Reports for the distance metric.
      *
      * @param reportOne The first report to compare
      * @param reportTwo The second report to compare
@@ -160,14 +199,6 @@ public:
      */
     double CalcEuclidDistance(SurveillanceReport *reportOne,
                                           SurveillanceReport *reportTwo);
-
-    /**
-     * Helper function that calculates the error of the given device type.
-     *
-     * @param reportOne The report to evaluate
-     * @return float The error of this report device type
-     */
-    double CalcVelocityError(Device type);
 };
 
 #endif

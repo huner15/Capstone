@@ -2,13 +2,13 @@
 * @file SurveillanceReport.h
 * @author Specific Atomics
 * @author Andrea Savage
-* @date 2-13-16
+* @date 3-5-16
 * @brief Constructs a SurveillanceReport and converts a Cluster into one
  * most likely SurveillanceReport.
 */
 
-#ifndef SURV_REPORT_H
-#define SURV_REPORT_H
+#ifndef SURV_REPORT_H_
+#define SURV_REPORT_H_
 
 #include <ctime>
 #include "SurveillanceReport.h"
@@ -38,16 +38,20 @@ protected:
     RadarID _radar_id; /** ID given by the radar hardware. */
     /** latitude, longitude (+/- 180 degrees), and altitude. */
     GeographicCoordinate _geographic_coordinate;
-    SphericalCoordinate _spherical_coordinate;
     Velocity _velocity;  /** relative intruder velocity (feet/sec). */
     Device _type; /** Enum for what device this report is from. */
 
 public:
+    /** Elevation, range, and azimuth. */
+    SphericalCoordinate _spherical_coordinate;
+
     SurveillanceReport();
 
     SurveillanceReport(std::time_t time, TailNumber tail_number, TcasID
     tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
     SphericalCoordinate spherical_coordinate, Velocity velocity, Device type);
+
+    void SetSphericalCoordinate(SphericalCoordinate coord);
 
     /**
      * Accessor function for the time of the flight report.
@@ -77,19 +81,19 @@ public:
      * Accessor function for the Geographic coordinate of the flight report.
      * @return the geographic coordinate of the flight report.
      */
-    GeographicCoordinate GetGeographicCoordinate();
+    GeographicCoordinate *GetGeographicCoordinate();
 
     /**
      * Accessor function for the spherical coordinate of the flight report.
      * @return the spherical coordinate of the flight report.
      */
-    SphericalCoordinate GetSphericalCoordinate();
+    SphericalCoordinate *GetSphericalCoordinate();
 
     /**
      * Accessor function for the velocity of the flight report.
      * @return the velocity of the flight report.
      */
-    Velocity GetVelocity();
+    Velocity *GetVelocity();
 
     /**
      * Accessor function for the device of the flight report.

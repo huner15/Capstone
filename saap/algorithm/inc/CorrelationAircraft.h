@@ -7,16 +7,12 @@
  * most likely CorrelationAircraft.
 */
 
-#ifndef SAAS_CORRELATIONAIRCRAFT_H
-#define SAAS_CORRELATIONAIRCRAFT_H
+#ifndef CORRELATIONAIRCRAFT_H_
+#define CORRELATIONAIRCRAFT_H_
 
 #include "Cluster.h"
 #include "FlightReport.h"
 #include "Velocity.h"
-
-#define MAXAZIMUTHDEGREES 360
-#define MAXELEVATIONDEGREES 180
-#define MAXRADARERROR 50
 
 using namespace std;
 
@@ -41,19 +37,28 @@ protected:
     TcasID _tcas_id; /** ID given by the TCAS hardware. */
     RadarID _radar_id; /** ID given by the radar hardware. */
     /** latitude, longitude (+/- 180 degrees), and altitude. */
-    GeographicCoordinate _geographic_coordinate;
-    SphericalCoordinate _spherical_coordinate;
+    GeographicCoordinate _geographic_coordinate; /** absolute location data. */
+    SphericalCoordinate _spherical_coordinate; /** ownship relative location. */
     Velocity _velocity;  /** relative intruder velocity (feet/sec). */
     Device _type; /** Enum for what device this report is from. */
 
 public:
+    /**
+     * Creates a new empty CorrelationAircraft.
+     */
     CorrelationAircraft();
 
+    /**
+     * Creates a new CorrelationAircraft with the needed values.
+     */
     CorrelationAircraft(std::time_t time, TailNumber tail_number, TcasID
     tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
     SphericalCoordinate spherical_coordinate, Velocity velocity,
     Velocity predictedVector, Velocity predictedLoc, Device type);
 
+    /**
+     * Deconstructs a new empty CorrelationAircraft.
+     */
     ~CorrelationAircraft();
 
     /**

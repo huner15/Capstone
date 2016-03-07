@@ -11,6 +11,8 @@
 #define VELOCITY_H_
 
 #include "Vector.h"
+#include <vector>
+#include <cmath>
 
 /**
  * Velocity represents the three dimensional velocity of a physical object.
@@ -61,7 +63,7 @@ public:
      */
     Velocity operator+ (const Velocity& other);
 
-    static Velocity Average(Velocity one, Velocity two, Velocity three);
+    static Velocity *Average(Velocity *one, Velocity *two, Velocity *three);
 };
 
 #endif

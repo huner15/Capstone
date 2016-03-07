@@ -10,7 +10,7 @@
 #define SPHERICAL_COORDINATE_H_
 
 #include <cmath>
-
+#include <vector>
 #include "Vector.h"
 
 // TODO: Class Description
@@ -64,8 +64,8 @@ public:
      */
     double operator- (const SphericalCoordinate& other);
 
-    static SphericalCoordinate Average(SphericalCoordinate one,
-        SphericalCoordinate two, SphericalCoordinate three);
+    static SphericalCoordinate *Average(SphericalCoordinate *one,
+        SphericalCoordinate *two, SphericalCoordinate *three);
 };
 
 #endif

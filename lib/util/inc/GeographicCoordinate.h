@@ -9,6 +9,9 @@
 #ifndef GEOGRAPHIC_COORDINATE_H_
 #define GEOGRAPHIC_COORDINATE_H_
 
+#include <vector>
+#include <cmath>
+
 class GeographicCoordinate {
 private:
     /** The latitude of a geographic coordinate (+-180 degrees). */
@@ -48,8 +51,8 @@ public:
      */
     bool operator==(GeographicCoordinate coord);
 
-    static GeographicCoordinate Average(GeographicCoordinate one,
-        GeographicCoordinate two, GeographicCoordinate three);
+    static GeographicCoordinate *Average(GeographicCoordinate *one,
+        GeographicCoordinate *two, GeographicCoordinate *three);
 
     ~GeographicCoordinate();
 };
