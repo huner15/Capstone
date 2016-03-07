@@ -203,6 +203,12 @@ public:
      */
     vector<SurveillanceReport *>* getAdsB();
 
+    /*
+     * Gets the current vector pointer of radar reports
+     * @return the vector pointer of radar surveillance report pointers
+     */
+    vector<SurveillanceReport *>* getRadar();
+
 
 };
 

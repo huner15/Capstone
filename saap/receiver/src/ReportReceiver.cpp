@@ -166,6 +166,10 @@ vector<SurveillanceReport *>* ReportReceiver::getAdsB() {
     return _held_reports.getAdsb();
 }
 
+vector<SurveillanceReport *>* ReportReceiver::getRadar() {
+    return _held_reports.getRadar();
+}
+
 
 //Held Report data from here down
 
