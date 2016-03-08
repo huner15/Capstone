@@ -15,6 +15,8 @@ AdsbSimulator::AdsbSimulator(in_port_t port,
 
 void AdsbSimulator::SendReport(ServerSocket& client_socket,
                                FlightReport& flight_report) {
-    AdsBReport adsb_report = flight_report.CreateAdsBReport();
-    client_socket << adsb_report;
+    if (flight_report.HasAsdbReport()) {
+        AdsBReport adsb_report = flight_report.GetAdsbReport();
+        client_socket << adsb_report;
+    }
 }

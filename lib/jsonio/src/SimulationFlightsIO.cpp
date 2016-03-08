@@ -63,7 +63,6 @@ FlightSimulation SimulationFlightsIO::ReadFlightData(std::string file_name) {
             Device device(RADAR);
             FlightReport report(std::time(nullptr), tail, tcas_id, radar_id,
                                 geo_coord, sphr_coord, velocity, device);
-
             all_flight_reports.push_back(report);
         }
         Flight flight (all_flight_reports);
