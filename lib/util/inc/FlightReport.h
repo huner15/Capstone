@@ -74,7 +74,7 @@ public:
      * Creates a CDTI plane from the data in this FlightReport
      * @return a CDTI plane made from the data in this FlightReport
      */
-    CDTIPlane CreateCdtiPlane();
+    //CDTIPlane CreateCdtiPlane();
 
 
     /**
