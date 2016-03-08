@@ -8,7 +8,7 @@
 #include "JsonIO.h"
 #include "Flight.h"
 #include "FlightSimulation.h"
-
+#include "SaasUtil.h"
 
 class SimulationFlightsIO : public JsonIO {
 private:

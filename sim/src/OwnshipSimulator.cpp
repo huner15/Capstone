@@ -27,6 +27,8 @@ void OwnshipSimulator::SendReports(ServerSocket& client_socket) {
 
 void OwnshipSimulator::SendReport(ServerSocket& client_socket,
                                   FlightReport& flight_report) {
-    OwnshipReport ownship_report = flight_report.CreateOwnshipReport();
-    client_socket << ownship_report;
+    if (flight_report.HasOwnshipReport()) {
+        OwnshipReport ownship_report = flight_report.GetOwnshipReport();
+        client_socket << ownship_report;
+    }
 }

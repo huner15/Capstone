@@ -7,7 +7,7 @@
  */
 
 #include <gtest/gtest.h>
-#include <FlightReport.h>
+#include "SaasUtil.h"
 
 /*
  * Tests to see that FlightReport returns what it is given with its get
