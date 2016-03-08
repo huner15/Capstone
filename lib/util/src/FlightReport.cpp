@@ -89,7 +89,7 @@ TcasReport FlightReport::CreateTcasReport() {
 
     return tcasReport;
 }
-/*
+
 CDTIPlane FlightReport::CreateCdtiPlane() {
     CDTIPlane cdti_plane;
 
@@ -117,7 +117,7 @@ CDTIPlane FlightReport::CreateCdtiPlane() {
 
     return cdti_plane;
 }
-*/
+
 std::time_t FlightReport::GetTime() {
     return _time;
 }
