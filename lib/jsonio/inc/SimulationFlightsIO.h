@@ -16,6 +16,7 @@ private:
 
     static FlightSimulation ReadFlightData(std::string file_name);
 public:
+    static Json::Value GetAllReports(std::string file_name);
 
     static FlightSimulation ReadFile(std::string file_name);
 

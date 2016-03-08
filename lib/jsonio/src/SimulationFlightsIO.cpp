@@ -77,7 +77,8 @@ FlightSimulation SimulationFlightsIO::ReadFlightData(std::string file_name) {
 Json::Value SimulationFlightsIO::GetFlights(std::string file_name) {
     Json::Value root = OpenFile(file_name);
 
-    return root["flightSimulation"];
+    //return root["flightSimulation"];
+    return root;
 }
 
 
@@ -85,38 +86,42 @@ Json::Value SimulationFlightsIO::GetSimulationFlights() {
     return Json::nullValue;
 }
 
+
 std::vector<Json::Value> SimulationFlightsIO::GetAllADSBReports() {
     Json::Value simFlights = GetSimulationFlights();
-    std::vector<Json::Value> adsbReports;
+    Json::Value json_adsb = simFlights["adsb"];
+    std::vector<Json::Value> adsb_reports;
 
     for ( int index = 0; index < simFlights.size(); index++ ) {
-        adsbReports.push_back(simFlights[index]["adsbReport"]);
+        adsb_reports.push_back(json_adsb[index]);
     }
 
-    return adsbReports;
+    return adsb_reports;
 }
 
 std::vector<Json::Value> SimulationFlightsIO::GetAllTCASReports() {
     Json::Value simFlights = GetSimulationFlights();
-    std::vector<Json::Value> tcasReports;
+    Json::Value json_tcas = simFlights["tcas"];
+    std::vector<Json::Value> tcas_reports;
 
     for ( int index = 0; index < simFlights.size(); index++ ) {
-        tcasReports.push_back(simFlights[index]["tcasReport"]);
+        tcas_reports.push_back(json_tcas[index]);
     }
 
-    return tcasReports;
+    return tcas_reports;
 
 }
 
 std::vector<Json::Value> SimulationFlightsIO::GetAllRadarReports() {
     Json::Value simFlights = GetSimulationFlights();
-    std::vector<Json::Value> radarReports;
+    Json::Value json_radar = simFlights["radar"];
+    std::vector<Json::Value> radar_reports;
 
     for ( int index = 0; index < simFlights.size(); index++ ) {
-        radarReports.push_back(simFlights[index]["radarReport"]);
+        radar_reports.push_back(json_radar[index]);
     }
 
-    return radarReports;
+    return radar_reports;
 }
 
 std::vector<Json::Value> SimulationFlightsIO::GetALlOwnshipReports() {
