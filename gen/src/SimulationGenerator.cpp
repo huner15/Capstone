@@ -137,6 +137,7 @@ Json::Value SimulationGenerator::WriteTcasReports() {
                 GeographicCoordinate own_pos = _ownship_positions.at(time);
                 double range = GenerationMath::DistanceBetweenTwoCoordinates(
                         new_pos, own_pos);
+                range = GenerationMath::FeetToNauticalMiles(range);
                 cur_bearing = fmod(
                         GenerationMath::AbsoluteBearingBetweenTwoCoordinates(
                                 new_pos, cur_pos) + 180.0, 360.0);
@@ -158,6 +159,7 @@ Json::Value SimulationGenerator::WriteTcasReports() {
             GeographicCoordinate own_pos = _ownship_positions.at(time);
             double range = GenerationMath::DistanceBetweenTwoCoordinates(
                     new_pos, own_pos);
+            range = GenerationMath::FeetToNauticalMiles(range);
             cur_bearing = fmod(
                     GenerationMath::AbsoluteBearingBetweenTwoCoordinates(
                             new_pos, cur_pos) + 180.0, 360.0);
