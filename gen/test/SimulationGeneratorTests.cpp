@@ -17,13 +17,8 @@ TEST(Test, TestWritingToFile) {
 
     std::ofstream file_id;
     SimulationGenerator gen("FlightScenarioInput.json");
-    Json::Value all_reports;
-    all_reports["ownship"] = gen.WriteOwnshipReports();
-    all_reports["adsb"] = gen.WriteAdsbReports();
-    all_reports["radar"] = gen.WriteRadarReports();
-    all_reports["tcas"] = gen.WriteTcasReports();
     file_id.open("FinalSim.json", std::fstream::out);
     Json::StyledWriter styled_writer;
-    file_id << styled_writer.write( all_reports);
+    file_id << styled_writer.write( gen.WriteReports());
     file_id.close();
 }
