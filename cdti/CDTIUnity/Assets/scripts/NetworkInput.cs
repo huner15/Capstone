@@ -270,24 +270,42 @@ public class NetworkInput : MonoBehaviour {
         toAdd.GetComponent<SpriteRenderer>().sprite = getCorrectSprite(plane);
         toAdd.GetComponent<Transform>().position = figurePositon(plane);
         toAdd.GetComponent<Transform>().rotation = figureRotation(plane);
-
+        if(plane.Position.X != 0 || plane.Position.Y != 0 || plane.Position.Z != 0)
+        {
+            toAdd.GetComponent<Aircraft>().addText(plane);
+        }
+        
 
 
         aircraft.Add(toAdd);
         //throw new NotImplementedException();
     }
 
+    private void setUpText(GameObject toAdd, CDTIPlane plane)
+    {
+        
+        throw new NotImplementedException();
+    }
+
     private Quaternion figureRotation(CDTIPlane plane)
     {
-        float theta = 0;
-
-        theta = (float)( Math.Atan2(plane.Velocity.Y, plane.Velocity.X) * 180 / 3.14 - 90);
-        print(theta);
-        if (plane.Velocity.X == 0 && plane.Velocity.Y == 0)
+        try
         {
-            theta = 0;
+            float theta = 0;
+
+            theta = (float)(Math.Atan2(plane.Velocity.Y, plane.Velocity.X) * 180 / 3.14 - 90);
+            print(theta);
+            if (plane.Velocity.X == 0 && plane.Velocity.Y == 0)
+            {
+                theta = 0;
+            }
+            return Quaternion.AngleAxis(theta, new Vector3(0, 0, 1));
         }
-        return Quaternion.AngleAxis(theta , new Vector3(0, 0, 1));  
+        catch (Exception)
+        {
+            return Quaternion.AngleAxis(0, new Vector3(0, 0, 1));
+        }
+
 
         
     }
@@ -356,6 +374,7 @@ public class NetworkInput : MonoBehaviour {
         {
             plane.GetComponent<SpriteRenderer>().sprite = null;
             aircraftHidden.Add(plane);
+            plane.GetComponent<Aircraft>().clear();
            // Destroy(plane);
             
         }
