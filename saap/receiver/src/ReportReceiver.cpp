@@ -7,11 +7,8 @@
  */
 
 #include "ReportReceiver.h"
-#include <iostream>
 
 ReportReceiver::ReportReceiver() {
-    //TODO Make held reports use the constructor that takes in a correlation
-    // engine
     _held_reports = HeldReports();
     _is_copying = false;
     pthread_mutex_init(&_radar_mutex, NULL);
@@ -19,7 +16,26 @@ ReportReceiver::ReportReceiver() {
     pthread_mutex_init(&_adsb_mutex, NULL);
     pthread_mutex_init(&_tcas_mutex, NULL);
     pthread_cond_init (&_held_report_cv, NULL);
-    //TODO Make thread for calling Correlate and create Correlation Engine
+    num = 3;
+    pthread_create(&countThread, NULL, &TimerThreadFunction, this);
+    correlationEngine = CorrelationEngine();
+
+}
+
+void* ReportReceiver::TimerThreadFunction(void *classReference) {
+    //TODO make a timer that goes over everything and calls ReportReceiver's
+    // correlate every second.
+    std::time_t timer = time(NULL);
+    timer += 1;
+    while(1){
+        if(timer == time(NULL)){
+            timer += 1;
+            printf("Do stuff");
+            ((ReportReceiver *)classReference)->callCorrelate();
+        }
+    }
+
+    printf("%d", ((ReportReceiver *)classReference)->num);
 
 }
 
@@ -37,11 +53,11 @@ SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
             (latitude, longitude, altitude);
     Velocity velocity = Velocity(east, down, north);
     return new SurveillanceReport(time, TailNumber("      "), NULL,
-                                              NULL,
-                                              geographic_coordinate,
-                                              SphericalCoordinate(0.0, 0.0,
-                                                                 0.0),
-                                              velocity, OWNSHIP);
+                                  NULL,
+                                  geographic_coordinate,
+                                  SphericalCoordinate(0.0, 0.0,
+                                                      0.0),
+                                  velocity, OWNSHIP);
 
 }
 
@@ -59,10 +75,10 @@ SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
                                                                    bearing);
 
     return new SurveillanceReport(NULL, TailNumber("      "),
-                                 tcas_id, NULL,
-                                 geographic_coordinate,
-                                 spherical_coordinate, velocity,
-                                 TCAS);
+                                  tcas_id, NULL,
+                                  geographic_coordinate,
+                                  spherical_coordinate, velocity,
+                                  TCAS);
 
 }
 
@@ -83,9 +99,9 @@ SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
                                                                    0.0);
 
     return new SurveillanceReport (time, tail_number, NULL, NULL,
-                                              geographic_coordinate,
-                                              spherical_coordinate, velocity,
-                                              ADSB);
+                                   geographic_coordinate,
+                                   spherical_coordinate, velocity,
+                                   ADSB);
 
 
 }
@@ -112,9 +128,9 @@ SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
     Velocity velocity = Velocity(east, down, north);
 
     return new SurveillanceReport (time, TailNumber("      "), NULL,
-                                 radar_id, geographic_coordinate,
-                                 spherical_coordinate, velocity,
-                                 RADAR);
+                                   radar_id, geographic_coordinate,
+                                   spherical_coordinate, velocity,
+                                   RADAR);
 
 }
 
@@ -170,6 +186,30 @@ vector<SurveillanceReport *>* ReportReceiver::getRadar() {
     return _held_reports.getRadar();
 }
 
+void ReportReceiver::callCorrelate() {
+    _is_copying = true;
+    pthread_mutex_lock(&_radar_mutex);
+    pthread_mutex_lock(&_tcas_mutex);
+    pthread_mutex_lock(&_adsb_mutex);
+    pthread_mutex_lock(&_ownship_mutex);
+
+    std::vector<SurveillanceReport *>* tcas = _held_reports.CopyTcas();
+    std::vector<SurveillanceReport *>* adsb = _held_reports.CopyAdsb();
+    std::vector<SurveillanceReport *>* radar = _held_reports.CopyRadar();
+    SurveillanceReport * ownship = _held_reports.CopyOwnship();
+
+    _is_copying = false;
+    pthread_cond_broadcast(&_held_report_cv);
+    pthread_mutex_unlock(&_radar_mutex);
+    pthread_mutex_unlock(&_tcas_mutex);
+    pthread_mutex_unlock(&_adsb_mutex);
+    pthread_mutex_unlock(&_ownship_mutex);
+
+
+    //TODO make all of the copied held reports adsb relative
+    correlationEngine.Correlate(adsb, tcas, radar, false);
+}
+
 
 //Held Report data from here down
 
@@ -210,4 +250,34 @@ std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getRadar() {
 
 std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getTcas() {
     return _tcas_reports;
+}
+
+std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyTcas() {
+    std::vector<SurveillanceReport *>* newVector = new
+            std::vector<SurveillanceReport *>();
+    std::vector<SurveillanceReport *> hold = *_tcas_reports;
+    newVector->swap(hold);
+    return newVector;
+}
+
+std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyAdsb() {
+    std::vector<SurveillanceReport *>* newVector = new
+            std::vector<SurveillanceReport *>();
+    std::vector<SurveillanceReport *> hold = *_adsb_reports;
+    newVector->swap(hold);
+    return newVector;
+}
+
+std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyRadar() {
+    std::vector<SurveillanceReport *>* newVector = new
+            std::vector<SurveillanceReport *>();
+    std::vector<SurveillanceReport *> hold = *_radar_reports;
+    newVector->swap(hold);
+    return newVector;
+}
+
+SurveillanceReport* ReportReceiver::HeldReports::CopyOwnship() {
+    SurveillanceReport * report = _ownship;
+    _ownship = new SurveillanceReport();
+    return report;
 }

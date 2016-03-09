@@ -15,6 +15,7 @@
 #include <tcas.pb.h>
 #include <cdti.pb.h>
 #include "SurveillanceReport.h"
+#include "CorrelationEngine.h"
 
 class ReportReceiver {
 private:
@@ -28,18 +29,7 @@ private:
         std::vector<SurveillanceReport *>* _radar_reports;
         SurveillanceReport * _ownship;
 
-        /*
-         * Clears the _tcas_reports so it doesn't have overlapping reports.
-         */
-        void clearTcas();
-        /*
-        * Clears the _adsb_reports so it doesn't have overlapping reports.
-        */
-        void clearAdsb();
-        /*
-        * Clears the _radar_reports so it doesn't have overlapping reports.
-        */
-        void clearRadar();
+
         /*
          * Creates a copy of the specified vector. This copy uses the ownship
          * FlightReport to make the Surveillance report relative. This should
@@ -101,15 +91,32 @@ private:
          */
         void changeOwnship(SurveillanceReport * report);
 
-
+        /*
+         * Swaps out the current data into a return vector and clears the
+         * current vector of tcas surveillance reports
+         * @return a different place for the current tcas reports.
+         */
+        std::vector<SurveillanceReport *>* CopyTcas();
 
         /*
-         * Makes a copy of the current HeldReport.
-         * @return the copy of the held report
+         * Swaps out the current data into a return vector and clears the
+         * current vector of Adsb surveillance reports
+         * @return a different place for the current Adsb reports.
          */
-        HeldReports makeCopy();
+        std::vector<SurveillanceReport *>* CopyAdsb();
 
+        /*
+         * Swaps out the current data into a return vector and clears the
+         * current vector of radar surveillance reports
+         * @return a different place for the current radar reports.
+         */
+        std::vector<SurveillanceReport *>* CopyRadar();
 
+        /*
+         * Gets the current ownship and clears the ownship inside of held
+         * reports
+         */
+        SurveillanceReport* CopyOwnship();
     };
 
     bool _is_copying;
@@ -119,6 +126,8 @@ private:
     pthread_mutex_t _adsb_mutex;
     pthread_mutex_t _ownship_mutex;
     HeldReports _held_reports;
+    pthread_t countThread;
+    CorrelationEngine correlationEngine;
 
     /*
      * Takes the OwnshipReport and translates it to a Surveillance report.
@@ -126,7 +135,7 @@ private:
      * @return the created Surveillance Report
      */
     SurveillanceReport * CreateOwnshipSurveillanceReport(OwnshipReport
-                                                           report);
+                                                         report);
 
     /*
      * Takes the TcasReport and translates it into a Surveillance Report.
@@ -146,6 +155,12 @@ private:
      * @return the created Surveillance Report
      */
     SurveillanceReport* CreateAdsbSurveillanceReport(AdsBReport report);
+
+    /*
+     * Calls the correlate function in CorrelationEngine using the copied
+     * reports from heldreports after making all of the adsb reports relative.
+     */
+    void callCorrelate();
 
 
 public:
@@ -209,8 +224,15 @@ public:
      */
     vector<SurveillanceReport *>* getRadar();
 
+    /*
+    * For the count thread. It just goes and calls correlate every second.
+    */
+    static void *TimerThreadFunction(void* classReference);
 
+    int num;
 };
+
+
 
 
 #endif //SAAS_REPORTRECEIVER_H
