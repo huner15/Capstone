@@ -6,7 +6,7 @@
  * Driver for creating SimulationFlights File
  */
 
-#include <GenerationMath.h>
+#include "GenerationMath.h"
 #include <iomanip>
 #include "SimulationGenerator.h"
 
@@ -116,6 +116,7 @@ Json::Value SimulationGenerator::WriteTcasReports() {
     std::vector<Aircraft> aircraft =
             _flight_scenario.GetAircraft();
 
+    //Loops through each aircraft in the simulation
     for (int k = 0; k < aircraft.size(); k++) {
         std::vector<FlightLeg> flight_legs =
                 aircraft.at(k).GetFlightPlan().GetFlightLegs();
@@ -125,11 +126,15 @@ Json::Value SimulationGenerator::WriteTcasReports() {
         double cur_bearing = 36.0;
         int time = 0;
         Velocity vel;
+
+        //Loop through each flight leg
         for (int i = 0; i < flight_legs.size(); i++) {
             int duration = flight_legs.at(i).GetDurationAfterManeuver() +
                            flight_legs.at(i).GetDurationOfManeuver();
             vel = flight_legs.at(i).GetNewRelativeVelocity() +
                            _ownship_velocities.at(time);
+
+            //For the length of the flight leg, calculate a report for each second
             for (int j = 0; j < duration; j++) {
                 GeographicCoordinate new_pos = GenerationMath::
                 DestinationPoint(
@@ -152,6 +157,9 @@ Json::Value SimulationGenerator::WriteTcasReports() {
                                          rel_bearing, range, time, k+1));
             }
         }
+
+        //If the duration of the intruder aircraft's maneuvers is less than ownship,
+        //make sure it continues in the same direction for the whole sim.
         while(time < _ownship_duration) {
             GeographicCoordinate new_pos = GenerationMath::
             DestinationPoint(
@@ -175,8 +183,7 @@ Json::Value SimulationGenerator::WriteTcasReports() {
         }
 
     }
-    //std::cout << std::defaultfloat << std::setprecision(10) << reports <<
-    //std::endl;
+
     return reports;
 }
 
@@ -373,9 +380,6 @@ Json::Value SimulationGenerator::WriteOwnshipReports() {
         }
     }
 
-
-    std::cout << std::defaultfloat << std::setprecision(10) << reports <<
-    std::endl;
     return reports;
 }
 
