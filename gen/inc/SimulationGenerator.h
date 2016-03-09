@@ -22,6 +22,8 @@ private:
     std::vector<Velocity> _ownship_velocities;
     std::vector<double> _ownship_bearings;
     std::vector<GeographicCoordinate> _ownship_positions;
+    int _ownship_duration;
+    int _num_aircraft;
 
 public:
     SimulationGenerator() {};
@@ -37,10 +39,10 @@ public:
                                  double altitude, double latitude,
                                  double longitude,
                                  double north, double east, double down,
-                                int index);
+                                int index, int aircraft_num);
 
     Json::Value FormatTcasReport(TcasID id, double altitude, double bearing,
-                                 double range,int index);
+                                 double range,int index, int aircraft_num);
 
 
     Json::Value FormatRadarReport(RadarID id ,std::time_t time, double range,
@@ -48,7 +50,7 @@ public:
                                   double altitude, double latitude,
                                   double longitude,
                                   double north, double east, double down,
-                                  int index);
+                                  int index, int aircraft_num);
 
 
     Json::Value WriteOwnshipReports();
@@ -58,6 +60,8 @@ public:
     Json::Value WriteTcasReports();
 
     Json::Value WriteRadarReports();
+
+    int GetNumberOfAircraft();
 
     Json::Value WriteReports();
 };
