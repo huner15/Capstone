@@ -2,23 +2,31 @@ server Start ver 1.4.3
 connection established
 temp written
 reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
 temp read
-0
-
-0
-
+4
+Example.CDTIPlane
+5
+send success
 at intake
-end intake
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-creed demo 2
+added to screed demo 1
+added to screed demo 2
 added to screed demo 3
 added to screed demo 4
 added to screed ownship
+end intake
+connection established
+temp written
+reading temp
+temp read
+1
+Example.CDTIPlane
+1
+message
+at intake
+added to screed 23
+added to screed 2
+end intake
+dded to screed ownship
 end intake
 temp written
 reading temp

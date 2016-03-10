@@ -232,6 +232,11 @@ public class NetworkInput : MonoBehaviour {
                         {
                             logger("Exception caught in read" + f.Message);
                             fs.Close();
+                            if(report != null)
+                            {
+                                lastReport = report;
+                                rep = true;
+                            }
                         }
                    // }
                     if(rep)
