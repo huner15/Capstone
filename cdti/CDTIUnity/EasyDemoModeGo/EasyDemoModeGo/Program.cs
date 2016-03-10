@@ -69,9 +69,9 @@ namespace EasyDemoModeGo
         {
             foreach (CDTIPlane plane in planes)
             {
-                plane.Position.X += plane.Velocity.X;
-                plane.Position.Y += plane.Velocity.Y;
-                plane.Position.Z += plane.Velocity.Z;
+                plane.Position.N += plane.Velocity.N;
+                plane.Position.E += plane.Velocity.E;
+                plane.Position.D += plane.Velocity.D;
             }
         }
 
@@ -111,12 +111,12 @@ namespace EasyDemoModeGo
             CDTIPlane toReturn = new CDTIPlane();
             Vector v = new Vector();
             Vector p = new Vector();
-            p.X = (float)px;
-            p.Y = (float)py;
-            p.Z = (float)pz;
-            v.X = (float)vx;
-            v.Y = (float)vy;
-            v.Z = (float)vz;
+            p.N = (float)px;
+            p.E = (float)py;
+            p.D = (float)pz;
+            v.N = (float)vx;
+            v.E = (float)vy;
+            v.D = (float)vz;
             toReturn.Position = p;
             toReturn.Velocity = v;
             toReturn.Id = id;
