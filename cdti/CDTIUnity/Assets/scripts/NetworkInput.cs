@@ -158,7 +158,7 @@ public class NetworkInput : MonoBehaviour {
        
         server = new TcpListener(IPAddress.Parse("127.0.0.1"), 13000);
         server.Start();
-        logger("server Start ver 1.4.1");
+        logger("server Start ver 1.4.2");
         while (isRunning)
         {
                 // check if new connections are pending, if not, be nice and sleep 100ms
@@ -208,9 +208,9 @@ public class NetworkInput : MonoBehaviour {
                         lastReport = report;
                         
                     }
-                    catch(Exception)
+                    catch(Exception e)
                     {
-						logger("Exception caught in read");
+						logger("Exception caught in read" + e.Message);
                         fs.Close();
                         fs = new FileStream("temp.txt", FileMode.Open);
                         try
@@ -228,9 +228,9 @@ public class NetworkInput : MonoBehaviour {
                             lastReport = report;
 
                         }
-                        catch (Exception)
+                        catch (Exception f)
                         {
-                            logger("Exception caught in read");
+                            logger("Exception caught in read" + f.Message);
                             fs.Close();
                         }
                     }
