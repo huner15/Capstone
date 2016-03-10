@@ -194,7 +194,7 @@ public class NetworkInput : MonoBehaviour {
                     print(bytesRead);
                     
                     FileStream fs = new FileStream("temp.txt", FileMode.Open);
-                    try
+                  /*  try
                     {
                        logger("reading temp");
                         report = Example.CDTIReport.Deserialize(fs);
@@ -207,10 +207,10 @@ public class NetworkInput : MonoBehaviour {
                         rep = true;
                         lastReport = report;
                         
-                    }
-                    catch(Exception e)
-                    {
-						logger("Exception caught in read" + e.Message);
+                    //}
+                   // catch(Exception e)
+                    //{
+					//	logger("Exception caught in read" + e.Message); */
                         fs.Close();
                         fs = new FileStream("temp.txt", FileMode.Open);
                         try
@@ -233,7 +233,7 @@ public class NetworkInput : MonoBehaviour {
                             logger("Exception caught in read" + f.Message);
                             fs.Close();
                         }
-                    }
+                   // }
                     if(rep)
                     {
                         yield return Ninja.JumpToUnity;

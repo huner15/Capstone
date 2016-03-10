@@ -36,7 +36,7 @@ namespace Example
 
         public float D { get; set; }
 
-        public float X
+   /*     public float X
         {
             get { return N; }
             set { N = value; }
@@ -50,7 +50,7 @@ namespace Example
         {
             get { return D; }
             set { D = value; }
-        }
+        } */
 
     }
 

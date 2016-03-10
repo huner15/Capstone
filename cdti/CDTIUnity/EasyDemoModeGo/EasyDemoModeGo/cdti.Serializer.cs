@@ -741,6 +741,10 @@ namespace Example
         {
             BinaryWriter bw = new BinaryWriter(stream);
             var msField = global::SilentOrbit.ProtocolBuffers.ProtocolParser.Stack.Pop();
+            stream.WriteByte(0);
+            stream.WriteByte(0);
+            stream.WriteByte(0);
+            stream.WriteByte(0);
             // Key for field: 1, Fixed64
             stream.WriteByte(9);
             bw.Write(instance.Timestamp);
