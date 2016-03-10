@@ -50,7 +50,8 @@ const ServerSocket &ServerSocket::operator>>(std::string &s) const {
     memcpy(buf, header, PROTOBUF_HEADER_LENGTH);
     ::google::protobuf::io::ArrayInputStream ais(buf, PROTOBUF_HEADER_LENGTH);
     ::google::protobuf::io::CodedInputStream coded_input(&ais);
-    coded_input.ReadVarint32(&size);
+    //coded_input.ReadVarint32(&size);
+    coded_input.ReadLittleEndian32(&size);
 
     return size;
 }

@@ -17,7 +17,8 @@ size_t ProtobufSocketSerializer::serialize(
 
     ::google::protobuf::io::ArrayOutputStream aos(packet, (int) size);
     ::google::protobuf::io::CodedOutputStream coded_output(&aos);
-    coded_output.WriteVarint32((google::protobuf::uint32) msg.ByteSize());
+    //coded_output.WriteVarint32((google::protobuf::uint32) msg.ByteSize());
+    coded_output.WriteLittleEndian32((google::protobuf::uint32) msg.ByteSize());
     msg.SerializeToCodedStream(&coded_output);
 
     return size;

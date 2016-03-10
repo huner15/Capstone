@@ -67,7 +67,8 @@ const ClientSocket &ClientSocket::operator<<(
     memcpy(buf, header, PROTOBUF_HEADER_LENGTH);
     ::google::protobuf::io::ArrayInputStream ais(buf, PROTOBUF_HEADER_LENGTH);
     ::google::protobuf::io::CodedInputStream coded_input(&ais);
-    coded_input.ReadVarint32(&size);//Decode the header and get the size
+    //coded_input.ReadVarint32(&size);//Decode the header and get the size
+    coded_input.ReadLittleEndian32(&size);
 
     return size;
 }
