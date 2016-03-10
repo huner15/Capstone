@@ -123,16 +123,20 @@ FlightSimulation SimulationFlightsIO::ReadFlightData(std::string file_name) {
     Json::Value radar_reports = json_reports["radar"];
     Json::Value ownship_reports = json_reports["ownship"];
 
-
-
+    //std::cout << json_reports << std::endl;
+    //std::cout << "number of aircrafts: " << json_reports["numAircraft"] << std::endl;
     for (int i = 1; i <= json_reports["numAircraft"].asInt(); i++) {
+        //std::cout << "GETS HERE" << std::endl;
         std::vector<FlightReport> all_flight_reports;
         for (int j = 1; j <= ownship_reports.size(); j++) {
             AdsBReport adsb_report;
             TcasReport tcas_report;
             RadarReport radar_report;
             OwnshipReport ownship_report;
+            //std::cout << "GETS HERE2" << std::endl;
             for (int adsb_idx = 0; adsb_idx < adsb_reports.size(); adsb_idx++) {
+                //std::cout << "GETS HERE3" << std::endl;
+
                 if (adsb_reports[adsb_idx]["aircraft number"].asInt() == i &&
                     adsb_reports[adsb_idx]["index"].asInt() == j) {
                     std::time_t time = adsb_idx;
@@ -148,8 +152,9 @@ FlightSimulation SimulationFlightsIO::ReadFlightData(std::string file_name) {
                                                     north, east, down);
                 }
             }
-            for (int radar_idx = 1;
-                 radar_idx <= radar_reports.size(); radar_idx++) {
+            for (int radar_idx = 0;
+                 radar_idx < radar_reports.size(); radar_idx++) {
+                //std::cout << "radar_idx: " << radar_idx << "size: " << radar_reports.size() << std::endl;
                 if (radar_reports[radar_idx]["aircraft number"].asInt() == i &&
                     radar_reports[radar_idx]["index"].asInt() == j) {
                     std::time_t time = radar_idx;
@@ -171,8 +176,9 @@ FlightSimulation SimulationFlightsIO::ReadFlightData(std::string file_name) {
                 }
 
             }
-            for (int tcas_idx = 1;
-                 tcas_idx <= tcas_reports.size(); tcas_idx++) {
+
+            for (int tcas_idx = 0;
+                 tcas_idx < tcas_reports.size(); tcas_idx++) {
                 if (tcas_reports[tcas_idx]["aircraft number"].asInt() == i &&
                     tcas_reports[tcas_idx]["index"].asInt() == j) {
                     uint8_t tcas_id = tcas_reports[tcas_idx]["id"].asUInt();
@@ -198,12 +204,12 @@ FlightSimulation SimulationFlightsIO::ReadFlightData(std::string file_name) {
         }
         Flight flight(all_flight_reports);
         all_flights.push_back(flight);
+        //std::cout << "Size of flights: " << all_flights.size() << std::endl;
 
     }
-
-
-
+    //std::cout << "Size of flights: " << all_flights.size() << std::endl;
     FlightSimulation flight_simulation(all_flights);
+
     return flight_simulation;
 }
 
