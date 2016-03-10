@@ -84,7 +84,8 @@ void ServerSocket::read_protobuf(::google::protobuf::Message &msg,
 
     // Read an unsigned integer with variant encoding, truncating to 32 bits.
     ::google::protobuf::uint32 siz;
-    coded_input.ReadVarint32(&siz);
+    //coded_input.ReadVarint32(&siz);
+    coded_input.ReadLittleEndian32(&siz);
 
     // Read the remainder of the message
     ::google::protobuf::io::CodedInputStream::Limit msgLimit =
