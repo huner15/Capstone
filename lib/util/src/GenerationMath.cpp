@@ -14,6 +14,7 @@
 
 #define EARTH_RAD2 20903520.0
 #define EARTH_RAD 3961.0
+#define NAUTICAL_MILE_RATIO 0.000164579
 #define PI 3.14159265359
 
 double GenerationMath::DistanceBetweenTwoCoordinates(
@@ -94,4 +95,8 @@ double GenerationMath::ToRadians(double degrees) {
 double GenerationMath::ToDegrees(double radians) {
     //std::cout << "radians: " << radians << " degrees: " << std::defaultfloat << std::setprecision(10) << (radians * 180.0 / PI) << std::endl;
     return radians * 180.0 / M_PI;
+}
+
+double GenerationMath::FeetToNauticalMiles(double feet) {
+    return feet * NAUTICAL_MILE_RATIO;
 }

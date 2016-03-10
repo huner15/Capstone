@@ -31,54 +31,192 @@ FlightSimulation SimulationFlightsIO::ReadFile(std::string file_name) {
     return ReadFlightData(file_name);
 }
 
+AdsBReport SimulationFlightsIO::SetAdsBReportData(std::time_t time,
+                                                  double latitude,
+                                                  double longitude,
+                                                  double altitude,
+                                                  std::string tail_number,
+                                                  double north, double east,
+                                                  double down) {
+    AdsBReport adsBReport;
+
+    adsBReport.set_timestamp(time);
+    adsBReport.set_latitude(latitude);
+    adsBReport.set_longitude(longitude);
+    adsBReport.set_altitude(altitude);
+    adsBReport.set_tail_number(tail_number);
+    adsBReport.set_north(north);
+    adsBReport.set_east(east);
+    adsBReport.set_down(down);
+
+    return adsBReport;
+}
+
+OwnshipReport SimulationFlightsIO::SetOwnshipReportData(std::time_t time,
+                                                        double latitude,
+                                                        double longitude,
+                                                        double altitude,
+                                                        double north,
+                                                        double east,
+                                                        double down) {
+    OwnshipReport ownshipReport;
+
+    ownshipReport.set_timestamp(time);
+    ownshipReport.set_ownship_latitude(latitude);
+    ownshipReport.set_ownship_longitude(longitude);
+    ownshipReport.set_ownship_altitude(altitude);
+    ownshipReport.set_north(north);
+    ownshipReport.set_east(east);
+    ownshipReport.set_down(down);
+
+    return ownshipReport;
+}
+
+RadarReport SimulationFlightsIO::SetRadarReportData(std::time_t time,
+                                                    double range,
+                                                    double azimuth,
+                                                    double elevation,
+                                                    uint16_t radar_id,
+                                                    double latitude,
+                                                    double longitude,
+                                                    double altitude,
+                                                    double north, double east,
+                                                    double down) {
+    RadarReport radarReport;
+
+    radarReport.set_timestamp(time);
+    radarReport.set_range(range);
+    radarReport.set_azimuth(azimuth);
+    radarReport.set_elevation(elevation);
+    radarReport.set_id(radar_id);
+    radarReport.set_north(north);
+    radarReport.set_east(east);
+    radarReport.set_down(down);
+    radarReport.set_latitude(latitude);
+    radarReport.set_longitude(longitude);
+    radarReport.set_altitude(altitude);
+
+    return radarReport;
+}
+
+TcasReport SimulationFlightsIO::SetTcasReportData(uint8_t tcas_id, double range,
+                                                  double altitude,
+                                                  double bearing) {
+    TcasReport tcasReport;
+
+    tcasReport.set_id(tcas_id);
+    tcasReport.set_range(range);
+    tcasReport.set_altitude(altitude);
+    tcasReport.set_bearing(bearing);
+
+    return tcasReport;
+}
+
+
 //TODO: Fix Time
 FlightSimulation SimulationFlightsIO::ReadFlightData(std::string file_name) {
-    Json::Value json_flights = GetFlights(file_name);
+    Json::Value json_reports = GetReports(file_name);
     std::vector<Flight> all_flights;
 
-    for(int i = 0; i < json_flights.size(); i++) {
-        Json::Value json_reports = json_flights[i]["flight"];
+    Json::Value adsb_reports = json_reports["adsb"];
+    Json::Value tcas_reports = json_reports["tcas"];
+    Json::Value radar_reports = json_reports["radar"];
+    Json::Value ownship_reports = json_reports["ownship"];
+
+    //std::cout << json_reports << std::endl;
+    //std::cout << "number of aircrafts: " << json_reports["numAircraft"] << std::endl;
+    for (int i = 1; i <= json_reports["numAircraft"].asInt(); i++) {
+        //std::cout << "GETS HERE" << std::endl;
         std::vector<FlightReport> all_flight_reports;
-        for(int j = 0; j < json_reports.size(); j++) {
+        for (int j = 1; j <= ownship_reports.size(); j++) {
+            AdsBReport adsb_report;
+            TcasReport tcas_report;
+            RadarReport radar_report;
+            OwnshipReport ownship_report;
+            //std::cout << "GETS HERE2" << std::endl;
+            for (int adsb_idx = 0; adsb_idx < adsb_reports.size(); adsb_idx++) {
+                //std::cout << "GETS HERE3" << std::endl;
 
-            Json::Value json_report = json_reports[j]["flightReport"];
-            Json::Value json_geo_coord = json_report["geographicCoordinate"];
-            Json::Value json_sphr_coord = json_report["sphericalCoordinate"];
-            Json::Value json_velocity = json_report["velocity"];
+                if (adsb_reports[adsb_idx]["aircraft number"].asInt() == i &&
+                    adsb_reports[adsb_idx]["index"].asInt() == j) {
+                    std::time_t time = adsb_idx;
+                    double latitude = adsb_reports[adsb_idx]["latitude"].asDouble();
+                    double longitude = adsb_reports[adsb_idx]["longitude"].asDouble();
+                    double altitude = adsb_reports[adsb_idx]["altitude"].asDouble();
+                    std::string tail_number = adsb_reports[adsb_idx]["tailNumber"].asString();
+                    double north = adsb_reports[adsb_idx]["north"].asDouble();
+                    double east = adsb_reports[adsb_idx]["east"].asDouble();
+                    double down = adsb_reports[adsb_idx]["down"].asDouble();
+                    adsb_report = SetAdsBReportData(time, latitude, longitude,
+                                                    altitude, tail_number,
+                                                    north, east, down);
+                }
+            }
+            for (int radar_idx = 0;
+                 radar_idx < radar_reports.size(); radar_idx++) {
+                //std::cout << "radar_idx: " << radar_idx << "size: " << radar_reports.size() << std::endl;
+                if (radar_reports[radar_idx]["aircraft number"].asInt() == i &&
+                    radar_reports[radar_idx]["index"].asInt() == j) {
+                    std::time_t time = radar_idx;
+                    double range = radar_reports[radar_idx]["range"].asDouble();
+                    double azimuth = radar_reports[radar_idx]["azimuth"].asDouble();
+                    double elevation = radar_reports[radar_idx]["elevation"].asDouble();
+                    uint16_t radar_id = radar_reports[radar_idx]["id"].asUInt();
+                    double latitude = radar_reports[radar_idx]["latitude"].asDouble();
+                    double longitude = radar_reports[radar_idx]["longitude"].asDouble();
+                    double altitude = radar_reports[radar_idx]["altitude"].asDouble();
+                    double north = radar_reports[radar_idx]["north"].asDouble();
+                    double east = radar_reports[radar_idx]["east"].asDouble();
+                    double down = radar_reports[radar_idx]["down"].asDouble();
+                    radar_report = SetRadarReportData(time, range, azimuth,
+                                                      elevation, radar_id,
+                                                      latitude, longitude,
+                                                      altitude, north, east,
+                                                      down);
+                }
 
-            TailNumber tail(json_report["tailNumber"].asString());
-            TcasID tcas_id(json_report["tcasID"].asUInt());
-            RadarID radar_id(json_report["radarID"].asUInt());
-            GeographicCoordinate geo_coord(
-                    json_geo_coord["latitude"].asDouble(),
-                    json_geo_coord["longitude"].asDouble(),
-                    json_geo_coord["altitude"].asDouble());
+            }
 
-            SphericalCoordinate sphr_coord(json_sphr_coord["range"].asDouble(),
-                                           json_sphr_coord["elavation"].asDouble(),
-                                           json_sphr_coord["azimuth"].asDouble());
-            Velocity velocity(json_velocity["east"].asDouble(),
-                              json_velocity["down"].asDouble(),
-                              json_velocity["north"].asDouble());
-            Device device(RADAR);
-            FlightReport report(std::time(nullptr), tail, tcas_id, radar_id,
-                                geo_coord, sphr_coord, velocity, device);
+            for (int tcas_idx = 0;
+                 tcas_idx < tcas_reports.size(); tcas_idx++) {
+                if (tcas_reports[tcas_idx]["aircraft number"].asInt() == i &&
+                    tcas_reports[tcas_idx]["index"].asInt() == j) {
+                    uint8_t tcas_id = tcas_reports[tcas_idx]["id"].asUInt();
+                    double range = tcas_reports[tcas_idx]["range"].asDouble();
+                    double altitude = tcas_reports[tcas_idx]["altitude"].asDouble();
+                    double bearing = tcas_reports[tcas_idx]["bearing"].asDouble();
+                    tcas_report = SetTcasReportData(tcas_id, range, altitude,
+                                                    bearing);
+                }
+            }
+            std::time_t time = j;
+            double latitude = ownship_reports[j - 1]["latitude"].asDouble();
+            double longitude = ownship_reports[j - 1]["longitude"].asDouble();
+            double altitude = ownship_reports[j - 1]["altitude"].asDouble();
+            double north = ownship_reports[j - 1]["north"].asDouble();
+            double east = ownship_reports[j - 1]["east"].asDouble();
+            double down = ownship_reports[j - 1]["down"].asDouble();
+            ownship_report = SetOwnshipReportData(time, latitude, longitude,
+                                                  altitude, north, east, down);
 
-            all_flight_reports.push_back(report);
+            FlightReport flight_report (adsb_report, radar_report, tcas_report, ownship_report);
+            all_flight_reports.push_back(flight_report);
         }
-        Flight flight (all_flight_reports);
+        Flight flight(all_flight_reports);
         all_flights.push_back(flight);
+        //std::cout << "Size of flights: " << all_flights.size() << std::endl;
 
     }
+    std::cout << "Size of flights: " << all_flights.size() << std::endl;
+    FlightSimulation flight_simulation(all_flights);
 
-    FlightSimulation flight_simulation (all_flights);
     return flight_simulation;
 }
 
-Json::Value SimulationFlightsIO::GetFlights(std::string file_name) {
+Json::Value SimulationFlightsIO::GetReports(std::string file_name) {
     Json::Value root = OpenFile(file_name);
 
-    return root["flightSimulation"];
+    return root;
 }
 
 
@@ -86,50 +224,6 @@ Json::Value SimulationFlightsIO::GetSimulationFlights() {
     return Json::nullValue;
 }
 
-std::vector<Json::Value> SimulationFlightsIO::GetAllADSBReports() {
-    Json::Value simFlights = GetSimulationFlights();
-    std::vector<Json::Value> adsbReports;
-
-    for ( int index = 0; index < simFlights.size(); index++ ) {
-        adsbReports.push_back(simFlights[index]["adsbReport"]);
-    }
-
-    return adsbReports;
-}
-
-std::vector<Json::Value> SimulationFlightsIO::GetAllTCASReports() {
-    Json::Value simFlights = GetSimulationFlights();
-    std::vector<Json::Value> tcasReports;
-
-    for ( int index = 0; index < simFlights.size(); index++ ) {
-        tcasReports.push_back(simFlights[index]["tcasReport"]);
-    }
-
-    return tcasReports;
-
-}
-
-std::vector<Json::Value> SimulationFlightsIO::GetAllRadarReports() {
-    Json::Value simFlights = GetSimulationFlights();
-    std::vector<Json::Value> radarReports;
-
-    for ( int index = 0; index < simFlights.size(); index++ ) {
-        radarReports.push_back(simFlights[index]["radarReport"]);
-    }
-
-    return radarReports;
-}
-
-std::vector<Json::Value> SimulationFlightsIO::GetALlOwnshipReports() {
-    Json::Value simFlights = GetSimulationFlights();
-    std::vector<Json::Value> ownReports;
-
-    for ( int index = 0; index < simFlights.size(); index++ ) {
-        ownReports.push_back(simFlights[index]["ownshipReport"]);
-    }
-
-    return ownReports;
-}
 
 void SimulationFlightsIO::writeFile(Json::Value value) {
     std::ofstream file_id;

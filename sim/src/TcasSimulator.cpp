@@ -15,6 +15,8 @@ TcasSimulator::TcasSimulator(in_port_t port,
 
 void TcasSimulator::SendReport(ServerSocket& client_socket,
                                 FlightReport& flight_report) {
-    TcasReport tcas_report = flight_report.CreateTcasReport();
-    client_socket << tcas_report;
+    if (flight_report.HasTcasReport()) {
+        TcasReport tcas_report = flight_report.GetTcasReport();
+        client_socket << tcas_report;
+    }
 }

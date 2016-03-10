@@ -31,6 +31,8 @@ public:
             GeographicCoordinate start,
             Velocity velocity, double current_bearing);
 
+    static double FeetToNauticalMiles(double feet);
+
 
 };
 

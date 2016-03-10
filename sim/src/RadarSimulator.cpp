@@ -15,6 +15,8 @@ RadarSimulator::RadarSimulator(in_port_t port,
 
 void RadarSimulator::SendReport(ServerSocket& client_socket,
                                 FlightReport& flight_report) {
-    RadarReport radar_report = flight_report.CreateRadarReport();
-    client_socket << radar_report;
+    if (flight_report.HasRadarReport()) {
+        RadarReport radar_report = flight_report.GetRadarReport();
+        client_socket << radar_report;
+    }
 }
