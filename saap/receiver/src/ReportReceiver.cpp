@@ -28,9 +28,9 @@ void* ReportReceiver::TimerThreadFunction(void *classReference) {
     std::time_t timer = time(NULL);
     timer += 1;
     while(1){
-        if(timer == time(NULL)){
-            timer += 1;
-            printf("Do stuff");
+        if(timer <= time(NULL)){
+            timer = time(NULL) + 1;
+            printf("Do stuff ");
             ((ReportReceiver *)classReference)->callCorrelate();
         }
     }

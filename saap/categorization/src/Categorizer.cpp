@@ -24,7 +24,7 @@ std::vector<CDTIPlane> MakeCDTI(std::vector<CorrelationAircraft*>* aircraft);
  *
  */
 void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
-    std::vector<CDTIPlane> planes; // = MakeCDTI(aircraft);
+    std::vector<CDTIPlane> planes = MakeCDTI(aircraft);
     CDTIReport *report = new CDTIReport();
     int64_t t = 1;
     report->set_timestamp(t);
@@ -33,33 +33,24 @@ void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
 
     printf("printCategorizereport\n");
 
-    pv->set_d(5);
-    pv->set_e(3);
-    pv->set_n(4);
-    CDTIPlane *plane = new CDTIPlane();
-    plane->set_severity(CDTIPlane_Severity_TRAFFIC);
-    plane->set_allocated_velocity(pv);
-    plane->set_allocated_position(pv);
-    plane->set_id("23");
-
-    pv->set_d(5);
-    pv->set_e(3);
-    pv->set_n(4);
+    pv->set_d(0);
+    pv->set_e(0);
+    pv->set_n(0);
     ownship->set_allocated_position(pv);
     ownship->set_allocated_velocity(pv);
     ownship->set_id("2");
-    ownship->set_severity(CDTIPlane_Severity_TRAFFIC);
+    ownship->set_severity(CDTIPlane_Severity_PROXIMATE);
     report->set_allocated_ownship(ownship);
     report->set_advisorymessage("message");
-    report->set_advisorylevel(CDTIReport_Severity_TRAFFIC);
-    CDTIPlane *set = report->add_planes();
-    *set = *plane;
+    report->set_advisorylevel(CDTIReport_Severity_PROXIMATE);
+
    // report->mutable_planes()->AddAllocated(plane);
     //call something to translate whatever is given into a list of CDTIplanes
-//    for(int i = 0; i < planes.size(); i++){
-//        CategorizePlane(planes.at(i));
-//        report->mutable_planes()->AddAllocated(&(planes.at(i)));
-//    }
+    for(int i = 0; i < planes.size(); i++){
+        CategorizePlane(planes.at(i));
+        CDTIPlane *set = report->add_planes();
+        *set = planes.at(i);
+    }
 
     cout << ownship->id();
 

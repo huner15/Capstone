@@ -135,6 +135,8 @@ TEST(ReportReceiverTcasSurveillanceReports, OneReport){
     EXPECT_EQ(2, surveillanceReport->GetBearing());
     EXPECT_EQ(3, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
+
+    sleep(0.5);
 }
 
 /*
@@ -167,6 +169,8 @@ TEST(ReportReceiverTcasSurveillanceReports, TwoReports){
     EXPECT_EQ(3, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
 
+    sleep(1);
+
     TcasReport tcasReport1 = TcasReport();
     TcasID tcasID1 = TcasID();
     tcasReport1.set_id(tcasID1.Get());
@@ -192,6 +196,8 @@ TEST(ReportReceiverTcasSurveillanceReports, TwoReports){
     EXPECT_EQ(5, surveillanceReport->GetBearing());
     EXPECT_EQ(6, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
+
+   // sleep(0.5);
 }
 
 /*

@@ -51,7 +51,7 @@ Velocity *Velocity::Average(Velocity *one, Velocity *two, Velocity
         velocities.push_back(three);
     }
 
-    for (int i = 0; i < velocities.size(); i++)
+    for (int i = 0; i < count; i++)
     {
         east += velocities.at(i)->east;
         down += velocities.at(i)->down;

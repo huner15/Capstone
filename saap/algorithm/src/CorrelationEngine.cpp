@@ -128,7 +128,7 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
         vector<SurveillanceReport *> *radar, bool is_relative) {
     _is_relative = is_relative;
 
-    printf("adsb: %d tcas: %d radar: %d\n", adsb->size(),
+    printf("Correlate. adsb: %d tcas: %d radar: %d\n", adsb->size(),
            tcas->size(), radar->size());
     printf("Correlate called\n");
 
@@ -150,15 +150,15 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
 
     //lock CorrelationAircraft vectors
     //pthread_mutex_lock(&corr_aircraft_mutex);
-
+    printf("%d %d what\n", _corr_aircraft.size(), _clusters.size());
     //for every cluster, call ConvertAircraft(), add to _corr_aircraft
     for (uint32_t i = 0; i < _clusters.size(); i++) {
         ConvertAircraft(_clusters.at(i));
-        _free_clusters.push_back(_clusters.at(i));
+       // _free_clusters.push_back(_clusters.at(i));
     }
-
+printf("%d\n", _corr_aircraft.size());
     //unlock cluster vectors
-    _clusters.clear();
+    //_clusters.clear();
    // pthread_mutex_unlock(&cluster_mutex);
 
     printf("Categorize!\n");
@@ -167,11 +167,12 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
     Categorize(&_corr_aircraft);
 
     //Delete Correlate and Cluster data
-    for (int i = 0; i < _corr_aircraft.size(); i++) {
-        _free_aircraft.push_back(_corr_aircraft.at(i));
-    }
+//    for (int i = 0; i < _corr_aircraft.size(); i++) {
+  //      _free_aircraft.push_back(_corr_aircraft.at(i));
+    //}
 
     _corr_aircraft.clear();
+    _clusters.clear();
 
     //unlock CorrelationAircraft vectors
     //pthread_mutex_unlock(&corr_aircraft_mutex);
@@ -199,39 +200,48 @@ int CorrelationEngine::ConvertAircraft(Cluster *cluster) {
         type = ADSB;
         time = cluster->_adsb->GetTime();
         tail_number = cluster->_adsb->GetTailNumber();
-        adsbG = cluster->_adsb->GetGeographicCoordinate();
-        adsbS = cluster->_adsb->GetSphericalCoordinate();
-        adsbV = cluster->_adsb->GetVelocity();
+        geographic_coordinate = *cluster->_adsb->GetGeographicCoordinate();
+        spherical_coordinate = *cluster->_adsb->GetSphericalCoordinate();
+        velocity = *cluster->_adsb->GetVelocity();
+//        adsbG = cluster->_adsb->GetGeographicCoordinate();
+//        adsbS = cluster->_adsb->GetSphericalCoordinate();
+//        adsbV = cluster->_adsb->GetVelocity();
     }
     else if (cluster->_tcas != NULL) {
         type = TCAS;
         time = cluster->_tcas->GetTime();
         tcas_id = cluster->_tcas->GetTcasID();
-        tcasG = cluster->_adsb->GetGeographicCoordinate();
-        tcasS = cluster->_adsb->GetSphericalCoordinate();
-        tcasV = cluster->_adsb->GetVelocity();
+        geographic_coordinate = *cluster->_tcas->GetGeographicCoordinate();
+        spherical_coordinate = *cluster->_tcas->GetSphericalCoordinate();
+        velocity = *cluster->_tcas->GetVelocity();
+//        tcasG = cluster->_tcas->GetGeographicCoordinate();
+//        tcasS = cluster->_tcas->GetSphericalCoordinate();
+//        tcasV = cluster->_tcas->GetVelocity();
     }
     else if (cluster->_radar != NULL) {
         type = RADAR;
         time = cluster->_radar->GetTime();
         radar_id = cluster->_radar->GetRadarID();
-        radarG = cluster->_adsb->GetGeographicCoordinate();
-        radarS = cluster->_adsb->GetSphericalCoordinate();
-        radarV = cluster->_adsb->GetVelocity();
+        geographic_coordinate = *cluster->_radar->GetGeographicCoordinate();
+        spherical_coordinate = *cluster->_radar->GetSphericalCoordinate();
+        velocity = *cluster->_radar->GetVelocity();
+//        radarG = cluster->_radar->GetGeographicCoordinate();
+//        radarS = cluster->_radar->GetSphericalCoordinate();
+//        radarV = cluster->_radar->GetVelocity();
     }
     else {
         printf("Trying to convert empty Cluster to CorrelationAircraft\n");
         return EXITVAL;
     }
-
-   geographic_coordinate = *
-        GeographicCoordinate::Average(adsbG, tcasG, radarG);
-
-    spherical_coordinate = *
-        SphericalCoordinate::Average(adsbS, tcasS, radarS);
-
-    velocity = *Velocity::Average(adsbV, tcasV, radarV);
-
+//printf("\n");
+//   geographic_coordinate = *
+//        GeographicCoordinate::Average(adsbG, tcasG, radarG);
+//
+//    spherical_coordinate = *
+//        SphericalCoordinate::Average(adsbS, tcasS, radarS);
+//
+//    velocity = *Velocity::Average(adsbV, tcasV, radarV);
+//    printf("success\n");
     //Set prediction vectors
     Velocity predictedVector = Velocity(0, 0, 0);
     Velocity predictedLoc = Velocity(0, 0, 0);

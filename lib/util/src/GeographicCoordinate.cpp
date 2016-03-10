@@ -62,8 +62,8 @@ GeographicCoordinate *GeographicCoordinate::Average(GeographicCoordinate
         count++;
         coords.push_back(three);
     }
-
-    for (int i = 0; i < coords.size(); i++)
+printf("geo count %d\n", count);
+    for (int i = 0; i < count; i++)
     {
         latitude += coords.at(i)->_latitude;
         longitude += coords.at(i)->_longitude;
@@ -91,6 +91,7 @@ GeographicCoordinate *GeographicCoordinate::Average(GeographicCoordinate
             altitude -= coords.at(removeVal)->_altitude;
         }
     }
+    printf("Geo\n");
 
     //No coordinates exist
     if (count == 0)

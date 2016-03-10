@@ -74,8 +74,8 @@ SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
         count++;
         coords.push_back(three);
     }
-
-    for (int i = 0; i < coords.size(); i++)
+printf("sphere %d\n", count);
+    for (int i = 0; i < count; i++)
     {
         range += coords.at(i)->_range;
         elevation += coords.at(i)->_elevation;
@@ -110,6 +110,7 @@ SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
         return NULL;
     }
 
+    printf("Spherica\n");
     //geometric mean
     range = pow(range, 1 / count);
     elevation = pow(elevation, 1 / count);
