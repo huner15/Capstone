@@ -26,16 +26,31 @@ namespace Example
         public Vector() { }
         public Vector(float x, float y, float z)
         {
-            X = x;
-            Y = y;
-            Z = z;
+            N = x;
+            E = y;
+            D = z;
         }
+        public float N { get; set; }
 
-        public float X { get; set; }
+        public float E { get; set; }
 
-        public float Y { get; set; }
+        public float D { get; set; }
 
-        public float Z { get; set; }
+        public float X
+        {
+            get { return N; }
+            set { N = value; }
+        }
+        public float Y
+        {
+            get { return E; }
+            set { E = value;}
+        }
+        public float Z
+        {
+            get { return D; }
+            set { D = value; }
+        }
 
     }
 
@@ -67,11 +82,6 @@ namespace Example
         /// <summary> North East and Down, in Feet/Second</summary>
         public Example.CDTIPlane.Severity severity { get; set; }
 
-
-        public override string ToString()
-        {
-            return Id;
-        }
     }
 
     /// <summary>
