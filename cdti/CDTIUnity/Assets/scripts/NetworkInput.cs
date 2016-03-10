@@ -279,6 +279,10 @@ public class NetworkInput : MonoBehaviour {
 
     private void AddToScreen(CDTIPlane plane)
     {
+        if(plane == null)
+        {
+            return;
+        }
         GameObject toAdd;
         if (aircraftHidden.Count > 0)
         {
@@ -294,7 +298,7 @@ public class NetworkInput : MonoBehaviour {
         toAdd.GetComponent<SpriteRenderer>().sprite = getCorrectSprite(plane);
         toAdd.GetComponent<Transform>().position = figurePositon(plane);
         toAdd.GetComponent<Transform>().rotation = figureRotation(plane);
-        if(plane.Position.X != 0 || plane.Position.Y != 0 || plane.Position.Z != 0)
+        if(plane != null && plane.Position.X != 0 || plane.Position.Y != 0 || plane.Position.Z != 0)
         {
             toAdd.GetComponent<Aircraft>().addText(plane);
         }
