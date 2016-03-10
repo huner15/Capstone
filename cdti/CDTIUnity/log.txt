@@ -1,451 +1,1822 @@
 server Start
 connection established
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
-at intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+4
+Example.CDTIPlane
+5
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4
+added to screed ownship
+end intake
+0
+Example.CDTIPlane
+5
+
+at intake
+added to screed ownship
+end intake
+4
+
+0
+send success
+at intake
+added to screed demo 1
+added to screed demo 2
+added to screed demo 3
+added to screed demo 4

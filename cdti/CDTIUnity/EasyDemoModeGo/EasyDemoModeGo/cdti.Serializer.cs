@@ -71,15 +71,15 @@ namespace Example
                 {
                     // Field 1 Fixed32
                     case 13:
-                        instance.X = br.ReadSingle();
+                        instance.N = br.ReadSingle();
                         continue;
                     // Field 2 Fixed32
                     case 21:
-                        instance.Y = br.ReadSingle();
+                        instance.E = br.ReadSingle();
                         continue;
                     // Field 3 Fixed32
                     case 29:
-                        instance.Z = br.ReadSingle();
+                        instance.D = br.ReadSingle();
                         continue;
                 }
 
@@ -122,15 +122,15 @@ namespace Example
                 {
                     // Field 1 Fixed32
                     case 13:
-                        instance.X = br.ReadSingle();
+                        instance.N = br.ReadSingle();
                         continue;
                     // Field 2 Fixed32
                     case 21:
-                        instance.Y = br.ReadSingle();
+                        instance.E = br.ReadSingle();
                         continue;
                     // Field 3 Fixed32
                     case 29:
-                        instance.Z = br.ReadSingle();
+                        instance.D = br.ReadSingle();
                         continue;
                 }
 
@@ -172,15 +172,15 @@ namespace Example
                 {
                     // Field 1 Fixed32
                     case 13:
-                        instance.X = br.ReadSingle();
+                        instance.N = br.ReadSingle();
                         continue;
                     // Field 2 Fixed32
                     case 21:
-                        instance.Y = br.ReadSingle();
+                        instance.E = br.ReadSingle();
                         continue;
                     // Field 3 Fixed32
                     case 29:
-                        instance.Z = br.ReadSingle();
+                        instance.D = br.ReadSingle();
                         continue;
                 }
 
@@ -207,13 +207,13 @@ namespace Example
             var msField = global::SilentOrbit.ProtocolBuffers.ProtocolParser.Stack.Pop();
             // Key for field: 1, Fixed32
             stream.WriteByte(13);
-            bw.Write(instance.X);
+            bw.Write(instance.N);
             // Key for field: 2, Fixed32
             stream.WriteByte(21);
-            bw.Write(instance.Y);
+            bw.Write(instance.E);
             // Key for field: 3, Fixed32
             stream.WriteByte(29);
-            bw.Write(instance.Z);
+            bw.Write(instance.D);
             global::SilentOrbit.ProtocolBuffers.ProtocolParser.Stack.Push(msField);
         }
 

@@ -158,7 +158,7 @@ public class NetworkInput : MonoBehaviour {
        
         server = new TcpListener(IPAddress.Parse("127.0.0.1"), 13000);
         server.Start();
-        logger("server Start");
+        logger("server Start ver 1.4.1");
         while (isRunning)
         {
                 // check if new connections are pending, if not, be nice and sleep 100ms
@@ -187,6 +187,7 @@ public class NetworkInput : MonoBehaviour {
                     File.Delete("temp.txt");
                     FileStream file = new FileStream("temp.txt", FileMode.Create);
                     file.Write(buf, 0, bytesRead);
+					logger("temp written");
                    // ms.Write(buf, 0, bytesRead);
                     totalBytes += bytesRead;
                     file.Close();
@@ -195,9 +196,10 @@ public class NetworkInput : MonoBehaviour {
                     FileStream fs = new FileStream("temp.txt", FileMode.Open);
                     try
                     {
-                       
+                       logger("reading temp");
                         report = Example.CDTIReport.Deserialize(fs);
                         fs.Close();
+						logger("temp read");
                         logger("" +report.Planes.Count);
                         logger("" +report.Ownship);
                         logger("" +report.Timestamp);
@@ -208,6 +210,7 @@ public class NetworkInput : MonoBehaviour {
                     }
                     catch(Exception)
                     {
+						logger("Exception caught in read");
                         fs.Close();
                     }
                     if(rep)
@@ -216,8 +219,8 @@ public class NetworkInput : MonoBehaviour {
                         intake(report);
                         // intake(CDTIReport.Deserialize(ns));
                         yield return Ninja.JumpBack;
-                        rep = false;
                     }
+					rep = false;
                 }
                 
                 client.Close();
