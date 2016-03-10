@@ -12,7 +12,9 @@
 
 #include "Cluster.h"
 #include "FlightReport.h"
+#include "SaasUtil.h"
 #include "Velocity.h"
+#include "cdti.pb.h"
 
 using namespace std;
 
