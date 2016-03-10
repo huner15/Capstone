@@ -18,10 +18,18 @@ void DeviceSimulator::Simulate() {
     try {
         ServerSocket server_socket = ServerSocket(_port);
         std::cout << "Simulator running on port: " << _port << std::endl;
+
         ServerSocket client_socket;
         server_socket.accept(client_socket);
         std::cout << "Client has connected on port: " << _port << std::endl;
-        this->SendReports(client_socket);
+
+        if (_flight_simulation.GetFlights().empty()) {
+            std::cout << "No flight data to simulate" << std::endl;
+        }
+        else {
+            SendReports(client_socket);
+        }
+
         std::cout << "Closing connection on port: " << _port << std::endl;
     }
     catch (SocketException &e) {

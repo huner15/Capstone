@@ -1,8 +1,8 @@
 /*
  * @file FlightReport.h
  * @author Specific Atomics
- * @authors Frank Poole, Andy Savage, Dat Tran
- * @date 2-13-16
+ * @authors Frank Poole
+ * @date 3-7-16
  * @brief TODO: Description
  */
 
@@ -13,119 +13,42 @@
 #include <adsb.pb.h>
 #include <radar.pb.h>
 #include <tcas.pb.h>
-#include <cdti.pb.h>
-#include <ctime>
-#include <vector>
-
-#include "TailNumber.h"
-#include "TcasID.h"
-#include "RadarID.h"
-#include "GeographicCoordinate.h"
-#include "SphericalCoordinate.h"
-#include "Velocity.h"
-#include "RadarID.h"
-#include "Device.h"
 
 class FlightReport {
 private:
-    std::time_t _time; /** Timestamp for when this was received. */
-    TailNumber _tail_number; /** tail number of aircraft */
-    TcasID _tcas_id; /** ID given by the TCAS hardware. */
-    RadarID _radar_id; /** ID given by the radar hardware. */
-    /** latitude, longitude (+/- 180 degrees), and altitude. */
-    GeographicCoordinate _geographic_coordinate;
-    SphericalCoordinate _spherical_coordinate;
-    Velocity _velocity;  /** relative intruder velocity (feet/sec). */
-    Device _type; /** Enum for what device this report is from. */
+    AdsBReport _adsb_report;
+    RadarReport _radar_report;
+    TcasReport _tcas_report;
+    OwnshipReport _ownship_report;
 
 public:
-    FlightReport();
 
-    FlightReport(std::time_t time, TailNumber tail_number, TcasID tcas_id,
-           RadarID radar_id, GeographicCoordinate geographic_coordinate,
-           SphericalCoordinate spherical_coordinate, Velocity velocity,
-           Device type);
+    /* TODO: Create constructors for all 16 report combinations.
+    FlightReport(AdsBReport adsb_report, RadarReport radar_report,
+                 OwnshipReport ownship_report);
 
-    /**
-     * Creates an ownship report from the data from this FlightReport.
-     * @return an ownship report made from the data in this FlightReport.
-     */
-    OwnshipReport CreateOwnshipReport();
+    FlightReport(AdsBReport adsb_report, TcasReport tcas_report,
+                 OwnshipReport ownship_report);
+    */
 
-    /**
-     * Creates an ADS-B report from the data in this FlightReport.
-     * @return an ADS-B report made from the data in this FlightReport.
-     */
-    AdsBReport CreateAdsBReport();
+    FlightReport(AdsBReport adsb_report, RadarReport radar_report,
+                 TcasReport tcas_report, OwnshipReport ownship_report);
 
-    /**
-     * Creates a radar report from the data in this FlightReport.
-     * @return a radar report made from the data in this FlightReport.
-     */
-    RadarReport CreateRadarReport();
+    bool HasAsdbReport();
 
-    /**
-     * Creates a TCAS report from the data in this FlightReport
-     * @return a TCAS report made from the data in this FlightReport.
-     */
-    TcasReport CreateTcasReport();
+    bool HasRadarReport();
 
-    /**
-     * Creates a CDTI plane from the data in this FlightReport
-     * @return a CDTI plane made from the data in this FlightReport
-     */
-    CDTIPlane CreateCdtiPlane();
+    bool HasTcasReport();
 
+    bool HasOwnshipReport();
 
-    /**
-     * Accessor function for the time of the flight report.
-     * @return the time of the flight report
-     */
-    std::time_t GetTime();
+    AdsBReport GetAdsbReport();
 
-    /**
-     * Accessor function for the tail number of the flight report.
-     * @return the tail number of the flight report.
-     */
-    TailNumber GetTailNumber();
+    RadarReport GetRadarReport();
 
-    /**
-     * Accessor function for the TcasId of the flight report.
-     * @return the TcasId of the flight report
-     */
-    TcasID GetTcasID();
+    TcasReport GetTcasReport();
 
-    /**
-     * Accessor function for the RadarId of the flight report.
-     * @return the RadarId of the flight report.
-     */
-    RadarID GetRadarID();
-
-    /**
-     * Accessor function for the Geographic coordinate of the flight report.
-     * @return the geographic coordinate of the flight report.
-     */
-    GeographicCoordinate GetGeographicCoordinate();
-
-    /**
-     * Accessor function for the spherical coordinate of the flight report.
-     * @return the spherical coordinate of the flight report.
-     */
-    SphericalCoordinate GetSphericalCoordinate();
-
-    /**
-     * Accessor function for the velocity of the flight report.
-     * @return the velocity of the flight report.
-     */
-    Velocity GetVelocity();
-
-    /**
-     * Accessor function for the device of the flight report.
-     * @return the device of the flight report
-     */
-    Device GetDevice();
-
-    void PrintReport();
+    OwnshipReport GetOwnshipReport();
 };
 
 #endif

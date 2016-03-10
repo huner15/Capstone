@@ -17,12 +17,10 @@ class FlightSimulation {
 private:
     std::vector<Flight> _flights;
 public:
-    // TODO: Constructor
     FlightSimulation(std::vector<Flight> all_flights);
 
     std::vector<Flight> GetFlights();
 
-    // TODO: Destructor
     ~FlightSimulation() {};
 };
 
