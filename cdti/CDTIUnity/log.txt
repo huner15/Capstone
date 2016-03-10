@@ -2,14 +2,8 @@ server Start ver 1.4.3
 connection established
 temp written
 reading temp
-temp read
-4
-Example.CDTIPlane
-5
-send success
-at intake
-added to screed demo 1
-added to screed demo 2
+Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
+creed demo 2
 added to screed demo 3
 added to screed demo 4
 added to screed ownship

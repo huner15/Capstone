@@ -781,6 +781,9 @@ namespace Example
 
                 }
             }
+            stream.WriteByte(0);
+            stream.WriteByte(0);
+            stream.WriteByte(0);
             global::SilentOrbit.ProtocolBuffers.ProtocolParser.Stack.Push(msField);
         }
 
