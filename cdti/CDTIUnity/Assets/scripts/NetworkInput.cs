@@ -198,10 +198,10 @@ public class NetworkInput : MonoBehaviour {
                        
                         report = Example.CDTIReport.Deserialize(fs);
                         fs.Close();
-                        print(report.Planes.Count);
-                        print(report.Ownship);
-                        print(report.Timestamp);
-                        print(report.AdvisoryMessage);
+                        logger("" +report.Planes.Count);
+                        logger("" +report.Ownship);
+                        logger("" +report.Timestamp);
+                        logger(report.AdvisoryMessage);
                         rep = true;
                         lastReport = report;
                         
@@ -250,7 +250,7 @@ public class NetworkInput : MonoBehaviour {
         }
         AddToScreen(report.Ownship);
 
-
+		logger("end intake");
     }
 
     private void AddToScreen(CDTIPlane plane)
@@ -276,7 +276,7 @@ public class NetworkInput : MonoBehaviour {
         }
         
 
-
+		logger("added to screed " + plane.Id);
         aircraft.Add(toAdd);
         //throw new NotImplementedException();
     }
