@@ -24,7 +24,7 @@ void DeviceSimulator::Simulate() {
         std::cout << "Client has connected on port: " << _port << std::endl;
 
         if (_flight_simulation.GetFlights().empty()) {
-            std::cout << "Flights is empty." << std::endl;
+            std::cout << "No flight data to simulate" << std::endl;
         }
         else {
             SendReports(client_socket);
