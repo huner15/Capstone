@@ -7,7 +7,6 @@
  * all of the interchangeable algorithms will be based on.
 */
 
-#include <GenerationMath.h>
 #include "CorrelationEngine.h"
 
 using namespace std;
@@ -121,7 +120,7 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
     _is_relative = is_relative;
 
     //mutex lock for using the cluster vectors
-    pthread_mutex_lock(&cluster_mutex);
+    //pthread_mutex_lock(&cluster_mutex);
     _clusters.clear();
 
     if (RunAlgorithm(adsb, radar, tcas) != TRUE) {
@@ -137,7 +136,7 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
     }
 
     //lock CorrelationAircraft vectors
-    pthread_mutex_lock(&corr_aircraft_mutex);
+    //pthread_mutex_lock(&corr_aircraft_mutex);
 
     //for every cluster, call ConvertAircraft(), add to _corr_aircraft
     for (uint32_t i = 0; i < _clusters.size(); i++) {
@@ -147,7 +146,7 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
 
     //unlock cluster vectors
     _clusters.clear();
-    pthread_mutex_unlock(&cluster_mutex);
+   // pthread_mutex_unlock(&cluster_mutex);
 
     //Send all correlate aircraft to the
     Categorize(&_corr_aircraft);
@@ -160,7 +159,7 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
     _corr_aircraft.clear();
 
     //unlock CorrelationAircraft vectors
-    pthread_mutex_unlock(&corr_aircraft_mutex);
+    //pthread_mutex_unlock(&corr_aircraft_mutex);
 
     return 0;
 
@@ -276,7 +275,7 @@ double CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
     double difference, azimuth, elevation, metric;
 
     //ADS-B could not be converted to spherical coordinates
-    if (_is_relative == FALSE && (reportOne->GetDevice() == ADSB
+    if (_is_relative == false && (reportOne->GetDevice() == ADSB
         || reportTwo->GetDevice() == ADSB)) {
         //no way to calculate heading for unconverted adsb
         metric = 1;
@@ -304,7 +303,7 @@ double CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
     GeographicCoordinate geoCoord;
 
     //if possible, use ownship from radar report to convert
-    if (_is_relative == FALSE && (reportOne->GetDevice() == RADAR
+    if (_is_relative == false && (reportOne->GetDevice() == RADAR
         || reportTwo->GetDevice() == RADAR)) {
         //report one is the radar report
         if (reportOne->GetDevice() == RADAR) {
@@ -330,11 +329,11 @@ double CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
             reportOne->SetSphericalCoordinate(coord);
         }
 
-        _is_relative = TRUE;
+        _is_relative = true;
     }
 
     //check if ADS-B could not be converted to spherical coordinates
-    if (_is_relative == FALSE && reportOne->GetDevice() != ADSB
+    if (_is_relative == false && reportOne->GetDevice() != ADSB
         && reportTwo->GetDevice() != ADSB) {
         //calculate range correlation
         difference = reportOne->GetRange() - reportTwo->GetRange();

@@ -15,6 +15,7 @@
 #include "CorrelationAircraft.h"
 #include "Categorizer.h"
 #include <pthread.h>
+#include <GenerationMath.h>
 
 #define TRUE 0
 #define FALSE 1
@@ -41,8 +42,8 @@ protected:
     bool _is_relative;
 
     //mutex locks for using the cluster and corrAircraft vectors
-    pthread_mutex_t cluster_mutex;
-    pthread_mutex_t corr_aircraft_mutex;
+  //  pthread_mutex_t cluster_mutex;
+    //pthread_mutex_t corr_aircraft_mutex;
 
     /*
      * Checks that all Clusters have atleast one SurveillanceReport.

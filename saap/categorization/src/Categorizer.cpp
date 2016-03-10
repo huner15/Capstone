@@ -25,15 +25,26 @@ std::vector<CDTIPlane> MakeCDTI(std::vector<CorrelationAircraft*>* aircraft);
  */
 void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     std::vector<CDTIPlane> planes = MakeCDTI(aircraft);
-    CDTIReport report;
+    CDTIReport *report = new CDTIReport();
+    report->set_timestamp(1);
+    CDTIPlane* ownship = new CDTIPlane();
+    Vector* pv = new Vector();
+    pv->set_d(0);
+    pv->set_e(0);
+    pv->set_n(0);
+    ownship->set_allocated_position(pv);
+    ownship->set_allocated_velocity(pv);
+    ownship->set_id("ownship");
+    ownship->set_severity(CDTIPlane_Severity_PROXIMATE);
+    report->set_allocated_ownship(ownship);
 
     //call something to translate whatever is given into a list of CDTIplanes
     for(int i = 0; i < planes.size(); i++){
         CategorizePlane(planes.at(i));
-        report.mutable_planes()->AddAllocated(&(planes.at(i)));
+        report->mutable_planes()->AddAllocated(&(planes.at(i)));
     }
 
-    socket_to_cdti << report;
+    socket_to_cdti << *report;
 }
 
 CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft)
