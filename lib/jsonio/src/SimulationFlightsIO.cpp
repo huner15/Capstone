@@ -204,10 +204,10 @@ FlightSimulation SimulationFlightsIO::ReadFlightData(std::string file_name) {
         }
         Flight flight(all_flight_reports);
         all_flights.push_back(flight);
-
+        //std::cout << "Size of flights: " << all_flights.size() << std::endl;
 
     }
-
+    std::cout << "Size of flights: " << all_flights.size() << std::endl;
     FlightSimulation flight_simulation(all_flights);
 
     return flight_simulation;
