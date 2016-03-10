@@ -89,7 +89,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Deserialize Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
@@ -140,7 +140,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("DeserializeLengthDelimited Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
@@ -190,7 +190,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("DeserializeLength Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
@@ -320,7 +320,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Deserialize 2 Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
@@ -380,7 +380,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("DeserializeLengthDelimited 2 Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
@@ -439,7 +439,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("DeserializeLength 2 Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
@@ -595,7 +595,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Deserialize 3 Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
@@ -661,7 +661,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("DeserializeLengthDelimited 3 Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
@@ -726,7 +726,7 @@ namespace Example
                 switch (key.Field)
                 {
                     case 0:
-                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("DeserializeLength 3 Invalid field id: 0, something went wrong in the stream");
                     default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;

@@ -158,7 +158,7 @@ public class NetworkInput : MonoBehaviour {
        
         server = new TcpListener(IPAddress.Parse("127.0.0.1"), 13000);
         server.Start();
-        logger("server Start ver 1.4.2");
+        logger("server Start ver 1.4.3");
         while (isRunning)
         {
                 // check if new connections are pending, if not, be nice and sleep 100ms
