@@ -212,6 +212,30 @@ public class NetworkInput : MonoBehaviour {
                     {
 						logger("Exception caught in read");
                         fs.Close();
+                        fs = new FileStream("temp.txt", FileMode.Open);
+                        try
+                        {
+                            fs.ReadByte();
+                            fs.ReadByte();
+                            fs.ReadByte();
+                            fs.ReadByte();
+                            logger("reading temp");
+                            report = Example.CDTIReport.Deserialize(fs);
+                            fs.Close();
+                            logger("temp read");
+                            logger("" + report.Planes.Count);
+                            logger("" + report.Ownship);
+                            logger("" + report.Timestamp);
+                            logger(report.AdvisoryMessage);
+                            rep = true;
+                            lastReport = report;
+
+                        }
+                        catch (Exception)
+                        {
+                            logger("Exception caught in read");
+                            fs.Close();
+                        }
                     }
                     if(rep)
                     {
