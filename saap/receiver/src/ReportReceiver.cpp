@@ -58,7 +58,6 @@ SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
                                   SphericalCoordinate(0.0, 0.0,
                                                       0.0),
                                   velocity, OWNSHIP);
-
 }
 
 SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(

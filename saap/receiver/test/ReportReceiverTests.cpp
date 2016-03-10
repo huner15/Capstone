@@ -9,6 +9,8 @@
 #include <gtest/gtest.h>
 #include <ReportReceiver.h>
 #include <Device.h>
+#include "SurveillanceReport.h"
+#include "OwnshipReceiver.h"
 
 /*
  * Tests to see that the ownship surveillance report creator is properly
@@ -38,7 +40,10 @@ TEST(ReportReceiverOwnshipSurveillanceReports, SingleReport) {
     EXPECT_EQ(6, surveillanceReport->GetVelocity()->down);
     EXPECT_EQ(7, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
+
+    sleep(1);
 }
+
 
 /*
  * Tests to see that the ownship surveillance report creator is properly
@@ -48,6 +53,7 @@ TEST(ReportReceiverOwnshipSurveillanceReports, TwoReports){
     OwnshipReport ownshipReport = OwnshipReport();
     std::time_t time = std::time_t(1);
     ownshipReport.set_timestamp(time);
+
     ownshipReport.set_ownship_latitude(2);
     ownshipReport.set_ownship_longitude(3);
     ownshipReport.set_ownship_altitude(4);
@@ -70,6 +76,8 @@ TEST(ReportReceiverOwnshipSurveillanceReports, TwoReports){
     EXPECT_EQ(6, surveillanceReport->GetVelocity()->down);
     EXPECT_EQ(7, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
+
+    sleep(1);
 
     OwnshipReport ownshipReport2 = OwnshipReport();
     std::time_t time2 = std::time_t(8);
@@ -94,7 +102,7 @@ TEST(ReportReceiverOwnshipSurveillanceReports, TwoReports){
     EXPECT_EQ(14, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
 
-    sleep(2);
+    sleep(1);
 }
 
 /*
@@ -128,7 +136,7 @@ TEST(ReportReceiverTcasSurveillanceReports, OneReport){
     EXPECT_EQ(3, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
 
-    sleep(2);
+    //sleep(1);
 }
 
 /*
@@ -186,8 +194,6 @@ TEST(ReportReceiverTcasSurveillanceReports, TwoReports){
     EXPECT_EQ(5, surveillanceReport->GetBearing());
     EXPECT_EQ(6, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
-
-    sleep(2);
 }
 
 /*
@@ -226,8 +232,6 @@ TEST(ReportReceiverAdsbSurveillanceReports, OneReport){
     EXPECT_EQ(6, surveillanceReport->GetVelocity()->down);
     EXPECT_EQ(7, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
-
-    sleep(2);
 }
 
 /*
@@ -306,8 +310,6 @@ TEST(ReportReceiverAdsbSurveillanceReports, TwoReports){
     EXPECT_EQ(13, surveillanceReport->GetVelocity()->down);
     EXPECT_EQ(14, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(ADSB, surveillanceReport->GetDevice());
-
-    sleep(2);
 }
 
 /*
@@ -351,8 +353,6 @@ TEST(ReportReceiverRadarSurveillanceReports, OneReport){
     EXPECT_EQ(8, surveillanceReport->GetLatitude());
     EXPECT_EQ(9, surveillanceReport->GetLongitude());
     EXPECT_EQ(10, surveillanceReport->GetAltitude());
-
-    sleep(2);
 }
 
 /*

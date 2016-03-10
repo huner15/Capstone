@@ -84,17 +84,17 @@ SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
 
     //Remove outlier if have all three coordinates and it exists
     if (count == 3) {
-        vOne = cbrt(pow(coords.at(1)->_range, 2) +
+        vOne = cbrt(pow(coords.at(0)->_range, 2) +
+            pow(coords.at(0)->_elevation, 2) + pow(coords.at(0)->_azimuth, 2));
+        vTwo = cbrt(pow(coords.at(1)->_range, 2) +
             pow(coords.at(1)->_elevation, 2) + pow(coords.at(1)->_azimuth, 2));
-        vTwo = cbrt(pow(coords.at(2)->_range, 2) +
+        vThree = cbrt(pow(coords.at(2)->_range, 2) +
             pow(coords.at(2)->_elevation, 2) + pow(coords.at(2)->_azimuth, 2));
-        vThree = cbrt(pow(coords.at(3)->_range, 2) +
-            pow(coords.at(3)->_elevation, 2) + pow(coords.at(3)->_azimuth, 2));
 
         //if difference is twice as big as other distance, must be an outlier
-        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 1 : 0;
-        removeVal = (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 2 : 0;
-        removeVal = (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 3 : 0;
+        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 0 : 0;
+        removeVal = (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 1 : 0;
+        removeVal = (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 2 : 0;
 
         if (removeVal != 0) {
             count--;
