@@ -32,7 +32,6 @@ void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
         CategorizePlane(planes.at(i));
         report.mutable_planes()->AddAllocated(&(planes.at(i)));
     }
-
     socket_to_cdti << report;
 }
 
