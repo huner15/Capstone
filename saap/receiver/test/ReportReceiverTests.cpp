@@ -102,6 +102,7 @@ TEST(ReportReceiverOwnshipSurveillanceReports, TwoReports){
     EXPECT_EQ(14, surveillanceReport->GetVelocity()->east);
     EXPECT_EQ(OWNSHIP, surveillanceReport->GetDevice());
 
+    sleep(1);
 }
 
 /*
@@ -134,8 +135,6 @@ TEST(ReportReceiverTcasSurveillanceReports, OneReport){
     EXPECT_EQ(2, surveillanceReport->GetBearing());
     EXPECT_EQ(3, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
-
-    sleep(1);
 }
 
 /*

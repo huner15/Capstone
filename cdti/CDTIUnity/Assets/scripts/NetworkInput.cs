@@ -215,7 +215,7 @@ public class NetworkInput : MonoBehaviour {
                         //fs = new FileStream("temp.txt", FileMode.Open);
                         try
                         {
-                            fs.Seek(1, SeekOrigin.Begin);
+                            fs.Seek(4, SeekOrigin.Begin);
                             logger("reading temp");
                             report = CDTIReport.Deserialize(fs);
                             fs.Close();
@@ -232,6 +232,11 @@ public class NetworkInput : MonoBehaviour {
                         {
                             logger("Exception caught in read" + f.Message);
                             fs.Close();
+                            if(report != null)
+                            {
+                                lastReport = report;
+                                rep = true;
+                            }
                         }
                    // }
                     if(rep)
