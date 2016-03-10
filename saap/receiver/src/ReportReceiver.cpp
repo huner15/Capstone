@@ -51,9 +51,10 @@ SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
     double range = report.range();
     double altitude = report.altitude();
     double bearing = report.bearing();
+    //TODO find a way to incorporate tcas' altitude.
     GeographicCoordinate geographic_coordinate = GeographicCoordinate(0.0,
                                                                       0.0,
-                                                                      altitude);
+                                                                      0.0);
     Velocity velocity = Velocity(0.0, 0.0, 0.0);
     SphericalCoordinate spherical_coordinate = SphericalCoordinate(range, 0.0,
                                                                    bearing);
