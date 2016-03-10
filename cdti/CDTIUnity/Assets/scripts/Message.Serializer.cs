@@ -81,14 +81,14 @@ namespace Example
                 var key = global::SilentOrbit.ProtocolBuffers.ProtocolParser.ReadKey((byte)keyByte, stream);
 
                 // Reading field ID > 16 and unknown field ID/wire type combinations
-            //    switch (key.Field)
-              //  {
-                //    case 0:
-                  //      throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
-                  //  default:
+                switch (key.Field)
+                {
+                    case 0:
+                        throw new global::SilentOrbit.ProtocolBuffers.ProtocolBufferException("Invalid field id: 0, something went wrong in the stream");
+                    default:
                         global::SilentOrbit.ProtocolBuffers.ProtocolParser.SkipKey(stream, key);
                         break;
-               // }
+                }
             }
 
             return instance;
