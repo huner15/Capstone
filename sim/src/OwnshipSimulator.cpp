@@ -16,11 +16,12 @@ OwnshipSimulator::OwnshipSimulator(in_port_t port,
 
 void OwnshipSimulator::SendReports(ServerSocket& client_socket) {
     std::vector<Flight> flights = _flight_simulation.GetFlights();
+
     Flight ownship_flight = flights[0];
 
     while (ownship_flight.HasNextFlightReport()) {
         FlightReport flight_report = ownship_flight.NextFlightReport();
-        this->SendReport(client_socket, flight_report);
+        SendReport(client_socket, flight_report);
         sleep(_SLEEP_TIME);
     }
 }

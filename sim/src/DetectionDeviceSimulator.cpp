@@ -11,6 +11,7 @@
 
 void DetectionDeviceSimulator::SendReports(ServerSocket& client_socket) {
     std::vector<Flight> flights = _flight_simulation.GetFlights();
+
     Flight ownship_flight = flights[0];
     int report_count = 0;
 
