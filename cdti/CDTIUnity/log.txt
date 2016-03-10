@@ -1,37 +1,48 @@
-server Start
+server Start ver 1.4.3
 connection established
-4
+temp written
+reading temp
+Exception caught in readStream ended too early
+reading temp
+temp read
+0
+
+0
+
+at intake
+end intake
+temp written
+reading temp
+temp read
+0
 Example.CDTIPlane
 5
 send success
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
 added to screed ownship
 end intake
-4
+temp written
+reading temp
+Exception caught in readStream ended too early
+reading temp
+temp read
+0
+
+0
+
+at intake
+end intake
+temp written
+reading temp
+temp read
+0
 Example.CDTIPlane
 5
 send success
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
 added to screed ownship
 end intake
-4
-Example.CDTIPlane
-5
-send success
-at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+nship
 end intake
 4
 Example.CDTIPlane
