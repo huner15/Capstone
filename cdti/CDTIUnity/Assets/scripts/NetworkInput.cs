@@ -215,10 +215,7 @@ public class NetworkInput : MonoBehaviour {
                         fs = new FileStream("temp.txt", FileMode.Open);
                         try
                         {
-                            fs.ReadByte();
-                            fs.ReadByte();
-                            fs.ReadByte();
-                            fs.ReadByte();
+                            fs.Seek(4, SeekOrigin.Begin);
                             logger("reading temp");
                             report = Example.CDTIReport.Deserialize(fs);
                             fs.Close();
