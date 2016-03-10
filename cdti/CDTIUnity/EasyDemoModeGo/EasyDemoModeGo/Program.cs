@@ -104,6 +104,7 @@ namespace EasyDemoModeGo
             planes.Add(buildPlanes(20.0, 3.0, 1000.0, -.2, 0, -1, "demo 2"));
             planes.Add(buildPlanes(10.0, 10.0, 0, -.2, -.1, -5, "demo 3"));
             planes.Add(buildPlanes(-50.0, -25.0, 0, .1, .02, 0, "demo 4"));
+
         }
 
         private static CDTIPlane buildPlanes(double px, double py, double pz, double vx, double vy, double vz, string id)
