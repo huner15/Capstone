@@ -232,13 +232,13 @@ int CorrelationEngine::ConvertAircraft(Cluster *cluster) {
 
     velocity = *Velocity::Average(adsbV, tcasV, radarV);
 
-    //Set prediction vectors
-    Velocity predictedVector = Velocity(0, 0, 0);
-    Velocity predictedLoc = Velocity(0, 0, 0);
+    //Set prediction vectors (Dat)
+    Velocity predicted_velocity = Velocity(0, 0, 0);
+    GeographicCoordinate predicted_loc = GeographicCoordinate(0, 0, 0);
 
     aircraft = new CorrelationAircraft(time, tail_number, tcas_id, radar_id,
-        geographic_coordinate, spherical_coordinate, velocity, predictedVector,
-        predictedLoc, type);
+        geographic_coordinate, spherical_coordinate, velocity, predicted_velocity,
+        predicted_loc, type);
 
     _corr_aircraft.push_back(aircraft);
 

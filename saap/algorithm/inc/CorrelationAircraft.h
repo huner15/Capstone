@@ -2,6 +2,7 @@
 * @file CorrelationAircraft.h
 * @author Specific Atomics
 * @author Andrea Savage
+* @author Dat Tran
 * @date 2-13-16
 * @brief Constructs a CorrelationAircraft and converts a Cluster into one
  * most likely CorrelationAircraft.
@@ -27,12 +28,12 @@ using namespace std;
  */
 class CorrelationAircraft {
 
-protected:
+private:
     /** Predicted vector the aircraft will be facing in following
     * seconds. */
-    Velocity _predictedVector;
+    Velocity _predicted_velocity;
     /** Predicted location the aircraft will be at in following seconds. */
-    Velocity _predictedLoc;
+    GeographicCoordinate _predicted_location;
 
     std::time_t _time; /** Timestamp for when this was received. */
     TailNumber _tail_number; /** tail number of aircraft */
@@ -56,12 +57,23 @@ public:
     CorrelationAircraft(std::time_t time, TailNumber tail_number, TcasID
     tcas_id, RadarID radar_id, GeographicCoordinate geographic_coordinate,
     SphericalCoordinate spherical_coordinate, Velocity velocity,
-    Velocity predictedVector, Velocity predictedLoc, Device type);
+    Velocity predicted_vector, GeographicCoordinate predicted_location, Device type);
 
     /**
      * Deconstructs a new empty CorrelationAircraft.
      */
     ~CorrelationAircraft();
+
+    Velocity GetPredictedVelocity() const;
+    GeographicCoordinate GetPredictedLocation() const;
+    std::time_t GetTime() const;
+    TailNumber GetTailNumber() const;
+    TcasID GetTcasID() const;
+    RadarID GetRadarID() const;
+    GeographicCoordinate GetGeographicCoordinate() const;
+    SphericalCoordinate GetSphericalCoordinate() const;
+    Velocity GetVelocity() const;
+    Device GetDeviceType() const;
 
     /**
     * Creates a CDTI plane from the data in this FlightReport
