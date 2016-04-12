@@ -8,7 +8,7 @@
 
 #include <SimulationFlightsIO.h>
 #include <gtest/gtest.h>
-
+/*
 TEST(Test1, test1) {
     FlightSimulation fs = SimulationFlightsIO::ReadFile("FlightSimulation.json");
     std::vector<Flight> flights = fs.GetFlights();
@@ -20,7 +20,7 @@ TEST(Test1, test1) {
         reports.at(i).PrintReport();
     }
 
-}
+}*/
 
 /*
 TEST(GetSimulationFlights, CorrectNumberOfFlights) {
