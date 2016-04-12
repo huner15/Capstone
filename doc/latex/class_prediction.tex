@@ -1,0 +1,100 @@
+\hypertarget{class_prediction}{}\section{Prediction Class Reference}
+\label{class_prediction}\index{Prediction@{Prediction}}
+
+
+{\ttfamily \#include $<$Prediction.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_prediction_a61a8877c7d4e1479db3ca3f6d40ffa98}{}int {\bfseries Add\+Aircraft} (\hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} $\ast$aircraft)\label{class_prediction_a61a8877c7d4e1479db3ca3f6d40ffa98}
+
+\item 
+\hypertarget{class_prediction_a063a40cd2d825626293e4face2ba1af4}{}void {\bfseries Take\+Snapshot} ()\label{class_prediction_a063a40cd2d825626293e4face2ba1af4}
+
+\item 
+\hyperlink{class_history}{History} $\ast$ \hyperlink{class_prediction_a95b2ec6b3c313663c14e651a8517bf41}{Get\+History} ()
+\item 
+\hyperlink{class_snapshot}{Snapshot} $\ast$ \hyperlink{class_prediction_a9e6b65c67fc5fed8a1e8e7564b3e8281}{Get\+Current\+Snapshot} ()
+\item 
+int \hyperlink{class_prediction_a5503facfc667ccc43a52d5f3565f7b2f}{Get\+Snapshot\+Counter} ()
+\item 
+\hypertarget{class_prediction_a9fbe1f6ba8758d52dfd859430fd1c771}{}\hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} {\bfseries Search\+Tail\+Num} (\hyperlink{class_tail_number}{Tail\+Number} tail\+\_\+number)\label{class_prediction_a9fbe1f6ba8758d52dfd859430fd1c771}
+
+\item 
+\hypertarget{class_prediction_a93d74fac1cebc29dfed7b5e1a2656f9f}{}\hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} {\bfseries Search\+Tcas\+I\+D} (\hyperlink{class_tcas_i_d}{Tcas\+I\+D} tcas\+\_\+id)\label{class_prediction_a93d74fac1cebc29dfed7b5e1a2656f9f}
+
+\item 
+\hypertarget{class_prediction_a816602d10698f98246e33502c072b81b}{}\hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} {\bfseries Search\+Radar\+I\+D} (\hyperlink{class_radar_i_d}{Radar\+I\+D} radar\+\_\+id)\label{class_prediction_a816602d10698f98246e33502c072b81b}
+
+\item 
+\hypertarget{class_prediction_a7ab6d75833f740cb0adc044106791d7c}{}\hyperlink{class_velocity}{Velocity} {\bfseries Predict\+Velocity} (\hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} $\ast$aircraft, bool is\+\_\+relative)\label{class_prediction_a7ab6d75833f740cb0adc044106791d7c}
+
+\item 
+\hyperlink{class_geographic_coordinate}{Geographic\+Coordinate} \hyperlink{class_prediction_afe4985a909492b2ec6f9c003ed1f4cb7}{Predict\+Location} (\hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} $\ast$aircraft)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The prediction class utilizes the history and interpolates data to support the correlation algorithm 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_prediction_a9e6b65c67fc5fed8a1e8e7564b3e8281}{}\index{Prediction@{Prediction}!Get\+Current\+Snapshot@{Get\+Current\+Snapshot}}
+\index{Get\+Current\+Snapshot@{Get\+Current\+Snapshot}!Prediction@{Prediction}}
+\subsubsection[{Get\+Current\+Snapshot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Snapshot} $\ast$ Prediction\+::\+Get\+Current\+Snapshot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_prediction_a9e6b65c67fc5fed8a1e8e7564b3e8281}
+Accessor to current snapshot
+
+\begin{DoxyReturn}{Returns}
+The current snapshot 
+\end{DoxyReturn}
+\hypertarget{class_prediction_a95b2ec6b3c313663c14e651a8517bf41}{}\index{Prediction@{Prediction}!Get\+History@{Get\+History}}
+\index{Get\+History@{Get\+History}!Prediction@{Prediction}}
+\subsubsection[{Get\+History}]{\setlength{\rightskip}{0pt plus 5cm}{\bf History} $\ast$ Prediction\+::\+Get\+History (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_prediction_a95b2ec6b3c313663c14e651a8517bf41}
+Accessor to history
+
+\begin{DoxyReturn}{Returns}
+The history of the airspace 
+\end{DoxyReturn}
+\hypertarget{class_prediction_a5503facfc667ccc43a52d5f3565f7b2f}{}\index{Prediction@{Prediction}!Get\+Snapshot\+Counter@{Get\+Snapshot\+Counter}}
+\index{Get\+Snapshot\+Counter@{Get\+Snapshot\+Counter}!Prediction@{Prediction}}
+\subsubsection[{Get\+Snapshot\+Counter}]{\setlength{\rightskip}{0pt plus 5cm}int Prediction\+::\+Get\+Snapshot\+Counter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_prediction_a5503facfc667ccc43a52d5f3565f7b2f}
+Accessor to the snapshot counter
+
+\begin{DoxyReturn}{Returns}
+The number of snapshots taken 
+\end{DoxyReturn}
+\hypertarget{class_prediction_afe4985a909492b2ec6f9c003ed1f4cb7}{}\index{Prediction@{Prediction}!Predict\+Location@{Predict\+Location}}
+\index{Predict\+Location@{Predict\+Location}!Prediction@{Prediction}}
+\subsubsection[{Predict\+Location}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Geographic\+Coordinate} Prediction\+::\+Predict\+Location (
+\begin{DoxyParamCaption}
+\item[{{\bf Correlation\+Aircraft} $\ast$}]{aircraft}
+\end{DoxyParamCaption}
+)}\label{class_prediction_afe4985a909492b2ec6f9c003ed1f4cb7}
+Calculates the predicted location for the \hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} data
+
+
+\begin{DoxyParams}{Parameters}
+{\em aircraft} & The aircraft to evaluate a predicted location for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The predicted location 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/inc/\hyperlink{_prediction_8h}{Prediction.\+h}\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/src/\hyperlink{_prediction_8cpp}{Prediction.\+cpp}\end{DoxyCompactItemize}

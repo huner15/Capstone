@@ -1,0 +1,68 @@
+\hypertarget{class_history}{}\section{History Class Reference}
+\label{class_history}\index{History@{History}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_history_afba1384643f419d079e78adb1497f741}{History} ()
+\item 
+\hyperlink{class_snapshot}{Snapshot} $\ast$ \hyperlink{class_history_a36bc8bca9106654bf2f995e7333b8f1a}{Get\+Last} () const 
+\item 
+\hyperlink{class_snapshot}{Snapshot} $\ast$ \hyperlink{class_history_a332c3948eaa6d71c9af000e813c34cde}{Get\+Second\+To\+Last} () const 
+\item 
+int \hyperlink{class_history_a2b4a16a10c719234d64e34896cb20785}{Add\+Snapshot} (\hyperlink{class_snapshot}{Snapshot} $\ast$snapshot)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_history_afba1384643f419d079e78adb1497f741}{}\index{History@{History}!History@{History}}
+\index{History@{History}!History@{History}}
+\subsubsection[{History}]{\setlength{\rightskip}{0pt plus 5cm}History\+::\+History (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_history_afba1384643f419d079e78adb1497f741}
+The second most recent \hyperlink{class_snapshot}{Snapshot}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_history_a2b4a16a10c719234d64e34896cb20785}{}\index{History@{History}!Add\+Snapshot@{Add\+Snapshot}}
+\index{Add\+Snapshot@{Add\+Snapshot}!History@{History}}
+\subsubsection[{Add\+Snapshot}]{\setlength{\rightskip}{0pt plus 5cm}int History\+::\+Add\+Snapshot (
+\begin{DoxyParamCaption}
+\item[{{\bf Snapshot} $\ast$}]{snapshot}
+\end{DoxyParamCaption}
+)}\label{class_history_a2b4a16a10c719234d64e34896cb20785}
+Adds a \hyperlink{class_snapshot}{Snapshot} to the history and shifts subsequent Snapshots
+
+\begin{DoxyReturn}{Returns}
+0 on success and 1 on failure 
+\end{DoxyReturn}
+\hypertarget{class_history_a36bc8bca9106654bf2f995e7333b8f1a}{}\index{History@{History}!Get\+Last@{Get\+Last}}
+\index{Get\+Last@{Get\+Last}!History@{History}}
+\subsubsection[{Get\+Last}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Snapshot} $\ast$ History\+::\+Get\+Last (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_history_a36bc8bca9106654bf2f995e7333b8f1a}
+Accessor to the most recent \hyperlink{class_snapshot}{Snapshot}.
+
+\begin{DoxyReturn}{Returns}
+The most recent \hyperlink{class_snapshot}{Snapshot}. 
+\end{DoxyReturn}
+\hypertarget{class_history_a332c3948eaa6d71c9af000e813c34cde}{}\index{History@{History}!Get\+Second\+To\+Last@{Get\+Second\+To\+Last}}
+\index{Get\+Second\+To\+Last@{Get\+Second\+To\+Last}!History@{History}}
+\subsubsection[{Get\+Second\+To\+Last}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Snapshot} $\ast$ History\+::\+Get\+Second\+To\+Last (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_history_a332c3948eaa6d71c9af000e813c34cde}
+Accessor to the second to most recent \hyperlink{class_snapshot}{Snapshot}.
+
+\begin{DoxyReturn}{Returns}
+The second to most recent \hyperlink{class_snapshot}{Snapshot}. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/inc/\hyperlink{_history_8h}{History.\+h}\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/src/\hyperlink{_history_8cpp}{History.\+cpp}\end{DoxyCompactItemize}

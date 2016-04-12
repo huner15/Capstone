@@ -1,0 +1,110 @@
+\hypertarget{class_cluster}{}\section{Cluster Class Reference}
+\label{class_cluster}\index{Cluster@{Cluster}}
+
+
+{\ttfamily \#include $<$Cluster.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_cluster_aee7feb1d599d4c8fda6c3ee83e86ba81}{Cluster} ()
+\item 
+\hyperlink{class_cluster_a4bddfc88ac859610acab15dd12851b58}{$\sim$\+Cluster} ()
+\item 
+void \hyperlink{class_cluster_ac9744c81bd16818163fac86dc7b763f9}{Set\+Radar} (\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$radar)
+\item 
+void \hyperlink{class_cluster_ad2b6a9ddb1638222f6626a02373de95a}{Set\+A\+D\+S\+B} (\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$adsb)
+\item 
+void \hyperlink{class_cluster_afb736b19fe7cabe0f188d749d301cd66}{Set\+T\+C\+A\+S} (\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$tcas)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ \hyperlink{class_cluster_a1f0fe867c014f712107f0e9520e24fd6}{\+\_\+tcas}
+\item 
+\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ \hyperlink{class_cluster_ac355d268de451a7a5fe380e86fc1d0d9}{\+\_\+adsb}
+\item 
+\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ \hyperlink{class_cluster_a0a84e94aa8852d266191b0b42f09a335}{\+\_\+radar}
+\item 
+\hyperlink{class_velocity}{Velocity} \hyperlink{class_cluster_a7c4db5664d0b443e2957241c774f9eec}{\+\_\+prediction}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class representing one aircraft in the airspace. All Surveillance Reports may not exist. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_cluster_aee7feb1d599d4c8fda6c3ee83e86ba81}{}\index{Cluster@{Cluster}!Cluster@{Cluster}}
+\index{Cluster@{Cluster}!Cluster@{Cluster}}
+\subsubsection[{Cluster}]{\setlength{\rightskip}{0pt plus 5cm}Cluster\+::\+Cluster (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_cluster_aee7feb1d599d4c8fda6c3ee83e86ba81}
+Creates a new empty \hyperlink{class_cluster}{Cluster}. \hypertarget{class_cluster_a4bddfc88ac859610acab15dd12851b58}{}\index{Cluster@{Cluster}!````~Cluster@{$\sim$\+Cluster}}
+\index{````~Cluster@{$\sim$\+Cluster}!Cluster@{Cluster}}
+\subsubsection[{$\sim$\+Cluster}]{\setlength{\rightskip}{0pt plus 5cm}Cluster\+::$\sim$\+Cluster (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_cluster_a4bddfc88ac859610acab15dd12851b58}
+Deconstructs a new empty \hyperlink{class_cluster}{Cluster}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_cluster_ad2b6a9ddb1638222f6626a02373de95a}{}\index{Cluster@{Cluster}!Set\+A\+D\+S\+B@{Set\+A\+D\+S\+B}}
+\index{Set\+A\+D\+S\+B@{Set\+A\+D\+S\+B}!Cluster@{Cluster}}
+\subsubsection[{Set\+A\+D\+S\+B}]{\setlength{\rightskip}{0pt plus 5cm}void Cluster\+::\+Set\+A\+D\+S\+B (
+\begin{DoxyParamCaption}
+\item[{{\bf Surveillance\+Report} $\ast$}]{adsb}
+\end{DoxyParamCaption}
+)}\label{class_cluster_ad2b6a9ddb1638222f6626a02373de95a}
+Sets the adsb\textquotesingle{}s report pointer. 
+\begin{DoxyParams}{Parameters}
+{\em adsb} & the radar report pointer \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_cluster_ac9744c81bd16818163fac86dc7b763f9}{}\index{Cluster@{Cluster}!Set\+Radar@{Set\+Radar}}
+\index{Set\+Radar@{Set\+Radar}!Cluster@{Cluster}}
+\subsubsection[{Set\+Radar}]{\setlength{\rightskip}{0pt plus 5cm}void Cluster\+::\+Set\+Radar (
+\begin{DoxyParamCaption}
+\item[{{\bf Surveillance\+Report} $\ast$}]{radar}
+\end{DoxyParamCaption}
+)}\label{class_cluster_ac9744c81bd16818163fac86dc7b763f9}
+Sets the radar\textquotesingle{}s report pointer. 
+\begin{DoxyParams}{Parameters}
+{\em radar} & the radar report pointer \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_cluster_afb736b19fe7cabe0f188d749d301cd66}{}\index{Cluster@{Cluster}!Set\+T\+C\+A\+S@{Set\+T\+C\+A\+S}}
+\index{Set\+T\+C\+A\+S@{Set\+T\+C\+A\+S}!Cluster@{Cluster}}
+\subsubsection[{Set\+T\+C\+A\+S}]{\setlength{\rightskip}{0pt plus 5cm}void Cluster\+::\+Set\+T\+C\+A\+S (
+\begin{DoxyParamCaption}
+\item[{{\bf Surveillance\+Report} $\ast$}]{tcas}
+\end{DoxyParamCaption}
+)}\label{class_cluster_afb736b19fe7cabe0f188d749d301cd66}
+Sets the tcas\textquotesingle{}s report pointer. 
+\begin{DoxyParams}{Parameters}
+{\em radar} & the tcas report pointer \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_cluster_ac355d268de451a7a5fe380e86fc1d0d9}{}\index{Cluster@{Cluster}!\+\_\+adsb@{\+\_\+adsb}}
+\index{\+\_\+adsb@{\+\_\+adsb}!Cluster@{Cluster}}
+\subsubsection[{\+\_\+adsb}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Surveillance\+Report}$\ast$ Cluster\+::\+\_\+adsb}\label{class_cluster_ac355d268de451a7a5fe380e86fc1d0d9}
+Report from the A\+D\+S-\/\+B hardware. \hypertarget{class_cluster_a7c4db5664d0b443e2957241c774f9eec}{}\index{Cluster@{Cluster}!\+\_\+prediction@{\+\_\+prediction}}
+\index{\+\_\+prediction@{\+\_\+prediction}!Cluster@{Cluster}}
+\subsubsection[{\+\_\+prediction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Velocity} Cluster\+::\+\_\+prediction}\label{class_cluster_a7c4db5664d0b443e2957241c774f9eec}
+Predicted aircraft location for the next second. \hypertarget{class_cluster_a0a84e94aa8852d266191b0b42f09a335}{}\index{Cluster@{Cluster}!\+\_\+radar@{\+\_\+radar}}
+\index{\+\_\+radar@{\+\_\+radar}!Cluster@{Cluster}}
+\subsubsection[{\+\_\+radar}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Surveillance\+Report}$\ast$ Cluster\+::\+\_\+radar}\label{class_cluster_a0a84e94aa8852d266191b0b42f09a335}
+Report from the radar hardware. \hypertarget{class_cluster_a1f0fe867c014f712107f0e9520e24fd6}{}\index{Cluster@{Cluster}!\+\_\+tcas@{\+\_\+tcas}}
+\index{\+\_\+tcas@{\+\_\+tcas}!Cluster@{Cluster}}
+\subsubsection[{\+\_\+tcas}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Surveillance\+Report}$\ast$ Cluster\+::\+\_\+tcas}\label{class_cluster_a1f0fe867c014f712107f0e9520e24fd6}
+Report from the T\+C\+A\+S hardware. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/inc/\hyperlink{_cluster_8h}{Cluster.\+h}\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/src/\hyperlink{_cluster_8cpp}{Cluster.\+cpp}\end{DoxyCompactItemize}

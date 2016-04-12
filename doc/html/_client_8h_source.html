@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>SenseandAvoidSystem: /home/michael/saas/saap/reportReceiver/src/Client.h Source File</title>
+<title>SenseandAvoidSystem: /home/fpoole/development/cpe406/saas/saap/receiver/inc/Client.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f2fb02c9ddb969497d561633e5788bd5.html">saas</a></li><li class="navelem"><a class="el" href="dir_3cd794c116a6cf13044d3109d5207b52.html">saap</a></li><li class="navelem"><a class="el" href="dir_b609f19b3c100b281698fb86ada03c20.html">reportReceiver</a></li><li class="navelem"><a class="el" href="dir_56061557be6364af78cc4365230ff963.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dd2b321bfb32061141c3a38b6db09283.html">development</a></li><li class="navelem"><a class="el" href="dir_e2a2ee7259b93824cbb63385e81c4899.html">cpe406</a></li><li class="navelem"><a class="el" href="dir_9358e02f7a5e10331c34e3507b8f2ee9.html">saas</a></li><li class="navelem"><a class="el" href="dir_c27302ee0b05ebc5c63caf0c900db410.html">saap</a></li><li class="navelem"><a class="el" href="dir_fcde1887ccebe16b993e7e566a46421e.html">receiver</a></li><li class="navelem"><a class="el" href="dir_99911d61881be991a668d575b8ccd32f.html">inc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -90,7 +90,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Client.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"></div><!-- fragment --></div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * @file Client.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * @author Specific Atomics</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * @author Frank Poole</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * @date 2-21-16</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * @brief Declares constants used by the client application.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef CLIENT_H_</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define CLIENT_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;DeviceReceiver.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;OwnshipReceiver.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;AdsbReceiver.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;RadarReceiver.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;TcasReceiver.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="_server_8h.html#a0721c5d5134381e8a921e836e1abecbf">EXPECTED_ARGUMENTS</a> = 6;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="_server_8h.html#aff9a2523f2975f5feab7ae5b61a451b6">NUM_THREADS</a> = 4;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="_server_8h.html#aa2c1dd0ee9388975a3a20329ebe8a117">OWNSHIP_THREAD_INDEX</a> = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> ADSB_THREAD_INDEX = 1;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> RADAR_THREAD_INDEX = 2;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> TCAS_THREAD_INDEX = 3;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="_server_8h_html_aa2c1dd0ee9388975a3a20329ebe8a117"><div class="ttname"><a href="_server_8h.html#aa2c1dd0ee9388975a3a20329ebe8a117">OWNSHIP_THREAD_INDEX</a></div><div class="ttdeci">const int OWNSHIP_THREAD_INDEX</div><div class="ttdef"><b>Definition:</b> Server.h:34</div></div>
+<div class="ttc" id="_server_8h_html_a0721c5d5134381e8a921e836e1abecbf"><div class="ttname"><a href="_server_8h.html#a0721c5d5134381e8a921e836e1abecbf">EXPECTED_ARGUMENTS</a></div><div class="ttdeci">const int EXPECTED_ARGUMENTS</div><div class="ttdef"><b>Definition:</b> Server.h:28</div></div>
+<div class="ttc" id="_server_8h_html_aff9a2523f2975f5feab7ae5b61a451b6"><div class="ttname"><a href="_server_8h.html#aff9a2523f2975f5feab7ae5b61a451b6">NUM_THREADS</a></div><div class="ttdeci">const int NUM_THREADS</div><div class="ttdef"><b>Definition:</b> Server.h:31</div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,7 +1,7 @@
 server Start ver 1.4.3
 connection established
-temp written
-reading temp
+connection established
+mp
 temp read
 1
 Example.CDTIPlane

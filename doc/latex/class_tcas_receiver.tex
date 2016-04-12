@@ -1,0 +1,78 @@
+\hypertarget{class_tcas_receiver}{}\section{Tcas\+Receiver Class Reference}
+\label{class_tcas_receiver}\index{Tcas\+Receiver@{Tcas\+Receiver}}
+
+
+{\ttfamily \#include $<$Tcas\+Receiver.\+h$>$}
+
+Inheritance diagram for Tcas\+Receiver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tcas_receiver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tcas_receiver_a7005721ea12880cbf4a90c88e84095f1}{Tcas\+Receiver} (std\+::string host, in\+\_\+port\+\_\+t port, \hyperlink{class_report_receiver}{Report\+Receiver} \&report\+\_\+receiver)
+\item 
+virtual void \hyperlink{class_tcas_receiver_af888383db22a323d0fa86844537b9b5f}{Receive\+Report} (\hyperlink{class_client_socket}{Client\+Socket} \&client\+\_\+socket)
+\item 
+void \hyperlink{class_tcas_receiver_a088b1794631926cd91f5befaac1e3510}{Print\+Report} (Tcas\+Report \&tcas\+\_\+report)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An \hyperlink{class_tcas_receiver}{Tcas\+Receiver} is a \hyperlink{class_device_receiver}{Device\+Receiver} which implements the functionality necessary to receive reports from a T\+C\+A\+S device. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_tcas_receiver_a7005721ea12880cbf4a90c88e84095f1}{}\index{Tcas\+Receiver@{Tcas\+Receiver}!Tcas\+Receiver@{Tcas\+Receiver}}
+\index{Tcas\+Receiver@{Tcas\+Receiver}!Tcas\+Receiver@{Tcas\+Receiver}}
+\subsubsection[{Tcas\+Receiver}]{\setlength{\rightskip}{0pt plus 5cm}Tcas\+Receiver\+::\+Tcas\+Receiver (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{host, }
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Report\+Receiver} \&}]{report\+\_\+receiver}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_tcas_receiver_a7005721ea12880cbf4a90c88e84095f1}
+Create a new \hyperlink{class_tcas_receiver}{Tcas\+Receiver} on the specified network port which connect to the specified host device. 
+\begin{DoxyParams}{Parameters}
+{\em host} & the device I\+P address \\
+\hline
+{\em port} & the network port on which to receive data \\
+\hline
+{\em report\+\_\+receiver} & the interface to the correlation engine \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tcas_receiver_a088b1794631926cd91f5befaac1e3510}{}\index{Tcas\+Receiver@{Tcas\+Receiver}!Print\+Report@{Print\+Report}}
+\index{Print\+Report@{Print\+Report}!Tcas\+Receiver@{Tcas\+Receiver}}
+\subsubsection[{Print\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Tcas\+Receiver\+::\+Print\+Report (
+\begin{DoxyParamCaption}
+\item[{Tcas\+Report \&}]{tcas\+\_\+report}
+\end{DoxyParamCaption}
+)}\label{class_tcas_receiver_a088b1794631926cd91f5befaac1e3510}
+Print the contents of an Tcas\+Report to standard out. \hypertarget{class_tcas_receiver_af888383db22a323d0fa86844537b9b5f}{}\index{Tcas\+Receiver@{Tcas\+Receiver}!Receive\+Report@{Receive\+Report}}
+\index{Receive\+Report@{Receive\+Report}!Tcas\+Receiver@{Tcas\+Receiver}}
+\subsubsection[{Receive\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Tcas\+Receiver\+::\+Receive\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\+Socket} \&}]{client\+\_\+socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_tcas_receiver_af888383db22a323d0fa86844537b9b5f}
+Receive a single report from the client socket and forward that report to the \hyperlink{class_report_receiver}{Report\+Receiver}. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the network socket on which to receive device data \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_device_receiver_ac60e55ea6cbd0df590204336b50ce7eb}{Device\+Receiver}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/inc/Tcas\+Receiver.\+h\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/src/Tcas\+Receiver.\+cpp\end{DoxyCompactItemize}

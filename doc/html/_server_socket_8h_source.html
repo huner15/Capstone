@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>SenseandAvoidSystem: /home/michael/saas/lib/network/inc/ServerSocket.h Source File</title>
+<title>SenseandAvoidSystem: /home/fpoole/development/cpe406/saas/lib/network/inc/ServerSocket.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f2fb02c9ddb969497d561633e5788bd5.html">saas</a></li><li class="navelem"><a class="el" href="dir_44af850a516fe3c11e5622821ff280c3.html">lib</a></li><li class="navelem"><a class="el" href="dir_85b9c64b9722bed16c0a1e633d438734.html">network</a></li><li class="navelem"><a class="el" href="dir_eb41f5834b29a93b5900257b37ca642c.html">inc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dd2b321bfb32061141c3a38b6db09283.html">development</a></li><li class="navelem"><a class="el" href="dir_e2a2ee7259b93824cbb63385e81c4899.html">cpe406</a></li><li class="navelem"><a class="el" href="dir_9358e02f7a5e10331c34e3507b8f2ee9.html">saas</a></li><li class="navelem"><a class="el" href="dir_77ca2b9e50ce9a7bc5c8ebbeebdc96ee.html">lib</a></li><li class="navelem"><a class="el" href="dir_9aad759639cf0c145e1fe72c4da7e56a.html">network</a></li><li class="navelem"><a class="el" href="dir_5bc9066c3fdbb6ac32c3f5d950e1a294.html">inc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -113,7 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;google/protobuf/io/coded_stream.h&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;google/protobuf/descriptor.h&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;Socket.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_socket_8h.html">Socket.h</a>&quot;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;SocketException.h&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;ProtobufSocketSerializer.h&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
@@ -134,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">const</span> <a class="code" href="class_server_socket.html">ServerSocket</a> &amp;<a class="code" href="class_server_socket.html#a6bfabf01766bdb2c7f53274d8d771212">operator&gt;&gt;</a>(::google::protobuf::Message &amp;msg) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_server_socket.html#ae550e314a988575d05b1dec1c3c18020">accept</a>(<a class="code" href="class_server_socket.html">ServerSocket</a> &amp;);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_server_socket.html#a5f718be4b14e22d7f6e3dd9793ff85a2">accept</a>(<a class="code" href="class_server_socket.html">ServerSocket</a> &amp;sock);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    ::google::protobuf::uint32 read_protobuf_header(<span class="keyword">const</span> <span class="keywordtype">char</span> *data) <span class="keyword">const</span>;</div>
@@ -144,13 +144,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_server_socket_html_ab5fe4b2d92d7014f7663c1bbacbbeda5"><div class="ttname"><a href="class_server_socket.html#ab5fe4b2d92d7014f7663c1bbacbbeda5">ServerSocket::operator&lt;&lt;</a></div><div class="ttdeci">const ServerSocket &amp; operator&lt;&lt;(const std::string &amp;) const </div><div class="ttdef"><b>Definition:</b> ServerSocket.cpp:30</div></div>
+<div class="ttc" id="class_server_socket_html_ab5fe4b2d92d7014f7663c1bbacbbeda5"><div class="ttname"><a href="class_server_socket.html#ab5fe4b2d92d7014f7663c1bbacbbeda5">ServerSocket::operator&lt;&lt;</a></div><div class="ttdeci">const ServerSocket &amp; operator&lt;&lt;(const std::string &amp;) const </div><div class="ttdef"><b>Definition:</b> ServerSocket.cpp:29</div></div>
+<div class="ttc" id="class_server_socket_html_a5f718be4b14e22d7f6e3dd9793ff85a2"><div class="ttname"><a href="class_server_socket.html#a5f718be4b14e22d7f6e3dd9793ff85a2">ServerSocket::accept</a></div><div class="ttdeci">void accept(ServerSocket &amp;sock)</div><div class="ttdef"><b>Definition:</b> ServerSocket.cpp:121</div></div>
+<div class="ttc" id="_socket_8h_html"><div class="ttname"><a href="_socket_8h.html">Socket.h</a></div><div class="ttdoc">A Socket is a logical endpoint for communications that exists on the transport layer. Disclaimer: The original version of the following code was taken from tldp.org/LDP/LG/issue74/misc/tougher. </div></div>
 <div class="ttc" id="class_server_socket_html_a510674d924c2544e6b0069e39c36516b"><div class="ttname"><a href="class_server_socket.html#a510674d924c2544e6b0069e39c36516b">ServerSocket::~ServerSocket</a></div><div class="ttdeci">virtual ~ServerSocket()</div><div class="ttdef"><b>Definition:</b> ServerSocket.cpp:26</div></div>
 <div class="ttc" id="class_server_socket_html_a2b3098589541243241ca25495155186c"><div class="ttname"><a href="class_server_socket.html#a2b3098589541243241ca25495155186c">ServerSocket::ServerSocket</a></div><div class="ttdeci">ServerSocket()</div><div class="ttdef"><b>Definition:</b> ServerSocket.h:44</div></div>
-<div class="ttc" id="class_server_socket_html_a6bfabf01766bdb2c7f53274d8d771212"><div class="ttname"><a href="class_server_socket.html#a6bfabf01766bdb2c7f53274d8d771212">ServerSocket::operator&gt;&gt;</a></div><div class="ttdeci">const ServerSocket &amp; operator&gt;&gt;(std::string &amp;) const </div><div class="ttdef"><b>Definition:</b> ServerSocket.cpp:38</div></div>
-<div class="ttc" id="class_socket_html"><div class="ttname"><a href="class_socket.html">Socket</a></div><div class="ttdef"><b>Definition:</b> Socket.h:39</div></div>
+<div class="ttc" id="class_server_socket_html_a6bfabf01766bdb2c7f53274d8d771212"><div class="ttname"><a href="class_server_socket.html#a6bfabf01766bdb2c7f53274d8d771212">ServerSocket::operator&gt;&gt;</a></div><div class="ttdeci">const ServerSocket &amp; operator&gt;&gt;(std::string &amp;) const </div><div class="ttdef"><b>Definition:</b> ServerSocket.cpp:37</div></div>
+<div class="ttc" id="class_socket_html"><div class="ttname"><a href="class_socket.html">Socket</a></div><div class="ttdef"><b>Definition:</b> Socket.h:30</div></div>
 <div class="ttc" id="class_server_socket_html"><div class="ttname"><a href="class_server_socket.html">ServerSocket</a></div><div class="ttdef"><b>Definition:</b> ServerSocket.h:33</div></div>
-<div class="ttc" id="class_server_socket_html_ae550e314a988575d05b1dec1c3c18020"><div class="ttname"><a href="class_server_socket.html#ae550e314a988575d05b1dec1c3c18020">ServerSocket::accept</a></div><div class="ttdeci">void accept(ServerSocket &amp;)</div><div class="ttdef"><b>Definition:</b> ServerSocket.cpp:120</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

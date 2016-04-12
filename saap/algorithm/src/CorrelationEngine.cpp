@@ -150,15 +150,15 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
 
     //lock CorrelationAircraft vectors
     //pthread_mutex_lock(&corr_aircraft_mutex);
-    printf("%d %d what\n", _corr_aircraft.size(), _clusters.size());
+
     //for every cluster, call ConvertAircraft(), add to _corr_aircraft
     for (uint32_t i = 0; i < _clusters.size(); i++) {
         ConvertAircraft(_clusters.at(i));
-       // _free_clusters.push_back(_clusters.at(i));
+        _free_clusters.push_back(_clusters.at(i));
     }
 printf("%d\n", _corr_aircraft.size());
     //unlock cluster vectors
-    //_clusters.clear();
+    _clusters.clear();
    // pthread_mutex_unlock(&cluster_mutex);
 
     printf("Categorize!\n");
@@ -167,12 +167,11 @@ printf("%d\n", _corr_aircraft.size());
     Categorize(&_corr_aircraft);
 
     //Delete Correlate and Cluster data
-//    for (int i = 0; i < _corr_aircraft.size(); i++) {
-  //      _free_aircraft.push_back(_corr_aircraft.at(i));
-    //}
+    for (int i = 0; i < _corr_aircraft.size(); i++) {
+        _free_aircraft.push_back(_corr_aircraft.at(i));
+    }
 
     _corr_aircraft.clear();
-    _clusters.clear();
 
     //unlock CorrelationAircraft vectors
     //pthread_mutex_unlock(&corr_aircraft_mutex);
@@ -233,22 +232,22 @@ int CorrelationEngine::ConvertAircraft(Cluster *cluster) {
         printf("Trying to convert empty Cluster to CorrelationAircraft\n");
         return EXITVAL;
     }
-//printf("\n");
-//   geographic_coordinate = *
-//        GeographicCoordinate::Average(adsbG, tcasG, radarG);
-//
-//    spherical_coordinate = *
-//        SphericalCoordinate::Average(adsbS, tcasS, radarS);
-//
-//    velocity = *Velocity::Average(adsbV, tcasV, radarV);
-//    printf("success\n");
-    //Set prediction vectors
-    Velocity predictedVector = Velocity(0, 0, 0);
-    Velocity predictedLoc = Velocity(0, 0, 0);
+
+   geographic_coordinate = *
+        GeographicCoordinate::Average(adsbG, tcasG, radarG);
+
+    spherical_coordinate = *
+        SphericalCoordinate::Average(adsbS, tcasS, radarS);
+
+    velocity = *Velocity::Average(adsbV, tcasV, radarV);
+
+    //Set prediction vectors (Dat)
+    Velocity predicted_velocity = Velocity(0, 0, 0);
+    GeographicCoordinate predicted_loc = GeographicCoordinate(0, 0, 0);
 
     aircraft = new CorrelationAircraft(time, tail_number, tcas_id, radar_id,
-        geographic_coordinate, spherical_coordinate, velocity, predictedVector,
-        predictedLoc, type);
+        geographic_coordinate, spherical_coordinate, velocity, predicted_velocity,
+        predicted_loc, type);
 
     _corr_aircraft.push_back(aircraft);
 

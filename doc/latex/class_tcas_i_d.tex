@@ -1,0 +1,70 @@
+\hypertarget{class_tcas_i_d}{}\section{Tcas\+I\+D Class Reference}
+\label{class_tcas_i_d}\index{Tcas\+I\+D@{Tcas\+I\+D}}
+
+
+{\ttfamily \#include $<$Tcas\+I\+D.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tcas_i_d_aff63139aa537624319d45842ced7b1b7}{Tcas\+I\+D} ()
+\item 
+\hyperlink{class_tcas_i_d_a371793b777cefe1fcb7242e61bfac255}{Tcas\+I\+D} (uint8\+\_\+t tcas\+\_\+id)
+\item 
+\hyperlink{class_tcas_i_d_aac55f3b2e34ec2ab0b7e8c35275e0478}{$\sim$\+Tcas\+I\+D} ()
+\item 
+uint8\+\_\+t \hyperlink{class_tcas_i_d_a24fcd14be096d2dc08865ffab424e3f9}{Get} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_tcas_i_d}{Tcas\+I\+D} models the identification number assigned by T\+C\+A\+S devices when detecting a new object within range. Identification numbers range from 1 to 25. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_tcas_i_d_aff63139aa537624319d45842ced7b1b7}{}\index{Tcas\+I\+D@{Tcas\+I\+D}!Tcas\+I\+D@{Tcas\+I\+D}}
+\index{Tcas\+I\+D@{Tcas\+I\+D}!Tcas\+I\+D@{Tcas\+I\+D}}
+\subsubsection[{Tcas\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}Tcas\+I\+D\+::\+Tcas\+I\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_tcas_i_d_aff63139aa537624319d45842ced7b1b7}
+Create a new \hyperlink{class_tcas_i_d}{Tcas\+I\+D} with a randomly generated identifier from 1 to 25. \hypertarget{class_tcas_i_d_a371793b777cefe1fcb7242e61bfac255}{}\index{Tcas\+I\+D@{Tcas\+I\+D}!Tcas\+I\+D@{Tcas\+I\+D}}
+\index{Tcas\+I\+D@{Tcas\+I\+D}!Tcas\+I\+D@{Tcas\+I\+D}}
+\subsubsection[{Tcas\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}Tcas\+I\+D\+::\+Tcas\+I\+D (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{tcas\+\_\+id}
+\end{DoxyParamCaption}
+)}\label{class_tcas_i_d_a371793b777cefe1fcb7242e61bfac255}
+Create a new \hyperlink{class_tcas_i_d}{Tcas\+I\+D} with a specified integer from 1 to 25. If the integer is not from 1 to 25, an exception is thrown. 
+\begin{DoxyParams}{Parameters}
+{\em tcas\+\_\+id} & the T\+C\+A\+S identification number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & if the specified integer is not in 1 to 25. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tcas_i_d_aac55f3b2e34ec2ab0b7e8c35275e0478}{}\index{Tcas\+I\+D@{Tcas\+I\+D}!````~Tcas\+I\+D@{$\sim$\+Tcas\+I\+D}}
+\index{````~Tcas\+I\+D@{$\sim$\+Tcas\+I\+D}!Tcas\+I\+D@{Tcas\+I\+D}}
+\subsubsection[{$\sim$\+Tcas\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}Tcas\+I\+D\+::$\sim$\+Tcas\+I\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_tcas_i_d_aac55f3b2e34ec2ab0b7e8c35275e0478}
+Deconstruct a \hyperlink{class_tcas_i_d}{Tcas\+I\+D}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tcas_i_d_a24fcd14be096d2dc08865ffab424e3f9}{}\index{Tcas\+I\+D@{Tcas\+I\+D}!Get@{Get}}
+\index{Get@{Get}!Tcas\+I\+D@{Tcas\+I\+D}}
+\subsubsection[{Get}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Tcas\+I\+D\+::\+Get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_tcas_i_d_a24fcd14be096d2dc08865ffab424e3f9}
+Return the T\+C\+A\+S object identification number. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/lib/util/inc/Tcas\+I\+D.\+h\item 
+/home/fpoole/development/cpe406/saas/lib/util/src/Tcas\+I\+D.\+cpp\end{DoxyCompactItemize}

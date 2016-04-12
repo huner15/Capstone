@@ -1,0 +1,71 @@
+\hypertarget{class_snapshot}{}\section{Snapshot Class Reference}
+\label{class_snapshot}\index{Snapshot@{Snapshot}}
+
+
+{\ttfamily \#include $<$Snapshot.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_snapshot_a901a34da7d3079889040d1d60f9e8ff7}{Snapshot} (std\+::vector$<$ \hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} $>$ $\ast$aircraft, std\+::time\+\_\+t timestamp)
+\item 
+std\+::vector$<$ \hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} $>$ $\ast$ \hyperlink{class_snapshot_a5766b01f23ae4ea9207a484f3b7c709f}{Get\+Aircraft} () const 
+\item 
+std\+::time\+\_\+t \hyperlink{class_snapshot_a3be8bd1dff5a0ae8bd247cade1806ac5}{Get\+Timestamp} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{class_snapshot}{Snapshot} represents the airspace at one point in time. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_snapshot_a901a34da7d3079889040d1d60f9e8ff7}{}\index{Snapshot@{Snapshot}!Snapshot@{Snapshot}}
+\index{Snapshot@{Snapshot}!Snapshot@{Snapshot}}
+\subsubsection[{Snapshot}]{\setlength{\rightskip}{0pt plus 5cm}Snapshot\+::\+Snapshot (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Correlation\+Aircraft} $>$ $\ast$}]{aircraft, }
+\item[{std\+::time\+\_\+t}]{timestamp}
+\end{DoxyParamCaption}
+)}\label{class_snapshot_a901a34da7d3079889040d1d60f9e8ff7}
+Constructor to create a \hyperlink{class_snapshot}{Snapshot}
+
+
+\begin{DoxyParams}{Parameters}
+{\em aircraft} & Collection of aircraft \\
+\hline
+{\em time\+\_\+stamp} & Timestamp to order the snapshots \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_snapshot_a5766b01f23ae4ea9207a484f3b7c709f}{}\index{Snapshot@{Snapshot}!Get\+Aircraft@{Get\+Aircraft}}
+\index{Get\+Aircraft@{Get\+Aircraft}!Snapshot@{Snapshot}}
+\subsubsection[{Get\+Aircraft}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Correlation\+Aircraft} $>$ $\ast$ Snapshot\+::\+Get\+Aircraft (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_snapshot_a5766b01f23ae4ea9207a484f3b7c709f}
+Accessor to aircraft collection
+
+\begin{DoxyReturn}{Returns}
+The collection of aircraft 
+\end{DoxyReturn}
+\hypertarget{class_snapshot_a3be8bd1dff5a0ae8bd247cade1806ac5}{}\index{Snapshot@{Snapshot}!Get\+Timestamp@{Get\+Timestamp}}
+\index{Get\+Timestamp@{Get\+Timestamp}!Snapshot@{Snapshot}}
+\subsubsection[{Get\+Timestamp}]{\setlength{\rightskip}{0pt plus 5cm}std\+::time\+\_\+t Snapshot\+::\+Get\+Timestamp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_snapshot_a3be8bd1dff5a0ae8bd247cade1806ac5}
+Accessor to timestamp
+
+\begin{DoxyReturn}{Returns}
+Timestamp of snapshot 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/inc/\hyperlink{_snapshot_8h}{Snapshot.\+h}\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/src/\hyperlink{_snapshot_8cpp}{Snapshot.\+cpp}\end{DoxyCompactItemize}

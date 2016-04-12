@@ -1,0 +1,78 @@
+\hypertarget{class_radar_receiver}{}\section{Radar\+Receiver Class Reference}
+\label{class_radar_receiver}\index{Radar\+Receiver@{Radar\+Receiver}}
+
+
+{\ttfamily \#include $<$Radar\+Receiver.\+h$>$}
+
+Inheritance diagram for Radar\+Receiver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_radar_receiver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_radar_receiver_a00371b4166c91a67e60e87ae723989d8}{Radar\+Receiver} (std\+::string host, in\+\_\+port\+\_\+t port, \hyperlink{class_report_receiver}{Report\+Receiver} \&report\+\_\+receiver)
+\item 
+virtual void \hyperlink{class_radar_receiver_acc3201ca9d9cabaca6a1d1e1e4d6d8bc}{Receive\+Report} (\hyperlink{class_client_socket}{Client\+Socket} \&client\+\_\+socket)
+\item 
+void \hyperlink{class_radar_receiver_a056db48d28f7b8b34d84aef6e4f63e49}{Print\+Report} (Radar\+Report \&radar\+\_\+report)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An \hyperlink{class_radar_receiver}{Radar\+Receiver} is a \hyperlink{class_device_receiver}{Device\+Receiver} which implements the functionality necessary to receive reports from a Radar device. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_radar_receiver_a00371b4166c91a67e60e87ae723989d8}{}\index{Radar\+Receiver@{Radar\+Receiver}!Radar\+Receiver@{Radar\+Receiver}}
+\index{Radar\+Receiver@{Radar\+Receiver}!Radar\+Receiver@{Radar\+Receiver}}
+\subsubsection[{Radar\+Receiver}]{\setlength{\rightskip}{0pt plus 5cm}Radar\+Receiver\+::\+Radar\+Receiver (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{host, }
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Report\+Receiver} \&}]{report\+\_\+receiver}
+\end{DoxyParamCaption}
+)}\label{class_radar_receiver_a00371b4166c91a67e60e87ae723989d8}
+Create a new \hyperlink{class_radar_receiver}{Radar\+Receiver} on the specified network port which connect to the specified host device. 
+\begin{DoxyParams}{Parameters}
+{\em host} & the device I\+P address \\
+\hline
+{\em port} & the network port on which to receive data \\
+\hline
+{\em report\+\_\+receiver} & the interface to the correlation engine \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_radar_receiver_a056db48d28f7b8b34d84aef6e4f63e49}{}\index{Radar\+Receiver@{Radar\+Receiver}!Print\+Report@{Print\+Report}}
+\index{Print\+Report@{Print\+Report}!Radar\+Receiver@{Radar\+Receiver}}
+\subsubsection[{Print\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Radar\+Receiver\+::\+Print\+Report (
+\begin{DoxyParamCaption}
+\item[{Radar\+Report \&}]{radar\+\_\+report}
+\end{DoxyParamCaption}
+)}\label{class_radar_receiver_a056db48d28f7b8b34d84aef6e4f63e49}
+Print the contents of a Radar\+Report. \hypertarget{class_radar_receiver_acc3201ca9d9cabaca6a1d1e1e4d6d8bc}{}\index{Radar\+Receiver@{Radar\+Receiver}!Receive\+Report@{Receive\+Report}}
+\index{Receive\+Report@{Receive\+Report}!Radar\+Receiver@{Radar\+Receiver}}
+\subsubsection[{Receive\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Radar\+Receiver\+::\+Receive\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\+Socket} \&}]{client\+\_\+socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_radar_receiver_acc3201ca9d9cabaca6a1d1e1e4d6d8bc}
+Receive a single report from the client socket and forward that report to the \hyperlink{class_report_receiver}{Report\+Receiver}. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the network socket on which to receive device data \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_device_receiver_ac60e55ea6cbd0df590204336b50ce7eb}{Device\+Receiver}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/inc/Radar\+Receiver.\+h\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/src/Radar\+Receiver.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,86 @@
+\hypertarget{_server_8h}{}\section{/home/fpoole/development/cpe406/saas/sim/inc/\+Server.h File Reference}
+\label{_server_8h}\index{/home/fpoole/development/cpe406/saas/sim/inc/\+Server.\+h@{/home/fpoole/development/cpe406/saas/sim/inc/\+Server.\+h}}
+
+
+The simulation server maintains multiple device simulators on individual threads to simulate flight data.  
+
+
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}Simulation\+Flights\+I\+O.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Device\+Simulator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Detection\+Device\+Simulator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Ownship\+Simulator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Adsb\+Simulator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Radar\+Simulator.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Tcas\+Simulator.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_server_8h_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{_server_8h_a0721c5d5134381e8a921e836e1abecbf}{E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+T\+S} = 6
+\item 
+const int \hyperlink{_server_8h_aff9a2523f2975f5feab7ae5b61a451b6}{N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+S} = 4
+\item 
+const int \hyperlink{_server_8h_aa2c1dd0ee9388975a3a20329ebe8a117}{O\+W\+N\+S\+H\+I\+P\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X} = 0
+\item 
+\hypertarget{_server_8h_a9d1b8774b2b995abe876758d12b494c7}{}const int {\bfseries A\+D\+S\+B\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X} = 1\label{_server_8h_a9d1b8774b2b995abe876758d12b494c7}
+
+\item 
+\hypertarget{_server_8h_ad482fa2546f451c6163f9bc12fc623a0}{}const int {\bfseries R\+A\+D\+A\+R\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X} = 2\label{_server_8h_ad482fa2546f451c6163f9bc12fc623a0}
+
+\item 
+\hypertarget{_server_8h_a32f6c3eb2d01cc7b1eb07d21cede9a4a}{}const int {\bfseries T\+C\+A\+S\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X} = 3\label{_server_8h_a32f6c3eb2d01cc7b1eb07d21cede9a4a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The simulation server maintains multiple device simulators on individual threads to simulate flight data. 
+
+\begin{DoxyAuthor}{Author}
+Specific Atomics 
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{Authors}
+Frank Poole 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2-\/25-\/16 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_server_8h_a0ddf1224851353fc92bfbff6f499fa97}{}\index{Server.\+h@{Server.\+h}!main@{main}}
+\index{main@{main}!Server.\+h@{Server.\+h}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{_server_8h_a0ddf1224851353fc92bfbff6f499fa97}
+Start a multithreaded simulation server which simulates A\+D\+S-\/\+B, T\+C\+A\+S, Radar, and Ownship devices on separate network ports. usage\+: run\+\_\+sim flight\+\_\+simulation.\+json ownship\+\_\+port adsb\+\_\+port radar\+\_\+port tcas\+\_\+port" 
+\begin{DoxyParams}{Parameters}
+{\em argc} & the number of command line arguments (including the executable\textquotesingle{}s name) \\
+\hline
+{\em argv} & the command line arguments \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_server_8h_a0721c5d5134381e8a921e836e1abecbf}{}\index{Server.\+h@{Server.\+h}!E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+T\+S@{E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+T\+S}}
+\index{E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+T\+S@{E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+T\+S}!Server.\+h@{Server.\+h}}
+\subsubsection[{E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+T\+S}]{\setlength{\rightskip}{0pt plus 5cm}const int E\+X\+P\+E\+C\+T\+E\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+T\+S = 6}\label{_server_8h_a0721c5d5134381e8a921e836e1abecbf}
+Expected number of command line arguments. \hypertarget{_server_8h_aff9a2523f2975f5feab7ae5b61a451b6}{}\index{Server.\+h@{Server.\+h}!N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+S@{N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+S}}
+\index{N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+S@{N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+S}!Server.\+h@{Server.\+h}}
+\subsubsection[{N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}const int N\+U\+M\+\_\+\+T\+H\+R\+E\+A\+D\+S = 4}\label{_server_8h_aff9a2523f2975f5feab7ae5b61a451b6}
+Total number of threads. \hypertarget{_server_8h_aa2c1dd0ee9388975a3a20329ebe8a117}{}\index{Server.\+h@{Server.\+h}!O\+W\+N\+S\+H\+I\+P\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X@{O\+W\+N\+S\+H\+I\+P\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X}}
+\index{O\+W\+N\+S\+H\+I\+P\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X@{O\+W\+N\+S\+H\+I\+P\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X}!Server.\+h@{Server.\+h}}
+\subsubsection[{O\+W\+N\+S\+H\+I\+P\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X}]{\setlength{\rightskip}{0pt plus 5cm}const int O\+W\+N\+S\+H\+I\+P\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+I\+N\+D\+E\+X = 0}\label{_server_8h_aa2c1dd0ee9388975a3a20329ebe8a117}
+Self defined thread identification numbers. 

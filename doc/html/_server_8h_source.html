@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>SenseandAvoidSystem: /home/michael/saas/sim/app/Server.h Source File</title>
+<title>SenseandAvoidSystem: /home/fpoole/development/cpe406/saas/sim/inc/Server.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f2fb02c9ddb969497d561633e5788bd5.html">saas</a></li><li class="navelem"><a class="el" href="dir_4dbdadad66485babd5a107f13f00fc88.html">sim</a></li><li class="navelem"><a class="el" href="dir_e6436151d2cc5f1553be9236f614fc89.html">app</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dd2b321bfb32061141c3a38b6db09283.html">development</a></li><li class="navelem"><a class="el" href="dir_e2a2ee7259b93824cbb63385e81c4899.html">cpe406</a></li><li class="navelem"><a class="el" href="dir_9358e02f7a5e10331c34e3507b8f2ee9.html">saas</a></li><li class="navelem"><a class="el" href="dir_e992d4862bdff3b079d2f35f2435fede.html">sim</a></li><li class="navelem"><a class="el" href="dir_69763275e2cf54fb5fad720f6389cc33.html">inc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -90,7 +90,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Server.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"></div><!-- fragment --></div><!-- contents -->
+<a href="_server_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef SERVER_H_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define SERVER_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;SimulationFlightsIO.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_device_simulator_8h.html">DeviceSimulator.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_detection_device_simulator_8h.html">DetectionDeviceSimulator.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_ownship_simulator_8h.html">OwnshipSimulator.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_adsb_simulator_8h.html">AdsbSimulator.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_radar_simulator_8h.html">RadarSimulator.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_tcas_simulator_8h.html">TcasSimulator.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="_server_8h.html#a0721c5d5134381e8a921e836e1abecbf">   28</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="_server_8h.html#a0721c5d5134381e8a921e836e1abecbf">EXPECTED_ARGUMENTS</a> = 6;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="_server_8h.html#aff9a2523f2975f5feab7ae5b61a451b6">   31</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="_server_8h.html#aff9a2523f2975f5feab7ae5b61a451b6">NUM_THREADS</a> = 4;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="_server_8h.html#aa2c1dd0ee9388975a3a20329ebe8a117">   34</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="_server_8h.html#aa2c1dd0ee9388975a3a20329ebe8a117">OWNSHIP_THREAD_INDEX</a> = 0;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> ADSB_THREAD_INDEX = 1;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> RADAR_THREAD_INDEX = 2;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> TCAS_THREAD_INDEX = 3;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_server_8h.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[]);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="_server_8h_html_aa2c1dd0ee9388975a3a20329ebe8a117"><div class="ttname"><a href="_server_8h.html#aa2c1dd0ee9388975a3a20329ebe8a117">OWNSHIP_THREAD_INDEX</a></div><div class="ttdeci">const int OWNSHIP_THREAD_INDEX</div><div class="ttdef"><b>Definition:</b> Server.h:34</div></div>
+<div class="ttc" id="_adsb_simulator_8h_html"><div class="ttname"><a href="_adsb_simulator_8h.html">AdsbSimulator.h</a></div><div class="ttdoc">An AdsbSimulator represents a specific type of a aircraft detection device simulator which simulates ...</div></div>
+<div class="ttc" id="_server_8h_html_a0721c5d5134381e8a921e836e1abecbf"><div class="ttname"><a href="_server_8h.html#a0721c5d5134381e8a921e836e1abecbf">EXPECTED_ARGUMENTS</a></div><div class="ttdeci">const int EXPECTED_ARGUMENTS</div><div class="ttdef"><b>Definition:</b> Server.h:28</div></div>
+<div class="ttc" id="_ownship_simulator_8h_html"><div class="ttname"><a href="_ownship_simulator_8h.html">OwnshipSimulator.h</a></div><div class="ttdoc">OwnshipSimulator simulators the behavior of an Ownship navigation device. </div></div>
+<div class="ttc" id="_tcas_simulator_8h_html"><div class="ttname"><a href="_tcas_simulator_8h.html">TcasSimulator.h</a></div><div class="ttdoc">An TcasSimulator represents a specific type of a aircraft detection device simulator which simulates ...</div></div>
+<div class="ttc" id="_server_8h_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="_server_8h.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> Generator.cpp:6</div></div>
+<div class="ttc" id="_detection_device_simulator_8h_html"><div class="ttname"><a href="_detection_device_simulator_8h.html">DetectionDeviceSimulator.h</a></div><div class="ttdoc">A Detection Device Simulator represents the subset of Device Simulators which may send multiple repor...</div></div>
+<div class="ttc" id="_radar_simulator_8h_html"><div class="ttname"><a href="_radar_simulator_8h.html">RadarSimulator.h</a></div><div class="ttdoc">An RadarSimulator represents a specific type of a aircraft detection device simulator which simulates...</div></div>
+<div class="ttc" id="_device_simulator_8h_html"><div class="ttname"><a href="_device_simulator_8h.html">DeviceSimulator.h</a></div><div class="ttdoc">A Device Simulator is an abstract representation of an aircraft surveillance device simulator...</div></div>
+<div class="ttc" id="_server_8h_html_aff9a2523f2975f5feab7ae5b61a451b6"><div class="ttname"><a href="_server_8h.html#aff9a2523f2975f5feab7ae5b61a451b6">NUM_THREADS</a></div><div class="ttdeci">const int NUM_THREADS</div><div class="ttdef"><b>Definition:</b> Server.h:31</div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

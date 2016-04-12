@@ -8,10 +8,13 @@ var searchData=
   ['valueiteratorbase',['ValueIteratorBase',['../class_json_1_1_value_iterator_base.html',1,'Json']]],
   ['valuetype',['ValueType',['../namespace_json.html#a7d654b75c16a57007925868e38212b4e',1,'Json']]],
   ['vector',['Vector',['../class_example_1_1_vector.html',1,'Example']]],
-  ['vector',['Vector',['../class_vector.html',1,'']]],
-  ['vector_3c_20double_2c_202_20_3e',['Vector&lt; double, 2 &gt;',['../struct_vector_3_01double_00_012_01_4.html',1,'']]],
-  ['vector_3c_20double_2c_203_20_3e',['Vector&lt; double, 3 &gt;',['../struct_vector_3_01double_00_013_01_4.html',1,'']]],
-  ['vector_3c_20double_2c_204_20_3e',['Vector&lt; double, 4 &gt;',['../struct_vector_3_01double_00_014_01_4.html',1,'']]],
-  ['velocity',['Velocity',['../class_velocity.html',1,'Velocity'],['../class_example_1_1_c_d_t_i_plane.html#a52e1d4c9df3e1b3b5f281bbac9e49269',1,'Example.CDTIPlane.Velocity()'],['../class_velocity.html#a852088c8d4dbb7e1beb0d793a57e9d11',1,'Velocity::Velocity()'],['../class_velocity.html#ad2193f387838054fb78afaa6891182b8',1,'Velocity::Velocity(double east, double down, double north)']]],
+  ['vector',['Vector',['../class_saas___util_1_1_vector.html',1,'Saas_Util']]],
+  ['vector2d',['Vector2D',['../namespace_saas___util.html#a9142c27b864f179a6b89e082b9ecf031',1,'Saas_Util']]],
+  ['vector3d',['Vector3D',['../namespace_saas___util.html#aa7cd6c60d40d077fa462d922096a5234',1,'Saas_Util']]],
+  ['vector4d',['Vector4D',['../namespace_saas___util.html#a10ff8b47bd08ba3f577c6fbbce374c7c',1,'Saas_Util']]],
+  ['vector_3c_20double_2c_202_20_3e',['Vector&lt; double, 2 &gt;',['../struct_saas___util_1_1_vector_3_01double_00_012_01_4.html',1,'Saas_Util']]],
+  ['vector_3c_20double_2c_203_20_3e',['Vector&lt; double, 3 &gt;',['../struct_saas___util_1_1_vector_3_01double_00_013_01_4.html',1,'Saas_Util']]],
+  ['vector_3c_20double_2c_204_20_3e',['Vector&lt; double, 4 &gt;',['../struct_saas___util_1_1_vector_3_01double_00_014_01_4.html',1,'Saas_Util']]],
+  ['velocity',['Velocity',['../class_velocity.html',1,'Velocity'],['../class_example_1_1_c_d_t_i_plane.html#ac20719084518e459b372465f3d862772',1,'Example.CDTIPlane.Velocity()'],['../class_velocity.html#a852088c8d4dbb7e1beb0d793a57e9d11',1,'Velocity::Velocity()'],['../class_velocity.html#ad2193f387838054fb78afaa6891182b8',1,'Velocity::Velocity(double east, double down, double north)']]],
   ['velocity_2eh',['Velocity.h',['../_velocity_8h.html',1,'']]]
 ];

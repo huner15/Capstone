@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>SenseandAvoidSystem: /home/michael/saas/lib/network/inc/Socket.h Source File</title>
+<title>SenseandAvoidSystem: /home/fpoole/development/cpe406/saas/lib/network/inc/Socket.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f2fb02c9ddb969497d561633e5788bd5.html">saas</a></li><li class="navelem"><a class="el" href="dir_44af850a516fe3c11e5622821ff280c3.html">lib</a></li><li class="navelem"><a class="el" href="dir_85b9c64b9722bed16c0a1e633d438734.html">network</a></li><li class="navelem"><a class="el" href="dir_eb41f5834b29a93b5900257b37ca642c.html">inc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dd2b321bfb32061141c3a38b6db09283.html">development</a></li><li class="navelem"><a class="el" href="dir_e2a2ee7259b93824cbb63385e81c4899.html">cpe406</a></li><li class="navelem"><a class="el" href="dir_9358e02f7a5e10331c34e3507b8f2ee9.html">saas</a></li><li class="navelem"><a class="el" href="dir_77ca2b9e50ce9a7bc5c8ebbeebdc96ee.html">lib</a></li><li class="navelem"><a class="el" href="dir_9aad759639cf0c145e1fe72c4da7e56a.html">network</a></li><li class="navelem"><a class="el" href="dir_5bc9066c3fdbb6ac32c3f5d950e1a294.html">inc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -90,18 +90,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Socket.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * California Polytechnic State University, San Luis Obispo</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Computer Engineering - CPE 402, 405, 406</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Author: Frank Poole</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Professor: David Janzen</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * Date: 1-16-2016</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * Disclaimer: The original version of the following code was taken from</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * tldp.org/LDP/LG/issue74/misc/tougher</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef Socket_H</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define Socket_H</span></div>
+<a href="_socket_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef SOCKET_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define SOCKET_H_</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
@@ -114,59 +105,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;arpa/inet.h&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> MAX_HOSTNAME = 200;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> MAX_CONNECTIONS = 5;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> MAX_RECV = 500;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_socket.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_socket.html">Socket</a> {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_socket.html">Socket</a>();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="class_socket.html">Socket</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a6afde2dca985dacdfa770141192e2daf">create</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#ae5b928832ae34a66d3abf778c59ef09a">bind</a>(<span class="keyword">const</span> in_port_t port);</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_socket.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_socket.html">Socket</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> _m_sock;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    sockaddr_in _m_addr;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> _MAX_HOSTNAME = 200;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> _MAX_CONNECTIONS = 5;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> _MAX_RECV = 500;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_socket.html">Socket</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="class_socket.html">Socket</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a8aa4d2a7c1a49186f214d0387c553661">Create</a>();</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a0988791cca0cc0eeee0c854500d7f527">listen</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a068f789510d289f59a1fc1f51fbb9ed3">accept</a>(<a class="code" href="class_socket.html">Socket</a> &amp;) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a4236aa7f4def254e1fb4d062eb0bd060">connect</a>(<span class="keyword">const</span> std::string host, <span class="keyword">const</span> in_port_t port);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a3565cd4d62dc287135559e0e5f564d31">send</a>(<span class="keyword">const</span> std::string &amp;msg) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#ae0cf2d7a389fbd76f96517e8db9b2ed9">Bind</a>(<span class="keyword">const</span> in_port_t port);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#ac743519b14d7b964ee85927215fb266d">Listen</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a8917c07b7c30249cb2347f45a0285793">Accept</a>(<a class="code" href="class_socket.html">Socket</a> &amp;new_socket) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a9561a87ddb6f9014a2dbc95b6326db03">Connect</a>(<span class="keyword">const</span> std::string host, <span class="keyword">const</span> in_port_t port);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a3565cd4d62dc287135559e0e5f564d31">send</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *msg, <span class="keywordtype">size_t</span> len) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_socket.html#ab220e684100ebb15da125890f7d69d5d">recv</a>(std::string &amp;bfr, <span class="keywordtype">int</span> flags = 0) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_socket.html#ab220e684100ebb15da125890f7d69d5d">recv</a>(<span class="keywordtype">void</span> *bfr, <span class="keywordtype">size_t</span> len, <span class="keywordtype">int</span> flags = 0) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a89233baf04fd377294b3b7993d04dfcc">set_non_blocking</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#af20012023497dcccdfbce6eb6341a487">Send</a>(<span class="keyword">const</span> std::string &amp;msg) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#af20012023497dcccdfbce6eb6341a487">Send</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *msg, <span class="keywordtype">size_t</span> len) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_socket.html#a3f11ff7aecfbe902d5dc0ef6055e04bb">Recv</a>(std::string &amp;bfr, <span class="keywordtype">int</span> flags = 0) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">size_t</span> <a class="code" href="class_socket.html#a3f11ff7aecfbe902d5dc0ef6055e04bb">Recv</a>(<span class="keywordtype">void</span> *bfr, <span class="keywordtype">size_t</span> len, <span class="keywordtype">int</span> flags = 0) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_socket.html#a157f83a7404aec259c58783cd9af6ea6">  122</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a157f83a7404aec259c58783cd9af6ea6">is_valid</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span> m_sock != -1;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">int</span> m_sock;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    sockaddr_in m_addr;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#a0e3b60b515ad57286079cfd502fa4edd">SetNonBlocking</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> is_non_blocking);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="class_socket.html#af614b429b6f26fa191de2c26fdc188d4">  129</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_socket.html#af614b429b6f26fa191de2c26fdc188d4">IsValid</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">return</span> _m_sock != -1;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;};</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_socket_html_ae5b928832ae34a66d3abf778c59ef09a"><div class="ttname"><a href="class_socket.html#ae5b928832ae34a66d3abf778c59ef09a">Socket::bind</a></div><div class="ttdeci">bool bind(const in_port_t port)</div><div class="ttdef"><b>Definition:</b> Socket.cpp:30</div></div>
-<div class="ttc" id="class_socket_html_a89233baf04fd377294b3b7993d04dfcc"><div class="ttname"><a href="class_socket.html#a89233baf04fd377294b3b7993d04dfcc">Socket::set_non_blocking</a></div><div class="ttdeci">bool set_non_blocking(const bool)</div><div class="ttdef"><b>Definition:</b> Socket.cpp:99</div></div>
-<div class="ttc" id="class_socket_html_a157f83a7404aec259c58783cd9af6ea6"><div class="ttname"><a href="class_socket.html#a157f83a7404aec259c58783cd9af6ea6">Socket::is_valid</a></div><div class="ttdeci">bool is_valid() const </div><div class="ttdef"><b>Definition:</b> Socket.h:122</div></div>
-<div class="ttc" id="class_socket_html_a4236aa7f4def254e1fb4d062eb0bd060"><div class="ttname"><a href="class_socket.html#a4236aa7f4def254e1fb4d062eb0bd060">Socket::connect</a></div><div class="ttdeci">bool connect(const std::string host, const in_port_t port)</div><div class="ttdef"><b>Definition:</b> Socket.cpp:86</div></div>
-<div class="ttc" id="class_socket_html"><div class="ttname"><a href="class_socket.html">Socket</a></div><div class="ttdef"><b>Definition:</b> Socket.h:39</div></div>
-<div class="ttc" id="class_socket_html_a0988791cca0cc0eeee0c854500d7f527"><div class="ttname"><a href="class_socket.html#a0988791cca0cc0eeee0c854500d7f527">Socket::listen</a></div><div class="ttdeci">bool listen() const </div><div class="ttdef"><b>Definition:</b> Socket.cpp:43</div></div>
-<div class="ttc" id="class_socket_html_a068f789510d289f59a1fc1f51fbb9ed3"><div class="ttname"><a href="class_socket.html#a068f789510d289f59a1fc1f51fbb9ed3">Socket::accept</a></div><div class="ttdeci">bool accept(Socket &amp;) const </div><div class="ttdef"><b>Definition:</b> Socket.cpp:47</div></div>
-<div class="ttc" id="class_socket_html_a6afde2dca985dacdfa770141192e2daf"><div class="ttname"><a href="class_socket.html#a6afde2dca985dacdfa770141192e2daf">Socket::create</a></div><div class="ttdeci">bool create()</div><div class="ttdef"><b>Definition:</b> Socket.cpp:23</div></div>
-<div class="ttc" id="class_socket_html_ab220e684100ebb15da125890f7d69d5d"><div class="ttname"><a href="class_socket.html#ab220e684100ebb15da125890f7d69d5d">Socket::recv</a></div><div class="ttdeci">size_t recv(std::string &amp;bfr, int flags=0) const </div><div class="ttdef"><b>Definition:</b> Socket.cpp:57</div></div>
-<div class="ttc" id="class_socket_html_a3565cd4d62dc287135559e0e5f564d31"><div class="ttname"><a href="class_socket.html#a3565cd4d62dc287135559e0e5f564d31">Socket::send</a></div><div class="ttdeci">bool send(const std::string &amp;msg) const </div><div class="ttdef"><b>Definition:</b> Socket.cpp:53</div></div>
+<div class="ttc" id="class_socket_html_a3f11ff7aecfbe902d5dc0ef6055e04bb"><div class="ttname"><a href="class_socket.html#a3f11ff7aecfbe902d5dc0ef6055e04bb">Socket::Recv</a></div><div class="ttdeci">size_t Recv(std::string &amp;bfr, int flags=0) const </div><div class="ttdef"><b>Definition:</b> Socket.cpp:57</div></div>
+<div class="ttc" id="class_socket_html_ae0cf2d7a389fbd76f96517e8db9b2ed9"><div class="ttname"><a href="class_socket.html#ae0cf2d7a389fbd76f96517e8db9b2ed9">Socket::Bind</a></div><div class="ttdeci">bool Bind(const in_port_t port)</div><div class="ttdef"><b>Definition:</b> Socket.cpp:30</div></div>
+<div class="ttc" id="class_socket_html_af614b429b6f26fa191de2c26fdc188d4"><div class="ttname"><a href="class_socket.html#af614b429b6f26fa191de2c26fdc188d4">Socket::IsValid</a></div><div class="ttdeci">bool IsValid() const </div><div class="ttdef"><b>Definition:</b> Socket.h:129</div></div>
+<div class="ttc" id="class_socket_html_a8aa4d2a7c1a49186f214d0387c553661"><div class="ttname"><a href="class_socket.html#a8aa4d2a7c1a49186f214d0387c553661">Socket::Create</a></div><div class="ttdeci">bool Create()</div><div class="ttdef"><b>Definition:</b> Socket.cpp:23</div></div>
+<div class="ttc" id="class_socket_html_af20012023497dcccdfbce6eb6341a487"><div class="ttname"><a href="class_socket.html#af20012023497dcccdfbce6eb6341a487">Socket::Send</a></div><div class="ttdeci">bool Send(const std::string &amp;msg) const </div><div class="ttdef"><b>Definition:</b> Socket.cpp:53</div></div>
+<div class="ttc" id="class_socket_html"><div class="ttname"><a href="class_socket.html">Socket</a></div><div class="ttdef"><b>Definition:</b> Socket.h:30</div></div>
+<div class="ttc" id="class_socket_html_a9561a87ddb6f9014a2dbc95b6326db03"><div class="ttname"><a href="class_socket.html#a9561a87ddb6f9014a2dbc95b6326db03">Socket::Connect</a></div><div class="ttdeci">bool Connect(const std::string host, const in_port_t port)</div><div class="ttdef"><b>Definition:</b> Socket.cpp:86</div></div>
+<div class="ttc" id="class_socket_html_ac743519b14d7b964ee85927215fb266d"><div class="ttname"><a href="class_socket.html#ac743519b14d7b964ee85927215fb266d">Socket::Listen</a></div><div class="ttdeci">bool Listen() const </div><div class="ttdef"><b>Definition:</b> Socket.cpp:43</div></div>
+<div class="ttc" id="class_socket_html_a0e3b60b515ad57286079cfd502fa4edd"><div class="ttname"><a href="class_socket.html#a0e3b60b515ad57286079cfd502fa4edd">Socket::SetNonBlocking</a></div><div class="ttdeci">bool SetNonBlocking(const bool is_non_blocking)</div><div class="ttdef"><b>Definition:</b> Socket.cpp:99</div></div>
+<div class="ttc" id="class_socket_html_a8917c07b7c30249cb2347f45a0285793"><div class="ttname"><a href="class_socket.html#a8917c07b7c30249cb2347f45a0285793">Socket::Accept</a></div><div class="ttdeci">bool Accept(Socket &amp;new_socket) const </div><div class="ttdef"><b>Definition:</b> Socket.cpp:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

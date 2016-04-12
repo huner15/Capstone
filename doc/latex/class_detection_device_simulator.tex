@@ -1,0 +1,89 @@
+\hypertarget{class_detection_device_simulator}{}\section{Detection\+Device\+Simulator Class Reference}
+\label{class_detection_device_simulator}\index{Detection\+Device\+Simulator@{Detection\+Device\+Simulator}}
+
+
+{\ttfamily \#include $<$Detection\+Device\+Simulator.\+h$>$}
+
+Inheritance diagram for Detection\+Device\+Simulator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_detection_device_simulator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_detection_device_simulator_af0a303fa4f52fbfef8c96221e36df4a7}{Detection\+Device\+Simulator} (in\+\_\+port\+\_\+t port, \hyperlink{class_flight_simulation}{Flight\+Simulation} \&flight\+\_\+simulation)
+\item 
+virtual void \hyperlink{class_detection_device_simulator_a2113f1c6b67158c24c311b9f80685004}{Send\+Reports} (\hyperlink{class_server_socket}{Server\+Socket} \&client\+\_\+socket)
+\item 
+virtual void \hyperlink{class_detection_device_simulator_ae9e5d29238a9bcc104b4004b52ddffd9}{Send\+Report} (\hyperlink{class_server_socket}{Server\+Socket} \&client\+\_\+socket, \hyperlink{class_flight_report}{Flight\+Report} \&flight\+\_\+report)=0
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A Detection Device Simulator represents the abstract subset of Device\+Simulators which may send multiple reports within each 1 Hz logic cycle. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_detection_device_simulator_af0a303fa4f52fbfef8c96221e36df4a7}{}\index{Detection\+Device\+Simulator@{Detection\+Device\+Simulator}!Detection\+Device\+Simulator@{Detection\+Device\+Simulator}}
+\index{Detection\+Device\+Simulator@{Detection\+Device\+Simulator}!Detection\+Device\+Simulator@{Detection\+Device\+Simulator}}
+\subsubsection[{Detection\+Device\+Simulator}]{\setlength{\rightskip}{0pt plus 5cm}Detection\+Device\+Simulator\+::\+Detection\+Device\+Simulator (
+\begin{DoxyParamCaption}
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Flight\+Simulation} \&}]{flight\+\_\+simulation}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_detection_device_simulator_af0a303fa4f52fbfef8c96221e36df4a7}
+Create a new \hyperlink{class_detection_device_simulator}{Detection\+Device\+Simulator} on the specified T\+C\+P/\+I\+P network port and using the specified flight simulation data. 
+\begin{DoxyParams}{Parameters}
+{\em port} & the simulation network port \\
+\hline
+{\em flight\+\_\+simulation} & the flight simulation data to send \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_detection_device_simulator_ae9e5d29238a9bcc104b4004b52ddffd9}{}\index{Detection\+Device\+Simulator@{Detection\+Device\+Simulator}!Send\+Report@{Send\+Report}}
+\index{Send\+Report@{Send\+Report}!Detection\+Device\+Simulator@{Detection\+Device\+Simulator}}
+\subsubsection[{Send\+Report}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Detection\+Device\+Simulator\+::\+Send\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\+Socket} \&}]{client\+\_\+socket, }
+\item[{{\bf Flight\+Report} \&}]{flight\+\_\+report}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_detection_device_simulator_ae9e5d29238a9bcc104b4004b52ddffd9}
+Send a single device data report to the client connected on the T\+C\+P/\+I\+P network socket using the specified flight report. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the T\+C\+P/\+Ip network socket on which a simulation sense and avoid processor device receiver client is connected. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_device_simulator_ac41c9ef2046591fe7f62b55ef5f0de22}{Device\+Simulator}.
+
+
+
+Implemented in \hyperlink{class_adsb_simulator_a560b7009e705465ef5c2061f89060728}{Adsb\+Simulator}, \hyperlink{class_radar_simulator_ac4681a4e7f376c61cb058b1b0383c8c4}{Radar\+Simulator}, and \hyperlink{class_tcas_simulator_afe6cb33e9dbb95da9953e291451aecdd}{Tcas\+Simulator}.
+
+\hypertarget{class_detection_device_simulator_a2113f1c6b67158c24c311b9f80685004}{}\index{Detection\+Device\+Simulator@{Detection\+Device\+Simulator}!Send\+Reports@{Send\+Reports}}
+\index{Send\+Reports@{Send\+Reports}!Detection\+Device\+Simulator@{Detection\+Device\+Simulator}}
+\subsubsection[{Send\+Reports}]{\setlength{\rightskip}{0pt plus 5cm}void Detection\+Device\+Simulator\+::\+Send\+Reports (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\+Socket} \&}]{client\+\_\+socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_detection_device_simulator_a2113f1c6b67158c24c311b9f80685004}
+Send all device reports of this device simulation type to the client connected on the client port. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the T\+C\+P/\+Ip network socket on which a simulation sense and avoid processor device receiver client is connected. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_device_simulator_a2c63437b2c443a7c1e7dcda80c5efe77}{Device\+Simulator}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/sim/inc/\hyperlink{_detection_device_simulator_8h}{Detection\+Device\+Simulator.\+h}\item 
+/home/fpoole/development/cpe406/saas/sim/src/\hyperlink{_detection_device_simulator_8cpp}{Detection\+Device\+Simulator.\+cpp}\end{DoxyCompactItemize}

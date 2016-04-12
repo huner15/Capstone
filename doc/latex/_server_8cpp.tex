@@ -1,0 +1,48 @@
+\hypertarget{_server_8cpp}{}\section{/home/fpoole/development/cpe406/saas/sim/src/\+Server.cpp File Reference}
+\label{_server_8cpp}\index{/home/fpoole/development/cpe406/saas/sim/src/\+Server.\+cpp@{/home/fpoole/development/cpe406/saas/sim/src/\+Server.\+cpp}}
+
+
+Server implements the functionality of a multi-\/surveillance device simulator.  
+
+
+{\ttfamily \#include \char`\"{}Server.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_server_8cpp_a5a615a777b3ee647caa6045f03daaf95}{}void $\ast$ {\bfseries Start\+Simulation} (void $\ast$device\+\_\+simulator)\label{_server_8cpp_a5a615a777b3ee647caa6045f03daaf95}
+
+\item 
+int \hyperlink{_server_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Server implements the functionality of a multi-\/surveillance device simulator. 
+
+\begin{DoxyAuthor}{Author}
+Specific Atomics 
+\end{DoxyAuthor}
+\begin{DoxyAuthor}{Authors}
+Frank Poole 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2-\/25-\/16 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_server_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{}\index{Server.\+cpp@{Server.\+cpp}!main@{main}}
+\index{main@{main}!Server.\+cpp@{Server.\+cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{_server_8cpp_a0ddf1224851353fc92bfbff6f499fa97}
+Start a multithreaded simulation server which simulates A\+D\+S-\/\+B, T\+C\+A\+S, Radar, and Ownship devices on separate network ports. usage\+: run\+\_\+sim flight\+\_\+simulation.\+json ownship\+\_\+port adsb\+\_\+port radar\+\_\+port tcas\+\_\+port" 
+\begin{DoxyParams}{Parameters}
+{\em argc} & the number of command line arguments (including the executable\textquotesingle{}s name) \\
+\hline
+{\em argv} & the command line arguments \\
+\hline
+\end{DoxyParams}

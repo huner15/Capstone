@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['listen',['listen',['../class_socket.html#a0988791cca0cc0eeee0c854500d7f527',1,'Socket']]],
+  ['listen',['Listen',['../class_socket.html#ac743519b14d7b964ee85927215fb266d',1,'Socket']]],
   ['logicerror',['LogicError',['../class_json_1_1_logic_error.html',1,'Json']]]
 ];

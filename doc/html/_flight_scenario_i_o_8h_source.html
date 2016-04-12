@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>SenseandAvoidSystem: /home/michael/saas/lib/jsonio/inc/FlightScenarioIO.h Source File</title>
+<title>SenseandAvoidSystem: /home/fpoole/development/cpe406/saas/lib/jsonio/inc/FlightScenarioIO.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f2fb02c9ddb969497d561633e5788bd5.html">saas</a></li><li class="navelem"><a class="el" href="dir_44af850a516fe3c11e5622821ff280c3.html">lib</a></li><li class="navelem"><a class="el" href="dir_31cb06141a1c5f62f7fef3e8fbfb3af4.html">jsonio</a></li><li class="navelem"><a class="el" href="dir_4fd9db9c442c19a266f3047e5e01fc93.html">inc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dd2b321bfb32061141c3a38b6db09283.html">development</a></li><li class="navelem"><a class="el" href="dir_e2a2ee7259b93824cbb63385e81c4899.html">cpe406</a></li><li class="navelem"><a class="el" href="dir_9358e02f7a5e10331c34e3507b8f2ee9.html">saas</a></li><li class="navelem"><a class="el" href="dir_77ca2b9e50ce9a7bc5c8ebbeebdc96ee.html">lib</a></li><li class="navelem"><a class="el" href="dir_4908053164c0b790ecec0cbb97633d7f.html">jsonio</a></li><li class="navelem"><a class="el" href="dir_508346e6a078096e1d9048092eb05ef6.html">inc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -99,33 +99,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;JsonIO.h&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_flight_scenario_i_o.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_flight_scenario_i_o.html">FlightScenarioIO</a> : <span class="keyword">public</span> <a class="code" href="class_json_i_o.html">JsonIO</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;     <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> <a class="code" href="class_flight_scenario_i_o.html#aecbc4f1b1b7f894e5492869b97e0fe80">ReadFile</a>();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> <a class="code" href="class_flight_scenario_i_o.html#ac59acd7bc4300bfe2a9e89e0b5bf3552">GetAbsoluteOwnshipData</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> <a class="code" href="class_flight_scenario_i_o.html#a7754b53451b1fada9abde7fbc76d6f1c">GetFlightPlans</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">static</span> std::vector&lt;std::vector&lt;int&gt;&gt; <a class="code" href="class_flight_scenario_i_o.html#af72948757583488975e1282dfdd3e8a4">GetStartPositions</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> std::vector&lt;Json::Value&gt; <a class="code" href="class_flight_scenario_i_o.html#a0d16fc884060e675aef902c37ee2b274">GetFlightLegs</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_flight_scenario_i_o.html#ab8652a866e50bae73dd3be2cf4f92920">WriteFile</a>(<a class="code" href="class_json_1_1_value.html">Json::Value</a> value);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif //SAMPLEJSONCPP_FLIGHTSCENARIOPROCESSOR_H</span></div>
-<div class="ttc" id="class_flight_scenario_i_o_html_ab8652a866e50bae73dd3be2cf4f92920"><div class="ttname"><a href="class_flight_scenario_i_o.html#ab8652a866e50bae73dd3be2cf4f92920">FlightScenarioIO::WriteFile</a></div><div class="ttdeci">static void WriteFile(Json::Value value)</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:66</div></div>
-<div class="ttc" id="class_flight_scenario_i_o_html_ac59acd7bc4300bfe2a9e89e0b5bf3552"><div class="ttname"><a href="class_flight_scenario_i_o.html#ac59acd7bc4300bfe2a9e89e0b5bf3552">FlightScenarioIO::GetAbsoluteOwnshipData</a></div><div class="ttdeci">static Json::Value GetAbsoluteOwnshipData()</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:27</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;FlightScenario.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_flight_scenario_i_o.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_flight_scenario_i_o.html">FlightScenarioIO</a> : <span class="keyword">public</span> <a class="code" href="class_json_i_o.html">JsonIO</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> OpenFile(std::string file_name);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_aircraft.html">Aircraft</a> ReadOwnshipData(std::string file_name);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">static</span> std::vector&lt;Aircraft&gt; ReadAircraftData(std::string file_name);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;     <span class="keyword">static</span> <a class="code" href="class_flight_scenario.html">FlightScenario</a> <a class="code" href="class_flight_scenario_i_o.html#a932ffd37a422cbb044ac1d97866bbc5e">ReadFile</a>(std::string file_name);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> <a class="code" href="class_flight_scenario_i_o.html#a725bce8083bc2a390d6bd16860a99892">GetAbsoluteOwnshipData</a>(std::string file_name);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> <a class="code" href="class_flight_scenario_i_o.html#aa5aa3abf7817e22efc7a57a8d422a6c7">GetFlightPlans</a>(std::string file_name);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">static</span> std::vector&lt;std::vector&lt;int&gt;&gt; <a class="code" href="class_flight_scenario_i_o.html#a8b9ae191e8c7d182edf553096fbbf72b">GetStartPositions</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">static</span> std::vector&lt;Json::Value&gt; <a class="code" href="class_flight_scenario_i_o.html#a65eb5824e5ec0d9790c93ee6abf2166d">GetFlightLegs</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_flight_scenario_i_o.html#a7f561135d3cc2d7f867bf00acfc6bad1">WriteFile</a>(<a class="code" href="class_json_1_1_value.html">Json::Value</a> value);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif //SAMPLEJSONCPP_FLIGHTSCENARIOPROCESSOR_H</span></div>
+<div class="ttc" id="class_flight_scenario_i_o_html_aa5aa3abf7817e22efc7a57a8d422a6c7"><div class="ttname"><a href="class_flight_scenario_i_o.html#aa5aa3abf7817e22efc7a57a8d422a6c7">FlightScenarioIO::GetFlightPlans</a></div><div class="ttdeci">static Json::Value GetFlightPlans(std::string file_name)</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:113</div></div>
+<div class="ttc" id="class_flight_scenario_i_o_html_a8b9ae191e8c7d182edf553096fbbf72b"><div class="ttname"><a href="class_flight_scenario_i_o.html#a8b9ae191e8c7d182edf553096fbbf72b">FlightScenarioIO::GetStartPositions</a></div><div class="ttdeci">static std::vector&lt; std::vector&lt; int &gt; &gt; GetStartPositions()</div></div>
+<div class="ttc" id="class_flight_scenario_i_o_html_a65eb5824e5ec0d9790c93ee6abf2166d"><div class="ttname"><a href="class_flight_scenario_i_o.html#a65eb5824e5ec0d9790c93ee6abf2166d">FlightScenarioIO::GetFlightLegs</a></div><div class="ttdeci">static std::vector&lt; Json::Value &gt; GetFlightLegs()</div></div>
+<div class="ttc" id="class_flight_scenario_i_o_html_a932ffd37a422cbb044ac1d97866bbc5e"><div class="ttname"><a href="class_flight_scenario_i_o.html#a932ffd37a422cbb044ac1d97866bbc5e">FlightScenarioIO::ReadFile</a></div><div class="ttdeci">static FlightScenario ReadFile(std::string file_name)</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:97</div></div>
+<div class="ttc" id="class_flight_scenario_i_o_html_a725bce8083bc2a390d6bd16860a99892"><div class="ttname"><a href="class_flight_scenario_i_o.html#a725bce8083bc2a390d6bd16860a99892">FlightScenarioIO::GetAbsoluteOwnshipData</a></div><div class="ttdeci">static Json::Value GetAbsoluteOwnshipData(std::string file_name)</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:106</div></div>
+<div class="ttc" id="class_aircraft_html"><div class="ttname"><a href="class_aircraft.html">Aircraft</a></div><div class="ttdef"><b>Definition:</b> Aircraft.cs:5</div></div>
+<div class="ttc" id="class_flight_scenario_html"><div class="ttname"><a href="class_flight_scenario.html">FlightScenario</a></div><div class="ttdef"><b>Definition:</b> FlightScenario.h:17</div></div>
 <div class="ttc" id="class_json_i_o_html"><div class="ttname"><a href="class_json_i_o.html">JsonIO</a></div><div class="ttdef"><b>Definition:</b> JsonIO.h:12</div></div>
-<div class="ttc" id="class_flight_scenario_i_o_html"><div class="ttname"><a href="class_flight_scenario_i_o.html">FlightScenarioIO</a></div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.h:16</div></div>
+<div class="ttc" id="class_flight_scenario_i_o_html"><div class="ttname"><a href="class_flight_scenario_i_o.html">FlightScenarioIO</a></div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.h:17</div></div>
 <div class="ttc" id="class_json_1_1_value_html"><div class="ttname"><a href="class_json_1_1_value.html">Json::Value</a></div><div class="ttdoc">Represents a JSON value. </div><div class="ttdef"><b>Definition:</b> json.h:547</div></div>
-<div class="ttc" id="class_flight_scenario_i_o_html_a0d16fc884060e675aef902c37ee2b274"><div class="ttname"><a href="class_flight_scenario_i_o.html#a0d16fc884060e675aef902c37ee2b274">FlightScenarioIO::GetFlightLegs</a></div><div class="ttdeci">static std::vector&lt; Json::Value &gt; GetFlightLegs()</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:55</div></div>
-<div class="ttc" id="class_flight_scenario_i_o_html_af72948757583488975e1282dfdd3e8a4"><div class="ttname"><a href="class_flight_scenario_i_o.html#af72948757583488975e1282dfdd3e8a4">FlightScenarioIO::GetStartPositions</a></div><div class="ttdeci">static std::vector&lt; std::vector&lt; int &gt; &gt; GetStartPositions()</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:39</div></div>
-<div class="ttc" id="class_flight_scenario_i_o_html_a7754b53451b1fada9abde7fbc76d6f1c"><div class="ttname"><a href="class_flight_scenario_i_o.html#a7754b53451b1fada9abde7fbc76d6f1c">FlightScenarioIO::GetFlightPlans</a></div><div class="ttdeci">static Json::Value GetFlightPlans()</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:33</div></div>
-<div class="ttc" id="class_flight_scenario_i_o_html_aecbc4f1b1b7f894e5492869b97e0fe80"><div class="ttname"><a href="class_flight_scenario_i_o.html#aecbc4f1b1b7f894e5492869b97e0fe80">FlightScenarioIO::ReadFile</a></div><div class="ttdeci">static Json::Value ReadFile()</div><div class="ttdef"><b>Definition:</b> FlightScenarioIO.cpp:10</div></div>
+<div class="ttc" id="class_flight_scenario_i_o_html_a7f561135d3cc2d7f867bf00acfc6bad1"><div class="ttname"><a href="class_flight_scenario_i_o.html#a7f561135d3cc2d7f867bf00acfc6bad1">FlightScenarioIO::WriteFile</a></div><div class="ttdeci">static void WriteFile(Json::Value value)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,0 +1,85 @@
+\hypertarget{class_ownship_simulator}{}\section{Ownship\+Simulator Class Reference}
+\label{class_ownship_simulator}\index{Ownship\+Simulator@{Ownship\+Simulator}}
+
+
+{\ttfamily \#include $<$Ownship\+Simulator.\+h$>$}
+
+Inheritance diagram for Ownship\+Simulator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ownship_simulator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_ownship_simulator_a8a94cf0dc698a68488dbed92cbe78aae}{Ownship\+Simulator} (in\+\_\+port\+\_\+t port, \hyperlink{class_flight_simulation}{Flight\+Simulation} \&flight\+\_\+simulation)
+\item 
+virtual void \hyperlink{class_ownship_simulator_ab275b2aa195d1066027370fc5a2712f2}{Send\+Reports} (\hyperlink{class_server_socket}{Server\+Socket} \&client\+\_\+socket)
+\item 
+virtual void \hyperlink{class_ownship_simulator_a2dc9bbca8f760c19311abb3570aa720e}{Send\+Report} (\hyperlink{class_server_socket}{Server\+Socket} \&client\+\_\+socket, \hyperlink{class_flight_report}{Flight\+Report} \&flight\+\_\+report)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An \hyperlink{class_ownship_simulator}{Ownship\+Simulator} represents a specific type of a aircraft detection device simulator which simulates the behavior of an actual Ownship navigation device. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_ownship_simulator_a8a94cf0dc698a68488dbed92cbe78aae}{}\index{Ownship\+Simulator@{Ownship\+Simulator}!Ownship\+Simulator@{Ownship\+Simulator}}
+\index{Ownship\+Simulator@{Ownship\+Simulator}!Ownship\+Simulator@{Ownship\+Simulator}}
+\subsubsection[{Ownship\+Simulator}]{\setlength{\rightskip}{0pt plus 5cm}Ownship\+Simulator\+::\+Ownship\+Simulator (
+\begin{DoxyParamCaption}
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Flight\+Simulation} \&}]{flight\+\_\+simulation}
+\end{DoxyParamCaption}
+)}\label{class_ownship_simulator_a8a94cf0dc698a68488dbed92cbe78aae}
+Create a new \hyperlink{class_ownship_simulator}{Ownship\+Simulator} with the specified flight simulation data and the on the specified network port. 
+\begin{DoxyParams}{Parameters}
+{\em port} & the simulation network port \\
+\hline
+{\em flight\+\_\+simulation} & the flight simulation data to send \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_ownship_simulator_a2dc9bbca8f760c19311abb3570aa720e}{}\index{Ownship\+Simulator@{Ownship\+Simulator}!Send\+Report@{Send\+Report}}
+\index{Send\+Report@{Send\+Report}!Ownship\+Simulator@{Ownship\+Simulator}}
+\subsubsection[{Send\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Ownship\+Simulator\+::\+Send\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\+Socket} \&}]{client\+\_\+socket, }
+\item[{{\bf Flight\+Report} \&}]{flight\+\_\+report}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_ownship_simulator_a2dc9bbca8f760c19311abb3570aa720e}
+Send a single device data report to the client connected on the T\+C\+P/\+I\+P network socket using the specified flight report. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the T\+C\+P/\+Ip network socket on which a simulation sense and avoid processor device receiver client is connected. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_device_simulator_ac41c9ef2046591fe7f62b55ef5f0de22}{Device\+Simulator}.
+
+\hypertarget{class_ownship_simulator_ab275b2aa195d1066027370fc5a2712f2}{}\index{Ownship\+Simulator@{Ownship\+Simulator}!Send\+Reports@{Send\+Reports}}
+\index{Send\+Reports@{Send\+Reports}!Ownship\+Simulator@{Ownship\+Simulator}}
+\subsubsection[{Send\+Reports}]{\setlength{\rightskip}{0pt plus 5cm}void Ownship\+Simulator\+::\+Send\+Reports (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\+Socket} \&}]{client\+\_\+socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_ownship_simulator_ab275b2aa195d1066027370fc5a2712f2}
+Send all device reports of this device simulation type to the client connected on the client port. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the T\+C\+P/\+Ip network socket on which a simulation sense and avoid processor device receiver client is connected. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_device_simulator_a2c63437b2c443a7c1e7dcda80c5efe77}{Device\+Simulator}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/sim/inc/\hyperlink{_ownship_simulator_8h}{Ownship\+Simulator.\+h}\item 
+/home/fpoole/development/cpe406/saas/sim/src/\hyperlink{_ownship_simulator_8cpp}{Ownship\+Simulator.\+cpp}\end{DoxyCompactItemize}

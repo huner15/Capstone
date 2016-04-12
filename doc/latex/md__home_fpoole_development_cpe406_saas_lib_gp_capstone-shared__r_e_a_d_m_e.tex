@@ -1,0 +1,55 @@
+\subparagraph*{Goals of this project}
+
+The ultimate purpose of this repository is to define a common test format, so each team can swap out their correlation module, test server module, and C\+D\+T\+I module with another team. This goal should be realized by the end of capstone. However, it\textquotesingle{}s not a requirement of the vertical prototype.
+
+\subparagraph*{Ground Rules}
+
+You are free to make changes on a fork of this project and make local changes, but please do not commit to master without notifying and discussing your changes with the teams.
+
+\subparagraph*{Description of Connection}
+
+The protocols in this repository should be used over a T\+C\+P socket. When sending data, the following standard should be used\+:
+
+``` \mbox{[} length $\vert$ Google protocol Buffer \mbox{]} 4 Bytes n Bytes
+
+```
+
+When reading from a T\+C\+P socket, read the first four bites to recieve the length (in bytes) of the Google protobuffer. Buffer length should be consistant for most of the R\+A\+D\+A\+R, T\+C\+A\+S, A\+D\+S-\/\+B, and Ownship data, but will not be consistant for the C\+D\+T\+I display.
+
+The Following Protocols are specified in the respositry\+:
+\begin{DoxyItemize}
+\item T\+C\+A\+S\+: (tcas.\+proto)
+\item A\+D\+S-\/\+B\+: (adsb.\+proto)
+\item R\+A\+D\+A\+R\+: (radar.\+proto)
+\item Ownship\+: (ownshp.\+proto)
+\item C\+D\+T\+I\+: (cdti.\+proto)
+\end{DoxyItemize}
+
+\subsubsection*{How do I get set up?}
+
+
+\begin{DoxyItemize}
+\item Summary of set up
+\item Configuration
+\item Dependencies
+\item Database configuration
+\item How to run tests
+\item Deployment instructions
+\end{DoxyItemize}
+
+\subsubsection*{Contribution guidelines}
+
+
+\begin{DoxyItemize}
+\item Writing tests
+\item Code review
+\item Other guidelines
+\end{DoxyItemize}
+
+\subsubsection*{Who do I talk to?}
+
+
+\begin{DoxyItemize}
+\item Repo owner or admin
+\item Other community or team contact 
+\end{DoxyItemize}

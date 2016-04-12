@@ -1,48 +1,120 @@
 /**
 * @file Prediction.h
 * @author Specific Atomics
-* @author Andrea Savage
+* @author Dat Tran
 * @date 1-19-16
-* @brief Holds the Prediction history structs.
+* @brief Utilized for predictions to support correlation algorithm
 */
 
-#ifndef SAAS_PREDICTION_H
-#define SAAS_PREDICTION_H
+#ifndef PREDICTION_H
+#define PREDICTION_H
 
 #include "CorrelationAircraft.h"
+#include "History.h"
+#include "Snapshot.h"
 #include "Velocity.h"
 
-using namespace std;
-
 /**
- * A struct that holds the layout of the airspace during one
- * evaluation of the Correlation Engine. The location, heading,
- * identifiers, and elevation are recorded for each aircraft.
+ * The prediction class utilizes the history and interpolates data to support the correlation algorithm
  */
-typedef struct Snapshot
-{
-    vector<CorrelationAircraft> aircraft; /** Collection of aircraft. */
-    int64_t counterVal; /** Timestamp to order the Snapshots. */
-} Snapshot;
+class Prediction {
+private:
+    /** A history of the airspace */
+    History *_history;
+    /** The current snapshot*/
+    Snapshot *_current_snapshot;
+    /** A snapshot counter*/
+    int _snapshot_counter = 0;
+public:
+    Prediction();
+    ~Prediction();
+    /*
+     * Converts a Cluster to a CDTIReport and adds
+     * the CDTIReport to the current Snapshot.
+     * Checks if Snapshot.aircraft is initialized
+     *
+     * @param aircraft The Correlation Aircraft to add
+     * @return int 0 for success, 1 for an error
+     */
+    int AddAircraft(CorrelationAircraft *aircraft);
 
-/*
- * A struct to hold the last three Snapshots of the airspace.
- */
-typedef struct History
-{
-    Snapshot last; /** The most recent Snapshot. */
-    Snapshot secondToLast; /** The second to last Snapshot. */
-    Snapshot thirdToLast; /** The third most recent Snapchat. */
-} History;
+    /*
+     * Writes the current Snapshot to the History
+     * file and increments the Snapshot counter.
+     * Called when all current Reports have been
+     * processed by the SAAP.
+     * Creates History and History file if not
+     * already initialized.
+     *
+     */
+    void TakeSnapshot();
 
-Velocity PredictVector(CorrelationAircraft aircraft);
+    /**
+     * Accessor to history
+     *
+     * @return The history of the airspace
+     */
+    History* GetHistory();
 
-CorrelationAircraft SearchRadarID(int radarID);
+    /**
+     * Accessor to current snapshot
+     *
+     * @return The current snapshot
+     */
+    Snapshot* GetCurrentSnapshot();
 
-CorrelationAircraft SearchTailNum(int tailNum);
+    /**
+     * Accessor to the snapshot counter
+     *
+     * @return The number of snapshots taken
+     */
+    int GetSnapshotCounter();
 
-int AddAircraft(CorrelationAircraft aircraft);
+    /*
+     * Looks for the given tailNum in the last three
+     * Snapshots of the History.
+     *
+     * @param tail_num the tail number to search for
+     * @return Cluster the found cluster(s) or NULL
+     * if none located.
+     */
+    CorrelationAircraft SearchTailNum(TailNumber tail_number);
 
-int AddSnapshot();
+    /*
+     * Looks for the given TCAS ID in the last three
+     * Snapshots of the History.
+     *
+     * @param tcas_id the tail number to search for
+     * @return Cluster the found cluster(s) or NULL
+     * if none located.
+     */
+    CorrelationAircraft SearchTcasID(TcasID tcas_id);
 
-#endif //SAAS_PREDICTION_H
+    /*
+     * Looks for the given radarID in the last three
+     * Snapshots of the History.
+     *
+     * @param radarID The ID number to search for
+     * @return Cluster the found cluster(s) or NULL
+     * if none located.
+     */
+    CorrelationAircraft SearchRadarID(RadarID radar_id);
+
+    /*
+     * Calculates the predicted velocity for the given
+     * CorrelationAircraft data.
+     *
+     * @param aircraft The aircraft to evaluate a prediction velocity for
+     * @return Vector The predicted aircraft trajectory
+     */
+    Velocity PredictVelocity(CorrelationAircraft *aircraft, bool is_relative);
+
+    /**
+     * Calculates the predicted location for the CorrelationAircraft data
+     *
+     * @param aircraft The aircraft to evaluate a predicted location for
+     * @return The predicted location
+     */
+    GeographicCoordinate PredictLocation(CorrelationAircraft *aircraft);
+};
+#endif //PREDICTION_H

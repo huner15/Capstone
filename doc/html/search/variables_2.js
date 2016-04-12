@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['counterval',['counterVal',['../struct_snapshot.html#a0478efa68c21cc2392523c9987a510bd',1,'Snapshot']]]
+  ['expected_5farguments',['EXPECTED_ARGUMENTS',['../_server_8h.html#a0721c5d5134381e8a921e836e1abecbf',1,'Server.h']]]
 ];

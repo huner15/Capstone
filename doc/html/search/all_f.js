@@ -2,6 +2,7 @@ var searchData=
 [
   ['objectvalue',['objectValue',['../namespace_json.html#a7d654b75c16a57007925868e38212b4eae8386dcfc36d1ae897745f7b4f77a1f6',1,'Json']]],
   ['operator_21',['operator!',['../class_json_1_1_value.html#a021ab0d15a807fbe051446c9c545ab61',1,'Json::Value']]],
+  ['operator_2b',['operator+',['../class_velocity.html#ad7abed73672a6cd0388b9078dfa72a2e',1,'Velocity']]],
   ['operator_2d',['operator-',['../class_spherical_coordinate.html#ae059f99fee575e9707e665442cad3f7f',1,'SphericalCoordinate::operator-()'],['../class_velocity.html#ac8e10d6b337b615de5694866a1022490',1,'Velocity::operator-()']]],
   ['operator_3c',['operator&lt;',['../class_json_1_1_value.html#af0ad8aa027575c3277296458f3fb7b0a',1,'Json::Value']]],
   ['operator_3c_3c',['operator&lt;&lt;',['../class_client_socket.html#a2fe5c2037ee6bdcc4d578db1111928ba',1,'ClientSocket::operator&lt;&lt;(const std::string &amp;) const '],['../class_client_socket.html#ac2fbdbdab8ecb0eca85f577ba3b7917b',1,'ClientSocket::operator&lt;&lt;(const ::google::protobuf::Message &amp;msg) const '],['../class_server_socket.html#ab5fe4b2d92d7014f7663c1bbacbbeda5',1,'ServerSocket::operator&lt;&lt;(const std::string &amp;) const '],['../class_server_socket.html#a184d1eff33380dd9708505429bfcbfb5',1,'ServerSocket::operator&lt;&lt;(const ::google::protobuf::Message &amp;msg) const '],['../namespace_json.html#a87bc83d7e90fc666d28aa16727deda2f',1,'Json::operator&lt;&lt;()']]],
@@ -12,5 +13,10 @@ var searchData=
   ['ourcharreader',['OurCharReader',['../class_json_1_1_our_char_reader.html',1,'Json']]],
   ['ourfeatures',['OurFeatures',['../class_json_1_1_our_features.html',1,'Json']]],
   ['ourreader',['OurReader',['../class_json_1_1_our_reader.html',1,'Json']]],
-  ['ownship',['Ownship',['../class_example_1_1_c_d_t_i_report.html#ad40efe2d19d10dabc930320ba2835337',1,'Example::CDTIReport']]]
+  ['ownship',['Ownship',['../class_example_1_1_c_d_t_i_report.html#a069e31165b27ca17ba6efa26fdb763bd',1,'Example::CDTIReport']]],
+  ['ownship_5fthread_5findex',['OWNSHIP_THREAD_INDEX',['../_server_8h.html#aa2c1dd0ee9388975a3a20329ebe8a117',1,'Server.h']]],
+  ['ownshipreceiver',['OwnshipReceiver',['../class_ownship_receiver.html',1,'OwnshipReceiver'],['../class_ownship_receiver.html#ac784d1c90d44a0fe3ad2b503d9a87c8f',1,'OwnshipReceiver::OwnshipReceiver()']]],
+  ['ownshipsimulator',['OwnshipSimulator',['../class_ownship_simulator.html',1,'OwnshipSimulator'],['../class_ownship_simulator.html#a8a94cf0dc698a68488dbed92cbe78aae',1,'OwnshipSimulator::OwnshipSimulator()']]],
+  ['ownshipsimulator_2ecpp',['OwnshipSimulator.cpp',['../_ownship_simulator_8cpp.html',1,'']]],
+  ['ownshipsimulator_2eh',['OwnshipSimulator.h',['../_ownship_simulator_8h.html',1,'']]]
 ];
