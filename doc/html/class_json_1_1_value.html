@@ -528,8 +528,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ValueIteratorBase</b
 
 <p>Constructs a value from a static string. </p>
 <p>Like other value string constructor but do not duplicate the string for internal storage. The given string must remain alive after the call to this constructor. </p><dl class="section note"><dt>Note</dt><dd>This works only for null-terminated strings. (We cannot change the size of this class, so we have nowhere to store the length, which might be computed later for various operations.)</dd></dl>
-<p><a class="el" href="namespace_example.html">Example</a> of usage: </p><div class="fragment"><div class="line"><span class="keyword">static</span> StaticString <a class="code" href="classfoo.html">foo</a>(<span class="stringliteral">&quot;some text&quot;</span>);</div>
-<div class="line"><a class="code" href="class_json_1_1_value.html">Json::Value</a> aValue(<a class="code" href="classfoo.html">foo</a>);</div>
+<p><a class="el" href="namespace_example.html">Example</a> of usage: </p><div class="fragment"><div class="line"><span class="keyword">static</span> StaticString foo(<span class="stringliteral">&quot;some text&quot;</span>);</div>
+<div class="line"><a class="code" href="class_json_1_1_value.html">Json::Value</a> aValue(foo);</div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -1220,8 +1220,8 @@ key may contain embedded nulls. </dd></dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/michael/saas/lib/jsoncpp/inc/<a class="el" href="json_8h_source.html">json.h</a></li>
-<li>/home/michael/saas/lib/jsoncpp/src/jsoncpp.cpp</li>
+<li>/home/fpoole/development/cpe406/saas/lib/jsoncpp/inc/<a class="el" href="json_8h_source.html">json.h</a></li>
+<li>/home/fpoole/development/cpe406/saas/lib/jsoncpp/src/jsoncpp.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

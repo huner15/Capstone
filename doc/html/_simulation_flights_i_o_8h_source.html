@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>SenseandAvoidSystem: /home/michael/saas/lib/jsonio/inc/SimulationFlightsIO.h Source File</title>
+<title>SenseandAvoidSystem: /home/fpoole/development/cpe406/saas/lib/jsonio/inc/SimulationFlightsIO.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_f2fb02c9ddb969497d561633e5788bd5.html">saas</a></li><li class="navelem"><a class="el" href="dir_44af850a516fe3c11e5622821ff280c3.html">lib</a></li><li class="navelem"><a class="el" href="dir_31cb06141a1c5f62f7fef3e8fbfb3af4.html">jsonio</a></li><li class="navelem"><a class="el" href="dir_4fd9db9c442c19a266f3047e5e01fc93.html">inc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_dd2b321bfb32061141c3a38b6db09283.html">development</a></li><li class="navelem"><a class="el" href="dir_e2a2ee7259b93824cbb63385e81c4899.html">cpe406</a></li><li class="navelem"><a class="el" href="dir_9358e02f7a5e10331c34e3507b8f2ee9.html">saas</a></li><li class="navelem"><a class="el" href="dir_77ca2b9e50ce9a7bc5c8ebbeebdc96ee.html">lib</a></li><li class="navelem"><a class="el" href="dir_4908053164c0b790ecec0cbb97633d7f.html">jsonio</a></li><li class="navelem"><a class="el" href="dir_508346e6a078096e1d9048092eb05ef6.html">inc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -98,28 +98,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define SAMPLEJSONCPP_SIMULATIONFLIGHTSIO_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;JsonIO.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_simulation_flights_i_o.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_simulation_flights_i_o.html">SimulationFlightsIO</a> : <span class="keyword">public</span> <a class="code" href="class_json_i_o.html">JsonIO</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Flight.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;FlightSimulation.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;SaasUtil.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> ReadFile();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> GetSimulationFlights();</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_simulation_flights_i_o.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_simulation_flights_i_o.html">SimulationFlightsIO</a> : <span class="keyword">public</span> <a class="code" href="class_json_i_o.html">JsonIO</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> OpenFile(std::string file_name);</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">static</span> std::vector&lt;Json::Value&gt; GetAllADSBReports();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_flight_simulation.html">FlightSimulation</a> ReadFlightData(std::string file_name);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">static</span> std::vector&lt;Json::Value&gt; GetAllTCASReports();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">static</span> std::vector&lt;Json::Value&gt; GetAllRadarReports();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">static</span> std::vector&lt;Json::Value&gt; GetALlOwnshipReports();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> writeFile(<a class="code" href="class_json_1_1_value.html">Json::Value</a> value);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> GetAllReports(std::string file_name);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_flight_simulation.html">FlightSimulation</a> ReadFile(std::string file_name);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> GetSimulationFlights();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> GetReports(std::string file_name);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif //SAMPLEJSONCPP_SIMULATIONFLIGHTSIO_H</span></div>
-<div class="ttc" id="class_simulation_flights_i_o_html"><div class="ttname"><a href="class_simulation_flights_i_o.html">SimulationFlightsIO</a></div><div class="ttdef"><b>Definition:</b> SimulationFlightsIO.h:10</div></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> GetAllADSBReports();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> GetAllTCASReports();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> GetAllRadarReports();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_json_1_1_value.html">Json::Value</a> GetAllOwnshipReports();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">static</span> AdsBReport SetAdsBReportData(std::time_t time, <span class="keywordtype">double</span> latitude,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                        <span class="keywordtype">double</span> longitude, <span class="keywordtype">double</span> altitude,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                        std::string tail_number,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                        <span class="keywordtype">double</span> north, <span class="keywordtype">double</span> east, <span class="keywordtype">double</span> down);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">static</span> RadarReport SetRadarReportData(std::time_t time, <span class="keywordtype">double</span> range,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                          <span class="keywordtype">double</span> azimuth,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                          <span class="keywordtype">double</span> elevation, uint16_t radar_id,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                          <span class="keywordtype">double</span> latitude,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                          <span class="keywordtype">double</span> longitude, <span class="keywordtype">double</span> altitude,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                          <span class="keywordtype">double</span> north, <span class="keywordtype">double</span> east,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                          <span class="keywordtype">double</span> down);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">static</span> TcasReport SetTcasReportData(uint8_t tcas_id, <span class="keywordtype">double</span> range,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                        <span class="keywordtype">double</span> altitude, <span class="keywordtype">double</span> bearing);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">static</span> OwnshipReport SetOwnshipReportData(std::time_t time, <span class="keywordtype">double</span> latitude,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                              <span class="keywordtype">double</span> longitude, <span class="keywordtype">double</span> altitude,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                              <span class="keywordtype">double</span> north, <span class="keywordtype">double</span> east,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                              <span class="keywordtype">double</span> down);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> writeFile(<a class="code" href="class_json_1_1_value.html">Json::Value</a> value);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif //SAMPLEJSONCPP_SIMULATIONFLIGHTSIO_H</span></div>
+<div class="ttc" id="class_simulation_flights_i_o_html"><div class="ttname"><a href="class_simulation_flights_i_o.html">SimulationFlightsIO</a></div><div class="ttdef"><b>Definition:</b> SimulationFlightsIO.h:13</div></div>
+<div class="ttc" id="class_flight_simulation_html"><div class="ttname"><a href="class_flight_simulation.html">FlightSimulation</a></div><div class="ttdef"><b>Definition:</b> FlightSimulation.h:16</div></div>
 <div class="ttc" id="class_json_i_o_html"><div class="ttname"><a href="class_json_i_o.html">JsonIO</a></div><div class="ttdef"><b>Definition:</b> JsonIO.h:12</div></div>
 <div class="ttc" id="class_json_1_1_value_html"><div class="ttname"><a href="class_json_1_1_value.html">Json::Value</a></div><div class="ttdoc">Represents a JSON value. </div><div class="ttdef"><b>Definition:</b> json.h:547</div></div>
 </div><!-- fragment --></div><!-- contents -->

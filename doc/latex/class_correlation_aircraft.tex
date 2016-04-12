@@ -1,0 +1,102 @@
+\hypertarget{class_correlation_aircraft}{}\section{Correlation\+Aircraft Class Reference}
+\label{class_correlation_aircraft}\index{Correlation\+Aircraft@{Correlation\+Aircraft}}
+
+
+{\ttfamily \#include $<$Correlation\+Aircraft.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_correlation_aircraft_a2bbdee62edd0d91b2a7af718a4260ccc}{Correlation\+Aircraft} ()
+\item 
+\hyperlink{class_correlation_aircraft_af7d072c5dbd8c3340378ff0e19dea75e}{Correlation\+Aircraft} (std\+::time\+\_\+t time, \hyperlink{class_tail_number}{Tail\+Number} tail\+\_\+number, \hyperlink{class_tcas_i_d}{Tcas\+I\+D} tcas\+\_\+id, \hyperlink{class_radar_i_d}{Radar\+I\+D} radar\+\_\+id, \hyperlink{class_geographic_coordinate}{Geographic\+Coordinate} geographic\+\_\+coordinate, \hyperlink{class_spherical_coordinate}{Spherical\+Coordinate} spherical\+\_\+coordinate, \hyperlink{class_velocity}{Velocity} velocity, \hyperlink{class_velocity}{Velocity} predicted\+\_\+vector, \hyperlink{class_geographic_coordinate}{Geographic\+Coordinate} predicted\+\_\+location, Device type)
+\item 
+\hyperlink{class_correlation_aircraft_a43e80790bb9ea113fc90612698e4b3be}{$\sim$\+Correlation\+Aircraft} ()
+\item 
+\hypertarget{class_correlation_aircraft_af574569c6aedd437280bb603a090f010}{}\hyperlink{class_velocity}{Velocity} {\bfseries Get\+Predicted\+Velocity} () const \label{class_correlation_aircraft_af574569c6aedd437280bb603a090f010}
+
+\item 
+\hypertarget{class_correlation_aircraft_a7d0f0a8f9c47f7596c1e4467499662e6}{}\hyperlink{class_geographic_coordinate}{Geographic\+Coordinate} {\bfseries Get\+Predicted\+Location} () const \label{class_correlation_aircraft_a7d0f0a8f9c47f7596c1e4467499662e6}
+
+\item 
+\hypertarget{class_correlation_aircraft_acca81110480d7891f6860c6710902dbd}{}std\+::time\+\_\+t {\bfseries Get\+Time} () const \label{class_correlation_aircraft_acca81110480d7891f6860c6710902dbd}
+
+\item 
+\hypertarget{class_correlation_aircraft_ab961c122dc1f2a859ffb6b4e9ef58c1d}{}\hyperlink{class_tail_number}{Tail\+Number} {\bfseries Get\+Tail\+Number} () const \label{class_correlation_aircraft_ab961c122dc1f2a859ffb6b4e9ef58c1d}
+
+\item 
+\hypertarget{class_correlation_aircraft_aedd4a85633d71adf84f8f85329508b86}{}\hyperlink{class_tcas_i_d}{Tcas\+I\+D} {\bfseries Get\+Tcas\+I\+D} () const \label{class_correlation_aircraft_aedd4a85633d71adf84f8f85329508b86}
+
+\item 
+\hypertarget{class_correlation_aircraft_a253a843488f09cebadf875d89f7112be}{}\hyperlink{class_radar_i_d}{Radar\+I\+D} {\bfseries Get\+Radar\+I\+D} () const \label{class_correlation_aircraft_a253a843488f09cebadf875d89f7112be}
+
+\item 
+\hypertarget{class_correlation_aircraft_a9dc9e578264f3df07199357f6f5226ca}{}\hyperlink{class_geographic_coordinate}{Geographic\+Coordinate} {\bfseries Get\+Geographic\+Coordinate} () const \label{class_correlation_aircraft_a9dc9e578264f3df07199357f6f5226ca}
+
+\item 
+\hypertarget{class_correlation_aircraft_a49612336861e6bdd4db899af9b162e59}{}\hyperlink{class_spherical_coordinate}{Spherical\+Coordinate} {\bfseries Get\+Spherical\+Coordinate} () const \label{class_correlation_aircraft_a49612336861e6bdd4db899af9b162e59}
+
+\item 
+\hypertarget{class_correlation_aircraft_a033b8e179750f5f4f06a552f14517a89}{}\hyperlink{class_velocity}{Velocity} {\bfseries Get\+Velocity} () const \label{class_correlation_aircraft_a033b8e179750f5f4f06a552f14517a89}
+
+\item 
+\hypertarget{class_correlation_aircraft_a61d5d8418645a713992d90948a1eb6ce}{}Device {\bfseries Get\+Device\+Type} () const \label{class_correlation_aircraft_a61d5d8418645a713992d90948a1eb6ce}
+
+\item 
+C\+D\+T\+I\+Plane \hyperlink{class_correlation_aircraft_a5dfebd98e53fa074bcfb4976d21fde76}{Create\+Cdti\+Plane} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A struct that represents an individual aircraft in the airspace around the ownship. Holds the evaluated current location, heading, elevation, and identifiers from the Surveillance Report or Surveillance Reports that were evaluated to represent this aircraft. All fields may not be populated. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_correlation_aircraft_a2bbdee62edd0d91b2a7af718a4260ccc}{}\index{Correlation\+Aircraft@{Correlation\+Aircraft}!Correlation\+Aircraft@{Correlation\+Aircraft}}
+\index{Correlation\+Aircraft@{Correlation\+Aircraft}!Correlation\+Aircraft@{Correlation\+Aircraft}}
+\subsubsection[{Correlation\+Aircraft}]{\setlength{\rightskip}{0pt plus 5cm}Correlation\+Aircraft\+::\+Correlation\+Aircraft (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_correlation_aircraft_a2bbdee62edd0d91b2a7af718a4260ccc}
+Enum for what device this report is from. Creates a new empty \hyperlink{class_correlation_aircraft}{Correlation\+Aircraft}. \hypertarget{class_correlation_aircraft_af7d072c5dbd8c3340378ff0e19dea75e}{}\index{Correlation\+Aircraft@{Correlation\+Aircraft}!Correlation\+Aircraft@{Correlation\+Aircraft}}
+\index{Correlation\+Aircraft@{Correlation\+Aircraft}!Correlation\+Aircraft@{Correlation\+Aircraft}}
+\subsubsection[{Correlation\+Aircraft}]{\setlength{\rightskip}{0pt plus 5cm}Correlation\+Aircraft\+::\+Correlation\+Aircraft (
+\begin{DoxyParamCaption}
+\item[{std\+::time\+\_\+t}]{time, }
+\item[{{\bf Tail\+Number}}]{tail\+\_\+number, }
+\item[{{\bf Tcas\+I\+D}}]{tcas\+\_\+id, }
+\item[{{\bf Radar\+I\+D}}]{radar\+\_\+id, }
+\item[{{\bf Geographic\+Coordinate}}]{geographic\+\_\+coordinate, }
+\item[{{\bf Spherical\+Coordinate}}]{spherical\+\_\+coordinate, }
+\item[{{\bf Velocity}}]{velocity, }
+\item[{{\bf Velocity}}]{predicted\+\_\+vector, }
+\item[{{\bf Geographic\+Coordinate}}]{predicted\+\_\+location, }
+\item[{Device}]{type}
+\end{DoxyParamCaption}
+)}\label{class_correlation_aircraft_af7d072c5dbd8c3340378ff0e19dea75e}
+Creates a new \hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} with the needed values. \hypertarget{class_correlation_aircraft_a43e80790bb9ea113fc90612698e4b3be}{}\index{Correlation\+Aircraft@{Correlation\+Aircraft}!````~Correlation\+Aircraft@{$\sim$\+Correlation\+Aircraft}}
+\index{````~Correlation\+Aircraft@{$\sim$\+Correlation\+Aircraft}!Correlation\+Aircraft@{Correlation\+Aircraft}}
+\subsubsection[{$\sim$\+Correlation\+Aircraft}]{\setlength{\rightskip}{0pt plus 5cm}Correlation\+Aircraft\+::$\sim$\+Correlation\+Aircraft (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_correlation_aircraft_a43e80790bb9ea113fc90612698e4b3be}
+Deconstructs a new empty \hyperlink{class_correlation_aircraft}{Correlation\+Aircraft}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_correlation_aircraft_a5dfebd98e53fa074bcfb4976d21fde76}{}\index{Correlation\+Aircraft@{Correlation\+Aircraft}!Create\+Cdti\+Plane@{Create\+Cdti\+Plane}}
+\index{Create\+Cdti\+Plane@{Create\+Cdti\+Plane}!Correlation\+Aircraft@{Correlation\+Aircraft}}
+\subsubsection[{Create\+Cdti\+Plane}]{\setlength{\rightskip}{0pt plus 5cm}C\+D\+T\+I\+Plane Correlation\+Aircraft\+::\+Create\+Cdti\+Plane (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_correlation_aircraft_a5dfebd98e53fa074bcfb4976d21fde76}
+Creates a C\+D\+T\+I plane from the data in this \hyperlink{class_flight_report}{Flight\+Report} \begin{DoxyReturn}{Returns}
+a C\+D\+T\+I plane made from the data in this \hyperlink{class_flight_report}{Flight\+Report} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/inc/\hyperlink{_correlation_aircraft_8h}{Correlation\+Aircraft.\+h}\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/src/\hyperlink{_correlation_aircraft_8cpp}{Correlation\+Aircraft.\+cpp}\end{DoxyCompactItemize}

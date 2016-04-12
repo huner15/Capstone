@@ -1,0 +1,119 @@
+\hypertarget{class_velocity}{}\section{Velocity Class Reference}
+\label{class_velocity}\index{Velocity@{Velocity}}
+
+
+{\ttfamily \#include $<$Velocity.\+h$>$}
+
+Inheritance diagram for Velocity\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_velocity}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_velocity_a852088c8d4dbb7e1beb0d793a57e9d11}{Velocity} ()
+\item 
+\hyperlink{class_velocity_ad2193f387838054fb78afaa6891182b8}{Velocity} (double east, double down, double north)
+\item 
+\hyperlink{class_velocity}{Velocity} \hyperlink{class_velocity_ac8e10d6b337b615de5694866a1022490}{operator-\/} (const \hyperlink{class_velocity}{Velocity} \&other)
+\item 
+\hyperlink{class_velocity}{Velocity} \hyperlink{class_velocity_ad7abed73672a6cd0388b9078dfa72a2e}{operator+} (const \hyperlink{class_velocity}{Velocity} \&other)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_velocity_aaa36eaa992630c8a13f54984f87ff46f}{}static \hyperlink{class_velocity}{Velocity} $\ast$ {\bfseries Average} (\hyperlink{class_velocity}{Velocity} $\ast$one, \hyperlink{class_velocity}{Velocity} $\ast$two, \hyperlink{class_velocity}{Velocity} $\ast$three)\label{class_velocity_aaa36eaa992630c8a13f54984f87ff46f}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>std::array$<$ double, 3 $>$ {\bfseries array}\\
+\hypertarget{union_velocity_1_1@15_a35c5f22e0b8a2bd80caeaff1601aa3c6}{}\>struct \{\\
+\>\>double {\bfseries east}\\
+\>\>double {\bfseries down}\\
+\>\>double {\bfseries north}\\
+\>\} \label{union_velocity_1_1@15_a35c5f22e0b8a2bd80caeaff1601aa3c6}
+\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_velocity}{Velocity} represents the three dimensional velocity of a physical object. Allows for accessing velocity dimensions using the keywords north, east, and down. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_velocity_a852088c8d4dbb7e1beb0d793a57e9d11}{}\index{Velocity@{Velocity}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!Velocity@{Velocity}}
+\subsubsection[{Velocity}]{\setlength{\rightskip}{0pt plus 5cm}Velocity\+::\+Velocity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_velocity_a852088c8d4dbb7e1beb0d793a57e9d11}
+Create a new velocity with east, down, and north velocities of zero. \hypertarget{class_velocity_ad2193f387838054fb78afaa6891182b8}{}\index{Velocity@{Velocity}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!Velocity@{Velocity}}
+\subsubsection[{Velocity}]{\setlength{\rightskip}{0pt plus 5cm}Velocity\+::\+Velocity (
+\begin{DoxyParamCaption}
+\item[{double}]{east, }
+\item[{double}]{down, }
+\item[{double}]{north}
+\end{DoxyParamCaption}
+)}\label{class_velocity_ad2193f387838054fb78afaa6891182b8}
+Create a new velocity with the specified east, down, and north velocities. 
+\begin{DoxyParams}{Parameters}
+{\em east} & the eastwards velocity \\
+\hline
+{\em down} & the downwards velocity \\
+\hline
+{\em north} & the northwards velocity \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_velocity_ad7abed73672a6cd0388b9078dfa72a2e}{}\index{Velocity@{Velocity}!operator+@{operator+}}
+\index{operator+@{operator+}!Velocity@{Velocity}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Velocity} Velocity\+::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Velocity} \&}]{other}
+\end{DoxyParamCaption}
+)}\label{class_velocity_ad7abed73672a6cd0388b9078dfa72a2e}
+Create a velocity representing the relative velocity of this velocity to another velocity. 
+\begin{DoxyParams}{Parameters}
+{\em other} & the velocity to compare against \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a relative velocity 
+\end{DoxyReturn}
+\hypertarget{class_velocity_ac8e10d6b337b615de5694866a1022490}{}\index{Velocity@{Velocity}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Velocity@{Velocity}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Velocity} Velocity\+::operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Velocity} \&}]{other}
+\end{DoxyParamCaption}
+)}\label{class_velocity_ac8e10d6b337b615de5694866a1022490}
+Create a velocity representing the relative velocity of this velocity to another velocity. 
+\begin{DoxyParams}{Parameters}
+{\em other} & the velocity to compare against \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a relative velocity 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_velocity_ac226fd2c8231b959c599aacaece8fa34}{}\subsubsection[{"@16}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \} }\label{class_velocity_ac226fd2c8231b959c599aacaece8fa34}
+Enable accessing the underlying three dimensional vector using the keywords north, east, and down instead or x, y, z or array indexing. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/lib/util/inc/\hyperlink{_velocity_8h}{Velocity.\+h}\item 
+/home/fpoole/development/cpe406/saas/lib/util/src/Velocity.\+cpp\end{DoxyCompactItemize}

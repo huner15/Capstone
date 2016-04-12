@@ -103,9 +103,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a2e9a6b1d49e40e4ef91e4f51f7cb56be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e9a6b1d49e40e4ef91e4f51f7cb56be"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Severity</b> { <b>PROXIMATE</b> = 0, 
+<tr class="memitem:a2e9a6b1d49e40e4ef91e4f51f7cb56be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e9a6b1d49e40e4ef91e4f51f7cb56be"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Severity</b> { <br />
+&#160;&#160;<b>PROXIMATE</b> = 0, 
 <b>TRAFFIC</b> = 1, 
+<b>RESOLUTION</b> = 2, 
+<b>PROXIMATE</b> = 0, 
+<br />
+&#160;&#160;<b>TRAFFIC</b> = 1, 
 <b>RESOLUTION</b> = 2
+<br />
+ }</td></tr>
+<tr class="separator:a2e9a6b1d49e40e4ef91e4f51f7cb56be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e9a6b1d49e40e4ef91e4f51f7cb56be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e9a6b1d49e40e4ef91e4f51f7cb56be"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Severity</b> { <br />
+&#160;&#160;<b>PROXIMATE</b> = 0, 
+<b>TRAFFIC</b> = 1, 
+<b>RESOLUTION</b> = 2, 
+<b>PROXIMATE</b> = 0, 
+<br />
+&#160;&#160;<b>TRAFFIC</b> = 1, 
+<b>RESOLUTION</b> = 2
+<br />
  }</td></tr>
 <tr class="separator:a2e9a6b1d49e40e4ef91e4f51f7cb56be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -144,30 +161,89 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a587ec4906faa62164e4dd7106ab43172"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a587ec4906faa62164e4dd7106ab43172">SerializeLengthDelimited</a> (Stream stream, <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> instance)</td></tr>
 <tr class="memdesc:a587ec4906faa62164e4dd7106ab43172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper: Serialize with a varint length prefix <a href="#a587ec4906faa62164e4dd7106ab43172">More...</a><br /></td></tr>
 <tr class="separator:a587ec4906faa62164e4dd7106ab43172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac839a59baea94b2d0d85e233f0afaf31"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#ac839a59baea94b2d0d85e233f0afaf31">Deserialize</a> (Stream stream)</td></tr>
+<tr class="memdesc:ac839a59baea94b2d0d85e233f0afaf31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper: create a new instance to deserializing into <a href="#ac839a59baea94b2d0d85e233f0afaf31">More...</a><br /></td></tr>
+<tr class="separator:ac839a59baea94b2d0d85e233f0afaf31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e790e0e071fac05495f369414a8131a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a6e790e0e071fac05495f369414a8131a">DeserializeLengthDelimited</a> (Stream stream)</td></tr>
+<tr class="memdesc:a6e790e0e071fac05495f369414a8131a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper: create a new instance to deserializing into <a href="#a6e790e0e071fac05495f369414a8131a">More...</a><br /></td></tr>
+<tr class="separator:a6e790e0e071fac05495f369414a8131a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12c67ba955b64011c831c1f9b3f64f07"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a12c67ba955b64011c831c1f9b3f64f07">DeserializeLength</a> (Stream stream, int length)</td></tr>
+<tr class="memdesc:a12c67ba955b64011c831c1f9b3f64f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper: create a new instance to deserializing into <a href="#a12c67ba955b64011c831c1f9b3f64f07">More...</a><br /></td></tr>
+<tr class="separator:a12c67ba955b64011c831c1f9b3f64f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ef6d83b62dd2beac045403f6e1a8054"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a7ef6d83b62dd2beac045403f6e1a8054">Deserialize</a> (byte[] buffer)</td></tr>
+<tr class="memdesc:a7ef6d83b62dd2beac045403f6e1a8054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper: put the buffer into a MemoryStream and create a new instance to deserializing into <a href="#a7ef6d83b62dd2beac045403f6e1a8054">More...</a><br /></td></tr>
+<tr class="separator:a7ef6d83b62dd2beac045403f6e1a8054"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a858fd88fb0a1f98ee24f1ddd1d43e3e0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a858fd88fb0a1f98ee24f1ddd1d43e3e0">Deserialize</a> (byte[] buffer, <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a> instance)</td></tr>
+<tr class="memdesc:a858fd88fb0a1f98ee24f1ddd1d43e3e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper: put the buffer into a MemoryStream before deserializing <a href="#a858fd88fb0a1f98ee24f1ddd1d43e3e0">More...</a><br /></td></tr>
+<tr class="separator:a858fd88fb0a1f98ee24f1ddd1d43e3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3259ef658ecda5587d8f394849544307"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a3259ef658ecda5587d8f394849544307">Deserialize</a> (Stream stream, <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a> instance)</td></tr>
+<tr class="memdesc:a3259ef658ecda5587d8f394849544307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the remaining content of the stream and deserialze it into the instance. <a href="#a3259ef658ecda5587d8f394849544307">More...</a><br /></td></tr>
+<tr class="separator:a3259ef658ecda5587d8f394849544307"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a837fd35c86c5ecd43a9ec5b149a37c2b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a837fd35c86c5ecd43a9ec5b149a37c2b">DeserializeLengthDelimited</a> (Stream stream, <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a> instance)</td></tr>
+<tr class="memdesc:a837fd35c86c5ecd43a9ec5b149a37c2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the VarInt length prefix and the given number of bytes from the stream and deserialze it into the instance. <a href="#a837fd35c86c5ecd43a9ec5b149a37c2b">More...</a><br /></td></tr>
+<tr class="separator:a837fd35c86c5ecd43a9ec5b149a37c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6842f35b509032e593cac6721c53dc3f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a6842f35b509032e593cac6721c53dc3f">DeserializeLength</a> (Stream stream, int length, <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a> instance)</td></tr>
+<tr class="memdesc:a6842f35b509032e593cac6721c53dc3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the given number of bytes from the stream and deserialze it into the instance. <a href="#a6842f35b509032e593cac6721c53dc3f">More...</a><br /></td></tr>
+<tr class="separator:a6842f35b509032e593cac6721c53dc3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa35a297b34ae5b717ad4a35b3d43dfaf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#aa35a297b34ae5b717ad4a35b3d43dfaf">Serialize</a> (Stream stream, <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> instance)</td></tr>
+<tr class="memdesc:aa35a297b34ae5b717ad4a35b3d43dfaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize the instance into the stream <a href="#aa35a297b34ae5b717ad4a35b3d43dfaf">More...</a><br /></td></tr>
+<tr class="separator:aa35a297b34ae5b717ad4a35b3d43dfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ad424e439e8f5cea9306fdf40886ba"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a45ad424e439e8f5cea9306fdf40886ba">SerializeToBytes</a> (<a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> instance)</td></tr>
+<tr class="memdesc:a45ad424e439e8f5cea9306fdf40886ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper: Serialize into a MemoryStream and return its byte array <a href="#a45ad424e439e8f5cea9306fdf40886ba">More...</a><br /></td></tr>
+<tr class="separator:a45ad424e439e8f5cea9306fdf40886ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a587ec4906faa62164e4dd7106ab43172"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a587ec4906faa62164e4dd7106ab43172">SerializeLengthDelimited</a> (Stream stream, <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> instance)</td></tr>
+<tr class="memdesc:a587ec4906faa62164e4dd7106ab43172"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper: Serialize with a varint length prefix <a href="#a587ec4906faa62164e4dd7106ab43172">More...</a><br /></td></tr>
+<tr class="separator:a587ec4906faa62164e4dd7106ab43172"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:aa757cb6e78cfd34982eecc6f381c5450"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa757cb6e78cfd34982eecc6f381c5450"></a>
+<tr class="memitem:a610c0a065465b2c5d1d97aff3cf83b07"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a610c0a065465b2c5d1d97aff3cf83b07"></a>
 long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [get, set]</code></td></tr>
-<tr class="separator:aa757cb6e78cfd34982eecc6f381c5450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad40efe2d19d10dabc930320ba2835337"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_example_1_1_c_d_t_i_plane.html">Example.CDTIPlane</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#ad40efe2d19d10dabc930320ba2835337">Ownship</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ad40efe2d19d10dabc930320ba2835337"><td class="mdescLeft">&#160;</td><td class="mdescRight">UTC timestamp <a href="#ad40efe2d19d10dabc930320ba2835337">More...</a><br /></td></tr>
-<tr class="separator:ad40efe2d19d10dabc930320ba2835337"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6859a3fc5d356d9125d589e23a6cc2b9"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a6859a3fc5d356d9125d589e23a6cc2b9">AdvisoryMessage</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a6859a3fc5d356d9125d589e23a6cc2b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ownship id and velocity, position is 0 <a href="#a6859a3fc5d356d9125d589e23a6cc2b9">More...</a><br /></td></tr>
-<tr class="separator:a6859a3fc5d356d9125d589e23a6cc2b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55ef7e8b3e35eeeb0b273fd3c475ba31"><td class="memItemLeft" align="right" valign="top">Example.CDTIReport.Severity&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a55ef7e8b3e35eeeb0b273fd3c475ba31">AdvisoryLevel</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a55ef7e8b3e35eeeb0b273fd3c475ba31"><td class="mdescLeft">&#160;</td><td class="mdescRight">The string to display <a href="#a55ef7e8b3e35eeeb0b273fd3c475ba31">More...</a><br /></td></tr>
-<tr class="separator:a55ef7e8b3e35eeeb0b273fd3c475ba31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73959c38addf562d6b64ecb538db006a"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_example_1_1_c_d_t_i_plane.html">Example.CDTIPlane</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a73959c38addf562d6b64ecb538db006a">Planes</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a73959c38addf562d6b64ecb538db006a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The warning level <a href="#a73959c38addf562d6b64ecb538db006a">More...</a><br /></td></tr>
-<tr class="separator:a73959c38addf562d6b64ecb538db006a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a610c0a065465b2c5d1d97aff3cf83b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069e31165b27ca17ba6efa26fdb763bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_example_1_1_c_d_t_i_plane.html">Example.CDTIPlane</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a069e31165b27ca17ba6efa26fdb763bd">Ownship</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a069e31165b27ca17ba6efa26fdb763bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">UTC timestamp <a href="#a069e31165b27ca17ba6efa26fdb763bd">More...</a><br /></td></tr>
+<tr class="separator:a069e31165b27ca17ba6efa26fdb763bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee90e745d98baa176941e916999248d9"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#aee90e745d98baa176941e916999248d9">AdvisoryMessage</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aee90e745d98baa176941e916999248d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ownship id and velocity, position is 0 <a href="#aee90e745d98baa176941e916999248d9">More...</a><br /></td></tr>
+<tr class="separator:aee90e745d98baa176941e916999248d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883863fdf0a9f3ebc64e0a6fa277a330"><td class="memItemLeft" align="right" valign="top">Example.CDTIReport.Severity&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#a883863fdf0a9f3ebc64e0a6fa277a330">AdvisoryLevel</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a883863fdf0a9f3ebc64e0a6fa277a330"><td class="mdescLeft">&#160;</td><td class="mdescRight">The string to display <a href="#a883863fdf0a9f3ebc64e0a6fa277a330">More...</a><br /></td></tr>
+<tr class="separator:a883863fdf0a9f3ebc64e0a6fa277a330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeeec29b233bde873045cf173c7b462e"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_example_1_1_c_d_t_i_plane.html">Example.CDTIPlane</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_example_1_1_c_d_t_i_report.html#adeeec29b233bde873045cf173c7b462e">Planes</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:adeeec29b233bde873045cf173c7b462e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The warning level <a href="#adeeec29b233bde873045cf173c7b462e">More...</a><br /></td></tr>
+<tr class="separator:adeeec29b233bde873045cf173c7b462e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>*</p>
 <p>* CDTI Report, sent once a second by the SAA application.</p>
 <p>* Contains a list of planes, and an optional message.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac839a59baea94b2d0d85e233f0afaf31"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> Example.CDTIReport.Deserialize </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper: create a new instance to deserializing into</p>
+
+</div>
+</div>
 <a class="anchor" id="ac839a59baea94b2d0d85e233f0afaf31"></a>
 <div class="memitem">
 <div class="memproto">
@@ -217,6 +293,68 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 </div><div class="memdoc">
 
 <p>Helper: put the buffer into a MemoryStream and create a new instance to deserializing into</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ef6d83b62dd2beac045403f6e1a8054"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> Example.CDTIReport.Deserialize </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper: put the buffer into a MemoryStream and create a new instance to deserializing into</p>
+
+</div>
+</div>
+<a class="anchor" id="a858fd88fb0a1f98ee24f1ddd1d43e3e0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a> Example.CDTIReport.Deserialize </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a>&#160;</td>
+          <td class="paramname"><em>instance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper: put the buffer into a MemoryStream before deserializing</p>
 
 </div>
 </div>
@@ -289,6 +427,78 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 </div><div class="memdoc">
 
 <p>Takes the remaining content of the stream and deserialze it into the instance.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3259ef658ecda5587d8f394849544307"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a> Example.CDTIReport.Deserialize </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a>&#160;</td>
+          <td class="paramname"><em>instance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Takes the remaining content of the stream and deserialze it into the instance.</p>
+
+</div>
+</div>
+<a class="anchor" id="a12c67ba955b64011c831c1f9b3f64f07"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> Example.CDTIReport.DeserializeLength </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper: create a new instance to deserializing into</p>
 
 </div>
 </div>
@@ -370,6 +580,48 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 
 </div>
 </div>
+<a class="anchor" id="a6842f35b509032e593cac6721c53dc3f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a> Example.CDTIReport.DeserializeLength </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a>&#160;</td>
+          <td class="paramname"><em>instance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Read the given number of bytes from the stream and deserialze it into the instance.</p>
+
+</div>
+</div>
 <a class="anchor" id="a6e790e0e071fac05495f369414a8131a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -393,6 +645,68 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 </div><div class="memdoc">
 
 <p>Helper: create a new instance to deserializing into</p>
+
+</div>
+</div>
+<a class="anchor" id="a6e790e0e071fac05495f369414a8131a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> Example.CDTIReport.DeserializeLengthDelimited </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper: create a new instance to deserializing into</p>
+
+</div>
+</div>
+<a class="anchor" id="a837fd35c86c5ecd43a9ec5b149a37c2b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a> Example.CDTIReport.DeserializeLengthDelimited </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_example_1_1_c_d_t_i_report.html">Example.CDTIReport</a>&#160;</td>
+          <td class="paramname"><em>instance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Read the VarInt length prefix and the given number of bytes from the stream and deserialze it into the instance.</p>
 
 </div>
 </div>
@@ -468,6 +782,78 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 
 </div>
 </div>
+<a class="anchor" id="aa35a297b34ae5b717ad4a35b3d43dfaf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Example.CDTIReport.Serialize </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a>&#160;</td>
+          <td class="paramname"><em>instance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Serialize the instance into the stream</p>
+
+</div>
+</div>
+<a class="anchor" id="a587ec4906faa62164e4dd7106ab43172"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Example.CDTIReport.SerializeLengthDelimited </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a>&#160;</td>
+          <td class="paramname"><em>instance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper: Serialize with a varint length prefix</p>
+
+</div>
+</div>
 <a class="anchor" id="a587ec4906faa62164e4dd7106ab43172"></a>
 <div class="memitem">
 <div class="memproto">
@@ -530,8 +916,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
-<a class="anchor" id="a55ef7e8b3e35eeeb0b273fd3c475ba31"></a>
+<a class="anchor" id="a45ad424e439e8f5cea9306fdf40886ba"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -539,7 +924,34 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Example.CDTIReport.Severity Example.CDTIReport.AdvisoryLevel</td>
+          <td class="memname">static byte [] Example.CDTIReport.SerializeToBytes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a>&#160;</td>
+          <td class="paramname"><em>instance</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper: Serialize into a MemoryStream and return its byte array</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a class="anchor" id="a883863fdf0a9f3ebc64e0a6fa277a330"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Example <a class="el" href="class_example_1_1_c_d_t_i_report.html">CDTIReport</a> Severity Example.CDTIReport.AdvisoryLevel</td>
         </tr>
       </table>
   </td>
@@ -553,7 +965,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 
 </div>
 </div>
-<a class="anchor" id="a6859a3fc5d356d9125d589e23a6cc2b9"></a>
+<a class="anchor" id="aee90e745d98baa176941e916999248d9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -575,7 +987,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 
 </div>
 </div>
-<a class="anchor" id="ad40efe2d19d10dabc930320ba2835337"></a>
+<a class="anchor" id="a069e31165b27ca17ba6efa26fdb763bd"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -583,7 +995,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_example_1_1_c_d_t_i_plane.html">Example.CDTIPlane</a> Example.CDTIReport.Ownship</td>
+          <td class="memname">Example <a class="el" href="class_example_1_1_c_d_t_i_plane.html">CDTIPlane</a> Example.CDTIReport.Ownship</td>
         </tr>
       </table>
   </td>
@@ -597,7 +1009,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 
 </div>
 </div>
-<a class="anchor" id="a73959c38addf562d6b64ecb538db006a"></a>
+<a class="anchor" id="adeeec29b233bde873045cf173c7b462e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -605,7 +1017,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="class_example_1_1_c_d_t_i_plane.html">Example.CDTIPlane</a>&gt; Example.CDTIReport.Planes</td>
+          <td class="memname">List&lt; <a class="el" href="class_example_1_1_c_d_t_i_plane.html">Example.CDTIPlane</a> &gt; Example.CDTIReport.Planes</td>
         </tr>
       </table>
   </td>
@@ -620,8 +1032,8 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>Timestamp</b><code> [
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/michael/saas/cdti/CDTIUnity/Assets/scripts/cdti.cs</li>
-<li>/home/michael/saas/cdti/CDTIUnity/Assets/scripts/cdti.Serializer.cs</li>
+<li>/home/fpoole/development/cpe406/saas/cdti/CDTIUnity/Assets/scripts/cdti.cs</li>
+<li>/home/fpoole/development/cpe406/saas/cdti/CDTIUnity/Assets/scripts/cdti.Serializer.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

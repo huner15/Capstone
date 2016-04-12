@@ -1,0 +1,60 @@
+\hypertarget{class_radar_i_d}{}\section{Radar\+I\+D Class Reference}
+\label{class_radar_i_d}\index{Radar\+I\+D@{Radar\+I\+D}}
+
+
+{\ttfamily \#include $<$Radar\+I\+D.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_radar_i_d_a5899d2b9568d792e105c9b6fdaf20bf4}{Radar\+I\+D} ()
+\item 
+\hyperlink{class_radar_i_d_a981ec73e31075d8c5e18c9e5ae0f33f4}{Radar\+I\+D} (uint16\+\_\+t radar\+\_\+id)
+\item 
+\hyperlink{class_radar_i_d_a90f88cab4bfd55c47c090253ec8d633b}{$\sim$\+Radar\+I\+D} ()
+\item 
+uint16\+\_\+t \hyperlink{class_radar_i_d_ae34fb70fc24b71bf2830c3bc1cf8a962}{Get} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Radar I\+D models the identifier assigned to an object by a radar device upon object detection. If a specific number is not input during assignment, a valid identification number will be generated. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_radar_i_d_a5899d2b9568d792e105c9b6fdaf20bf4}{}\index{Radar\+I\+D@{Radar\+I\+D}!Radar\+I\+D@{Radar\+I\+D}}
+\index{Radar\+I\+D@{Radar\+I\+D}!Radar\+I\+D@{Radar\+I\+D}}
+\subsubsection[{Radar\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}Radar\+I\+D\+::\+Radar\+I\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_radar_i_d_a5899d2b9568d792e105c9b6fdaf20bf4}
+Create a \hyperlink{class_radar_i_d}{Radar\+I\+D} with a randomly generated identifier between 0 and 65535. \hypertarget{class_radar_i_d_a981ec73e31075d8c5e18c9e5ae0f33f4}{}\index{Radar\+I\+D@{Radar\+I\+D}!Radar\+I\+D@{Radar\+I\+D}}
+\index{Radar\+I\+D@{Radar\+I\+D}!Radar\+I\+D@{Radar\+I\+D}}
+\subsubsection[{Radar\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}Radar\+I\+D\+::\+Radar\+I\+D (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{radar\+\_\+id}
+\end{DoxyParamCaption}
+)}\label{class_radar_i_d_a981ec73e31075d8c5e18c9e5ae0f33f4}
+Create a \hyperlink{class_radar_i_d}{Radar\+I\+D} with the specified identifier using an integer between 0 and 65535. If the specified integer is larger than 65535, construction will proceed with the equivalent overflow integer value. \hypertarget{class_radar_i_d_a90f88cab4bfd55c47c090253ec8d633b}{}\index{Radar\+I\+D@{Radar\+I\+D}!````~Radar\+I\+D@{$\sim$\+Radar\+I\+D}}
+\index{````~Radar\+I\+D@{$\sim$\+Radar\+I\+D}!Radar\+I\+D@{Radar\+I\+D}}
+\subsubsection[{$\sim$\+Radar\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}Radar\+I\+D\+::$\sim$\+Radar\+I\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_radar_i_d_a90f88cab4bfd55c47c090253ec8d633b}
+Deconstruct a \hyperlink{class_radar_i_d}{Radar\+I\+D}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_radar_i_d_ae34fb70fc24b71bf2830c3bc1cf8a962}{}\index{Radar\+I\+D@{Radar\+I\+D}!Get@{Get}}
+\index{Get@{Get}!Radar\+I\+D@{Radar\+I\+D}}
+\subsubsection[{Get}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t Radar\+I\+D\+::\+Get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_radar_i_d_ae34fb70fc24b71bf2830c3bc1cf8a962}
+Return the radar identification. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/lib/util/inc/Radar\+I\+D.\+h\item 
+/home/fpoole/development/cpe406/saas/lib/util/src/Radar\+I\+D.\+cpp\end{DoxyCompactItemize}

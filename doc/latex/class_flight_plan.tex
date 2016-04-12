@@ -1,0 +1,53 @@
+\hypertarget{class_flight_plan}{}\section{Flight\+Plan Class Reference}
+\label{class_flight_plan}\index{Flight\+Plan@{Flight\+Plan}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_flight_plan_a9dc97f612abea465283b817dfd7b7749}{}{\bfseries Flight\+Plan} (\hyperlink{class_geographic_coordinate}{Geographic\+Coordinate} start\+\_\+position, std\+::vector$<$ \hyperlink{class_flight_leg}{Flight\+Leg} $>$ const \&flight\+\_\+legs)\label{class_flight_plan_a9dc97f612abea465283b817dfd7b7749}
+
+\item 
+\hyperlink{class_geographic_coordinate}{Geographic\+Coordinate} \hyperlink{class_flight_plan_aa8b6ef6db4f8a057461baf3f73aa560e}{Get\+Start\+Position} ()
+\item 
+std\+::vector$<$ \hyperlink{class_flight_leg}{Flight\+Leg} $>$ \hyperlink{class_flight_plan_acfa3c9e58bbabbb3db7d0adfc7e6ef34}{Get\+Flight\+Legs} ()
+\item 
+bool \hyperlink{class_flight_plan_a91d58720d5630cef10cc1204fc6d2358}{operator==} (\hyperlink{class_flight_plan}{Flight\+Plan} plan) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_flight_plan_acfa3c9e58bbabbb3db7d0adfc7e6ef34}{}\index{Flight\+Plan@{Flight\+Plan}!Get\+Flight\+Legs@{Get\+Flight\+Legs}}
+\index{Get\+Flight\+Legs@{Get\+Flight\+Legs}!Flight\+Plan@{Flight\+Plan}}
+\subsubsection[{Get\+Flight\+Legs}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Flight\+Leg} $>$ Flight\+Plan\+::\+Get\+Flight\+Legs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_flight_plan_acfa3c9e58bbabbb3db7d0adfc7e6ef34}
+Accessor for the all the flight legs in this flight plan. \begin{DoxyReturn}{Returns}
+A vector containing all the flight legs for this flight plan. 
+\end{DoxyReturn}
+\hypertarget{class_flight_plan_aa8b6ef6db4f8a057461baf3f73aa560e}{}\index{Flight\+Plan@{Flight\+Plan}!Get\+Start\+Position@{Get\+Start\+Position}}
+\index{Get\+Start\+Position@{Get\+Start\+Position}!Flight\+Plan@{Flight\+Plan}}
+\subsubsection[{Get\+Start\+Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Geographic\+Coordinate} Flight\+Plan\+::\+Get\+Start\+Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_flight_plan_aa8b6ef6db4f8a057461baf3f73aa560e}
+Accessor for the starting position of this flight plan. \begin{DoxyReturn}{Returns}
+The Geographic Coordinating indicating the starting position. 
+\end{DoxyReturn}
+\hypertarget{class_flight_plan_a91d58720d5630cef10cc1204fc6d2358}{}\index{Flight\+Plan@{Flight\+Plan}!operator==@{operator==}}
+\index{operator==@{operator==}!Flight\+Plan@{Flight\+Plan}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool Flight\+Plan\+::operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf Flight\+Plan}}]{plan}
+\end{DoxyParamCaption}
+) const}\label{class_flight_plan_a91d58720d5630cef10cc1204fc6d2358}
+Checks to see if two Flight\+Plans are the same \begin{DoxyReturn}{Returns}
+boolean stating whether two Flight\+Plans are the same. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/lib/util/inc/Flight\+Plan.\+h\item 
+/home/fpoole/development/cpe406/saas/lib/util/src/Flight\+Plan.\+cpp\end{DoxyCompactItemize}

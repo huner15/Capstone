@@ -8,10 +8,26 @@
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries Severity} \{ {\bfseries P\+R\+O\+X\+I\+M\+A\+TE} = 0, 
-{\bfseries T\+R\+A\+F\+F\+IC} = 1, 
-{\bfseries R\+E\+S\+O\+L\+U\+T\+I\+ON} = 2
- \}\hypertarget{class_example_1_1_c_d_t_i_report_a2e9a6b1d49e40e4ef91e4f51f7cb56be}{}\label{class_example_1_1_c_d_t_i_report_a2e9a6b1d49e40e4ef91e4f51f7cb56be}
+\hypertarget{class_example_1_1_c_d_t_i_report_a2e9a6b1d49e40e4ef91e4f51f7cb56be}{}enum {\bfseries Severity} \{ \\*
+{\bfseries P\+R\+O\+X\+I\+M\+A\+T\+E} = 0, 
+{\bfseries T\+R\+A\+F\+F\+I\+C} = 1, 
+{\bfseries R\+E\+S\+O\+L\+U\+T\+I\+O\+N} = 2, 
+{\bfseries P\+R\+O\+X\+I\+M\+A\+T\+E} = 0, 
+\\*
+{\bfseries T\+R\+A\+F\+F\+I\+C} = 1, 
+{\bfseries R\+E\+S\+O\+L\+U\+T\+I\+O\+N} = 2
+ \}\label{class_example_1_1_c_d_t_i_report_a2e9a6b1d49e40e4ef91e4f51f7cb56be}
+
+\item 
+\hypertarget{class_example_1_1_c_d_t_i_report_a2e9a6b1d49e40e4ef91e4f51f7cb56be}{}enum {\bfseries Severity} \{ \\*
+{\bfseries P\+R\+O\+X\+I\+M\+A\+T\+E} = 0, 
+{\bfseries T\+R\+A\+F\+F\+I\+C} = 1, 
+{\bfseries R\+E\+S\+O\+L\+U\+T\+I\+O\+N} = 2, 
+{\bfseries P\+R\+O\+X\+I\+M\+A\+T\+E} = 0, 
+\\*
+{\bfseries T\+R\+A\+F\+F\+I\+C} = 1, 
+{\bfseries R\+E\+S\+O\+L\+U\+T\+I\+O\+N} = 2
+ \}\label{class_example_1_1_c_d_t_i_report_a2e9a6b1d49e40e4ef91e4f51f7cb56be}
 
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
@@ -38,20 +54,42 @@ static void \hyperlink{class_example_1_1_c_d_t_i_report_aa35a297b34ae5b717ad4a35
 static byte\mbox{[}$\,$\mbox{]} \hyperlink{class_example_1_1_c_d_t_i_report_a45ad424e439e8f5cea9306fdf40886ba}{Serialize\+To\+Bytes} (\hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} instance)
 \begin{DoxyCompactList}\small\item\em Helper\+: Serialize into a Memory\+Stream and return its byte array\end{DoxyCompactList}\item 
 static void \hyperlink{class_example_1_1_c_d_t_i_report_a587ec4906faa62164e4dd7106ab43172}{Serialize\+Length\+Delimited} (Stream stream, \hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} instance)
+\begin{DoxyCompactList}\small\item\em Helper\+: Serialize with a varint length prefix\end{DoxyCompactList}\item 
+static \hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} \hyperlink{class_example_1_1_c_d_t_i_report_ac839a59baea94b2d0d85e233f0afaf31}{Deserialize} (Stream stream)
+\begin{DoxyCompactList}\small\item\em Helper\+: create a new instance to deserializing into\end{DoxyCompactList}\item 
+static \hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} \hyperlink{class_example_1_1_c_d_t_i_report_a6e790e0e071fac05495f369414a8131a}{Deserialize\+Length\+Delimited} (Stream stream)
+\begin{DoxyCompactList}\small\item\em Helper\+: create a new instance to deserializing into\end{DoxyCompactList}\item 
+static \hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} \hyperlink{class_example_1_1_c_d_t_i_report_a12c67ba955b64011c831c1f9b3f64f07}{Deserialize\+Length} (Stream stream, int length)
+\begin{DoxyCompactList}\small\item\em Helper\+: create a new instance to deserializing into\end{DoxyCompactList}\item 
+static \hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} \hyperlink{class_example_1_1_c_d_t_i_report_a7ef6d83b62dd2beac045403f6e1a8054}{Deserialize} (byte\mbox{[}$\,$\mbox{]} buffer)
+\begin{DoxyCompactList}\small\item\em Helper\+: put the buffer into a Memory\+Stream and create a new instance to deserializing into\end{DoxyCompactList}\item 
+static \hyperlink{class_example_1_1_c_d_t_i_report}{Example.\+C\+D\+T\+I\+Report} \hyperlink{class_example_1_1_c_d_t_i_report_a858fd88fb0a1f98ee24f1ddd1d43e3e0}{Deserialize} (byte\mbox{[}$\,$\mbox{]} buffer, \hyperlink{class_example_1_1_c_d_t_i_report}{Example.\+C\+D\+T\+I\+Report} instance)
+\begin{DoxyCompactList}\small\item\em Helper\+: put the buffer into a Memory\+Stream before deserializing\end{DoxyCompactList}\item 
+static \hyperlink{class_example_1_1_c_d_t_i_report}{Example.\+C\+D\+T\+I\+Report} \hyperlink{class_example_1_1_c_d_t_i_report_a3259ef658ecda5587d8f394849544307}{Deserialize} (Stream stream, \hyperlink{class_example_1_1_c_d_t_i_report}{Example.\+C\+D\+T\+I\+Report} instance)
+\begin{DoxyCompactList}\small\item\em Takes the remaining content of the stream and deserialze it into the instance.\end{DoxyCompactList}\item 
+static \hyperlink{class_example_1_1_c_d_t_i_report}{Example.\+C\+D\+T\+I\+Report} \hyperlink{class_example_1_1_c_d_t_i_report_a837fd35c86c5ecd43a9ec5b149a37c2b}{Deserialize\+Length\+Delimited} (Stream stream, \hyperlink{class_example_1_1_c_d_t_i_report}{Example.\+C\+D\+T\+I\+Report} instance)
+\begin{DoxyCompactList}\small\item\em Read the Var\+Int length prefix and the given number of bytes from the stream and deserialze it into the instance.\end{DoxyCompactList}\item 
+static \hyperlink{class_example_1_1_c_d_t_i_report}{Example.\+C\+D\+T\+I\+Report} \hyperlink{class_example_1_1_c_d_t_i_report_a6842f35b509032e593cac6721c53dc3f}{Deserialize\+Length} (Stream stream, int length, \hyperlink{class_example_1_1_c_d_t_i_report}{Example.\+C\+D\+T\+I\+Report} instance)
+\begin{DoxyCompactList}\small\item\em Read the given number of bytes from the stream and deserialze it into the instance.\end{DoxyCompactList}\item 
+static void \hyperlink{class_example_1_1_c_d_t_i_report_aa35a297b34ae5b717ad4a35b3d43dfaf}{Serialize} (Stream stream, \hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} instance)
+\begin{DoxyCompactList}\small\item\em Serialize the instance into the stream\end{DoxyCompactList}\item 
+static byte\mbox{[}$\,$\mbox{]} \hyperlink{class_example_1_1_c_d_t_i_report_a45ad424e439e8f5cea9306fdf40886ba}{Serialize\+To\+Bytes} (\hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} instance)
+\begin{DoxyCompactList}\small\item\em Helper\+: Serialize into a Memory\+Stream and return its byte array\end{DoxyCompactList}\item 
+static void \hyperlink{class_example_1_1_c_d_t_i_report_a587ec4906faa62164e4dd7106ab43172}{Serialize\+Length\+Delimited} (Stream stream, \hyperlink{class_example_1_1_c_d_t_i_report}{C\+D\+T\+I\+Report} instance)
 \begin{DoxyCompactList}\small\item\em Helper\+: Serialize with a varint length prefix\end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-long {\bfseries Timestamp}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}\hypertarget{class_example_1_1_c_d_t_i_report_aa757cb6e78cfd34982eecc6f381c5450}{}\label{class_example_1_1_c_d_t_i_report_aa757cb6e78cfd34982eecc6f381c5450}
+\hypertarget{class_example_1_1_c_d_t_i_report_a610c0a065465b2c5d1d97aff3cf83b07}{}long {\bfseries Timestamp}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}\label{class_example_1_1_c_d_t_i_report_a610c0a065465b2c5d1d97aff3cf83b07}
 
 \item 
-\hyperlink{class_example_1_1_c_d_t_i_plane}{Example.\+C\+D\+T\+I\+Plane} \hyperlink{class_example_1_1_c_d_t_i_report_ad40efe2d19d10dabc930320ba2835337}{Ownship}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\begin{DoxyCompactList}\small\item\em U\+TC timestamp\end{DoxyCompactList}\item 
-string \hyperlink{class_example_1_1_c_d_t_i_report_a6859a3fc5d356d9125d589e23a6cc2b9}{Advisory\+Message}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\hyperlink{class_example_1_1_c_d_t_i_plane}{Example.\+C\+D\+T\+I\+Plane} \hyperlink{class_example_1_1_c_d_t_i_report_a069e31165b27ca17ba6efa26fdb763bd}{Ownship}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em U\+T\+C timestamp\end{DoxyCompactList}\item 
+string \hyperlink{class_example_1_1_c_d_t_i_report_aee90e745d98baa176941e916999248d9}{Advisory\+Message}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \begin{DoxyCompactList}\small\item\em Ownship id and velocity, position is 0\end{DoxyCompactList}\item 
-Example.\+C\+D\+T\+I\+Report.\+Severity \hyperlink{class_example_1_1_c_d_t_i_report_a55ef7e8b3e35eeeb0b273fd3c475ba31}{Advisory\+Level}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+Example.\+C\+D\+T\+I\+Report.\+Severity \hyperlink{class_example_1_1_c_d_t_i_report_a883863fdf0a9f3ebc64e0a6fa277a330}{Advisory\+Level}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \begin{DoxyCompactList}\small\item\em The string to display\end{DoxyCompactList}\item 
-List$<$ \hyperlink{class_example_1_1_c_d_t_i_plane}{Example.\+C\+D\+T\+I\+Plane} $>$ \hyperlink{class_example_1_1_c_d_t_i_report_a73959c38addf562d6b64ecb538db006a}{Planes}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+List$<$ \hyperlink{class_example_1_1_c_d_t_i_plane}{Example.\+C\+D\+T\+I\+Plane} $>$ \hyperlink{class_example_1_1_c_d_t_i_report_adeeec29b233bde873045cf173c7b462e}{Planes}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \begin{DoxyCompactList}\small\item\em The warning level\end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -60,136 +98,265 @@ List$<$ \hyperlink{class_example_1_1_c_d_t_i_plane}{Example.\+C\+D\+T\+I\+Plane}
 
 $\ast$
 
-$\ast$ C\+D\+TI Report, sent once a second by the S\+AA application.
+$\ast$ C\+D\+T\+I Report, sent once a second by the S\+A\+A application.
 
 $\ast$ Contains a list of planes, and an optional message.
 
 \subsection{Member Function Documentation}
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
+\hypertarget{class_example_1_1_c_d_t_i_report_ac839a59baea94b2d0d85e233f0afaf31}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
 \index{Deserialize@{Deserialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Deserialize(\+Stream stream)}{Deserialize(Stream stream)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
 \begin{DoxyParamCaption}
 \item[{Stream}]{stream}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_ac839a59baea94b2d0d85e233f0afaf31}{}\label{class_example_1_1_c_d_t_i_report_ac839a59baea94b2d0d85e233f0afaf31}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_ac839a59baea94b2d0d85e233f0afaf31}
 
 
 Helper\+: create a new instance to deserializing into
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
+\hypertarget{class_example_1_1_c_d_t_i_report_ac839a59baea94b2d0d85e233f0afaf31}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
 \index{Deserialize@{Deserialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Deserialize(byte[] buffer)}{Deserialize(byte[] buffer)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_ac839a59baea94b2d0d85e233f0afaf31}
+
+
+Helper\+: create a new instance to deserializing into
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a7ef6d83b62dd2beac045403f6e1a8054}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
 \begin{DoxyParamCaption}
 \item[{byte\mbox{[}$\,$\mbox{]}}]{buffer}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a7ef6d83b62dd2beac045403f6e1a8054}{}\label{class_example_1_1_c_d_t_i_report_a7ef6d83b62dd2beac045403f6e1a8054}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a7ef6d83b62dd2beac045403f6e1a8054}
 
 
 Helper\+: put the buffer into a Memory\+Stream and create a new instance to deserializing into
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a7ef6d83b62dd2beac045403f6e1a8054}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
 \index{Deserialize@{Deserialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Deserialize(byte[] buffer, Example.\+C\+D\+T\+I\+Report instance)}{Deserialize(byte[] buffer, Example.CDTIReport instance)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a7ef6d83b62dd2beac045403f6e1a8054}
+
+
+Helper\+: put the buffer into a Memory\+Stream and create a new instance to deserializing into
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a858fd88fb0a1f98ee24f1ddd1d43e3e0}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
 \begin{DoxyParamCaption}
 \item[{byte\mbox{[}$\,$\mbox{]}}]{buffer, }
 \item[{{\bf Example.\+C\+D\+T\+I\+Report}}]{instance}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a858fd88fb0a1f98ee24f1ddd1d43e3e0}{}\label{class_example_1_1_c_d_t_i_report_a858fd88fb0a1f98ee24f1ddd1d43e3e0}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a858fd88fb0a1f98ee24f1ddd1d43e3e0}
 
 
 Helper\+: put the buffer into a Memory\+Stream before deserializing
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a858fd88fb0a1f98ee24f1ddd1d43e3e0}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
 \index{Deserialize@{Deserialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Deserialize(\+Stream stream, Example.\+C\+D\+T\+I\+Report instance)}{Deserialize(Stream stream, Example.CDTIReport instance)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{buffer, }
+\item[{{\bf Example.\+C\+D\+T\+I\+Report}}]{instance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a858fd88fb0a1f98ee24f1ddd1d43e3e0}
+
+
+Helper\+: put the buffer into a Memory\+Stream before deserializing
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a3259ef658ecda5587d8f394849544307}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
 \begin{DoxyParamCaption}
 \item[{Stream}]{stream, }
 \item[{{\bf Example.\+C\+D\+T\+I\+Report}}]{instance}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a3259ef658ecda5587d8f394849544307}{}\label{class_example_1_1_c_d_t_i_report_a3259ef658ecda5587d8f394849544307}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a3259ef658ecda5587d8f394849544307}
 
 
 Takes the remaining content of the stream and deserialze it into the instance.
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length@{Deserialize\+Length}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a3259ef658ecda5587d8f394849544307}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize@{Deserialize}}
+\index{Deserialize@{Deserialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Deserialize}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream, }
+\item[{{\bf Example.\+C\+D\+T\+I\+Report}}]{instance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a3259ef658ecda5587d8f394849544307}
+
+
+Takes the remaining content of the stream and deserialze it into the instance.
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a12c67ba955b64011c831c1f9b3f64f07}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length@{Deserialize\+Length}}
 \index{Deserialize\+Length@{Deserialize\+Length}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Deserialize\+Length(\+Stream stream, int length)}{DeserializeLength(Stream stream, int length)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length (
+\subsubsection[{Deserialize\+Length}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length (
 \begin{DoxyParamCaption}
 \item[{Stream}]{stream, }
 \item[{int}]{length}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a12c67ba955b64011c831c1f9b3f64f07}{}\label{class_example_1_1_c_d_t_i_report_a12c67ba955b64011c831c1f9b3f64f07}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a12c67ba955b64011c831c1f9b3f64f07}
 
 
 Helper\+: create a new instance to deserializing into
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length@{Deserialize\+Length}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a12c67ba955b64011c831c1f9b3f64f07}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length@{Deserialize\+Length}}
 \index{Deserialize\+Length@{Deserialize\+Length}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Deserialize\+Length(\+Stream stream, int length, Example.\+C\+D\+T\+I\+Report instance)}{DeserializeLength(Stream stream, int length, Example.CDTIReport instance)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length (
+\subsubsection[{Deserialize\+Length}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream, }
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a12c67ba955b64011c831c1f9b3f64f07}
+
+
+Helper\+: create a new instance to deserializing into
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a6842f35b509032e593cac6721c53dc3f}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length@{Deserialize\+Length}}
+\index{Deserialize\+Length@{Deserialize\+Length}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Deserialize\+Length}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length (
 \begin{DoxyParamCaption}
 \item[{Stream}]{stream, }
 \item[{int}]{length, }
 \item[{{\bf Example.\+C\+D\+T\+I\+Report}}]{instance}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a6842f35b509032e593cac6721c53dc3f}{}\label{class_example_1_1_c_d_t_i_report_a6842f35b509032e593cac6721c53dc3f}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a6842f35b509032e593cac6721c53dc3f}
 
 
 Read the given number of bytes from the stream and deserialze it into the instance.
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a6842f35b509032e593cac6721c53dc3f}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length@{Deserialize\+Length}}
+\index{Deserialize\+Length@{Deserialize\+Length}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Deserialize\+Length}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream, }
+\item[{int}]{length, }
+\item[{{\bf Example.\+C\+D\+T\+I\+Report}}]{instance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a6842f35b509032e593cac6721c53dc3f}
+
+
+Read the given number of bytes from the stream and deserialze it into the instance.
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a6e790e0e071fac05495f369414a8131a}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}}
 \index{Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Deserialize\+Length\+Delimited(\+Stream stream)}{DeserializeLengthDelimited(Stream stream)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length\+Delimited (
+\subsubsection[{Deserialize\+Length\+Delimited}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length\+Delimited (
 \begin{DoxyParamCaption}
 \item[{Stream}]{stream}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a6e790e0e071fac05495f369414a8131a}{}\label{class_example_1_1_c_d_t_i_report_a6e790e0e071fac05495f369414a8131a}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a6e790e0e071fac05495f369414a8131a}
 
 
 Helper\+: create a new instance to deserializing into
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a6e790e0e071fac05495f369414a8131a}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}}
 \index{Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Deserialize\+Length\+Delimited(\+Stream stream, Example.\+C\+D\+T\+I\+Report instance)}{DeserializeLengthDelimited(Stream stream, Example.CDTIReport instance)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length\+Delimited (
+\subsubsection[{Deserialize\+Length\+Delimited}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length\+Delimited (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a6e790e0e071fac05495f369414a8131a}
+
+
+Helper\+: create a new instance to deserializing into
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a837fd35c86c5ecd43a9ec5b149a37c2b}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}}
+\index{Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Deserialize\+Length\+Delimited}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length\+Delimited (
 \begin{DoxyParamCaption}
 \item[{Stream}]{stream, }
 \item[{{\bf Example.\+C\+D\+T\+I\+Report}}]{instance}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a837fd35c86c5ecd43a9ec5b149a37c2b}{}\label{class_example_1_1_c_d_t_i_report_a837fd35c86c5ecd43a9ec5b149a37c2b}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a837fd35c86c5ecd43a9ec5b149a37c2b}
 
 
 Read the Var\+Int length prefix and the given number of bytes from the stream and deserialze it into the instance.
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize@{Serialize}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a837fd35c86c5ecd43a9ec5b149a37c2b}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}}
+\index{Deserialize\+Length\+Delimited@{Deserialize\+Length\+Delimited}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Deserialize\+Length\+Delimited}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Example.\+C\+D\+T\+I\+Report} Example.\+C\+D\+T\+I\+Report.\+Deserialize\+Length\+Delimited (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream, }
+\item[{{\bf Example.\+C\+D\+T\+I\+Report}}]{instance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a837fd35c86c5ecd43a9ec5b149a37c2b}
+
+
+Read the Var\+Int length prefix and the given number of bytes from the stream and deserialze it into the instance.
+
+\hypertarget{class_example_1_1_c_d_t_i_report_aa35a297b34ae5b717ad4a35b3d43dfaf}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize@{Serialize}}
 \index{Serialize@{Serialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Serialize(\+Stream stream, C\+D\+T\+I\+Report instance)}{Serialize(Stream stream, CDTIReport instance)}}]{\setlength{\rightskip}{0pt plus 5cm}static void Example.\+C\+D\+T\+I\+Report.\+Serialize (
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}static void Example.\+C\+D\+T\+I\+Report.\+Serialize (
 \begin{DoxyParamCaption}
 \item[{Stream}]{stream, }
 \item[{{\bf C\+D\+T\+I\+Report}}]{instance}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_aa35a297b34ae5b717ad4a35b3d43dfaf}{}\label{class_example_1_1_c_d_t_i_report_aa35a297b34ae5b717ad4a35b3d43dfaf}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_aa35a297b34ae5b717ad4a35b3d43dfaf}
 
 
 Serialize the instance into the stream
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize\+Length\+Delimited@{Serialize\+Length\+Delimited}}
-\index{Serialize\+Length\+Delimited@{Serialize\+Length\+Delimited}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Serialize\+Length\+Delimited(\+Stream stream, C\+D\+T\+I\+Report instance)}{SerializeLengthDelimited(Stream stream, CDTIReport instance)}}]{\setlength{\rightskip}{0pt plus 5cm}static void Example.\+C\+D\+T\+I\+Report.\+Serialize\+Length\+Delimited (
+\hypertarget{class_example_1_1_c_d_t_i_report_aa35a297b34ae5b717ad4a35b3d43dfaf}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}static void Example.\+C\+D\+T\+I\+Report.\+Serialize (
 \begin{DoxyParamCaption}
 \item[{Stream}]{stream, }
 \item[{{\bf C\+D\+T\+I\+Report}}]{instance}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a587ec4906faa62164e4dd7106ab43172}{}\label{class_example_1_1_c_d_t_i_report_a587ec4906faa62164e4dd7106ab43172}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_aa35a297b34ae5b717ad4a35b3d43dfaf}
+
+
+Serialize the instance into the stream
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a587ec4906faa62164e4dd7106ab43172}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize\+Length\+Delimited@{Serialize\+Length\+Delimited}}
+\index{Serialize\+Length\+Delimited@{Serialize\+Length\+Delimited}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Serialize\+Length\+Delimited}]{\setlength{\rightskip}{0pt plus 5cm}static void Example.\+C\+D\+T\+I\+Report.\+Serialize\+Length\+Delimited (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream, }
+\item[{{\bf C\+D\+T\+I\+Report}}]{instance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a587ec4906faa62164e4dd7106ab43172}
 
 
 Helper\+: Serialize with a varint length prefix
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize\+To\+Bytes@{Serialize\+To\+Bytes}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a587ec4906faa62164e4dd7106ab43172}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize\+Length\+Delimited@{Serialize\+Length\+Delimited}}
+\index{Serialize\+Length\+Delimited@{Serialize\+Length\+Delimited}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Serialize\+Length\+Delimited}]{\setlength{\rightskip}{0pt plus 5cm}static void Example.\+C\+D\+T\+I\+Report.\+Serialize\+Length\+Delimited (
+\begin{DoxyParamCaption}
+\item[{Stream}]{stream, }
+\item[{{\bf C\+D\+T\+I\+Report}}]{instance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a587ec4906faa62164e4dd7106ab43172}
+
+
+Helper\+: Serialize with a varint length prefix
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a45ad424e439e8f5cea9306fdf40886ba}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize\+To\+Bytes@{Serialize\+To\+Bytes}}
 \index{Serialize\+To\+Bytes@{Serialize\+To\+Bytes}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Serialize\+To\+Bytes(\+C\+D\+T\+I\+Report instance)}{SerializeToBytes(CDTIReport instance)}}]{\setlength{\rightskip}{0pt plus 5cm}static byte \mbox{[}$\,$\mbox{]} Example.\+C\+D\+T\+I\+Report.\+Serialize\+To\+Bytes (
+\subsubsection[{Serialize\+To\+Bytes}]{\setlength{\rightskip}{0pt plus 5cm}static byte \mbox{[}$\,$\mbox{]} Example.\+C\+D\+T\+I\+Report.\+Serialize\+To\+Bytes (
 \begin{DoxyParamCaption}
 \item[{{\bf C\+D\+T\+I\+Report}}]{instance}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_example_1_1_c_d_t_i_report_a45ad424e439e8f5cea9306fdf40886ba}{}\label{class_example_1_1_c_d_t_i_report_a45ad424e439e8f5cea9306fdf40886ba}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a45ad424e439e8f5cea9306fdf40886ba}
+
+
+Helper\+: Serialize into a Memory\+Stream and return its byte array
+
+\hypertarget{class_example_1_1_c_d_t_i_report_a45ad424e439e8f5cea9306fdf40886ba}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Serialize\+To\+Bytes@{Serialize\+To\+Bytes}}
+\index{Serialize\+To\+Bytes@{Serialize\+To\+Bytes}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
+\subsubsection[{Serialize\+To\+Bytes}]{\setlength{\rightskip}{0pt plus 5cm}static byte \mbox{[}$\,$\mbox{]} Example.\+C\+D\+T\+I\+Report.\+Serialize\+To\+Bytes (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+D\+T\+I\+Report}}]{instance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_example_1_1_c_d_t_i_report_a45ad424e439e8f5cea9306fdf40886ba}
 
 
 Helper\+: Serialize into a Memory\+Stream and return its byte array
@@ -197,30 +364,30 @@ Helper\+: Serialize into a Memory\+Stream and return its byte array
 
 
 \subsection{Property Documentation}
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Advisory\+Level@{Advisory\+Level}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a883863fdf0a9f3ebc64e0a6fa277a330}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Advisory\+Level@{Advisory\+Level}}
 \index{Advisory\+Level@{Advisory\+Level}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Advisory\+Level}{AdvisoryLevel}}]{\setlength{\rightskip}{0pt plus 5cm}Example.\+C\+D\+T\+I\+Report.\+Severity Example.\+C\+D\+T\+I\+Report.\+Advisory\+Level\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\hypertarget{class_example_1_1_c_d_t_i_report_a55ef7e8b3e35eeeb0b273fd3c475ba31}{}\label{class_example_1_1_c_d_t_i_report_a55ef7e8b3e35eeeb0b273fd3c475ba31}
+\subsubsection[{Advisory\+Level}]{\setlength{\rightskip}{0pt plus 5cm}Example {\bf C\+D\+T\+I\+Report} Severity Example.\+C\+D\+T\+I\+Report.\+Advisory\+Level\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{class_example_1_1_c_d_t_i_report_a883863fdf0a9f3ebc64e0a6fa277a330}
 
 
 The string to display
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Advisory\+Message@{Advisory\+Message}}
+\hypertarget{class_example_1_1_c_d_t_i_report_aee90e745d98baa176941e916999248d9}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Advisory\+Message@{Advisory\+Message}}
 \index{Advisory\+Message@{Advisory\+Message}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Advisory\+Message}{AdvisoryMessage}}]{\setlength{\rightskip}{0pt plus 5cm}string Example.\+C\+D\+T\+I\+Report.\+Advisory\+Message\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\hypertarget{class_example_1_1_c_d_t_i_report_a6859a3fc5d356d9125d589e23a6cc2b9}{}\label{class_example_1_1_c_d_t_i_report_a6859a3fc5d356d9125d589e23a6cc2b9}
+\subsubsection[{Advisory\+Message}]{\setlength{\rightskip}{0pt plus 5cm}string Example.\+C\+D\+T\+I\+Report.\+Advisory\+Message\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{class_example_1_1_c_d_t_i_report_aee90e745d98baa176941e916999248d9}
 
 
 Ownship id and velocity, position is 0
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Ownship@{Ownship}}
+\hypertarget{class_example_1_1_c_d_t_i_report_a069e31165b27ca17ba6efa26fdb763bd}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Ownship@{Ownship}}
 \index{Ownship@{Ownship}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Ownship}{Ownship}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Example.\+C\+D\+T\+I\+Plane} Example.\+C\+D\+T\+I\+Report.\+Ownship\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\hypertarget{class_example_1_1_c_d_t_i_report_ad40efe2d19d10dabc930320ba2835337}{}\label{class_example_1_1_c_d_t_i_report_ad40efe2d19d10dabc930320ba2835337}
+\subsubsection[{Ownship}]{\setlength{\rightskip}{0pt plus 5cm}Example {\bf C\+D\+T\+I\+Plane} Example.\+C\+D\+T\+I\+Report.\+Ownship\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{class_example_1_1_c_d_t_i_report_a069e31165b27ca17ba6efa26fdb763bd}
 
 
-U\+TC timestamp
+U\+T\+C timestamp
 
-\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Planes@{Planes}}
+\hypertarget{class_example_1_1_c_d_t_i_report_adeeec29b233bde873045cf173c7b462e}{}\index{Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}!Planes@{Planes}}
 \index{Planes@{Planes}!Example\+::\+C\+D\+T\+I\+Report@{Example\+::\+C\+D\+T\+I\+Report}}
-\subsubsection[{\texorpdfstring{Planes}{Planes}}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Example.\+C\+D\+T\+I\+Plane}$>$ Example.\+C\+D\+T\+I\+Report.\+Planes\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\hypertarget{class_example_1_1_c_d_t_i_report_a73959c38addf562d6b64ecb538db006a}{}\label{class_example_1_1_c_d_t_i_report_a73959c38addf562d6b64ecb538db006a}
+\subsubsection[{Planes}]{\setlength{\rightskip}{0pt plus 5cm}List$<$ {\bf Example.\+C\+D\+T\+I\+Plane} $>$ Example.\+C\+D\+T\+I\+Report.\+Planes\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}\label{class_example_1_1_c_d_t_i_report_adeeec29b233bde873045cf173c7b462e}
 
 
 The warning level
@@ -229,5 +396,5 @@ The warning level
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/andrea/\+Clion\+Projects/saas/cdti/\+C\+D\+T\+I\+Unity/\+Assets/scripts/cdti.\+cs\item 
-/home/andrea/\+Clion\+Projects/saas/cdti/\+C\+D\+T\+I\+Unity/\+Assets/scripts/cdti.\+Serializer.\+cs\end{DoxyCompactItemize}
+/home/fpoole/development/cpe406/saas/cdti/\+C\+D\+T\+I\+Unity/\+Assets/scripts/cdti.\+cs\item 
+/home/fpoole/development/cpe406/saas/cdti/\+C\+D\+T\+I\+Unity/\+Assets/scripts/cdti.\+Serializer.\+cs\end{DoxyCompactItemize}

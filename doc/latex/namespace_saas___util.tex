@@ -1,0 +1,45 @@
+\hypertarget{namespace_saas___util}{}\section{Saas\+\_\+\+Util Namespace Reference}
+\label{namespace_saas___util}\index{Saas\+\_\+\+Util@{Saas\+\_\+\+Util}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_saas___util_1_1_vector}{Vector}
+\item 
+struct \hyperlink{struct_saas___util_1_1_vector_3_01double_00_012_01_4}{Vector$<$ double, 2 $>$}
+\item 
+struct \hyperlink{struct_saas___util_1_1_vector_3_01double_00_013_01_4}{Vector$<$ double, 3 $>$}
+\item 
+struct \hyperlink{struct_saas___util_1_1_vector_3_01double_00_014_01_4}{Vector$<$ double, 4 $>$}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{class_saas___util_1_1_vector}{Vector}$<$ double, 2 $>$ \hyperlink{namespace_saas___util_a9142c27b864f179a6b89e082b9ecf031}{Vector2\+D}
+\item 
+typedef \hyperlink{class_saas___util_1_1_vector}{Vector}$<$ double, 3 $>$ \hyperlink{namespace_saas___util_aa7cd6c60d40d077fa462d922096a5234}{Vector3\+D}
+\item 
+typedef \hyperlink{class_saas___util_1_1_vector}{Vector}$<$ double, 4 $>$ \hyperlink{namespace_saas___util_a10ff8b47bd08ba3f577c6fbbce374c7c}{Vector4\+D}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A vector represents an array of type T for a fixed size N. While the underlying array operations and mechanics use std\+::array, the \hyperlink{class_saas___util_1_1_vector}{Vector} class acts as a wrapper to allow for more readable vector field access using the dimensions x, y, z, and w appropriately for 2\+D, 3\+D, and 4\+D floating point vectors. Note that the public array member may be accessed externally to access underlying std\+::array functions. \hyperlink{class_saas___util_1_1_vector}{Vector} is an aggregate class. A 3\+D vector may be initialized using the syntax Vector3\+D vector = \{x, y, z\}, where x, y, and z are floating point values. If less than the full number of arguments is added when constructing a vector, the remaining floating point values will be initialized to zero. \hyperlink{class_saas___util_1_1_vector}{Vector} math operations may be added to \hyperlink{class_saas___util_1_1_vector}{Vector} as needed. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the vector element type \\
+\hline
+{\em N} & the fixed size of the vector \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{namespace_saas___util_a9142c27b864f179a6b89e082b9ecf031}{}\index{Saas\+\_\+\+Util@{Saas\+\_\+\+Util}!Vector2\+D@{Vector2\+D}}
+\index{Vector2\+D@{Vector2\+D}!Saas\+\_\+\+Util@{Saas\+\_\+\+Util}}
+\subsubsection[{Vector2\+D}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Vector}$<$double, 2$>$ {\bf Saas\+\_\+\+Util\+::\+Vector2\+D}}\label{namespace_saas___util_a9142c27b864f179a6b89e082b9ecf031}
+Type definition for a two dimensional vector. Prefer using Vector2\+D to using the underlying \hyperlink{struct_saas___util_1_1_vector_3_01double_00_012_01_4}{Vector$<$double, 2$>$}. \hypertarget{namespace_saas___util_aa7cd6c60d40d077fa462d922096a5234}{}\index{Saas\+\_\+\+Util@{Saas\+\_\+\+Util}!Vector3\+D@{Vector3\+D}}
+\index{Vector3\+D@{Vector3\+D}!Saas\+\_\+\+Util@{Saas\+\_\+\+Util}}
+\subsubsection[{Vector3\+D}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Vector}$<$double, 3$>$ {\bf Saas\+\_\+\+Util\+::\+Vector3\+D}}\label{namespace_saas___util_aa7cd6c60d40d077fa462d922096a5234}
+Type definition for a three dimensional vector. Prefer using Vector3\+D to using the underlying \hyperlink{struct_saas___util_1_1_vector_3_01double_00_013_01_4}{Vector$<$double, 3$>$}. \hypertarget{namespace_saas___util_a10ff8b47bd08ba3f577c6fbbce374c7c}{}\index{Saas\+\_\+\+Util@{Saas\+\_\+\+Util}!Vector4\+D@{Vector4\+D}}
+\index{Vector4\+D@{Vector4\+D}!Saas\+\_\+\+Util@{Saas\+\_\+\+Util}}
+\subsubsection[{Vector4\+D}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Vector}$<$double, 4$>$ {\bf Saas\+\_\+\+Util\+::\+Vector4\+D}}\label{namespace_saas___util_a10ff8b47bd08ba3f577c6fbbce374c7c}
+Type definition for a four dimensional vector. Prefer using Vector4\+D to using the underlying \hyperlink{struct_saas___util_1_1_vector_3_01double_00_014_01_4}{Vector$<$double, 4$>$}. 

@@ -1,0 +1,78 @@
+\hypertarget{class_adsb_receiver}{}\section{Adsb\+Receiver Class Reference}
+\label{class_adsb_receiver}\index{Adsb\+Receiver@{Adsb\+Receiver}}
+
+
+{\ttfamily \#include $<$Adsb\+Receiver.\+h$>$}
+
+Inheritance diagram for Adsb\+Receiver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_adsb_receiver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_adsb_receiver_a7d08680b6859a3d5bf21640bcb81c3f8}{Adsb\+Receiver} (std\+::string host, in\+\_\+port\+\_\+t port, \hyperlink{class_report_receiver}{Report\+Receiver} \&report\+\_\+receiver)
+\item 
+virtual void \hyperlink{class_adsb_receiver_a7801fa4ad8f9f2b5d03364439f1d2476}{Receive\+Report} (\hyperlink{class_client_socket}{Client\+Socket} \&client\+\_\+socket)
+\item 
+void \hyperlink{class_adsb_receiver_acc902f601579d8320af05ccbc58de171}{Print\+Report} (Ads\+B\+Report \&ownship\+Report)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An \hyperlink{class_adsb_receiver}{Adsb\+Receiver} is a \hyperlink{class_device_receiver}{Device\+Receiver} which implements the functionality necessary to receive reports from an A\+D\+S-\/\+B device. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_adsb_receiver_a7d08680b6859a3d5bf21640bcb81c3f8}{}\index{Adsb\+Receiver@{Adsb\+Receiver}!Adsb\+Receiver@{Adsb\+Receiver}}
+\index{Adsb\+Receiver@{Adsb\+Receiver}!Adsb\+Receiver@{Adsb\+Receiver}}
+\subsubsection[{Adsb\+Receiver}]{\setlength{\rightskip}{0pt plus 5cm}Adsb\+Receiver\+::\+Adsb\+Receiver (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{host, }
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Report\+Receiver} \&}]{report\+\_\+receiver}
+\end{DoxyParamCaption}
+)}\label{class_adsb_receiver_a7d08680b6859a3d5bf21640bcb81c3f8}
+Create a new \hyperlink{class_adsb_receiver}{Adsb\+Receiver} on the specified network port which connect to the specified host device. 
+\begin{DoxyParams}{Parameters}
+{\em host} & the device I\+P address \\
+\hline
+{\em port} & the network port on which to receive data \\
+\hline
+{\em report\+\_\+receiver} & the interface to the correlation engine \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_adsb_receiver_acc902f601579d8320af05ccbc58de171}{}\index{Adsb\+Receiver@{Adsb\+Receiver}!Print\+Report@{Print\+Report}}
+\index{Print\+Report@{Print\+Report}!Adsb\+Receiver@{Adsb\+Receiver}}
+\subsubsection[{Print\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Adsb\+Receiver\+::\+Print\+Report (
+\begin{DoxyParamCaption}
+\item[{Ads\+B\+Report \&}]{ownship\+Report}
+\end{DoxyParamCaption}
+)}\label{class_adsb_receiver_acc902f601579d8320af05ccbc58de171}
+Print the contents of an Adsb\+Report to standard out. \hypertarget{class_adsb_receiver_a7801fa4ad8f9f2b5d03364439f1d2476}{}\index{Adsb\+Receiver@{Adsb\+Receiver}!Receive\+Report@{Receive\+Report}}
+\index{Receive\+Report@{Receive\+Report}!Adsb\+Receiver@{Adsb\+Receiver}}
+\subsubsection[{Receive\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Adsb\+Receiver\+::\+Receive\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\+Socket} \&}]{client\+\_\+socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_adsb_receiver_a7801fa4ad8f9f2b5d03364439f1d2476}
+Receive a single report from the client socket and forward that report to the \hyperlink{class_report_receiver}{Report\+Receiver}. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the network socket on which to receive device data \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_device_receiver_ac60e55ea6cbd0df590204336b50ce7eb}{Device\+Receiver}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/inc/Adsb\+Receiver.\+h\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/src/Adsb\+Receiver.\+cpp\end{DoxyCompactItemize}

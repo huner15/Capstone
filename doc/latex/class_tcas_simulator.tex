@@ -1,0 +1,67 @@
+\hypertarget{class_tcas_simulator}{}\section{Tcas\+Simulator Class Reference}
+\label{class_tcas_simulator}\index{Tcas\+Simulator@{Tcas\+Simulator}}
+
+
+{\ttfamily \#include $<$Tcas\+Simulator.\+h$>$}
+
+Inheritance diagram for Tcas\+Simulator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_tcas_simulator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tcas_simulator_abf93f36c17d5b4bf977254909e0a1f9e}{Tcas\+Simulator} (in\+\_\+port\+\_\+t port, \hyperlink{class_flight_simulation}{Flight\+Simulation} \&flight\+\_\+simulation)
+\item 
+virtual void \hyperlink{class_tcas_simulator_afe6cb33e9dbb95da9953e291451aecdd}{Send\+Report} (\hyperlink{class_server_socket}{Server\+Socket} \&client\+\_\+socket, \hyperlink{class_flight_report}{Flight\+Report} \&flight\+\_\+report)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An \hyperlink{class_tcas_simulator}{Tcas\+Simulator} represents a specific type of a aircraft detection device simulator which simulates the behavior of an actual T\+C\+A\+S device. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_tcas_simulator_abf93f36c17d5b4bf977254909e0a1f9e}{}\index{Tcas\+Simulator@{Tcas\+Simulator}!Tcas\+Simulator@{Tcas\+Simulator}}
+\index{Tcas\+Simulator@{Tcas\+Simulator}!Tcas\+Simulator@{Tcas\+Simulator}}
+\subsubsection[{Tcas\+Simulator}]{\setlength{\rightskip}{0pt plus 5cm}Tcas\+Simulator\+::\+Tcas\+Simulator (
+\begin{DoxyParamCaption}
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Flight\+Simulation} \&}]{flight\+\_\+simulation}
+\end{DoxyParamCaption}
+)}\label{class_tcas_simulator_abf93f36c17d5b4bf977254909e0a1f9e}
+Create a new \hyperlink{class_tcas_simulator}{Tcas\+Simulator} with the specified flight simulation data and the on the specified network port. 
+\begin{DoxyParams}{Parameters}
+{\em port} & the simulation network port \\
+\hline
+{\em flight\+\_\+simulation} & the flight simulation data to send \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tcas_simulator_afe6cb33e9dbb95da9953e291451aecdd}{}\index{Tcas\+Simulator@{Tcas\+Simulator}!Send\+Report@{Send\+Report}}
+\index{Send\+Report@{Send\+Report}!Tcas\+Simulator@{Tcas\+Simulator}}
+\subsubsection[{Send\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Tcas\+Simulator\+::\+Send\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\+Socket} \&}]{client\+\_\+socket, }
+\item[{{\bf Flight\+Report} \&}]{flight\+\_\+report}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_tcas_simulator_afe6cb33e9dbb95da9953e291451aecdd}
+Send a single device data report to the client connected on the T\+C\+P/\+I\+P network socket using the specified flight report. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the T\+C\+P/\+Ip network socket on which a simulation sense and avoid processor device receiver client is connected. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_detection_device_simulator_ae9e5d29238a9bcc104b4004b52ddffd9}{Detection\+Device\+Simulator}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/sim/inc/\hyperlink{_tcas_simulator_8h}{Tcas\+Simulator.\+h}\item 
+/home/fpoole/development/cpe406/saas/sim/src/\hyperlink{_tcas_simulator_8cpp}{Tcas\+Simulator.\+cpp}\end{DoxyCompactItemize}

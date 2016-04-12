@@ -1,0 +1,78 @@
+\hypertarget{class_ownship_receiver}{}\section{Ownship\+Receiver Class Reference}
+\label{class_ownship_receiver}\index{Ownship\+Receiver@{Ownship\+Receiver}}
+
+
+{\ttfamily \#include $<$Ownship\+Receiver.\+h$>$}
+
+Inheritance diagram for Ownship\+Receiver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ownship_receiver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_ownship_receiver_ac784d1c90d44a0fe3ad2b503d9a87c8f}{Ownship\+Receiver} (std\+::string host, in\+\_\+port\+\_\+t port, \hyperlink{class_report_receiver}{Report\+Receiver} \&report\+\_\+receiver)
+\item 
+virtual void \hyperlink{class_ownship_receiver_ab6bf44b532134a3ba98a2af50871c8f7}{Receive\+Report} (\hyperlink{class_client_socket}{Client\+Socket} \&client\+\_\+socket)
+\item 
+void \hyperlink{class_ownship_receiver_a4aa935f8a765ff652b4faf34be04c7ff}{Print\+Report} (Ownship\+Report \&ownship\+Report)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An \hyperlink{class_ownship_receiver}{Ownship\+Receiver} is a \hyperlink{class_device_receiver}{Device\+Receiver} which implements the functionality necessary to receive reports from an Ownship navigation device. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_ownship_receiver_ac784d1c90d44a0fe3ad2b503d9a87c8f}{}\index{Ownship\+Receiver@{Ownship\+Receiver}!Ownship\+Receiver@{Ownship\+Receiver}}
+\index{Ownship\+Receiver@{Ownship\+Receiver}!Ownship\+Receiver@{Ownship\+Receiver}}
+\subsubsection[{Ownship\+Receiver}]{\setlength{\rightskip}{0pt plus 5cm}Ownship\+Receiver\+::\+Ownship\+Receiver (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{host, }
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Report\+Receiver} \&}]{report\+\_\+receiver}
+\end{DoxyParamCaption}
+)}\label{class_ownship_receiver_ac784d1c90d44a0fe3ad2b503d9a87c8f}
+Create a new \hyperlink{class_ownship_receiver}{Ownship\+Receiver} on the specified network port which connect to the specified host device. 
+\begin{DoxyParams}{Parameters}
+{\em host} & the device I\+P address \\
+\hline
+{\em port} & the network port on which to receive data \\
+\hline
+{\em report\+\_\+receiver} & the interface to the correlation engine \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_ownship_receiver_a4aa935f8a765ff652b4faf34be04c7ff}{}\index{Ownship\+Receiver@{Ownship\+Receiver}!Print\+Report@{Print\+Report}}
+\index{Print\+Report@{Print\+Report}!Ownship\+Receiver@{Ownship\+Receiver}}
+\subsubsection[{Print\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Ownship\+Receiver\+::\+Print\+Report (
+\begin{DoxyParamCaption}
+\item[{Ownship\+Report \&}]{ownship\+Report}
+\end{DoxyParamCaption}
+)}\label{class_ownship_receiver_a4aa935f8a765ff652b4faf34be04c7ff}
+Print the contents of an Ownship\+Report to standard out. \hypertarget{class_ownship_receiver_ab6bf44b532134a3ba98a2af50871c8f7}{}\index{Ownship\+Receiver@{Ownship\+Receiver}!Receive\+Report@{Receive\+Report}}
+\index{Receive\+Report@{Receive\+Report}!Ownship\+Receiver@{Ownship\+Receiver}}
+\subsubsection[{Receive\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Ownship\+Receiver\+::\+Receive\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\+Socket} \&}]{client\+\_\+socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_ownship_receiver_ab6bf44b532134a3ba98a2af50871c8f7}
+Receive a single report from the client socket and forward that report to the \hyperlink{class_report_receiver}{Report\+Receiver}. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the network socket on which to receive device data \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_device_receiver_ac60e55ea6cbd0df590204336b50ce7eb}{Device\+Receiver}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/inc/Ownship\+Receiver.\+h\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/src/Ownship\+Receiver.\+cpp\end{DoxyCompactItemize}

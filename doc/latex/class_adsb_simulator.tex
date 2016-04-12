@@ -1,0 +1,67 @@
+\hypertarget{class_adsb_simulator}{}\section{Adsb\+Simulator Class Reference}
+\label{class_adsb_simulator}\index{Adsb\+Simulator@{Adsb\+Simulator}}
+
+
+{\ttfamily \#include $<$Adsb\+Simulator.\+h$>$}
+
+Inheritance diagram for Adsb\+Simulator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_adsb_simulator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_adsb_simulator_a6a9b87087238c685b862921ad5ad0cbc}{Adsb\+Simulator} (in\+\_\+port\+\_\+t port, \hyperlink{class_flight_simulation}{Flight\+Simulation} \&flight\+\_\+simulation)
+\item 
+virtual void \hyperlink{class_adsb_simulator_a560b7009e705465ef5c2061f89060728}{Send\+Report} (\hyperlink{class_server_socket}{Server\+Socket} \&client\+\_\+socket, \hyperlink{class_flight_report}{Flight\+Report} \&flight\+\_\+report)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An \hyperlink{class_adsb_simulator}{Adsb\+Simulator} represents a specific type of a aircraft detection device simulator which simulates the behavior of an actual A\+D\+S-\/\+B device. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_adsb_simulator_a6a9b87087238c685b862921ad5ad0cbc}{}\index{Adsb\+Simulator@{Adsb\+Simulator}!Adsb\+Simulator@{Adsb\+Simulator}}
+\index{Adsb\+Simulator@{Adsb\+Simulator}!Adsb\+Simulator@{Adsb\+Simulator}}
+\subsubsection[{Adsb\+Simulator}]{\setlength{\rightskip}{0pt plus 5cm}Adsb\+Simulator\+::\+Adsb\+Simulator (
+\begin{DoxyParamCaption}
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Flight\+Simulation} \&}]{flight\+\_\+simulation}
+\end{DoxyParamCaption}
+)}\label{class_adsb_simulator_a6a9b87087238c685b862921ad5ad0cbc}
+Create a new \hyperlink{class_adsb_simulator}{Adsb\+Simulator} with the specified flight simulation data and the on the specified network port. 
+\begin{DoxyParams}{Parameters}
+{\em port} & the simulation network port \\
+\hline
+{\em flight\+\_\+simulation} & the flight simulation data to send \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_adsb_simulator_a560b7009e705465ef5c2061f89060728}{}\index{Adsb\+Simulator@{Adsb\+Simulator}!Send\+Report@{Send\+Report}}
+\index{Send\+Report@{Send\+Report}!Adsb\+Simulator@{Adsb\+Simulator}}
+\subsubsection[{Send\+Report}]{\setlength{\rightskip}{0pt plus 5cm}void Adsb\+Simulator\+::\+Send\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Server\+Socket} \&}]{client\+\_\+socket, }
+\item[{{\bf Flight\+Report} \&}]{flight\+\_\+report}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_adsb_simulator_a560b7009e705465ef5c2061f89060728}
+Send a single device data report to the client connected on the T\+C\+P/\+I\+P network socket using the specified flight report. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the T\+C\+P/\+Ip network socket on which a simulation sense and avoid processor device receiver client is connected. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_detection_device_simulator_ae9e5d29238a9bcc104b4004b52ddffd9}{Detection\+Device\+Simulator}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/sim/inc/\hyperlink{_adsb_simulator_8h}{Adsb\+Simulator.\+h}\item 
+/home/fpoole/development/cpe406/saas/sim/src/\hyperlink{_adsb_simulator_8cpp}{Adsb\+Simulator.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,181 @@
+\hypertarget{class_correlation_engine}{}\section{Correlation\+Engine Class Reference}
+\label{class_correlation_engine}\index{Correlation\+Engine@{Correlation\+Engine}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_correlation_engine_aaf1dbba7cc0ae1b7b16f52b1087638b0}{Run\+Algorithm} (vector$<$ \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ $>$ $\ast$adsb, vector$<$ \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ $>$ $\ast$tcas, vector$<$ \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ $>$ $\ast$radar)
+\item 
+int \hyperlink{class_correlation_engine_a7bc83eae35d04f764c9052a3c1a2e1f4}{Correlate} (vector$<$ \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ $>$ $\ast$adsb, vector$<$ \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ $>$ $\ast$tcas, vector$<$ \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$ $>$ $\ast$radar, bool is\+\_\+relative)
+\item 
+int \hyperlink{class_correlation_engine_a1046d9bac32e32e574ebf15a75c62cd2}{Convert\+Aircraft} (\hyperlink{class_cluster}{Cluster} $\ast$cluster)
+\item 
+\hypertarget{class_correlation_engine_a0e9b298dfad1ecd76e2597a12c31ce6d}{}double {\bfseries Calc\+Distance} (\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$report\+One, \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$report\+Two)\label{class_correlation_engine_a0e9b298dfad1ecd76e2597a12c31ce6d}
+
+\item 
+double \hyperlink{class_correlation_engine_a4276411ce14a37bd4f3d3073631eea35}{Calc\+Heading} (\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$report\+One, \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$report\+Two)
+\item 
+double \hyperlink{class_correlation_engine_a391584f34e92c6c8bd27760b5b42dccf}{Calc\+Velocity} (\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$report\+One, \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$report\+Two)
+\item 
+double \hyperlink{class_correlation_engine_a77d8b104be4698fb45d99a377f2b2b8f}{Calc\+Euclid\+Distance} (\hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$report\+One, \hyperlink{class_surveillance_report}{Surveillance\+Report} $\ast$report\+Two)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_correlation_engine_a288301a0ee4961f8b017136ff5966f15}{}int {\bfseries Check\+Cluster\+Count} ()\label{class_correlation_engine_a288301a0ee4961f8b017136ff5966f15}
+
+\item 
+\hypertarget{class_correlation_engine_ae12e6e93195f9bf4dd33c6658a5b94e5}{}\hyperlink{class_cluster}{Cluster} $\ast$ {\bfseries New\+Cluster} ()\label{class_correlation_engine_ae12e6e93195f9bf4dd33c6658a5b94e5}
+
+\item 
+\hypertarget{class_correlation_engine_ac9e786cd54f824b8372ed5e8c392c81e}{}\hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} $\ast$ {\bfseries New\+Corr\+Aircraft} ()\label{class_correlation_engine_ac9e786cd54f824b8372ed5e8c392c81e}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_correlation_engine_acbd33c95a13ee78d6a0aaaf1ee091213}{}vector$<$ \hyperlink{class_cluster}{Cluster} $\ast$ $>$ {\bfseries \+\_\+clusters}\label{class_correlation_engine_acbd33c95a13ee78d6a0aaaf1ee091213}
+
+\item 
+\hypertarget{class_correlation_engine_a8b802d3a173ace09821a38eafbb12303}{}vector$<$ \hyperlink{class_cluster}{Cluster} $\ast$ $>$ {\bfseries \+\_\+free\+\_\+clusters}\label{class_correlation_engine_a8b802d3a173ace09821a38eafbb12303}
+
+\item 
+\hypertarget{class_correlation_engine_a485c81491859f8b69748e6a55a935473}{}vector$<$ \hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} $\ast$ $>$ {\bfseries \+\_\+corr\+\_\+aircraft}\label{class_correlation_engine_a485c81491859f8b69748e6a55a935473}
+
+\item 
+\hypertarget{class_correlation_engine_ae9e139beb4d41e956bcb3518c275588c}{}vector$<$ \hyperlink{class_correlation_aircraft}{Correlation\+Aircraft} $\ast$ $>$ {\bfseries \+\_\+free\+\_\+aircraft}\label{class_correlation_engine_ae9e139beb4d41e956bcb3518c275588c}
+
+\item 
+\hypertarget{class_correlation_engine_acaf9233b7295ac2e745feea37d8d8fa7}{}bool {\bfseries \+\_\+is\+\_\+relative}\label{class_correlation_engine_acaf9233b7295ac2e745feea37d8d8fa7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_correlation_engine_a77d8b104be4698fb45d99a377f2b2b8f}{}\index{Correlation\+Engine@{Correlation\+Engine}!Calc\+Euclid\+Distance@{Calc\+Euclid\+Distance}}
+\index{Calc\+Euclid\+Distance@{Calc\+Euclid\+Distance}!Correlation\+Engine@{Correlation\+Engine}}
+\subsubsection[{Calc\+Euclid\+Distance}]{\setlength{\rightskip}{0pt plus 5cm}double Correlation\+Engine\+::\+Calc\+Euclid\+Distance (
+\begin{DoxyParamCaption}
+\item[{{\bf Surveillance\+Report} $\ast$}]{report\+One, }
+\item[{{\bf Surveillance\+Report} $\ast$}]{report\+Two}
+\end{DoxyParamCaption}
+)}\label{class_correlation_engine_a77d8b104be4698fb45d99a377f2b2b8f}
+Helper function that calculates the Euclidean distance correlation ranking between two Surveillance Reports for the distance metric.
+
+
+\begin{DoxyParams}{Parameters}
+{\em report\+One} & The first report to compare \\
+\hline
+{\em report\+Two} & The second report to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double The Euclidean distance metric from 0 to 1 where 1 is the highest correlation. 
+\end{DoxyReturn}
+\hypertarget{class_correlation_engine_a4276411ce14a37bd4f3d3073631eea35}{}\index{Correlation\+Engine@{Correlation\+Engine}!Calc\+Heading@{Calc\+Heading}}
+\index{Calc\+Heading@{Calc\+Heading}!Correlation\+Engine@{Correlation\+Engine}}
+\subsubsection[{Calc\+Heading}]{\setlength{\rightskip}{0pt plus 5cm}double Correlation\+Engine\+::\+Calc\+Heading (
+\begin{DoxyParamCaption}
+\item[{{\bf Surveillance\+Report} $\ast$}]{report\+One, }
+\item[{{\bf Surveillance\+Report} $\ast$}]{report\+Two}
+\end{DoxyParamCaption}
+)}\label{class_correlation_engine_a4276411ce14a37bd4f3d3073631eea35}
+Helper function that calculates the heading correlation ranking between two Surveillance Reports for the distance metric.
+
+
+\begin{DoxyParams}{Parameters}
+{\em report\+One} & The first report to compare \\
+\hline
+{\em report\+Two} & The second report to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double The heading metric from 0 to 1 where 1 is the highest correlation. 
+\end{DoxyReturn}
+\hypertarget{class_correlation_engine_a391584f34e92c6c8bd27760b5b42dccf}{}\index{Correlation\+Engine@{Correlation\+Engine}!Calc\+Velocity@{Calc\+Velocity}}
+\index{Calc\+Velocity@{Calc\+Velocity}!Correlation\+Engine@{Correlation\+Engine}}
+\subsubsection[{Calc\+Velocity}]{\setlength{\rightskip}{0pt plus 5cm}double Correlation\+Engine\+::\+Calc\+Velocity (
+\begin{DoxyParamCaption}
+\item[{{\bf Surveillance\+Report} $\ast$}]{report\+One, }
+\item[{{\bf Surveillance\+Report} $\ast$}]{report\+Two}
+\end{DoxyParamCaption}
+)}\label{class_correlation_engine_a391584f34e92c6c8bd27760b5b42dccf}
+Helper function that calculates the velocity correlation ranking between two Surveillance Reports for the distance metric.
+
+
+\begin{DoxyParams}{Parameters}
+{\em report\+One} & The first report to compare \\
+\hline
+{\em report\+Two} & The second report to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float The velocity metric from 0 to 1 where 1 is the highest correlation. 
+\end{DoxyReturn}
+Checks if both reports are not T\+C\+A\+S, or that the T\+C\+A\+S report has a prediction vector\hypertarget{class_correlation_engine_a1046d9bac32e32e574ebf15a75c62cd2}{}\index{Correlation\+Engine@{Correlation\+Engine}!Convert\+Aircraft@{Convert\+Aircraft}}
+\index{Convert\+Aircraft@{Convert\+Aircraft}!Correlation\+Engine@{Correlation\+Engine}}
+\subsubsection[{Convert\+Aircraft}]{\setlength{\rightskip}{0pt plus 5cm}int Correlation\+Engine\+::\+Convert\+Aircraft (
+\begin{DoxyParamCaption}
+\item[{{\bf Cluster} $\ast$}]{cluster}
+\end{DoxyParamCaption}
+)}\label{class_correlation_engine_a1046d9bac32e32e574ebf15a75c62cd2}
+Converts a given \hyperlink{class_cluster}{Cluster} into a Correlate\+Aircraft by averaging the reports\textquotesingle{} fields excluding outliers. 
+\begin{DoxyParams}{Parameters}
+{\em cluster} & The cluster to get data from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 for success, 1 for error 
+\end{DoxyReturn}
+\hypertarget{class_correlation_engine_a7bc83eae35d04f764c9052a3c1a2e1f4}{}\index{Correlation\+Engine@{Correlation\+Engine}!Correlate@{Correlate}}
+\index{Correlate@{Correlate}!Correlation\+Engine@{Correlation\+Engine}}
+\subsubsection[{Correlate}]{\setlength{\rightskip}{0pt plus 5cm}int Correlation\+Engine\+::\+Correlate (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Surveillance\+Report} $\ast$ $>$ $\ast$}]{adsb, }
+\item[{vector$<$ {\bf Surveillance\+Report} $\ast$ $>$ $\ast$}]{tcas, }
+\item[{vector$<$ {\bf Surveillance\+Report} $\ast$ $>$ $\ast$}]{radar, }
+\item[{bool}]{is\+\_\+relative}
+\end{DoxyParamCaption}
+)}\label{class_correlation_engine_a7bc83eae35d04f764c9052a3c1a2e1f4}
+Main method of the correlation algorithm. Called from the \hyperlink{class_report_receiver}{Report\+Receiver}. Takes in all of the Surveillance\+Reports, adds Surveillance\+Reports to all of the possible Clusters for each \hyperlink{class_surveillance_report}{Surveillance\+Report}, generates Clusters, and evaluates each detected aircraft location.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adsb} & The reports received from the A\+D\+S-\/\+B hardware for the current sec \\
+\hline
+{\em radar} & The reports received from the radar hardware for the current sec \\
+\hline
+{\em tcas} & The reports received from the T\+C\+A\+S hardware for the current sec \\
+\hline
+{\em is\+\_\+relative} & if A\+D\+S-\/\+B has a calculated Spherical Coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 for success, 1 for error 
+\end{DoxyReturn}
+\hypertarget{class_correlation_engine_aaf1dbba7cc0ae1b7b16f52b1087638b0}{}\index{Correlation\+Engine@{Correlation\+Engine}!Run\+Algorithm@{Run\+Algorithm}}
+\index{Run\+Algorithm@{Run\+Algorithm}!Correlation\+Engine@{Correlation\+Engine}}
+\subsubsection[{Run\+Algorithm}]{\setlength{\rightskip}{0pt plus 5cm}int Correlation\+Engine\+::\+Run\+Algorithm (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Surveillance\+Report} $\ast$ $>$ $\ast$}]{adsb, }
+\item[{vector$<$ {\bf Surveillance\+Report} $\ast$ $>$ $\ast$}]{tcas, }
+\item[{vector$<$ {\bf Surveillance\+Report} $\ast$ $>$ $\ast$}]{radar}
+\end{DoxyParamCaption}
+)}\label{class_correlation_engine_aaf1dbba7cc0ae1b7b16f52b1087638b0}
+Runs the Algorithm to create all of the Clusters. Will be overridden by each class that extends this class. 
+\begin{DoxyParams}{Parameters}
+{\em adsb} & The reports received from the A\+D\+S-\/\+B hardware for the current sec \\
+\hline
+{\em radar} & The reports received from the radar hardware for the current sec \\
+\hline
+{\em tcas} & The reports received from the T\+C\+A\+S hardware for the current sec \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for success, -\/1 for error 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/inc/\hyperlink{_correlation_engine_8h}{Correlation\+Engine.\+h}\item 
+/home/fpoole/development/cpe406/saas/saap/algorithm/src/\hyperlink{_correlation_engine_8cpp}{Correlation\+Engine.\+cpp}\end{DoxyCompactItemize}

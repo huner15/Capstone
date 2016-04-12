@@ -1,0 +1,88 @@
+\hypertarget{class_device_receiver}{}\section{Device\+Receiver Class Reference}
+\label{class_device_receiver}\index{Device\+Receiver@{Device\+Receiver}}
+
+
+{\ttfamily \#include $<$Device\+Receiver.\+h$>$}
+
+Inheritance diagram for Device\+Receiver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_device_receiver}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_device_receiver_ab9a0a8ba1d462e60f86bdd2a1278d75d}{Device\+Receiver} (std\+::string host, in\+\_\+port\+\_\+t port, \hyperlink{class_report_receiver}{Report\+Receiver} \&report\+\_\+receiver)
+\item 
+void \hyperlink{class_device_receiver_aaf04b5a1969858d970fac17610139c27}{Receive} ()
+\item 
+virtual void \hyperlink{class_device_receiver_ac60e55ea6cbd0df590204336b50ce7eb}{Receive\+Report} (\hyperlink{class_client_socket}{Client\+Socket} \&client\+\_\+socket)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_report_receiver}{Report\+Receiver} \hyperlink{class_device_receiver_a8dbbb8f8dbcca609735639a91f38b710}{\+\_\+report\+\_\+receiver}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A \hyperlink{class_device_receiver}{Device\+Receiver} is an abstract representation of an aircraft surveillance device data report receiver. Surveillance device data is expected to received on separate T\+C\+P/\+I\+P network ports and this abstract receiver is designed to exist in it\textquotesingle{}s own thread. Receiving behavior is dependent on te behavior of \hyperlink{class_device_receiver_ac60e55ea6cbd0df590204336b50ce7eb}{Receive\+Report()} for a specific device type. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_device_receiver_ab9a0a8ba1d462e60f86bdd2a1278d75d}{}\index{Device\+Receiver@{Device\+Receiver}!Device\+Receiver@{Device\+Receiver}}
+\index{Device\+Receiver@{Device\+Receiver}!Device\+Receiver@{Device\+Receiver}}
+\subsubsection[{Device\+Receiver}]{\setlength{\rightskip}{0pt plus 5cm}Device\+Receiver\+::\+Device\+Receiver (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{host, }
+\item[{in\+\_\+port\+\_\+t}]{port, }
+\item[{{\bf Report\+Receiver} \&}]{report\+\_\+receiver}
+\end{DoxyParamCaption}
+)}\label{class_device_receiver_ab9a0a8ba1d462e60f86bdd2a1278d75d}
+Create a new \hyperlink{class_device_receiver}{Device\+Receiver} on the specified network port which connect to the specified host device. 
+\begin{DoxyParams}{Parameters}
+{\em host} & the device I\+P address \\
+\hline
+{\em port} & the network port on which to receive data \\
+\hline
+{\em report\+\_\+receiver} & the interface to the correlation engine \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_device_receiver_aaf04b5a1969858d970fac17610139c27}{}\index{Device\+Receiver@{Device\+Receiver}!Receive@{Receive}}
+\index{Receive@{Receive}!Device\+Receiver@{Device\+Receiver}}
+\subsubsection[{Receive}]{\setlength{\rightskip}{0pt plus 5cm}void Device\+Receiver\+::\+Receive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_device_receiver_aaf04b5a1969858d970fac17610139c27}
+Continually wait for and receive reports from the connected device until the connection is severed. \hypertarget{class_device_receiver_ac60e55ea6cbd0df590204336b50ce7eb}{}\index{Device\+Receiver@{Device\+Receiver}!Receive\+Report@{Receive\+Report}}
+\index{Receive\+Report@{Receive\+Report}!Device\+Receiver@{Device\+Receiver}}
+\subsubsection[{Receive\+Report}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Device\+Receiver\+::\+Receive\+Report (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\+Socket} \&}]{client\+\_\+socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_device_receiver_ac60e55ea6cbd0df590204336b50ce7eb}
+Receive a single report from the client socket and forward that report to the \hyperlink{class_report_receiver}{Report\+Receiver}. 
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & the network socket on which to receive device data \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_tcas_receiver_af888383db22a323d0fa86844537b9b5f}{Tcas\+Receiver}, \hyperlink{class_adsb_receiver_a7801fa4ad8f9f2b5d03364439f1d2476}{Adsb\+Receiver}, \hyperlink{class_ownship_receiver_ab6bf44b532134a3ba98a2af50871c8f7}{Ownship\+Receiver}, and \hyperlink{class_radar_receiver_acc3201ca9d9cabaca6a1d1e1e4d6d8bc}{Radar\+Receiver}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_device_receiver_a8dbbb8f8dbcca609735639a91f38b710}{}\index{Device\+Receiver@{Device\+Receiver}!\+\_\+report\+\_\+receiver@{\+\_\+report\+\_\+receiver}}
+\index{\+\_\+report\+\_\+receiver@{\+\_\+report\+\_\+receiver}!Device\+Receiver@{Device\+Receiver}}
+\subsubsection[{\+\_\+report\+\_\+receiver}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Report\+Receiver} Device\+Receiver\+::\+\_\+report\+\_\+receiver\hspace{0.3cm}{\ttfamily [protected]}}\label{class_device_receiver_a8dbbb8f8dbcca609735639a91f38b710}
+Sense and avoid engine interface. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/inc/Device\+Receiver.\+h\item 
+/home/fpoole/development/cpe406/saas/saap/receiver/src/Device\+Receiver.\+cpp\end{DoxyCompactItemize}

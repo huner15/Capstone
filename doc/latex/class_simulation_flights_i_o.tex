@@ -1,6 +1,6 @@
-\hypertarget{class_simulation_flights_i_o}{}\section{Simulation\+Flights\+IO Class Reference}
-\label{class_simulation_flights_i_o}\index{Simulation\+Flights\+IO@{Simulation\+Flights\+IO}}
-Inheritance diagram for Simulation\+Flights\+IO\+:\begin{figure}[H]
+\hypertarget{class_simulation_flights_i_o}{}\section{Simulation\+Flights\+I\+O Class Reference}
+\label{class_simulation_flights_i_o}\index{Simulation\+Flights\+I\+O@{Simulation\+Flights\+I\+O}}
+Inheritance diagram for Simulation\+Flights\+I\+O\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{class_simulation_flights_i_o}
@@ -9,33 +9,51 @@ Inheritance diagram for Simulation\+Flights\+IO\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual void {\bfseries write\+File} (\hyperlink{class_json_1_1_value}{Json\+::\+Value} value)\hypertarget{class_simulation_flights_i_o_aab1dd1c43b626e70bc60d4b79d703597}{}\label{class_simulation_flights_i_o_aab1dd1c43b626e70bc60d4b79d703597}
+\hypertarget{class_simulation_flights_i_o_aab1dd1c43b626e70bc60d4b79d703597}{}virtual void {\bfseries write\+File} (\hyperlink{class_json_1_1_value}{Json\+::\+Value} value)\label{class_simulation_flights_i_o_aab1dd1c43b626e70bc60d4b79d703597}
 
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Read\+File} ()\hypertarget{class_simulation_flights_i_o_a4403f368173eeaf850e4d161e00d064f}{}\label{class_simulation_flights_i_o_a4403f368173eeaf850e4d161e00d064f}
+\hypertarget{class_simulation_flights_i_o_a4ececfae030e214ad33310e1ea5972c4}{}static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Get\+All\+Reports} (std\+::string file\+\_\+name)\label{class_simulation_flights_i_o_a4ececfae030e214ad33310e1ea5972c4}
 
 \item 
-static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Get\+Simulation\+Flights} ()\hypertarget{class_simulation_flights_i_o_a0fecd6176618527ce882c1bd705cea2e}{}\label{class_simulation_flights_i_o_a0fecd6176618527ce882c1bd705cea2e}
+\hypertarget{class_simulation_flights_i_o_a60a94a3c3bb5b38a8372e033023c120c}{}static \hyperlink{class_flight_simulation}{Flight\+Simulation} {\bfseries Read\+File} (std\+::string file\+\_\+name)\label{class_simulation_flights_i_o_a60a94a3c3bb5b38a8372e033023c120c}
 
 \item 
-static std\+::vector$<$ \hyperlink{class_json_1_1_value}{Json\+::\+Value} $>$ {\bfseries Get\+All\+A\+D\+S\+B\+Reports} ()\hypertarget{class_simulation_flights_i_o_ab80deb0dbd2eff210c5a24211fbb0319}{}\label{class_simulation_flights_i_o_ab80deb0dbd2eff210c5a24211fbb0319}
+\hypertarget{class_simulation_flights_i_o_a0fecd6176618527ce882c1bd705cea2e}{}static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Get\+Simulation\+Flights} ()\label{class_simulation_flights_i_o_a0fecd6176618527ce882c1bd705cea2e}
 
 \item 
-static std\+::vector$<$ \hyperlink{class_json_1_1_value}{Json\+::\+Value} $>$ {\bfseries Get\+All\+T\+C\+A\+S\+Reports} ()\hypertarget{class_simulation_flights_i_o_ac54cf3a5ddcda61e56fbf523cfe7c541}{}\label{class_simulation_flights_i_o_ac54cf3a5ddcda61e56fbf523cfe7c541}
+\hypertarget{class_simulation_flights_i_o_ab02d0349153e24e2067999c92d70835d}{}static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Get\+Reports} (std\+::string file\+\_\+name)\label{class_simulation_flights_i_o_ab02d0349153e24e2067999c92d70835d}
 
 \item 
-static std\+::vector$<$ \hyperlink{class_json_1_1_value}{Json\+::\+Value} $>$ {\bfseries Get\+All\+Radar\+Reports} ()\hypertarget{class_simulation_flights_i_o_aec11fa10f5610c6505c0ffe8c59ded5b}{}\label{class_simulation_flights_i_o_aec11fa10f5610c6505c0ffe8c59ded5b}
+\hypertarget{class_simulation_flights_i_o_a5e17481319fed6d1f4a324cabf2f9f68}{}static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Get\+All\+A\+D\+S\+B\+Reports} ()\label{class_simulation_flights_i_o_a5e17481319fed6d1f4a324cabf2f9f68}
 
 \item 
-static std\+::vector$<$ \hyperlink{class_json_1_1_value}{Json\+::\+Value} $>$ {\bfseries Get\+A\+Ll\+Ownship\+Reports} ()\hypertarget{class_simulation_flights_i_o_a047aa637503e4988f9b9c0da284a601b}{}\label{class_simulation_flights_i_o_a047aa637503e4988f9b9c0da284a601b}
+\hypertarget{class_simulation_flights_i_o_adace89786d88373966ae13d357c85aee}{}static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Get\+All\+T\+C\+A\+S\+Reports} ()\label{class_simulation_flights_i_o_adace89786d88373966ae13d357c85aee}
+
+\item 
+\hypertarget{class_simulation_flights_i_o_a87b26150fe71900cb80a042f0788bc0b}{}static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Get\+All\+Radar\+Reports} ()\label{class_simulation_flights_i_o_a87b26150fe71900cb80a042f0788bc0b}
+
+\item 
+\hypertarget{class_simulation_flights_i_o_ade0642e5b82e2f1dcdc9cfb37948930a}{}static \hyperlink{class_json_1_1_value}{Json\+::\+Value} {\bfseries Get\+All\+Ownship\+Reports} ()\label{class_simulation_flights_i_o_ade0642e5b82e2f1dcdc9cfb37948930a}
+
+\item 
+\hypertarget{class_simulation_flights_i_o_a8b2cbdb368354ef6d146c2ebff40b772}{}static Ads\+B\+Report {\bfseries Set\+Ads\+B\+Report\+Data} (std\+::time\+\_\+t time, double latitude, double longitude, double altitude, std\+::string tail\+\_\+number, double north, double east, double down)\label{class_simulation_flights_i_o_a8b2cbdb368354ef6d146c2ebff40b772}
+
+\item 
+\hypertarget{class_simulation_flights_i_o_aa5459f4e8844db69c79fa970c5ce52ee}{}static Radar\+Report {\bfseries Set\+Radar\+Report\+Data} (std\+::time\+\_\+t time, double range, double azimuth, double elevation, uint16\+\_\+t radar\+\_\+id, double latitude, double longitude, double altitude, double north, double east, double down)\label{class_simulation_flights_i_o_aa5459f4e8844db69c79fa970c5ce52ee}
+
+\item 
+\hypertarget{class_simulation_flights_i_o_abec6b482e52bb519f435714b6c738c45}{}static Tcas\+Report {\bfseries Set\+Tcas\+Report\+Data} (uint8\+\_\+t tcas\+\_\+id, double range, double altitude, double bearing)\label{class_simulation_flights_i_o_abec6b482e52bb519f435714b6c738c45}
+
+\item 
+\hypertarget{class_simulation_flights_i_o_a5c9753c35e366a5221066d9843270cc2}{}static Ownship\+Report {\bfseries Set\+Ownship\+Report\+Data} (std\+::time\+\_\+t time, double latitude, double longitude, double altitude, double north, double east, double down)\label{class_simulation_flights_i_o_a5c9753c35e366a5221066d9843270cc2}
 
 \end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/andrea/\+Clion\+Projects/saas/lib/jsonio/inc/Simulation\+Flights\+I\+O.\+h\item 
-/home/andrea/\+Clion\+Projects/saas/lib/jsonio/src/Simulation\+Flights\+I\+O.\+cpp\end{DoxyCompactItemize}
+/home/fpoole/development/cpe406/saas/lib/jsonio/inc/Simulation\+Flights\+I\+O.\+h\item 
+/home/fpoole/development/cpe406/saas/lib/jsonio/src/Simulation\+Flights\+I\+O.\+cpp\end{DoxyCompactItemize}

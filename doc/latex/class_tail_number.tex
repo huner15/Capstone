@@ -1,0 +1,91 @@
+\hypertarget{class_tail_number}{}\section{Tail\+Number Class Reference}
+\label{class_tail_number}\index{Tail\+Number@{Tail\+Number}}
+
+
+{\ttfamily \#include $<$Tail\+Number.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tail_number_aedfed97e186c7692a736e6f0ec1a2675}{Tail\+Number} ()
+\item 
+\hyperlink{class_tail_number_a5ff2cb0cd0a307ab278e541a7e8bf27b}{Tail\+Number} (std\+::string tail\+\_\+number)
+\item 
+\hypertarget{class_tail_number_a8f616b8492a7c3ad27e2bf4c8b0ac1d8}{}{\bfseries Tail\+Number} (const \hyperlink{class_tail_number}{Tail\+Number} \&other)\label{class_tail_number_a8f616b8492a7c3ad27e2bf4c8b0ac1d8}
+
+\item 
+\hyperlink{class_tail_number_a1ac1a2e34776196095cff27086dcda59}{$\sim$\+Tail\+Number} ()
+\item 
+\hypertarget{class_tail_number_a405874bdd284ff56d167d8866072267d}{}\hyperlink{class_tail_number}{Tail\+Number} \& {\bfseries operator=} (const \hyperlink{class_tail_number}{Tail\+Number} \&other)\label{class_tail_number_a405874bdd284ff56d167d8866072267d}
+
+\item 
+std\+::string \hyperlink{class_tail_number_a3d0e0fea667ef172fbc3aaa843c701ab}{Get} () const 
+\item 
+bool \hyperlink{class_tail_number_a83f6ce7e20387e68c84716088ff4fec4}{operator==} (\hyperlink{class_tail_number}{Tail\+Number} tail\+\_\+number)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A tail number represents an aircraft tail number with a length of six alphanumeric characters. This model does not include real life naming restrictions specified by international and national organizations such as indexing characters by country of origin as this may divulge properties of the identified aircraft. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_tail_number_aedfed97e186c7692a736e6f0ec1a2675}{}\index{Tail\+Number@{Tail\+Number}!Tail\+Number@{Tail\+Number}}
+\index{Tail\+Number@{Tail\+Number}!Tail\+Number@{Tail\+Number}}
+\subsubsection[{Tail\+Number}]{\setlength{\rightskip}{0pt plus 5cm}Tail\+Number\+::\+Tail\+Number (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_tail_number_aedfed97e186c7692a736e6f0ec1a2675}
+Create a randomly generated alphanumeric tail number. \hypertarget{class_tail_number_a5ff2cb0cd0a307ab278e541a7e8bf27b}{}\index{Tail\+Number@{Tail\+Number}!Tail\+Number@{Tail\+Number}}
+\index{Tail\+Number@{Tail\+Number}!Tail\+Number@{Tail\+Number}}
+\subsubsection[{Tail\+Number}]{\setlength{\rightskip}{0pt plus 5cm}Tail\+Number\+::\+Tail\+Number (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{tail\+\_\+number}
+\end{DoxyParamCaption}
+)}\label{class_tail_number_a5ff2cb0cd0a307ab278e541a7e8bf27b}
+Create a tail number using a specified six character string. 
+\begin{DoxyParams}{Parameters}
+{\em tail\+\_\+number} & a six character string \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & exceptions if the tail number length is not six \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tail_number_a1ac1a2e34776196095cff27086dcda59}{}\index{Tail\+Number@{Tail\+Number}!````~Tail\+Number@{$\sim$\+Tail\+Number}}
+\index{````~Tail\+Number@{$\sim$\+Tail\+Number}!Tail\+Number@{Tail\+Number}}
+\subsubsection[{$\sim$\+Tail\+Number}]{\setlength{\rightskip}{0pt plus 5cm}Tail\+Number\+::$\sim$\+Tail\+Number (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_tail_number_a1ac1a2e34776196095cff27086dcda59}
+Deconstruct a tail number. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tail_number_a3d0e0fea667ef172fbc3aaa843c701ab}{}\index{Tail\+Number@{Tail\+Number}!Get@{Get}}
+\index{Get@{Get}!Tail\+Number@{Tail\+Number}}
+\subsubsection[{Get}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Tail\+Number\+::\+Get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_tail_number_a3d0e0fea667ef172fbc3aaa843c701ab}
+Returns the tail number as a mutable string. \begin{DoxyReturn}{Returns}
+the tail number 
+\end{DoxyReturn}
+\hypertarget{class_tail_number_a83f6ce7e20387e68c84716088ff4fec4}{}\index{Tail\+Number@{Tail\+Number}!operator==@{operator==}}
+\index{operator==@{operator==}!Tail\+Number@{Tail\+Number}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool Tail\+Number\+::operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf Tail\+Number}}]{tail\+\_\+number}
+\end{DoxyParamCaption}
+)}\label{class_tail_number_a83f6ce7e20387e68c84716088ff4fec4}
+Checks to se if two Tail\+Numbers are the same \begin{DoxyReturn}{Returns}
+boolean stating whether two booleans are the same. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/lib/util/inc/\hyperlink{_tail_number_8h}{Tail\+Number.\+h}\item 
+/home/fpoole/development/cpe406/saas/lib/util/src/Tail\+Number.\+cpp\end{DoxyCompactItemize}

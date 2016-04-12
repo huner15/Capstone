@@ -1,0 +1,29 @@
+\hypertarget{class_simulation_flights_generator}{}\section{Simulation\+Flights\+Generator Class Reference}
+\label{class_simulation_flights_generator}\index{Simulation\+Flights\+Generator@{Simulation\+Flights\+Generator}}
+
+
+{\ttfamily \#include $<$Simulation\+Flights\+Generator.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_simulation_flights_generator_a16b4aac72f151322f19a2fa4e6551270}{}{\bfseries Simulation\+Flights\+Generator} (std\+::string flight\+\_\+scenario\+\_\+file\+\_\+name)\label{class_simulation_flights_generator_a16b4aac72f151322f19a2fa4e6551270}
+
+\item 
+\hypertarget{class_simulation_flights_generator_a9a0c16b0c69dfd3a409e4e066ac5df3b}{}std\+::vector$<$ Flights $>$ {\bfseries Generate\+Actual\+Flights} ()\label{class_simulation_flights_generator_a9a0c16b0c69dfd3a409e4e066ac5df3b}
+
+\item 
+\hypertarget{class_simulation_flights_generator_adf2866eb7b7b6d8b9834c1a78c82c51d}{}std\+::vector$<$ Simulation\+Flights $>$ {\bfseries Generate\+Simulation\+Flights} ()\label{class_simulation_flights_generator_adf2866eb7b7b6d8b9834c1a78c82c51d}
+
+\item 
+\hypertarget{class_simulation_flights_generator_acefe296dc90c9719cde9bf91be529105}{}Report {\bfseries Create\+Actual\+Report} ()\label{class_simulation_flights_generator_acefe296dc90c9719cde9bf91be529105}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+S\+F\+G is constructed by taking in file name of flightscenario. An instance of a Flight\+Scenartio is created, which is a composite of aircraft which is a composite of flightplans which is a composite of flight legs. Using this flightscenario the S\+F\+G will create an Actual\+Flighs class which is a composite of Actual \hyperlink{class_flight}{Flight} which is a composite of actual reports. The S\+F\+G will create Actual Reports one by one by by time and information from the aircraft in the flightscenario class. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/fpoole/development/cpe406/saas/sim/inc/Simulation\+Flights\+Generator.\+h\end{DoxyCompactItemize}
