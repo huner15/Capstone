@@ -62,9 +62,8 @@ GeographicCoordinate *GeographicCoordinate::Average(GeographicCoordinate
         count++;
         coords.push_back(three);
     }
-printf("geo count %d\n", count);
-    for (int i = 0; i < count; i++)
-    {
+
+    for (int i = 0; i < count; i++) {
         latitude += coords.at(i)->_latitude;
         longitude += coords.at(i)->_longitude;
         altitude += coords.at(i)->_altitude;
@@ -80,18 +79,17 @@ printf("geo count %d\n", count);
             pow(coords.at(2)->_longitude, 2) + pow(coords.at(2)->_altitude, 2));
 
         //if difference is twice as big as other distance, must be an outlier
-        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 0 : 0;
-        removeVal = (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 1 : 0;
-        removeVal = (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 2 : 0;
+        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 0 : -1;
+        removeVal = (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 1 : -1;
+        removeVal = (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 2 : -1;
 
-        if (removeVal != 0) {
+        if (removeVal != -1) {
             count--;
             latitude -= coords.at(removeVal)->_latitude;
             longitude -= coords.at(removeVal)->_longitude;
             altitude -= coords.at(removeVal)->_altitude;
         }
     }
-    printf("Geo\n");
 
     //No coordinates exist
     if (count == 0)

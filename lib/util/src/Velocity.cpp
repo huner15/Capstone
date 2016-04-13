@@ -51,8 +51,7 @@ Velocity *Velocity::Average(Velocity *one, Velocity *two, Velocity
         velocities.push_back(three);
     }
 
-    for (int i = 0; i < count; i++)
-    {
+    for (int i = 0; i < count; i++) {
         east += velocities.at(i)->east;
         down += velocities.at(i)->down;
         north += velocities.at(i)->north;
@@ -68,11 +67,11 @@ Velocity *Velocity::Average(Velocity *one, Velocity *two, Velocity
             pow(velocities.at(2)->down, 2) + pow(velocities.at(2)->north, 2));
 
         //if difference is twice as big as other distance, must be an outlier
-        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 0 : 0;
-        removeVal += (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 1 : 0;
-        removeVal += (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 2 : 0;
+        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 0 : -1;
+        removeVal += (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 1 : -1;
+        removeVal += (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 2 : -1;
 
-        if (removeVal != 0) {
+        if (removeVal != -1) {
             count--;
             east -= velocities.at(removeVal)->east;
             down -= velocities.at(removeVal)->down;

@@ -8,14 +8,14 @@
  * most likely CorrelationAircraft.
 */
 
-#include "Cluster.h"
 #include "CorrelationAircraft.h"
 
 CorrelationAircraft::CorrelationAircraft(std::time_t time, TailNumber
         tail_number, TcasID tcas_id,
         RadarID radar_id, GeographicCoordinate geographic_coordinate,
         SphericalCoordinate spherical_coordinate, Velocity velocity,
-        Velocity predicted_velocity, GeographicCoordinate predicted_location, Device type) {
+        Velocity predicted_velocity, GeographicCoordinate predicted_location,
+        Device type) {
     _predicted_location = predicted_location;
     _predicted_velocity = predicted_velocity;
     _time = time;
@@ -62,6 +62,10 @@ CorrelationAircraft::CorrelationAircraft() {
 
 CorrelationAircraft::~CorrelationAircraft() {
 
+}
+
+void CorrelationAircraft::SetType(Device type) {
+    _type = type;
 }
 
 Velocity CorrelationAircraft::GetPredictedVelocity() const {

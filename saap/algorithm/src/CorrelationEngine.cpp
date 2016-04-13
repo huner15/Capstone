@@ -12,11 +12,29 @@
 using namespace std;
 
 CorrelationEngine::CorrelationEngine() {
+    _is_relative = true;
+}
 
+CorrelationEngine::CorrelationEngine(bool relativeValue) {
+    _is_relative = relativeValue;
 }
 
 CorrelationEngine::~CorrelationEngine() {
 
+}
+
+int CorrelationEngine::GetClusterSize() {
+    return _clusters.size();
+}
+
+void CorrelationEngine::AddFreeAircraft(int index) {
+    CorrelationAircraft *aircraft = _corr_aircraft.at(index);
+    _free_aircraft.push_back(aircraft);
+}
+
+void CorrelationEngine::AddFreeCluster(int index) {
+    Cluster *cluster = _clusters.at(index);
+    _free_clusters.push_back(cluster);
 }
 
 int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
@@ -25,7 +43,7 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
     Cluster *cluster;
 
     printf("Running top level algorithm\n");
-    printf("adsb: %d tcas: %d radar: %d\n", adsb->size(),
+    printf("adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
            tcas->size(), radar->size());
 
     //Create individual clusters for all ads-b reports
@@ -53,7 +71,7 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
             _clusters.push_back(cluster);
         }
 
-        printf("clusters size: %d and aircraft size: %d\n", _clusters
+        printf("clusters size: %lu and aircraft size: %lu\n", _clusters
                 .size(),
                 _corr_aircraft.size());
     }
@@ -126,15 +144,16 @@ double CorrelationEngine::CompareTcasToClusters(SurveillanceReport *report) {
 int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
         vector<SurveillanceReport *> *tcas,
         vector<SurveillanceReport *> *radar, bool is_relative) {
+    CorrelationAircraft *temp;
     _is_relative = is_relative;
-
-    printf("Correlate. adsb: %d tcas: %d radar: %d\n", adsb->size(),
-           tcas->size(), radar->size());
-    printf("Correlate called\n");
 
     //mutex lock for using the cluster vectors
     //pthread_mutex_lock(&cluster_mutex);
     _clusters.clear();
+
+    printf("Correlate. adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
+           tcas->size(), radar->size());
+    printf("Correlate called\n");
 
     if (RunAlgorithm(adsb, tcas, radar) != TRUE) {
         printf("Error with running the Algorithm.\n");
@@ -153,12 +172,13 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
 
     //for every cluster, call ConvertAircraft(), add to _corr_aircraft
     for (uint32_t i = 0; i < _clusters.size(); i++) {
-        ConvertAircraft(_clusters.at(i));
+        temp = ConvertAircraft(_clusters.at(i));
+        _corr_aircraft.push_back(temp);
         _free_clusters.push_back(_clusters.at(i));
     }
-printf("%d\n", _corr_aircraft.size());
+
+printf("%lu\n", _corr_aircraft.size());
     //unlock cluster vectors
-    _clusters.clear();
    // pthread_mutex_unlock(&cluster_mutex);
 
     printf("Categorize!\n");
@@ -180,7 +200,7 @@ printf("%d\n", _corr_aircraft.size());
 
 }
 
-int CorrelationEngine::ConvertAircraft(Cluster *cluster) {
+CorrelationAircraft *CorrelationEngine::ConvertAircraft(Cluster *cluster) {
     Device type;
     CorrelationAircraft *aircraft;
     std::time_t time;
@@ -194,43 +214,46 @@ int CorrelationEngine::ConvertAircraft(Cluster *cluster) {
     SphericalCoordinate *adsbS = NULL, *tcasS = NULL, *radarS = NULL;
     Velocity *adsbV = NULL, *tcasV = NULL, *radarV = NULL;
 
-    //Set Device type based on the ranking: ads-b, tcas, radar
+    //Set Device type based on the ranking: ads-b is best, tcas, radar
+    if (cluster->_radar != NULL) {
+        type = RADAR;
+        time = cluster->_radar->GetTime();
+        radar_id = cluster->_radar->GetRadarID();
+//        geographic_coordinate = *cluster->_radar->GetGeographicCoordinate();
+//        spherical_coordinate = *cluster->_radar->GetSphericalCoordinate();
+//        velocity = *cluster->_radar->GetVelocity();
+        radarG = cluster->_radar->GetGeographicCoordinate();
+        radarS = cluster->_radar->GetSphericalCoordinate();
+        radarV = cluster->_radar->GetVelocity();
+    }
+    if (cluster->_tcas != NULL) {
+        type = TCAS;
+        time = cluster->_tcas->GetTime();
+        tcas_id = cluster->_tcas->GetTcasID();
+//        geographic_coordinate = *cluster->_tcas->GetGeographicCoordinate();
+//        spherical_coordinate = *cluster->_tcas->GetSphericalCoordinate();
+//        velocity = *cluster->_tcas->GetVelocity();
+        tcasG = cluster->_tcas->GetGeographicCoordinate();
+        tcasS = cluster->_tcas->GetSphericalCoordinate();
+        tcasV = cluster->_tcas->GetVelocity();
+    }
     if (cluster->_adsb != NULL) {
         type = ADSB;
         time = cluster->_adsb->GetTime();
         tail_number = cluster->_adsb->GetTailNumber();
-        geographic_coordinate = *cluster->_adsb->GetGeographicCoordinate();
-        spherical_coordinate = *cluster->_adsb->GetSphericalCoordinate();
-        velocity = *cluster->_adsb->GetVelocity();
-//        adsbG = cluster->_adsb->GetGeographicCoordinate();
-//        adsbS = cluster->_adsb->GetSphericalCoordinate();
-//        adsbV = cluster->_adsb->GetVelocity();
+//        geographic_coordinate = *cluster->_adsb->GetGeographicCoordinate();
+//        spherical_coordinate = *cluster->_adsb->GetSphericalCoordinate();
+//        velocity = *cluster->_adsb->GetVelocity();
+        adsbG = cluster->_adsb->GetGeographicCoordinate();
+        adsbS = cluster->_adsb->GetSphericalCoordinate();
+        adsbV = cluster->_adsb->GetVelocity();
     }
-    else if (cluster->_tcas != NULL) {
-        type = TCAS;
-        time = cluster->_tcas->GetTime();
-        tcas_id = cluster->_tcas->GetTcasID();
-        geographic_coordinate = *cluster->_tcas->GetGeographicCoordinate();
-        spherical_coordinate = *cluster->_tcas->GetSphericalCoordinate();
-        velocity = *cluster->_tcas->GetVelocity();
-//        tcasG = cluster->_tcas->GetGeographicCoordinate();
-//        tcasS = cluster->_tcas->GetSphericalCoordinate();
-//        tcasV = cluster->_tcas->GetVelocity();
-    }
-    else if (cluster->_radar != NULL) {
-        type = RADAR;
-        time = cluster->_radar->GetTime();
-        radar_id = cluster->_radar->GetRadarID();
-        geographic_coordinate = *cluster->_radar->GetGeographicCoordinate();
-        spherical_coordinate = *cluster->_radar->GetSphericalCoordinate();
-        velocity = *cluster->_radar->GetVelocity();
-//        radarG = cluster->_radar->GetGeographicCoordinate();
-//        radarS = cluster->_radar->GetSphericalCoordinate();
-//        radarV = cluster->_radar->GetVelocity();
-    }
-    else {
+
+    //Check for empty clusters
+    if (cluster->_adsb == NULL && cluster->_tcas == NULL
+        && cluster->_radar == NULL) {
         printf("Trying to convert empty Cluster to CorrelationAircraft\n");
-        return EXITVAL;
+        return NULL;
     }
 
    geographic_coordinate = *
@@ -249,9 +272,7 @@ int CorrelationEngine::ConvertAircraft(Cluster *cluster) {
         geographic_coordinate, spherical_coordinate, velocity, predicted_velocity,
         predicted_loc, type);
 
-    _corr_aircraft.push_back(aircraft);
-
-    return 0;
+    return aircraft;
 }
 
 int CorrelationEngine::CheckClusterCount() {
@@ -424,7 +445,7 @@ double CorrelationEngine::CalcVelocity(SurveillanceReport *reportOne,
         error += CalcVelocityError(reportTwo->GetDevice());
         metric = (error * difference) / error;
     }
-    //Reports can't be compared, so have to be 1 to not skew result
+    //Reports can't be compared, so has to be 1 to not skew result
     else {
         metric = 1;
     }
@@ -438,7 +459,7 @@ double CorrelationEngine::CalcVelocity(SurveillanceReport *reportOne,
 }
 
 double CorrelationEngine::CalcVelocityError(Device type) {
-    double error = 30;
+    double error = -100;
 
     switch(type) {
         case ADSB:

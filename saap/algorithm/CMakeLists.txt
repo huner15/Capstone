@@ -3,6 +3,7 @@ project(saap)
 add_subdirectory(test)
 
 file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+#     "${CMAKE_CURRENT_SOURCE_DIR}/../receiver/src/SurveillanceReport.cpp")
 
 add_library(saap_lib STATIC ${SOURCE_FILES})
 target_link_libraries(saap_lib util_lib gp_lib categorize_lib)

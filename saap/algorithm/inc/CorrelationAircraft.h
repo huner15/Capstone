@@ -51,6 +51,12 @@ public:
      */
     CorrelationAircraft();
 
+    /*
+     * Sets a new type to the CorrelationAircraft.
+     * @type The new Device type
+     */
+    void SetType(Device type);
+
     /**
      * Creates a new CorrelationAircraft with the needed values.
      */

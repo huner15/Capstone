@@ -53,20 +53,6 @@ protected:
      */
     int CheckClusterCount();
 
-    /*
-     * Gets an empty Cluster pointer from the existing list or
-     * mallocs a new one.
-     * @return Cluster * the pointer to the new Cluster to use
-     */
-    Cluster *NewCluster();
-
-    /*
-     * Gets an empty CorrelationAircraft pointer from the existing list or
-     * mallocs a new one.
-     * @return Cluster * the pointer to the new Cluster to use
-     */
-    CorrelationAircraft *NewCorrAircraft();
-
 private:
     /**
      * Compares two geographical coordinates to calculate the spherical
@@ -106,9 +92,43 @@ private:
     double CalcVelocityError(Device type);
 
 public:
+    /*
+     * No parameter constructor, sets _is_relative to true.
+     */
     CorrelationEngine();
 
+    /*
+     * One parameter constructor, sets _is_relative to given value.
+     * For testing.
+     * @relativeValue boolean if the SurveillanceReports are converted
+     * to all relative values
+     */
+    CorrelationEngine(bool relativeValue);
+
+    /*
+     * Empty deconstructor, does nothing.
+     */
     ~CorrelationEngine();
+
+    /*
+     * Returns the current size of the clusters vector.
+     * @int _clusters size
+     */
+    int GetClusterSize();
+
+    /*
+     * Moves a specified CorrelationAircraft to the free list.
+     * Used to test NewCorrelationAircraft() and Correlate() methods.
+     * @index int the index to move to the free list
+     */
+    void AddFreeAircraft(int index);
+
+    /*
+     * Moves a specified Cluster to the free list.
+     * Used to test NewCluster() and Correlate() methods.
+     * @index int the index to move to the free list
+     */
+    void AddFreeCluster(int index);
 
     /**
      * Runs the Algorithm to create all of the Clusters.
@@ -149,9 +169,23 @@ public:
      * Converts a given Cluster into a CorrelateAircraft by averaging
      * the reports' fields excluding outliers.
      * @param cluster The cluster to get data from
-     * @return int 0 for success, 1 for error
+     * @return CorrelationAircraft *A pointer to the generated aircraft.
      */
-    int ConvertAircraft(Cluster *cluster);
+    CorrelationAircraft *ConvertAircraft(Cluster *cluster);
+
+    /*
+     * Gets an empty Cluster pointer from the existing list or
+     * mallocs a new one.
+     * @return Cluster * the pointer to the new Cluster to use
+     */
+    Cluster *NewCluster();
+
+    /*
+     * Gets an empty CorrelationAircraft pointer from the existing list or
+     * mallocs a new one.
+     * @return Cluster * the pointer to the new Cluster to use
+     */
+    CorrelationAircraft *NewCorrAircraft();
 
     /*
      * Generates the distance between two SurveillanceReports
