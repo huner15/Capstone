@@ -25,7 +25,7 @@ ReportReceiver::ReportReceiver() {
 void* ReportReceiver::TimerThreadFunction(void *classReference) {
     //TODO make a timer that goes over everything and calls ReportReceiver's
     // correlate every second.
-    std::time_t timer = time(NULL);
+   /* std::time_t timer = time(NULL);
     timer += 1;
     while(1){
         if(timer <= time(NULL)){
@@ -35,7 +35,27 @@ void* ReportReceiver::TimerThreadFunction(void *classReference) {
         }
     }
 
-    printf("%d", ((ReportReceiver *)classReference)->num);
+    printf("%d", ((ReportReceiver *)classReference)->num);*/
+
+    double elapsed_time = 0;
+
+    clock_t this_time = clock();
+    clock_t last_time = this_time;
+
+    //CLOCKS_PER_SEC is how many units clock() has per second.
+    while(true){
+        this_time = clock();
+
+        elapsed_time += (double) (this_time - last_time);
+
+        last_time = this_time;
+
+        if(elapsed_time > (double) CLOCKS_PER_SEC){
+            elapsed_time -= (double) CLOCKS_PER_SEC;
+            printf("Calling Correlate");
+            ((ReportReceiver *)classReference)->callCorrelate();
+        }
+    }
 
 }
 
