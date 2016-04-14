@@ -1,37 +1,31 @@
 /*
  * FlightScenarioIO.cpp
  * Specific Atomics
- * Kevin Pham
- * 3-6-16
+ * Kevin Pham, Frank Poole
+ * 4-13-16
  * Library of functions used to parse the FlightScenario files.
  */
 
 #include "FlightScenarioIO.h"
-#include "FlightScenario.h"
-#include "../../util/inc/FlightScenario.h"
-#include "Velocity.h"
 
 using namespace std;
 
-
 Json::Value FlightScenarioIO::OpenFile(std::string file_name) {
-    Json::Value root;   // will contain the root value after parsing.
+    Json::Value root; // Contains the root value after parsing.
     Json::Reader reader;
-    std:string file_dir = "";
+    std::string file_dir = "";
     std::string file = file_dir + file_name;
     std::ifstream test(file, std::ifstream::binary);
     bool parsing_successful = reader.parse(test, root, false);
 
-    if (!parsing_successful) {
-        // report to the user the failure and their locations in the document.
-        std::cout << reader.getFormattedErrorMessages()
-        << "\n";
-        return Json::nullValue;
-    }
-    else {
+    if (parsing_successful) {
         return root;
     }
-
+    else {
+        // Report to the user the failure and their locations in the document.
+        std::cout << reader.getFormattedErrorMessages() << "\n";
+        throw std::invalid_argument("Invalid generation file.");
+    }
 }
 
 Aircraft FlightScenarioIO::ReadOwnshipData(std::string file_name) {
@@ -106,13 +100,11 @@ FlightScenario FlightScenarioIO::ReadFile(std::string file_name) {
     return flight_scenario;
 }
 
-
 Json::Value FlightScenarioIO::GetAbsoluteOwnshipData(std::string file_name) {
     Json::Value root = OpenFile(file_name);
 
     return root["absoluteOwnship"];
 }
-
 
 Json::Value FlightScenarioIO::GetFlightPlans(std::string file_name) {
     Json::Value root = OpenFile(file_name);
