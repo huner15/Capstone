@@ -52,7 +52,7 @@ void* ReportReceiver::TimerThreadFunction(void *classReference) {
 
         if(elapsed_time > (double) CLOCKS_PER_SEC){
             elapsed_time -= (double) CLOCKS_PER_SEC;
-            printf("Calling Correlate");
+            //printf("Calling Correlate");
             ((ReportReceiver *)classReference)->callCorrelate();
         }
     }
