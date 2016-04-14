@@ -1,10 +1,13 @@
 project(saap)
 
-file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/DistanceTests.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/AverageTests.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/ObjectPoolTests.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/MainFunctionalityTests.cpp"
+file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/MainFunctionalityTests.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/../../receiver/src/SurveillanceReport.cpp")
+
+#"${CMAKE_CURRENT_SOURCE_DIR}/DistanceTests.cpp"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/AverageTests.cpp"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/ObjectPoolTests.cpp"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/MainFunctionalityTests.cpp"
+#   "${CMAKE_CURRENT_SOURCE_DIR}/../../receiver/src/SurveillanceReport.cpp")
 
 add_executable(run_correlate_tests ${SOURCE_FILES})
 target_link_libraries(run_correlate_tests saap_lib gtest gtest_main util_lib

@@ -15,16 +15,16 @@
 
 ClientSocket socket_to_cdti("localhost", 13000);
 
-double CalculateRange(CDTIPlane plane);
-double CalculateCPA(CDTIPlane plane);
-void CategorizePlane(CDTIPlane plane);
-std::vector<CDTIPlane> MakeCDTI(std::vector<CorrelationAircraft*>* aircraft);
+double CalculateRange(CDTIPlane* plane);
+double CalculateCPA(CDTIPlane* plane);
+void CategorizePlane(CDTIPlane* plane);
+std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*>* aircraft);
 
 /*
  *
  */
 void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
-    std::vector<CDTIPlane> planes = MakeCDTI(aircraft);
+    std::vector<CDTIPlane*> planes = MakeCDTI(aircraft);
     CDTIReport *report = new CDTIReport();
     int64_t t = 1;
     report->set_timestamp(t);
@@ -49,7 +49,20 @@ void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     for(int i = 0; i < planes.size(); i++){
         CategorizePlane(planes.at(i));
         CDTIPlane *set = report->add_planes();
-        *set = planes.at(i);
+       // *set = *(planes.at(i));
+       // report->mutable_planes()->AddAllocated(planes.at(i));
+        set->set_id("hi");
+
+        Vector pos;
+        pos.set_n(1);//planes.at(i)->mutable_position()->n());
+        pos.set_e(1);//planes.at(i)->mutable_position()->e());
+        pos.set_d(1);//planes.at(i)->mutable_position()->d());
+        Vector vel;
+        vel.set_n(1);//planes.at(i)->mutable_velocity()->n());
+        vel.set_e(1);//planes.at(i)->mutable_velocity()->e());
+        vel.set_d(1);//planes.at(i)->mutable_velocity()->d());
+        set->set_allocated_position(&pos);
+        set->set_allocated_velocity(&vel);
     }
 
     cout << ownship->id();
@@ -57,13 +70,13 @@ void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     socket_to_cdti << *report;
 }
 
-CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft)
+CDTIPlane* MakeCDTIPlane(CorrelationAircraft* aircraft)
 {
     return aircraft->CreateCdtiPlane();
 }
 
-std::vector<CDTIPlane> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
-    std::vector<CDTIPlane> planes;
+std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
+    std::vector<CDTIPlane*> planes;
 
     for(int i = 0; i < aircraft->size(); i++)
     {
@@ -76,15 +89,15 @@ std::vector<CDTIPlane> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
 /**
  * decides where to Categorize a plane
  */
-void CategorizePlane(CDTIPlane plane){
+void CategorizePlane(CDTIPlane* plane){
     double range = CalculateRange(plane);
     double cpa = CalculateCPA(plane);
-    if(range < 2 && abs(plane.position().d()) < 300 && cpa < .5)
-        plane.set_severity(plane.RESOLUTION);
-    else if(range < 5 && abs(plane.position().d()) < 500 && cpa < 1)
-        plane.set_severity(plane.TRAFFIC);
-    else if(range < 10 && abs(plane.position().d()) < 1000)
-        plane.set_severity(plane.PROXIMATE);
+    if(range < 2 && abs(plane->position().d()) < 300 && cpa < .5)
+        plane->set_severity(plane->RESOLUTION);
+    else if(range < 5 && abs(plane->position().d()) < 500 && cpa < 1)
+        plane->set_severity(plane->TRAFFIC);
+    else if(range < 10 && abs(plane->position().d()) < 1000)
+        plane->set_severity(plane->PROXIMATE);
 
 
 }
@@ -94,13 +107,13 @@ void CategorizePlane(CDTIPlane plane){
  * calculates range to ownship.
  * returns a double representing the planes distance to the ownship
  */
-double CalculateRange(CDTIPlane plane) {
-    Vector pos = plane.position();
+double CalculateRange(CDTIPlane* plane) {
+    Vector* pos = plane->mutable_position();
     Saas_Util::Vector<double,3> zero;
     Saas_Util::Vector<double,3> position;
-    position.x = pos.n();
-    position.y = pos.e();
-    position.z = pos.d();
+    position.x = pos->n();
+    position.y = pos->e();
+    position.z = pos->d();
     return SpecialMath::DistanceFormula<double, 3>(position, zero);
 
 }
@@ -108,17 +121,17 @@ double CalculateRange(CDTIPlane plane) {
  * calculates closest point of approach
  * returns a double representing the closest point of approach.
  */
-double CalculateCPA(CDTIPlane plane) {
+double CalculateCPA(CDTIPlane* plane) {
     //since ownship is at (0,0) formula is |c|/sqrt(a^2+b^2)
     Saas_Util::Vector<double, 3> zero;
     Saas_Util::Vector<double, 3> pos;
     Saas_Util::Vector<double, 3> vel;
-    pos.x = plane.position().n();
-    pos.y = plane.position().e();
-    pos.z = plane.position().d();
-    vel.x = plane.velocity().n();
-    vel.y = plane.velocity().e();
-    vel.z = plane.velocity().d();
+    pos.x = plane->position().n();
+    pos.y = plane->position().e();
+    pos.z = plane->position().d();
+    vel.x = plane->velocity().n();
+    vel.y = plane->velocity().e();
+    vel.z = plane->velocity().d();
     return SpecialMath::LineDistance(pos, vel, zero);
 }
 

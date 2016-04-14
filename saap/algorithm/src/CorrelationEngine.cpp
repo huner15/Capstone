@@ -186,6 +186,8 @@ printf("%lu\n", _corr_aircraft.size());
     //Send all correlate aircraft to the
     Categorize(&_corr_aircraft);
 
+    printf("End Categorize\n");
+
     //Delete Correlate and Cluster data
     for (int i = 0; i < _corr_aircraft.size(); i++) {
         _free_aircraft.push_back(_corr_aircraft.at(i));
