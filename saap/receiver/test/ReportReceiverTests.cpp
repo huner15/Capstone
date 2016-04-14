@@ -131,7 +131,7 @@ TEST(ReportReceiverTcasSurveillanceReports, OneReport){
     SurveillanceReport * surveillanceReport = reports->at(0);
 
     EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
-    EXPECT_EQ(1, surveillanceReport->GetAltitude());
+    EXPECT_EQ(0, surveillanceReport->GetAltitude());
     EXPECT_EQ(2, surveillanceReport->GetBearing());
     EXPECT_EQ(3, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
@@ -164,7 +164,7 @@ TEST(ReportReceiverTcasSurveillanceReports, TwoReports){
     SurveillanceReport * surveillanceReport = reports->at(0);
 
     EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
-    EXPECT_EQ(1, surveillanceReport->GetAltitude());
+    EXPECT_EQ(0, surveillanceReport->GetAltitude());
     EXPECT_EQ(2, surveillanceReport->GetBearing());
     EXPECT_EQ(3, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
@@ -185,14 +185,14 @@ TEST(ReportReceiverTcasSurveillanceReports, TwoReports){
 
     surveillanceReport = reports->at(0);
     EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
-    EXPECT_EQ(1, surveillanceReport->GetAltitude());
+    EXPECT_EQ(0, surveillanceReport->GetAltitude());
     EXPECT_EQ(2, surveillanceReport->GetBearing());
     EXPECT_EQ(3, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
 
     surveillanceReport = reports->at(1);
     EXPECT_EQ(tcasID1.Get(), surveillanceReport->GetTcasID().Get());
-    EXPECT_EQ(4, surveillanceReport->GetAltitude());
+    EXPECT_EQ(0, surveillanceReport->GetAltitude());
     EXPECT_EQ(5, surveillanceReport->GetBearing());
     EXPECT_EQ(6, surveillanceReport->GetRange());
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
