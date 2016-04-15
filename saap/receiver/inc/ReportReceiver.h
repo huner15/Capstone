@@ -20,7 +20,7 @@
 class ReportReceiver {
 private:
 
-
+    const double NAUTICAL_MILES_TO_FEET = 6076.12;
 
     class HeldReports {
     private:
