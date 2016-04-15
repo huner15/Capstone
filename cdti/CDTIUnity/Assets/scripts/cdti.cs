@@ -23,6 +23,14 @@ namespace Example
     /// </summary>
     public partial class Vector
     {
+        public Vector(float x, float y, float z)
+        {
+            N = x;
+            E = y;
+            D = z;
+        }
+        public Vector() { }
+
         public float N { get; set; }
 
         public float E { get; set; }

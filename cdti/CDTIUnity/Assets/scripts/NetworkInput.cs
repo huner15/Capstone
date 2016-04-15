@@ -62,10 +62,10 @@ public class NetworkInput : MonoBehaviour {
         int h = Screen.height;
         int w = Screen.width;
         Console.Write("boom");
-        GUI.Label(new Rect(w/1.7f, h/2, 20, 20), "" + (maxRange/4));
-        GUI.Label(new Rect(w/1.52f, h/2, 20, 20), "" + (maxRange * 2 / 4));
-        GUI.Label(new Rect(w/1.37f, h/2, 20, 20), "" + (maxRange * 3 / 4));
-        GUI.Label(new Rect(w/1.26f, h/2, 20, 20), "" + (maxRange));
+        GUI.Label(new Rect(w/1.7f, h/2, 40, 20), "" + (maxRange/4));
+        GUI.Label(new Rect(w/1.52f, h/2, 40, 20), "" + (maxRange * 2 / 4));
+        GUI.Label(new Rect(w/1.37f, h/2, 40, 20), "" + (maxRange * 3 / 4));
+        GUI.Label(new Rect(w/1.26f, h/2, 40, 20), "" + (maxRange));
         GUI.Label(new Rect(w / 2, 0, 100, 20), message);
     }
 
@@ -320,7 +320,7 @@ public class NetworkInput : MonoBehaviour {
         throw new NotImplementedException();
     }
 
-    private Quaternion figureRotation(CDTIPlane plane)
+    public Quaternion figureRotation(CDTIPlane plane)
     {
         try
         {
@@ -343,7 +343,7 @@ public class NetworkInput : MonoBehaviour {
         
     }
 
-    private Vector3 figurePositon(CDTIPlane plane)
+    public Vector3 figurePositon(CDTIPlane plane)
     {
         
         Vector3 positon;
