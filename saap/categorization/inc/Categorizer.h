@@ -11,6 +11,6 @@
 #include "FlightReport.h"
 
 void Categorize(std::vector<CorrelationAircraft *> *aircraft);
-
+void Connect(string ip, int port );
 #endif //SAAS_CATEGORIZOR_H
 
