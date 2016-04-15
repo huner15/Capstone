@@ -11,6 +11,7 @@
 #include <Device.h>
 #include "SurveillanceReport.h"
 #include "OwnshipReceiver.h"
+#define RANGE_TOLERANCE .5
 
 /*
  * Tests to see that the ownship surveillance report creator is properly
@@ -133,10 +134,10 @@ TEST(ReportReceiverTcasSurveillanceReports, OneReport){
     EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
     EXPECT_EQ(0, surveillanceReport->GetAltitude());
     EXPECT_EQ(2, surveillanceReport->GetBearing());
-    EXPECT_EQ(3, surveillanceReport->GetRange());
+    EXPECT_NEAR(18228.3, surveillanceReport->GetRange(), RANGE_TOLERANCE);
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
 
-    sleep(0.5);
+    //sleep(0.5);
 }
 
 /*
@@ -166,7 +167,7 @@ TEST(ReportReceiverTcasSurveillanceReports, TwoReports){
     EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
     EXPECT_EQ(0, surveillanceReport->GetAltitude());
     EXPECT_EQ(2, surveillanceReport->GetBearing());
-    EXPECT_EQ(3, surveillanceReport->GetRange());
+    EXPECT_NEAR(18228.3, surveillanceReport->GetRange(), RANGE_TOLERANCE);
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
 
     sleep(1);
@@ -187,14 +188,14 @@ TEST(ReportReceiverTcasSurveillanceReports, TwoReports){
     EXPECT_EQ(tcasID.Get(), surveillanceReport->GetTcasID().Get());
     EXPECT_EQ(0, surveillanceReport->GetAltitude());
     EXPECT_EQ(2, surveillanceReport->GetBearing());
-    EXPECT_EQ(3, surveillanceReport->GetRange());
+    EXPECT_NEAR(18228.3, surveillanceReport->GetRange(), RANGE_TOLERANCE);
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
 
     surveillanceReport = reports->at(1);
     EXPECT_EQ(tcasID1.Get(), surveillanceReport->GetTcasID().Get());
     EXPECT_EQ(0, surveillanceReport->GetAltitude());
     EXPECT_EQ(5, surveillanceReport->GetBearing());
-    EXPECT_EQ(6, surveillanceReport->GetRange());
+    EXPECT_NEAR(36456.7, surveillanceReport->GetRange(), RANGE_TOLERANCE);
     EXPECT_EQ(TCAS, surveillanceReport->GetDevice());
 
    // sleep(0.5);

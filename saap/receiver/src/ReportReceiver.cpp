@@ -83,7 +83,7 @@ SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
 SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
         TcasReport report) {
     TcasID tcas_id = TcasID(report.id());
-    double range = report.range();
+    double range = report.range() * NAUTICAL_MILES_TO_FEET;
     double altitude = report.altitude();
     double bearing = report.bearing();
     //TODO find a way to incorporate tcas' altitude.
