@@ -18,8 +18,9 @@ ReportReceiver::ReportReceiver() {
     pthread_cond_init (&_held_report_cv, NULL);
     num = 3;
     pthread_create(&countThread, NULL, &TimerThreadFunction, this);
-    correlationEngine = CorrelationEngine();
 
+    ClientSocket client_socket = ClientSocket("localhost", 13000);
+    this->correlationEngine = CorrelationEngine(client_socket);
 }
 
 void* ReportReceiver::TimerThreadFunction(void *classReference) {

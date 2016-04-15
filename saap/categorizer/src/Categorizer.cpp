@@ -5,25 +5,23 @@
  * 2-6-16
  * Adds categories to planes.
 */
+
 #include <cmath>
+
 #include <cdti.pb.h>
-#include <CorrelationAircraft.h>
-#include <SpecialMath.h>
+
+#include "CorrelationAircraft.h"
+#include "SpecialMath.h"
 #include "ClientSocket.h"
 #include "FlightReport.h"
+#include "Categorizer.h"
 
+//_socket_to_cdti("localhost", 13000)
+Categorizer::Categorizer(ClientSocket &client_socket)
+        : _client_socket(client_socket) {
+}
 
-ClientSocket socket_to_cdti("localhost", 13000);
-
-double CalculateRange(CDTIPlane* plane);
-double CalculateCPA(CDTIPlane* plane);
-void CategorizePlane(CDTIPlane* plane);
-std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*>* aircraft);
-
-/*
- *
- */
-void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
+void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     std::vector<CDTIPlane*> planes = MakeCDTI(aircraft);
     CDTIReport *report = new CDTIReport();
     int64_t t = 1;
@@ -44,7 +42,7 @@ void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     report->set_advisorymessage("message");
     report->set_advisorylevel(CDTIReport_Severity_PROXIMATE);
 
-   // report->mutable_planes()->AddAllocated(plane);
+    // report->mutable_planes()->AddAllocated(plane);
     //call something to translate whatever is given into a list of CDTIplanes
     for(int i = 0; i < planes.size(); i++){
         CategorizePlane(planes.at(i));
@@ -67,7 +65,7 @@ void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
 
     cout << ownship->id();
 
-    socket_to_cdti << *report;
+    _client_socket << *report;
 }
 
 CDTIPlane* MakeCDTIPlane(CorrelationAircraft* aircraft)
@@ -87,23 +85,6 @@ std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
 }
 
 /**
- * decides where to Categorize a plane
- */
-void CategorizePlane(CDTIPlane* plane){
-    double range = CalculateRange(plane);
-    double cpa = CalculateCPA(plane);
-    if(range < 2 && abs(plane->position().d()) < 300 && cpa < .5)
-        plane->set_severity(plane->RESOLUTION);
-    else if(range < 5 && abs(plane->position().d()) < 500 && cpa < 1)
-        plane->set_severity(plane->TRAFFIC);
-    else if(range < 10 && abs(plane->position().d()) < 1000)
-        plane->set_severity(plane->PROXIMATE);
-
-
-}
-
-
-/**
  * calculates range to ownship.
  * returns a double representing the planes distance to the ownship
  */
@@ -117,6 +98,7 @@ double CalculateRange(CDTIPlane* plane) {
     return SpecialMath::DistanceFormula<double, 3>(position, zero);
 
 }
+
 /**
  * calculates closest point of approach
  * returns a double representing the closest point of approach.
@@ -135,7 +117,16 @@ double CalculateCPA(CDTIPlane* plane) {
     return SpecialMath::LineDistance(pos, vel, zero);
 }
 
-
-
-
-
+/**
+ * decides where to Categorize a plane
+ */
+void CategorizePlane(CDTIPlane* plane){
+    double range = CalculateRange(plane);
+    double cpa = CalculateCPA(plane);
+    if(range < 2 && abs(plane->position().d()) < 300 && cpa < .5)
+        plane->set_severity(plane->RESOLUTION);
+    else if(range < 5 && abs(plane->position().d()) < 500 && cpa < 1)
+        plane->set_severity(plane->TRAFFIC);
+    else if(range < 10 && abs(plane->position().d()) < 1000)
+        plane->set_severity(plane->PROXIMATE);
+}

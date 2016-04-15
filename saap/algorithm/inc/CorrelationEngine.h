@@ -53,6 +53,9 @@ protected:
      */
     int CheckClusterCount();
 
+    // Categorizer to be used by this correlation engine.
+    Categorizer& _categorizer;
+
 private:
     /**
      * Compares two geographical coordinates to calculate the spherical
@@ -95,7 +98,7 @@ public:
     /*
      * No parameter constructor, sets _is_relative to true.
      */
-    CorrelationEngine();
+    CorrelationEngine(Categorizer& categorizer);
 
     /*
      * One parameter constructor, sets _is_relative to given value.
@@ -103,7 +106,7 @@ public:
      * @relativeValue boolean if the SurveillanceReports are converted
      * to all relative values
      */
-    CorrelationEngine(bool relativeValue);
+    CorrelationEngine(Categorizer& categorizer, bool relativeValue);
 
     /*
      * Empty deconstructor, does nothing.

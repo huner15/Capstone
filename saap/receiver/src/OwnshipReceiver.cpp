@@ -17,7 +17,9 @@ void OwnshipReceiver::ReceiveReport(ClientSocket &client_socket) {
     OwnshipReport ownship_report;
     client_socket >> ownship_report;
     _report_receiver.ReceiveOwnship(ownship_report);
+#ifdef DEBUG
     PrintReport(ownship_report);
+#endif
 }
 
 void OwnshipReceiver::PrintReport(OwnshipReport& ownship_report) {

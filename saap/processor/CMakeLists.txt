@@ -1,4 +1,4 @@
-project(algorithm)
+project(processor)
 
 add_subdirectory(src)
 add_subdirectory(test)

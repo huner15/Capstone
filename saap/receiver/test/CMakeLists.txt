@@ -13,5 +13,5 @@ target_link_libraries(run_report_receiver_test saap_lib gtest gtest_main
 target_include_directories(run_report_receiver_test
         PUBLIC ${PROJECT_SOURCE_DIR}/../../algorithm/inc
         PUBLIC ${PROJECT_SOURCE_DIR}/../inc
-        PUBLIC ${PROJECT_SOURCE_DIR}/../../categorization/inc)
+        PUBLIC ${PROJECT_SOURCE_DIR}/../../categorizer/inc)
 
