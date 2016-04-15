@@ -25,6 +25,7 @@ CorrelationEngine::CorrelationEngine(
 }
 
 CorrelationEngine::~CorrelationEngine() {
+    delete &_categorizer;
 }
 
 int CorrelationEngine::GetClusterSize() {

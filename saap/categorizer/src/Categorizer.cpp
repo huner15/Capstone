@@ -16,7 +16,6 @@
 #include "FlightReport.h"
 #include "Categorizer.h"
 
-//_socket_to_cdti("localhost", 13000)
 Categorizer::Categorizer(ClientSocket &client_socket)
         : _client_socket(client_socket) {
 }
@@ -33,6 +32,10 @@ CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft);
  */
 //void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     //std::vector<CDTIPlane *> planes = MakeCDTI(aircraft);
+Categorizer::~Categorizer() {
+    delete &_client_socket;
+}
+
 void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     std::vector<CDTIPlane*> planes = MakeCDTI(aircraft);
     CDTIReport *report = new CDTIReport();
@@ -96,12 +99,12 @@ void Connect(string ip, int port ) {
 
 }
 
-CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft)
+CDTIPlane* Categorizer::MakeCDTIPlane(CorrelationAircraft* aircraft)
 {
-    return aircraft->CreateCdtiPlane();
+    return new CDTIPlane(aircraft->CreateCdtiPlane());
 }
 
-std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
+std::vector<CDTIPlane*> Categorizer::MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
     std::vector<CDTIPlane*> planes;
 
     for(int i = 0; i < aircraft->size(); i++)
@@ -137,8 +140,8 @@ CDTIPlane_Severity CategorizePlane(CDTIPlane plane){
  * calculates range to ownship.
  * returns a double representing the planes distance to the ownship
  */
-double Categorizer::CalculateRange(CDTIPlane plane) {
-    Vector* pos = plane.mutable_position();
+double Categorizer::CalculateRange(CDTIPlane* plane) {
+    Vector* pos = plane->mutable_position();
     Saas_Util::Vector<double,3> zero;
     Saas_Util::Vector<double,3> position;
     position.x = pos->n();
@@ -169,8 +172,8 @@ double Categorizer::CalculateCPA(CDTIPlane plane) {
 /**
  * decides where to Categorize a plane
  */
-void Categorizer::CategorizePlane(CDTIPlane* plane){
-    double range = CalculateRange(*plane);
+void Categorizer::CategorizePlane(CDTIPlane* plane) {
+    double range = CalculateRange(plane);
     double cpa = CalculateCPA(*plane);
     if(range < 2 && abs(plane->position().d()) < 300 && cpa < .5)
         plane->set_severity(plane->RESOLUTION);

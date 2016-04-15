@@ -6,21 +6,55 @@
  * @brief TODO make description
  */
 
+#include <cstdlib>
 #include "ReportReceiver.h"
+
+CorrelationEngine* startEngine() {
+    try {
+        ClientSocket* client_socket = new ClientSocket("localhost", 13000);
+        Categorizer* categorizer = new Categorizer(*client_socket);
+        return new CorrelationEngine(*categorizer);
+    }
+    catch (SocketException exception) {
+        std::cout << "Could not connect to CDTI." << std::endl;
+        exit(EXIT_SUCCESS);
+    }
+}
 
 ReportReceiver::ReportReceiver() {
     _held_reports = HeldReports();
     _is_copying = false;
+    _is_connected = true;
     pthread_mutex_init(&_radar_mutex, NULL);
     pthread_mutex_init(&_ownship_mutex, NULL);
     pthread_mutex_init(&_adsb_mutex, NULL);
     pthread_mutex_init(&_tcas_mutex, NULL);
     pthread_cond_init (&_held_report_cv, NULL);
     num = 3;
+
+    _correlationEngine = startEngine();
+
+
+}
+
+ReportReceiver::~ReportReceiver() {
+    delete _correlationEngine;
+}
+
+void ReportReceiver::StartReceiver() {
+    // Start the report receiver thread.
     pthread_create(&countThread, NULL, &TimerThreadFunction, this);
 
-    ClientSocket client_socket = ClientSocket("localhost", 13000);
-    this->correlationEngine = CorrelationEngine(client_socket);
+}
+
+void ReportReceiver::Close() {
+    _is_connected = false;
+    // Wait for the thread to finish.
+    pthread_join(countThread, NULL);
+}
+
+bool ReportReceiver::getIsConnected(){
+
 }
 
 void* ReportReceiver::TimerThreadFunction(void *classReference) {
@@ -44,7 +78,7 @@ void* ReportReceiver::TimerThreadFunction(void *classReference) {
     clock_t last_time = this_time;
 
     //CLOCKS_PER_SEC is how many units clock() has per second.
-    while(true){
+    while(((ReportReceiver *) classReference)->getIsConnected()) {
         this_time = clock();
 
         elapsed_time += (double) (this_time - last_time);
@@ -57,7 +91,7 @@ void* ReportReceiver::TimerThreadFunction(void *classReference) {
             ((ReportReceiver *)classReference)->callCorrelate();
         }
     }
-
+    ((ReportReceiver *)classReference)->callCorrelate();
 }
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
@@ -228,7 +262,7 @@ void ReportReceiver::callCorrelate() {
 
 
     //TODO make all of the copied held reports adsb relative
-    correlationEngine.Correlate(adsb, tcas, radar, false);
+    _correlationEngine->Correlate(adsb, tcas, radar, false);
 }
 
 

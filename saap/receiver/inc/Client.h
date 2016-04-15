@@ -1,13 +1,15 @@
 /*
  * @file Client.h
  * @author Specific Atomics
- * @author Frank Poole
- * @date 2-21-16
+ * @author Frank Poole, Alanna Buss
+ * @date 4-14-16
  * @brief Declares constants used by the client application.
  */
 
 #ifndef CLIENT_H_
 #define CLIENT_H_
+
+#include <string>
 
 #include "DeviceReceiver.h"
 #include "OwnshipReceiver.h"
@@ -26,5 +28,26 @@ const int OWNSHIP_THREAD_INDEX = 0;
 const int ADSB_THREAD_INDEX = 1;
 const int RADAR_THREAD_INDEX = 2;
 const int TCAS_THREAD_INDEX = 3;
+
+class Client {
+private:
+    /** Correlation engine report receiver. */
+    ReportReceiver& _report_receiver;
+
+    /** Host machine IP address. */
+    std::string _host;
+
+    /** Device simulator port numbers. */
+    in_port_t _ownship_port;
+    in_port_t _adsb_port;
+    in_port_t _radar_port;
+    in_port_t _tcas_port;
+
+public:
+    Client(ReportReceiver& report_receiver, in_port_t ownship_port,
+           in_port_t adsb_port, in_port_t radar_port, in_port_t tcas_port);
+
+    bool Process();
+};
 
 #endif

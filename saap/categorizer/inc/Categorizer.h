@@ -26,9 +26,11 @@ private:
 public:
     Categorizer(ClientSocket& _client_socket);
 
+    ~Categorizer();
+
     void Categorize(std::vector<CorrelationAircraft *> *aircraft);
 
-    double CalculateRange(CDTIPlane plane);
+    double CalculateRange(CDTIPlane* plane);
 
     double CalculateCPA(CDTIPlane plane);
 
@@ -36,6 +38,8 @@ public:
 
     std::vector<CDTIPlane*> MakeCDTI(
             std::vector<CorrelationAircraft*>* aircraft);
+
+    CDTIPlane* MakeCDTIPlane(CorrelationAircraft* aircraft);
 };
 
 #endif
