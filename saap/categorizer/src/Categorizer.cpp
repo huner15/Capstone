@@ -5,13 +5,21 @@
  * 2-6-16
  * Adds categories to planes.
 */
+
 #include <cmath>
+
 #include <cdti.pb.h>
-#include <CorrelationAircraft.h>
-#include <SpecialMath.h>
+
+#include "CorrelationAircraft.h"
+#include "SpecialMath.h"
 #include "ClientSocket.h"
 #include "FlightReport.h"
+#include "Categorizer.h"
 
+//_socket_to_cdti("localhost", 13000)
+Categorizer::Categorizer(ClientSocket &client_socket)
+        : _client_socket(client_socket) {
+}
 
 ClientSocket* socket_to_cdti;// = new ClientSocket("localhost", 13000);
 
@@ -23,8 +31,10 @@ CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft);
 /*
  *
  */
-void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
+//void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     //std::vector<CDTIPlane *> planes = MakeCDTI(aircraft);
+void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
+    std::vector<CDTIPlane*> planes = MakeCDTI(aircraft);
     CDTIReport *report = new CDTIReport();
     int64_t t = 1;
     report->set_timestamp(t);
@@ -74,6 +84,7 @@ void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     }catch(SocketException){
 
     }
+    _client_socket << *report;
 }
 
 void Connect(string ip, int port ) {
@@ -102,6 +113,7 @@ std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
 }
 
 /**
+<<<<<<< 74a289b9e3a334598b9056ec6d2554386ad9e015:saap/categorization/src/Categorizer.cpp
  * decides where to Categorize a plane
  */
 CDTIPlane_Severity CategorizePlane(CDTIPlane plane){
@@ -120,10 +132,12 @@ CDTIPlane_Severity CategorizePlane(CDTIPlane plane){
 
 
 /**
+=======
+>>>>>>> CMake build successful after CMake refactoring.:saap/categorizer/src/Categorizer.cpp
  * calculates range to ownship.
  * returns a double representing the planes distance to the ownship
  */
-double CalculateRange(CDTIPlane plane) {
+double Categorizer::CalculateRange(CDTIPlane plane) {
     Vector* pos = plane.mutable_position();
     Saas_Util::Vector<double,3> zero;
     Saas_Util::Vector<double,3> position;
@@ -133,11 +147,12 @@ double CalculateRange(CDTIPlane plane) {
     return SpecialMath::DistanceFormula<double, 3>(position, zero);
 
 }
+
 /**
  * calculates closest point of approach
  * returns a double representing the closest point of approach.
  */
-double CalculateCPA(CDTIPlane plane) {
+double Categorizer::CalculateCPA(CDTIPlane plane) {
     //since ownship is at (0,0) formula is |c|/sqrt(a^2+b^2)
     Saas_Util::Vector<double, 3> zero;
     Saas_Util::Vector<double, 3> pos;
@@ -151,7 +166,16 @@ double CalculateCPA(CDTIPlane plane) {
     return SpecialMath::LineDistance(pos, vel, zero);
 }
 
-
-
-
-
+/**
+ * decides where to Categorize a plane
+ */
+void Categorizer::CategorizePlane(CDTIPlane* plane){
+    double range = CalculateRange(*plane);
+    double cpa = CalculateCPA(*plane);
+    if(range < 2 && abs(plane->position().d()) < 300 && cpa < .5)
+        plane->set_severity(plane->RESOLUTION);
+    else if(range < 5 && abs(plane->position().d()) < 500 && cpa < 1)
+        plane->set_severity(plane->TRAFFIC);
+    else if(range < 10 && abs(plane->position().d()) < 1000)
+        plane->set_severity(plane->PROXIMATE);
+}

@@ -8,19 +8,23 @@
 */
 
 #include "CorrelationEngine.h"
+#include "Categorizer.h"
+#include "ClientSocket.h"
 
 using namespace std;
 
-CorrelationEngine::CorrelationEngine() {
+CorrelationEngine::CorrelationEngine(Categorizer& categorizer)
+        : _categorizer(categorizer) {
     _is_relative = true;
 }
 
-CorrelationEngine::CorrelationEngine(bool relativeValue) {
+CorrelationEngine::CorrelationEngine(
+        Categorizer& categorizer, bool relativeValue)
+        : _categorizer(categorizer) {
     _is_relative = relativeValue;
 }
 
 CorrelationEngine::~CorrelationEngine() {
-
 }
 
 int CorrelationEngine::GetClusterSize() {
@@ -177,14 +181,14 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
         _free_clusters.push_back(_clusters.at(i));
     }
 
-printf("%lu\n", _corr_aircraft.size());
+    printf("%lu\n", _corr_aircraft.size());
     //unlock cluster vectors
-   // pthread_mutex_unlock(&cluster_mutex);
+    // pthread_mutex_unlock(&cluster_mutex);
 
     printf("Categorize!\n");
 
     //Send all correlate aircraft to the
-    Categorize(&_corr_aircraft);
+    _categorizer.Categorize(&_corr_aircraft);
 
     printf("End Categorize\n");
 

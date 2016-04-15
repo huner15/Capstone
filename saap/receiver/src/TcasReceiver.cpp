@@ -12,7 +12,9 @@ void TcasReceiver::ReceiveReport(ClientSocket &client_socket) {
     TcasReport tcas_report;
     client_socket >> tcas_report;
     _report_receiver.ReceiveTcas(tcas_report);
+#ifdef DEBUG
     PrintReport(tcas_report);
+#endif
 }
 
 void TcasReceiver::PrintReport(TcasReport &tcas_report) {

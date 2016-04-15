@@ -17,7 +17,9 @@ void RadarReceiver::ReceiveReport(ClientSocket& client_socket) {
     RadarReport radar_report;
     client_socket >> radar_report;
     _report_receiver.ReceiveRadar(radar_report);
+#ifdef DEBUG
     PrintReport(radar_report);
+#endif
 }
 
 void RadarReceiver::PrintReport(RadarReport& radar_report) {
