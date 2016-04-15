@@ -1,8 +1,18 @@
-//
-// Created by fpoole on 4/14/16.
-//
+/*
+ * @file Processor.h
+ * @author Specific Atomics
+ * @author Frank Poole, Alanna Buss
+ * @date 4-14-16
+ * @brief TODO
+ */
 
-#ifndef SAAS_PROCESSOR_H
-#define SAAS_PROCESSOR_H
+#ifndef PROCESSOR_H_
+#define PROCESSOR_H_
 
-#endif //SAAS_PROCESSOR_H
+#include <iostream>
+
+#include "Client.h"
+
+int main(int argc, char *argv[]);
+
+#endif

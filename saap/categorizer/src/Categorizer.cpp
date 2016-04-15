@@ -16,9 +16,12 @@
 #include "FlightReport.h"
 #include "Categorizer.h"
 
-//_socket_to_cdti("localhost", 13000)
 Categorizer::Categorizer(ClientSocket &client_socket)
         : _client_socket(client_socket) {
+}
+
+Categorizer::~Categorizer() {
+    delete &_client_socket;
 }
 
 void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
@@ -44,7 +47,7 @@ void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
 
     // report->mutable_planes()->AddAllocated(plane);
     //call something to translate whatever is given into a list of CDTIplanes
-    for(int i = 0; i < planes.size(); i++){
+    for (int i = 0; i < planes.size(); i++){
         CategorizePlane(planes.at(i));
         CDTIPlane *set = report->add_planes();
        // *set = *(planes.at(i));
@@ -68,12 +71,12 @@ void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     _client_socket << *report;
 }
 
-CDTIPlane* MakeCDTIPlane(CorrelationAircraft* aircraft)
+CDTIPlane* Categorizer::MakeCDTIPlane(CorrelationAircraft* aircraft)
 {
     return aircraft->CreateCdtiPlane();
 }
 
-std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
+std::vector<CDTIPlane*> Categorizer::MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
     std::vector<CDTIPlane*> planes;
 
     for(int i = 0; i < aircraft->size(); i++)
@@ -88,7 +91,7 @@ std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
  * calculates range to ownship.
  * returns a double representing the planes distance to the ownship
  */
-double CalculateRange(CDTIPlane* plane) {
+double Categorizer::CalculateRange(CDTIPlane* plane) {
     Vector* pos = plane->mutable_position();
     Saas_Util::Vector<double,3> zero;
     Saas_Util::Vector<double,3> position;
@@ -103,7 +106,7 @@ double CalculateRange(CDTIPlane* plane) {
  * calculates closest point of approach
  * returns a double representing the closest point of approach.
  */
-double CalculateCPA(CDTIPlane* plane) {
+double Categorizer::CalculateCPA(CDTIPlane* plane) {
     //since ownship is at (0,0) formula is |c|/sqrt(a^2+b^2)
     Saas_Util::Vector<double, 3> zero;
     Saas_Util::Vector<double, 3> pos;
@@ -120,7 +123,7 @@ double CalculateCPA(CDTIPlane* plane) {
 /**
  * decides where to Categorize a plane
  */
-void CategorizePlane(CDTIPlane* plane){
+void Categorizer::CategorizePlane(CDTIPlane* plane) {
     double range = CalculateRange(plane);
     double cpa = CalculateCPA(plane);
     if(range < 2 && abs(plane->position().d()) < 300 && cpa < .5)

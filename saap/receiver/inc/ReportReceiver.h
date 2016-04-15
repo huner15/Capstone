@@ -25,6 +25,7 @@ private:
 
 
     bool _is_copying;
+    bool _is_connected;
     pthread_cond_t _held_report_cv;
     pthread_mutex_t _radar_mutex;
     pthread_mutex_t _tcas_mutex;
@@ -32,7 +33,8 @@ private:
     pthread_mutex_t _ownship_mutex;
     HeldReports _held_reports;
     pthread_t countThread;
-    CorrelationEngine correlationEngine;
+
+    CorrelationEngine* _correlationEngine;
 
     /*
      * Takes the OwnshipReport and translates it to a Surveillance report.
@@ -75,6 +77,16 @@ public:
      * creates the correct correlation engine.
      */
     ReportReceiver();
+
+    /**
+     * Deconstruct the report receiver.
+     */
+    ~ReportReceiver();
+
+    /**
+     * Stops the infinite thread
+     */
+    void Close();
 
     /*
      * Takes in an OwnshipReport from the Simulation Server and sends it to
@@ -133,6 +145,16 @@ public:
     * For the count thread. It just goes and calls correlate every second.
     */
     static void *TimerThreadFunction(void* classReference);
+
+    /*
+     * Checks if the ReportReceiver is connected
+     */
+    bool getIsConnected();
+
+    /**
+     * Starts the receiver
+     */
+    void StartReceiver();
 
     int num;
 };

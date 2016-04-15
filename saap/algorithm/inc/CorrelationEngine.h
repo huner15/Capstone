@@ -42,7 +42,7 @@ protected:
     bool _is_relative;
 
     //mutex locks for using the cluster and corrAircraft vectors
-  //  pthread_mutex_t cluster_mutex;
+    //pthread_mutex_t cluster_mutex;
     //pthread_mutex_t corr_aircraft_mutex;
 
     /*
