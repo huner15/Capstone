@@ -123,7 +123,7 @@ Json::Value SimulationGenerator::WriteTcasReports() {
         GeographicCoordinate start_pos =
                 aircraft.at(k).GetFlightPlan().GetStartPosition();
         GeographicCoordinate cur_pos = start_pos;
-        double cur_bearing = 36.0;
+        double cur_bearing = 0.0;
         int time = 0;
         Velocity vel;
 
@@ -198,7 +198,7 @@ Json::Value SimulationGenerator::WriteRadarReports() {
         GeographicCoordinate start_pos =
                 aircraft.at(k).GetFlightPlan().GetStartPosition();
         GeographicCoordinate cur_pos = start_pos;
-        double cur_bearing = 36.0;
+        double cur_bearing = 0.0;
         int time = 0;
         Velocity vel;
 
@@ -293,7 +293,7 @@ Json::Value SimulationGenerator::WriteAdsbReports() {
         GeographicCoordinate start_pos =
                 aircraft.at(k).GetFlightPlan().GetStartPosition();
         GeographicCoordinate cur_pos = start_pos;
-        double cur_bearing = 36.0;
+        double cur_bearing = 0.0;
         int time = 0;
         Velocity vel;
         for (int i = 0; i < flight_legs.size(); i++) {
@@ -355,7 +355,7 @@ Json::Value SimulationGenerator::WriteOwnshipReports() {
     GeographicCoordinate start_pos =
             _flight_scenario.GetOwnship().GetFlightPlan().GetStartPosition();
     GeographicCoordinate cur_pos = start_pos;
-    double cur_bearing = 36.0;
+    double cur_bearing = 0.0;
     int time = 0;
     for (int i = 0; i < flight_legs.size(); i++) {
         int duration = flight_legs.at(i).GetDurationAfterManeuver() +
