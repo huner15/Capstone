@@ -16,13 +16,13 @@
 #include <cdti.pb.h>
 #include "SurveillanceReport.h"
 #include "CorrelationEngine.h"
+#include "ReceivedReports.h"
 
 class ReportReceiver {
 private:
 
 
     const double NAUTICAL_MILES_TO_FEET = 6076.12;
-
 
     bool _is_copying;
     bool _is_connected;
@@ -31,7 +31,7 @@ private:
     pthread_mutex_t _tcas_mutex;
     pthread_mutex_t _adsb_mutex;
     pthread_mutex_t _ownship_mutex;
-    HeldReports _held_reports;
+    ReceivedReports _held_reports;
     pthread_t countThread;
 
     CorrelationEngine* _correlationEngine;
