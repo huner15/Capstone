@@ -22,7 +22,7 @@ CorrelationEngine* startEngine() {
 }
 
 ReportReceiver::ReportReceiver() {
-    _held_reports = HeldReports();
+    _held_reports = ReceivedReports();
     _is_copying = false;
     _is_connected = true;
     pthread_mutex_init(&_radar_mutex, NULL);
@@ -265,74 +265,3 @@ void ReportReceiver::callCorrelate() {
     _correlationEngine->Correlate(adsb, tcas, radar, false);
 }
 
-
-//Held Report data from here down
-
-void ReportReceiver::HeldReports::changeOwnship(SurveillanceReport * report) {
-    _ownship = report;
-}
-
-void ReportReceiver::HeldReports::addAdsBReport(SurveillanceReport * report) {
-    _adsb_reports->push_back(report);
-}
-
-void ReportReceiver::HeldReports::addRadarReport(SurveillanceReport *report) {
-    _radar_reports->push_back(report);
-}
-
-void ReportReceiver::HeldReports::addTcasReport(SurveillanceReport *report) {
-    _tcas_reports->push_back(report);
-}
-
-ReportReceiver::HeldReports::HeldReports() {
-    _ownship = new SurveillanceReport();
-    _adsb_reports = new std::vector<SurveillanceReport *>();
-    _radar_reports = new std::vector<SurveillanceReport *>();
-    _tcas_reports = new std::vector<SurveillanceReport *>();
-}
-
-SurveillanceReport* ReportReceiver::HeldReports::getOwnship() {
-    return _ownship;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getAdsb() {
-    return _adsb_reports;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getRadar() {
-    return _radar_reports;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getTcas() {
-    return _tcas_reports;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyTcas() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_tcas_reports;
-    newVector->swap(hold);
-    return newVector;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyAdsb() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_adsb_reports;
-    newVector->swap(hold);
-    return newVector;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyRadar() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_radar_reports;
-    newVector->swap(hold);
-    return newVector;
-}
-
-SurveillanceReport* ReportReceiver::HeldReports::CopyOwnship() {
-    SurveillanceReport * report = _ownship;
-    _ownship = new SurveillanceReport();
-    return report;
-}
