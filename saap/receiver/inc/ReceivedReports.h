@@ -6,14 +6,15 @@
  * @brief TODO make description
  */
 
-#ifndef RECEIVEDREPORTS_H_
-#define RECEIVEDREPORTS_H_
+#ifndef RECEIVED_REPORTS_H_
+#define RECEIVED_REPORTS_H_
 
 #include <ownship.pb.h>
 #include <adsb.pb.h>
 #include <radar.pb.h>
 #include <tcas.pb.h>
 #include <cdti.pb.h>
+
 #include "SurveillanceReport.h"
 #include "CorrelationEngine.h"
 #include "ReceivedReports.h"
@@ -34,8 +35,6 @@ private:
             (std::vector<SurveillanceReport *>);
 
 public:
-    //HeldReports(CorrelationEngine corEngine);
-
     ReceivedReports();
 
     /*
@@ -113,4 +112,4 @@ public:
     SurveillanceReport* CopyOwnship();
 };
 
-#endif //RECEIVEDREPORTS_H_
+#endif

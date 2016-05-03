@@ -15,17 +15,15 @@ int main(int argc, char *argv[]) {
                       (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[RADAR_THREAD_INDEX + 2]),
-                      (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]));
+                      (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]),
+                      (in_port_t) atoi(argv[CDTI_INDEX + 2]));
 
-        /* TODO: Both Process and StartReceiver contain long loops however they
-         * need to execute concurrently. */
         client.Process();
-        report_receiver.StartReceiver();
-        report_receiver.Close();
     }
     else {
         std::cout <<
-        "usage: run_saap host ownship_port adsb_port radar_port tcas_port" <<
+        "usage: run_saap host ownship_port adsb_port radar_port tcas_port "
+                "cdti_port" <<
         std::endl;
     }
 }

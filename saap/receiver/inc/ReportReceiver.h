@@ -14,14 +14,13 @@
 #include <radar.pb.h>
 #include <tcas.pb.h>
 #include <cdti.pb.h>
+
 #include "SurveillanceReport.h"
 #include "CorrelationEngine.h"
 #include "ReceivedReports.h"
 
 class ReportReceiver {
 private:
-
-
     const double NAUTICAL_MILES_TO_FEET = 6076.12;
 
     bool _is_copying;

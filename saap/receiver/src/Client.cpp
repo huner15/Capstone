@@ -10,10 +10,11 @@
 #include "Client.h"
 
 Client::Client(ReportReceiver& report_receiver, in_port_t ownship_port,
-        in_port_t adsb_port, in_port_t radar_port, in_port_t tcas_port)
+        in_port_t adsb_port, in_port_t radar_port, in_port_t tcas_port,
+               in_port_t cdti_port)
         : _report_receiver(report_receiver), _ownship_port(ownship_port),
           _adsb_port(adsb_port), _radar_port(radar_port),
-          _tcas_port(tcas_port) {
+          _tcas_port(tcas_port), _cdti_port(cdti_port) {
 }
 
 void *StartReceiver(void *device_receiver) {
@@ -40,11 +41,18 @@ bool Client::Process() {
     pthread_create(&threads[TCAS_THREAD_INDEX], NULL, StartReceiver,
                    (void *) &tcas_receiver);
 
+    /* TODO: Add pthread_create for ReportReceiver counter. */
+
     // Wait for all threads to complete.
     pthread_join(threads[OWNSHIP_THREAD_INDEX], NULL);
     pthread_join(threads[ADSB_THREAD_INDEX], NULL);
     pthread_join(threads[RADAR_THREAD_INDEX], NULL);
     pthread_join(threads[TCAS_THREAD_INDEX], NULL);
+
+    _report_receiver.Close();
+
+    /* TODO: Join ReportReceiver counter thread and Close correlation and
+     * categorization engine. */
 
     // Delete any global objects allocated by the protobuf library.
     google::protobuf::ShutdownProtobufLibrary();

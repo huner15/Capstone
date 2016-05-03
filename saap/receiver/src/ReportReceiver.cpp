@@ -7,6 +7,7 @@
  */
 
 #include <cstdlib>
+
 #include "ReportReceiver.h"
 
 CorrelationEngine* startEngine() {
@@ -30,11 +31,8 @@ ReportReceiver::ReportReceiver() {
     pthread_mutex_init(&_adsb_mutex, NULL);
     pthread_mutex_init(&_tcas_mutex, NULL);
     pthread_cond_init (&_held_report_cv, NULL);
-    num = 3;
 
     _correlationEngine = startEngine();
-
-
 }
 
 ReportReceiver::~ReportReceiver() {
@@ -44,54 +42,41 @@ ReportReceiver::~ReportReceiver() {
 void ReportReceiver::StartReceiver() {
     // Start the report receiver thread.
     pthread_create(&countThread, NULL, &TimerThreadFunction, this);
-
-}
-
-void ReportReceiver::Close() {
-    _is_connected = false;
     // Wait for the thread to finish.
     pthread_join(countThread, NULL);
 }
 
-bool ReportReceiver::getIsConnected(){
+void ReportReceiver::Close() {
+    _is_connected = false;
+}
 
+bool ReportReceiver::getIsConnected(){
+    return _is_connected;
 }
 
 void* ReportReceiver::TimerThreadFunction(void *classReference) {
-    //TODO make a timer that goes over everything and calls ReportReceiver's
-    // correlate every second.
-   /* std::time_t timer = time(NULL);
-    timer += 1;
-    while(1){
-        if(timer <= time(NULL)){
-            timer = time(NULL) + 1;
-            printf("Do stuff ");
-            ((ReportReceiver *)classReference)->callCorrelate();
-        }
-    }
-
-    printf("%d", ((ReportReceiver *)classReference)->num);*/
-
     double elapsed_time = 0;
 
     clock_t this_time = clock();
     clock_t last_time = this_time;
 
-    //CLOCKS_PER_SEC is how many units clock() has per second.
-    while(((ReportReceiver *) classReference)->getIsConnected()) {
+    // CLOCKS_PER_SEC is how many units clock() has per second.
+    while (((ReportReceiver *) classReference)->getIsConnected()) {
         this_time = clock();
 
         elapsed_time += (double) (this_time - last_time);
 
         last_time = this_time;
 
-        if(elapsed_time > (double) CLOCKS_PER_SEC){
+        if (elapsed_time > (double) CLOCKS_PER_SEC) {
             elapsed_time -= (double) CLOCKS_PER_SEC;
-            //printf("Calling Correlate");
             ((ReportReceiver *)classReference)->callCorrelate();
         }
     }
-    ((ReportReceiver *)classReference)->callCorrelate();
+
+    ((ReportReceiver *) classReference)->callCorrelate();
+
+    pthread_exit(NULL);
 }
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
@@ -157,8 +142,6 @@ SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
                                    geographic_coordinate,
                                    spherical_coordinate, velocity,
                                    ADSB);
-
-
 }
 
 SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
@@ -186,7 +169,6 @@ SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
                                    radar_id, geographic_coordinate,
                                    spherical_coordinate, velocity,
                                    RADAR);
-
 }
 
 void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
@@ -242,6 +224,8 @@ vector<SurveillanceReport *>* ReportReceiver::getRadar() {
 }
 
 void ReportReceiver::callCorrelate() {
+    /* TODO: Return ReceivedReport. */
+
     _is_copying = true;
     pthread_mutex_lock(&_radar_mutex);
     pthread_mutex_lock(&_tcas_mutex);
@@ -264,4 +248,3 @@ void ReportReceiver::callCorrelate() {
     //TODO make all of the copied held reports adsb relative
     _correlationEngine->Correlate(adsb, tcas, radar, false);
 }
-
