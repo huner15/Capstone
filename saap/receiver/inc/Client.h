@@ -18,7 +18,7 @@
 #include "TcasReceiver.h"
 
 /** Expected number of command line arguments. */
-const int EXPECTED_ARGUMENTS = 6;
+const int EXPECTED_ARGUMENTS = 7;
 
 /** Total number of threads. */
 const int NUM_THREADS = 4;
@@ -28,6 +28,9 @@ const int OWNSHIP_THREAD_INDEX = 0;
 const int ADSB_THREAD_INDEX = 1;
 const int RADAR_THREAD_INDEX = 2;
 const int TCAS_THREAD_INDEX = 3;
+
+/** CDTI argument index reference. */
+const int CDTI_INDEX = 4;
 
 class Client {
 private:
@@ -43,9 +46,13 @@ private:
     in_port_t _radar_port;
     in_port_t _tcas_port;
 
+    /** CDTI port number. */
+    in_port_t _cdti_port;
+
 public:
     Client(ReportReceiver& report_receiver, in_port_t ownship_port,
-           in_port_t adsb_port, in_port_t radar_port, in_port_t tcas_port);
+           in_port_t adsb_port, in_port_t radar_port, in_port_t tcas_port,
+           in_port_t cdti_port);
 
     bool Process();
 };
