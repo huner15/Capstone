@@ -32,7 +32,11 @@ public:
 
     double CalculateRange(CDTIPlane* plane);
 
+<<<<<<< HEAD
     double CalculateCPA(CDTIPlane plane);
+=======
+    double CalculateCPA(CDTIPlane* plane);
+>>>>>>> 089b2dee558770ee4d590be4494527ef970c5b7c
 
     void CategorizePlane(CDTIPlane* plane);
 
