@@ -22,8 +22,34 @@ void *StartReceiver(void *device_receiver) {
     pthread_exit(NULL);
 }
 
+void* TimerThreadFunction(void *classReference) {
+    double elapsed_time = 0;
+
+    clock_t this_time = clock();
+    clock_t last_time = this_time;
+
+    // CLOCKS_PER_SEC is how many units clock() has per second.
+    while (((ReportReceiver *) classReference)->getIsConnected()) {
+        this_time = clock();
+
+        elapsed_time += (double) (this_time - last_time);
+
+        last_time = this_time;
+
+        if (elapsed_time > (double) CLOCKS_PER_SEC) {
+            elapsed_time -= (double) CLOCKS_PER_SEC;
+            ((ReportReceiver *)classReference)->callCorrelate();
+        }
+    }
+
+    ((ReportReceiver *) classReference)->callCorrelate();
+
+    pthread_exit(NULL);
+}
+
 bool Client::Process() {
     pthread_t threads[NUM_THREADS];
+    pthread_t countThread;
 
     // Create a receiver for every device type.
     OwnshipReceiver ownship_receiver(_host, _ownship_port, _report_receiver);
@@ -41,7 +67,9 @@ bool Client::Process() {
     pthread_create(&threads[TCAS_THREAD_INDEX], NULL, StartReceiver,
                    (void *) &tcas_receiver);
 
-    /* TODO: Add pthread_create for ReportReceiver counter. */
+    pthread_create(&countThread, NULL, TimerThreadFunction,
+                   (void *) &_report_receiver);
+
 
     // Wait for all threads to complete.
     pthread_join(threads[OWNSHIP_THREAD_INDEX], NULL);
@@ -50,6 +78,7 @@ bool Client::Process() {
     pthread_join(threads[TCAS_THREAD_INDEX], NULL);
 
     _report_receiver.Close();
+    pthread_join(countThread, NULL);
 
     /* TODO: Join ReportReceiver counter thread and Close correlation and
      * categorization engine. */

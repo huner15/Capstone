@@ -39,13 +39,6 @@ ReportReceiver::~ReportReceiver() {
     delete _correlationEngine;
 }
 
-void ReportReceiver::StartReceiver() {
-    // Start the report receiver thread.
-    pthread_create(&countThread, NULL, &TimerThreadFunction, this);
-    // Wait for the thread to finish.
-    pthread_join(countThread, NULL);
-}
-
 void ReportReceiver::Close() {
     _is_connected = false;
 }
@@ -54,30 +47,6 @@ bool ReportReceiver::getIsConnected(){
     return _is_connected;
 }
 
-void* ReportReceiver::TimerThreadFunction(void *classReference) {
-    double elapsed_time = 0;
-
-    clock_t this_time = clock();
-    clock_t last_time = this_time;
-
-    // CLOCKS_PER_SEC is how many units clock() has per second.
-    while (((ReportReceiver *) classReference)->getIsConnected()) {
-        this_time = clock();
-
-        elapsed_time += (double) (this_time - last_time);
-
-        last_time = this_time;
-
-        if (elapsed_time > (double) CLOCKS_PER_SEC) {
-            elapsed_time -= (double) CLOCKS_PER_SEC;
-            ((ReportReceiver *)classReference)->callCorrelate();
-        }
-    }
-
-    ((ReportReceiver *) classReference)->callCorrelate();
-
-    pthread_exit(NULL);
-}
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
         (OwnshipReport report){
