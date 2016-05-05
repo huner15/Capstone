@@ -11,12 +11,19 @@
 
 using namespace std;
 
+bool mutexs = true;
+int i = 0;
+
 CorrelationEngine::CorrelationEngine() {
     _is_relative = true;
+    pthread_mutex_init(&cluster_mutex, NULL);
+    pthread_mutex_init(&corr_aircraft_mutex, NULL);
 }
 
 CorrelationEngine::CorrelationEngine(bool relativeValue) {
     _is_relative = relativeValue;
+    pthread_mutex_init(&cluster_mutex, NULL);
+    pthread_mutex_init(&corr_aircraft_mutex, NULL);
 }
 
 CorrelationEngine::~CorrelationEngine() {
@@ -148,7 +155,9 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
     _is_relative = is_relative;
 
     //mutex lock for using the cluster vectors
-    //pthread_mutex_lock(&cluster_mutex);
+    if (mutexs)
+        pthread_mutex_lock(&cluster_mutex);
+
     _clusters.clear();
 
     printf("Correlate. adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
@@ -168,35 +177,39 @@ int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
     }
 
     //lock CorrelationAircraft vectors
-    //pthread_mutex_lock(&corr_aircraft_mutex);
+    if (mutexs)
+        pthread_mutex_lock(&corr_aircraft_mutex);
 
     //for every cluster, call ConvertAircraft(), add to _corr_aircraft
     for (uint32_t i = 0; i < _clusters.size(); i++) {
         temp = ConvertAircraft(_clusters.at(i));
         _corr_aircraft.push_back(temp);
-        _free_clusters.push_back(_clusters.at(i));
+      //  _free_clusters.push_back(_clusters.at(i));
     }
 
 printf("%lu\n", _corr_aircraft.size());
     //unlock cluster vectors
-   // pthread_mutex_unlock(&cluster_mutex);
+    if (mutexs)
+        pthread_mutex_unlock(&cluster_mutex);
 
     printf("Categorize!\n");
 
     //Send all correlate aircraft to the
-    Categorize(&_corr_aircraft);
+    //Categorize(&_corr_aircraft);
 
-    printf("End Categorize\n");
+    printf("End Categorize %d\n", i++);
 
     //Delete Correlate and Cluster data
     for (int i = 0; i < _corr_aircraft.size(); i++) {
-        _free_aircraft.push_back(_corr_aircraft.at(i));
+     //   _free_aircraft.push_back(_corr_aircraft.at(i));
     }
 
     _corr_aircraft.clear();
+    _clusters.clear();
 
     //unlock CorrelationAircraft vectors
-    //pthread_mutex_unlock(&corr_aircraft_mutex);
+    if (mutexs)
+        pthread_mutex_unlock(&corr_aircraft_mutex);
 
     return 0;
 
@@ -293,13 +306,13 @@ int CorrelationEngine::CheckClusterCount() {
 Cluster *CorrelationEngine::NewCluster() {
     Cluster *cluster;
 
-    if (_free_clusters.empty()) {
+   // if (_free_clusters.empty()) {
         cluster = (Cluster *) malloc(sizeof(Cluster));
-    }
-    else {
-        cluster = _free_clusters.at(_clusters.size() - 1);
-        _free_clusters.pop_back();
-    }
+//    }
+//    else {
+//        cluster = _free_clusters.at(_clusters.size() - 1);
+//        _free_clusters.pop_back();
+//    }
 
     cluster->_adsb = NULL;
     cluster->_radar = NULL;
@@ -312,13 +325,13 @@ Cluster *CorrelationEngine::NewCluster() {
 CorrelationAircraft *CorrelationEngine::NewCorrAircraft() {
     CorrelationAircraft *aircraft;
 
-    if (_free_aircraft.empty()) {
+ //   if (_free_aircraft.empty()) {
         aircraft = (CorrelationAircraft *) malloc(sizeof(CorrelationAircraft));
-    }
-    else {
-        aircraft = _free_aircraft.at(_free_aircraft.size() - 1);
-        _free_aircraft.pop_back();
-    }
+//    }
+//    else {
+//        aircraft = _free_aircraft.at(_free_aircraft.size() - 1);
+//        _free_aircraft.pop_back();
+//    }
 
     return aircraft;
 }
