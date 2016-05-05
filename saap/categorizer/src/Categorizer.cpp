@@ -20,18 +20,6 @@ Categorizer::Categorizer(ClientSocket &client_socket)
         : _client_socket(client_socket) {
 }
 
-ClientSocket* socket_to_cdti;// = new ClientSocket("localhost", 13000);
-
-double CalculateRange(CDTIPlane plane);
-double CalculateCPA(CDTIPlane plane);
-CDTIPlane_Severity CategorizePlane(CDTIPlane plane);
-std::vector<CDTIPlane*> MakeCDTI(std::vector<CorrelationAircraft*>* aircraft);
-CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft);
-/*
- *
- */
-//void Categorize(std::vector<CorrelationAircraft *> *aircraft) {
-    //std::vector<CDTIPlane *> planes = MakeCDTI(aircraft);
 Categorizer::~Categorizer() {
     delete &_client_socket;
 }
@@ -43,8 +31,6 @@ void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     report->set_timestamp(t);
     CDTIPlane *ownship = new CDTIPlane();
     Vector *pv = new Vector();
-
-    printf("printCategorizereport\n");
 
     pv->set_d(0);
     pv->set_e(0);
@@ -60,10 +46,10 @@ void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     // report->mutable_planes()->AddAllocated(plane);
     //call something to translate whatever is given into a list of CDTIplanes
     for (int i = 0; i < aircraft->size(); i++) {
-        CDTIPlane plane = MakeCDTIPlane(aircraft->at(i));
-        plane.set_severity(CategorizePlane(plane));
+        CDTIPlane* plane = MakeCDTIPlane(aircraft->at(i));
+        CategorizePlane(plane);
         CDTIPlane *set = report->add_planes();
-        *set = plane;
+        *set = *plane;
         // *set = *(planes.at(i));
         // report->mutable_planes()->AddAllocated(planes.at(i));
         //set->set_id("hi");
@@ -81,56 +67,22 @@ void Categorizer::Categorize(std::vector<CorrelationAircraft *> *aircraft) {
     }
 
     cout << ownship->id();
-    try {
-        *socket_to_cdti << *report;
-
-    }catch(SocketException){
-
-    }
     _client_socket << *report;
 }
 
-void Connect(string ip, int port ) {
-    try {
-        socket_to_cdti = new ClientSocket(ip, port);
-    }catch(SocketException){
-
-    }
-
-}
-
-CDTIPlane* Categorizer::MakeCDTIPlane(CorrelationAircraft* aircraft)
-{
+CDTIPlane* Categorizer::MakeCDTIPlane(CorrelationAircraft* aircraft) {
     return new CDTIPlane(aircraft->CreateCdtiPlane());
 }
 
-std::vector<CDTIPlane*> Categorizer::MakeCDTI(std::vector<CorrelationAircraft*> *aircraft) {
+std::vector<CDTIPlane*> Categorizer::MakeCDTI(
+        std::vector<CorrelationAircraft*> *aircraft) {
     std::vector<CDTIPlane*> planes;
 
-    for(int i = 0; i < aircraft->size(); i++)
-    {
+    for (int i = 0; i < aircraft->size(); i++) {
       //  planes.push_back(MakeCDTIPlane(aircraft->at(i)));
     }
 
     return planes;
-}
-
-/**
-<<<<<<< 74a289b9e3a334598b9056ec6d2554386ad9e015:saap/categorization/src/Categorizer.cpp
- * decides where to Categorize a plane
- */
-CDTIPlane_Severity CategorizePlane(CDTIPlane plane){
-    double range = CalculateRange(plane);
-    double cpa = CalculateCPA(plane);
-    if(range < 2 && abs(plane.position().d()) < 300 && cpa < .5)
-        return plane.RESOLUTION;
-    else if(range < 5 && abs(plane.position().d()) < 500 && cpa < 1)
-        return plane.TRAFFIC;
-    else if(range < 10 && abs(plane.position().d()) < 1000)
-        return plane.PROXIMATE;
-    else
-        return plane.PROXIMATE;
-
 }
 
 
@@ -148,7 +100,6 @@ double Categorizer::CalculateRange(CDTIPlane* plane) {
     position.y = pos->e();
     position.z = pos->d();
     return SpecialMath::DistanceFormula<double, 3>(position, zero);
-
 }
 
 /**
@@ -182,3 +133,4 @@ void Categorizer::CategorizePlane(CDTIPlane* plane) {
     else if(range < 10 && abs(plane->position().d()) < 1000)
         plane->set_severity(plane->PROXIMATE);
 }
+
