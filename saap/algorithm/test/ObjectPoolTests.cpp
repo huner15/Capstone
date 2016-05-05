@@ -15,10 +15,10 @@ TEST(NewCluster, simpleAllocate) {
     result->_adsb = new SurveillanceReport();
     result->_tcas = new SurveillanceReport();
     result->_radar = new SurveillanceReport();
-
-    //add to free list
-    engine.AddFreeCluster(0);
-
+//
+//    //add to free list
+//    engine.AddFreeCluster(0);
+//
     result = engine.NewCluster();
     ASSERT_FALSE(result == NULL);
     EXPECT_EQ(NULL, result->_adsb);
@@ -71,12 +71,12 @@ TEST(NewCluster, stressTest) {
     EXPECT_EQ(NULL, keptTwo->_tcas);
     ASSERT_FALSE(keptTwo->_radar == NULL);
 
-    //add clusters to free list
-    for (int index = 0; index <= max; index++) {
-        if (index != keptIndexOne && index != keptIndexTwo) {
-            engine.AddFreeCluster(index);
-        }
-    }
+//    //add clusters to free list
+//    for (int index = 0; index <= max; index++) {
+//        if (index != keptIndexOne && index != keptIndexTwo) {
+//            engine.AddFreeCluster(index);
+//        }
+//    }
 
     //Reaccess freed list clusters
     for (int index = 0; index < (max - 1); index++) {
