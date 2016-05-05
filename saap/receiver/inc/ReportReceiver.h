@@ -31,7 +31,7 @@ private:
     pthread_mutex_t _adsb_mutex;
     pthread_mutex_t _ownship_mutex;
     ReceivedReports _held_reports;
-    pthread_t countThread;
+
 
     CorrelationEngine* _correlationEngine;
 
@@ -62,11 +62,7 @@ private:
      */
     SurveillanceReport* CreateAdsbSurveillanceReport(AdsBReport report);
 
-    /*
-     * Calls the correlate function in CorrelationEngine using the copied
-     * reports from heldreports after making all of the adsb reports relative.
-     */
-    void callCorrelate();
+
 
 
 public:
@@ -141,11 +137,6 @@ public:
     vector<SurveillanceReport *>* getRadar();
 
     /*
-    * For the count thread. It just goes and calls correlate every second.
-    */
-    static void *TimerThreadFunction(void* classReference);
-
-    /*
      * Checks if the ReportReceiver is connected
      */
     bool getIsConnected();
@@ -155,7 +146,11 @@ public:
      */
     void StartReceiver();
 
-    int num;
+    /*
+     * Calls the correlate function in CorrelationEngine using the copied
+     * reports from heldreports after making all of the adsb reports relative.
+     */
+    void callCorrelate();
 };
 
 #endif
