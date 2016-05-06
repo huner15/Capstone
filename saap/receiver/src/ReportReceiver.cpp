@@ -6,57 +6,44 @@
  * @brief TODO make description
  */
 
+#include <cstdlib>
+
 #include "ReportReceiver.h"
 
+CorrelationEngine* startEngine() {
+    try {
+        ClientSocket* client_socket = new ClientSocket("localhost", 13000);
+        Categorizer* categorizer = new Categorizer(*client_socket);
+        return new CorrelationEngine(*categorizer);
+    }
+    catch (SocketException exception) {
+        std::cout << "Could not connect to CDTI." << std::endl;
+        exit(EXIT_SUCCESS);
+    }
+}
+
 ReportReceiver::ReportReceiver() {
-    _held_reports = HeldReports();
+    _held_reports = ReceivedReports();
     _is_copying = false;
+    _is_connected = true;
     pthread_mutex_init(&_radar_mutex, NULL);
     pthread_mutex_init(&_ownship_mutex, NULL);
     pthread_mutex_init(&_adsb_mutex, NULL);
     pthread_mutex_init(&_tcas_mutex, NULL);
     pthread_cond_init (&_held_report_cv, NULL);
-    num = 3;
-    pthread_create(&countThread, NULL, &TimerThreadFunction, this);
-    correlationEngine = CorrelationEngine();
 
+    _correlationEngine = startEngine();
 }
 
-void* ReportReceiver::TimerThreadFunction(void *classReference) {
-    //TODO make a timer that goes over everything and calls ReportReceiver's
-    // correlate every second.
-   /* std::time_t timer = time(NULL);
-    timer += 1;
-    while(1){
-        if(timer <= time(NULL)){
-            timer = time(NULL) + 1;
-            printf("Do stuff ");
-            ((ReportReceiver *)classReference)->callCorrelate();
-        }
-    }
+ReportReceiver::~ReportReceiver() {
+}
 
-    printf("%d", ((ReportReceiver *)classReference)->num);*/
+void ReportReceiver::Close() {
+    _is_connected = false;
+}
 
-    double elapsed_time = 0;
-
-    clock_t this_time = clock();
-    clock_t last_time = this_time;
-
-    //CLOCKS_PER_SEC is how many units clock() has per second.
-    while(true){
-        this_time = clock();
-
-        elapsed_time += (double) (this_time - last_time);
-
-        last_time = this_time;
-
-        if(elapsed_time > (double) CLOCKS_PER_SEC){
-            elapsed_time -= (double) CLOCKS_PER_SEC;
-            //printf("Calling Correlate");
-            ((ReportReceiver *)classReference)->callCorrelate();
-        }
-    }
-
+bool ReportReceiver::getIsConnected(){
+    return _is_connected;
 }
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
@@ -122,8 +109,6 @@ SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
                                    geographic_coordinate,
                                    spherical_coordinate, velocity,
                                    ADSB);
-
-
 }
 
 SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
@@ -151,7 +136,6 @@ SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
                                    radar_id, geographic_coordinate,
                                    spherical_coordinate, velocity,
                                    RADAR);
-
 }
 
 void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
@@ -207,6 +191,8 @@ vector<SurveillanceReport *>* ReportReceiver::getRadar() {
 }
 
 void ReportReceiver::callCorrelate() {
+    /* TODO: Return ReceivedReport. */
+
     _is_copying = true;
     pthread_mutex_lock(&_radar_mutex);
     pthread_mutex_lock(&_tcas_mutex);
@@ -227,77 +213,5 @@ void ReportReceiver::callCorrelate() {
 
 
     //TODO make all of the copied held reports adsb relative
-    correlationEngine.Correlate(adsb, tcas, radar, false);
-}
-
-
-//Held Report data from here down
-
-void ReportReceiver::HeldReports::changeOwnship(SurveillanceReport * report) {
-    _ownship = report;
-}
-
-void ReportReceiver::HeldReports::addAdsBReport(SurveillanceReport * report) {
-    _adsb_reports->push_back(report);
-}
-
-void ReportReceiver::HeldReports::addRadarReport(SurveillanceReport *report) {
-    _radar_reports->push_back(report);
-}
-
-void ReportReceiver::HeldReports::addTcasReport(SurveillanceReport *report) {
-    _tcas_reports->push_back(report);
-}
-
-ReportReceiver::HeldReports::HeldReports() {
-    _ownship = new SurveillanceReport();
-    _adsb_reports = new std::vector<SurveillanceReport *>();
-    _radar_reports = new std::vector<SurveillanceReport *>();
-    _tcas_reports = new std::vector<SurveillanceReport *>();
-}
-
-SurveillanceReport* ReportReceiver::HeldReports::getOwnship() {
-    return _ownship;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getAdsb() {
-    return _adsb_reports;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getRadar() {
-    return _radar_reports;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::getTcas() {
-    return _tcas_reports;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyTcas() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_tcas_reports;
-    newVector->swap(hold);
-    return newVector;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyAdsb() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_adsb_reports;
-    newVector->swap(hold);
-    return newVector;
-}
-
-std::vector<SurveillanceReport *>* ReportReceiver::HeldReports::CopyRadar() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_radar_reports;
-    newVector->swap(hold);
-    return newVector;
-}
-
-SurveillanceReport* ReportReceiver::HeldReports::CopyOwnship() {
-    SurveillanceReport * report = _ownship;
-    _ownship = new SurveillanceReport();
-    return report;
+    _correlationEngine->Correlate(adsb, tcas, radar, false);
 }

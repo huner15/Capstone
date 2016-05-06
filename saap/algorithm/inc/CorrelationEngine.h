@@ -7,15 +7,16 @@
  * all of the interchangeable algorithms will be based on.
 */
 
-#ifndef CORRELATIONENGINE_H_
-#define CORRELATIONENGINE_H_
+#ifndef CORRELATION_ENGINE_H_
+#define CORRELATION_ENGINE_H_
+
+#include <pthread.h>
 
 #include "SurveillanceReport.h"
 #include "Cluster.h"
 #include "CorrelationAircraft.h"
 #include "Categorizer.h"
-#include <pthread.h>
-#include <GenerationMath.h>
+#include "GenerationMath.h"
 
 #define TRUE 0
 #define FALSE 1
@@ -41,9 +42,9 @@ protected:
     //Whether or not ADS-B reports where converted to relative this second
     bool _is_relative;
 
-    //mutex locks for using the cluster and corrAircraft vectors
-  //  pthread_mutex_t cluster_mutex;
-    //pthread_mutex_t corr_aircraft_mutex;
+    // Mutex locks for using the cluster and corrAircraft vectors.
+    pthread_mutex_t cluster_mutex;
+    pthread_mutex_t corr_aircraft_mutex;
 
     /*
      * Checks that all Clusters have atleast one SurveillanceReport.
@@ -52,6 +53,9 @@ protected:
      * @return int 0 for success, 1 for error
      */
     int CheckClusterCount();
+
+    // Categorizer to be used by this correlation engine.
+    Categorizer& _categorizer;
 
 private:
     /**
@@ -91,11 +95,14 @@ private:
      */
     double CalcVelocityError(Device type);
 
+    // Use mutex locks when true.
+    bool mutexs = true;
+
 public:
     /*
      * No parameter constructor, sets _is_relative to true.
      */
-    CorrelationEngine();
+    CorrelationEngine(Categorizer& categorizer);
 
     /*
      * One parameter constructor, sets _is_relative to given value.
@@ -103,7 +110,7 @@ public:
      * @relativeValue boolean if the SurveillanceReports are converted
      * to all relative values
      */
-    CorrelationEngine(bool relativeValue);
+    CorrelationEngine(Categorizer& categorizer, bool relativeValue);
 
     /*
      * Empty deconstructor, does nothing.
