@@ -3,833 +3,560 @@ connection established
 temp written
 reading temp
 temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-temp written
-reading temp
-temp read
-0
-Example.CDTIPlane
-1
-message
-at intake
-added to screed 2
-end intake
-wnship
-end intake
-temp written
-reading temp
-Exception caught in readStream ended too early
-reading temp
-temp read
-0
-
-0
-
-at intake
-end intake
-temp written
-reading temp
-temp read
 4
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
-end intake
-temp written
-reading temp
-Exception caught in readStream ended too early
-reading temp
-temp read
-0
-
-0
-
-at intake
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
 temp read
-4
+6
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
-end intake
-temp written
-reading temp
-Exception caught in readStream ended too early
-reading temp
-temp read
-0
-
-0
-
-at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
 temp read
-4
+8
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
-end intake
-temp written
-reading temp
-Exception caught in readStream ended too early
-reading temp
-temp read
-0
-
-0
-
-at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
 temp read
-4
+10
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
-end intake
-temp written
-reading temp
-Exception caught in readStream ended too early
-reading temp
-temp read
-0
-
-0
-
-at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
 temp read
-4
+12
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
-end intake
-temp written
-reading temp
-Exception caught in readStream ended too early
-reading temp
-temp read
-0
-
-0
-
-at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
 temp read
-4
+14
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
-Exception caught in readStream ended too early
-reading temp
 temp read
-0
-
-0
-
-at intake
-end intake
-temp written
-reading temp
-temp read
-4
+16
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
-Exception caught in readStream ended too early
-reading temp
 temp read
-0
-
-0
-
-at intake
-end intake
-temp written
-reading temp
-temp read
-4
+18
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
-Exception caught in readStream ended too early
-reading temp
 temp read
-0
-
-0
-
-at intake
-end intake
-temp written
-reading temp
-temp read
-4
+20
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
-Exception caught in readStream ended too early
-reading temp
 temp read
-0
-
-0
-
-at intake
-end intake
-temp written
-reading temp
-temp read
-4
+22
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
-Exception caught in readStream ended too early
-reading temp
 temp read
-0
-
-0
-
-at intake
-end intake
-temp written
-reading temp
-temp read
-4
+24
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
-Exception caught in readStream ended too early
-reading temp
 temp read
-0
-
-0
-
-at intake
-end intake
-temp written
-reading temp
-temp read
-4
+26
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
-Exception caught in readStream ended too early
-reading temp
 temp read
-0
-
-0
-
-at intake
-end intake
-temp written
-reading temp
-temp read
-4
+28
 Example.CDTIPlane
-5
-send success
+1
+message
 at intake
-added to screed demo 1
-added to screed demo 2
-added to screed demo 3
-added to screed demo 4
-added to screed ownship
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
-reading temp
-Exception caught in readStream ended too early
 reading temp
 temp read
-0
-
-0
-
+30
+Example.CDTIPlane
+1
+message
 at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
 end intake
 temp written
 reading temp
+temp read
+32
+Example.CDTIPlane
+1
+message
+at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
+end intake
+temp written
+reading temp
+temp read
+34
+Example.CDTIPlane
+1
+message
+at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
+end intake
+temp written
+reading temp
+temp read
+36
+Example.CDTIPlane
+1
+message
+at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
+end intake
+temp written
+reading temp
+temp read
+36
+Example.CDTIPlane
+1
+message
+at intake
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed hi
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 45298
+added to screed 2
+end intake
+p
 temp read
 4
 Example.CDTIPlane

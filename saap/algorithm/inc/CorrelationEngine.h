@@ -7,15 +7,16 @@
  * all of the interchangeable algorithms will be based on.
 */
 
-#ifndef CORRELATIONENGINE_H_
-#define CORRELATIONENGINE_H_
+#ifndef CORRELATION_ENGINE_H_
+#define CORRELATION_ENGINE_H_
+
+#include <pthread.h>
 
 #include "SurveillanceReport.h"
 #include "Cluster.h"
 #include "CorrelationAircraft.h"
 #include "Categorizer.h"
-#include <pthread.h>
-#include <GenerationMath.h>
+#include "GenerationMath.h"
 
 #define TRUE 0
 #define FALSE 1
@@ -41,9 +42,7 @@ protected:
     //Whether or not ADS-B reports where converted to relative this second
     bool _is_relative;
 
-    //mutex locks for using the cluster and corrAircraft vectors
-    //pthread_mutex_t cluster_mutex;
-    //pthread_mutex_t corr_aircraft_mutex;
+    // Mutex locks for using the cluster and corrAircraft vectors.
     pthread_mutex_t cluster_mutex;
     pthread_mutex_t corr_aircraft_mutex;
 
@@ -95,6 +94,9 @@ private:
      * @return float The error of this report device type
      */
     double CalcVelocityError(Device type);
+
+    // Use mutex locks when true.
+    bool mutexs = true;
 
 public:
     /*

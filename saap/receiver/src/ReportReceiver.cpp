@@ -36,7 +36,6 @@ ReportReceiver::ReportReceiver() {
 }
 
 ReportReceiver::~ReportReceiver() {
-    delete _correlationEngine;
 }
 
 void ReportReceiver::Close() {
@@ -46,7 +45,6 @@ void ReportReceiver::Close() {
 bool ReportReceiver::getIsConnected(){
     return _is_connected;
 }
-
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
         (OwnshipReport report){

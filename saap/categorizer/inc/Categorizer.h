@@ -30,20 +30,16 @@ public:
 
     void Categorize(std::vector<CorrelationAircraft *> *aircraft);
 
-    double CalculateRange(CDTIPlane* plane);
+    double CalculateRange(CDTIPlane plane);
 
-<<<<<<< HEAD
     double CalculateCPA(CDTIPlane plane);
-=======
-    double CalculateCPA(CDTIPlane* plane);
->>>>>>> 089b2dee558770ee4d590be4494527ef970c5b7c
 
-    void CategorizePlane(CDTIPlane* plane);
+    CDTIPlane_Severity CategorizePlane(CDTIPlane plane);
 
-    std::vector<CDTIPlane*> MakeCDTI(
+    std::vector<CDTIPlane> MakeCDTI(
             std::vector<CorrelationAircraft*>* aircraft);
 
-    CDTIPlane* MakeCDTIPlane(CorrelationAircraft* aircraft);
+    CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft);
 };
 
 #endif
