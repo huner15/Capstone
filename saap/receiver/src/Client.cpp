@@ -15,6 +15,7 @@ Client::Client(ReportReceiver& report_receiver, in_port_t ownship_port,
         : _report_receiver(report_receiver), _ownship_port(ownship_port),
           _adsb_port(adsb_port), _radar_port(radar_port),
           _tcas_port(tcas_port), _cdti_port(cdti_port) {
+    _is_connected = true;
 }
 
 void *StartReceiver(void *device_receiver) {
@@ -29,7 +30,7 @@ void* TimerThreadFunction(void *classReference) {
     clock_t last_time = this_time;
 
     // CLOCKS_PER_SEC is how many units clock() has per second.
-    while (((ReportReceiver *) classReference)->getIsConnected()) {
+    while (((Client *) classReference)->GetIsConnected()) {
         this_time = clock();
 
         elapsed_time += (double) (this_time - last_time);
@@ -38,16 +39,16 @@ void* TimerThreadFunction(void *classReference) {
 
         if (elapsed_time > (double) CLOCKS_PER_SEC) {
             elapsed_time -= (double) CLOCKS_PER_SEC;
-            ((ReportReceiver *)classReference)->callCorrelate();
+            ((Client *)classReference)->Process();
         }
     }
 
-    ((ReportReceiver *) classReference)->callCorrelate();
+    ((Client *) classReference)->Process();
 
     pthread_exit(NULL);
 }
 
-bool Client::Process() {
+bool Client::StartReceivers() {
     pthread_t threads[NUM_THREADS];
     pthread_t countThread;
 
@@ -68,7 +69,7 @@ bool Client::Process() {
                    (void *) &tcas_receiver);
 
     pthread_create(&countThread, NULL, TimerThreadFunction,
-                   (void *) &_report_receiver);
+                   (void *) this);
 
 
     // Wait for all threads to complete.
@@ -77,7 +78,7 @@ bool Client::Process() {
     pthread_join(threads[RADAR_THREAD_INDEX], NULL);
     pthread_join(threads[TCAS_THREAD_INDEX], NULL);
 
-    _report_receiver.Close();
+    _is_connected = false;
     pthread_join(countThread, NULL);
 
     /* TODO: Join ReportReceiver counter thread and Close correlation and
@@ -87,4 +88,12 @@ bool Client::Process() {
     google::protobuf::ShutdownProtobufLibrary();
 
     return true;
+}
+
+bool Client::GetIsConnected() {
+    return _is_connected;
+}
+
+void Client::Process() {
+    _report_receiver.callCorrelate();
 }

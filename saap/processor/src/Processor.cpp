@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
                       (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[CDTI_INDEX + 2]));
 
-        client.Process();
+        client.StartReceivers();
     }
     else {
         std::cout <<

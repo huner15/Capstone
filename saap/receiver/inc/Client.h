@@ -49,12 +49,33 @@ private:
     /** CDTI port number. */
     in_port_t _cdti_port;
 
+    /** Stops the TimerThreadFunction when false */
+    bool _is_connected;
+
+
+
+
 public:
     Client(ReportReceiver& report_receiver, in_port_t ownship_port,
            in_port_t adsb_port, in_port_t radar_port, in_port_t tcas_port,
            in_port_t cdti_port);
 
-    bool Process();
+    bool StartReceivers();
+
+    /**
+     * Gets whether the Client is connected to the SimulationServer
+     * @return true if the Client is connected to the SimulationServer, false
+     * if not.
+     */
+    bool GetIsConnected();
+
+    /**
+     * Calls the functions in ReportReceiver, CorrelationEngine and
+     * CategorizationEngine to get all of the data moved. Once a verifier is
+     * created it should be called with the second by second data in this
+     * function
+     */
+    void Process();
 };
 
 #endif
