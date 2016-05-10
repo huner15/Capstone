@@ -17,6 +17,7 @@
 #include "CorrelationAircraft.h"
 #include "Categorizer.h"
 #include "GenerationMath.h"
+#include "ReceivedReports.h"
 
 #define TRUE 0
 #define FALSE 1
@@ -159,18 +160,10 @@ public:
      * all of the possible Clusters for each SurveillanceReport, generates
      * Clusters, and evaluates each detected aircraft location.
      *
-     * @param adsb The reports received from the ADS-B hardware for the
-     * current sec
-     * @param radar The reports received from the radar hardware for the
-     * current sec
-     * @param tcas The reports received from the TCAS hardware for the
-     * current sec
-     * @param is_relative if ADS-B has a calculated Spherical Coordinate
+     * @param reports the reports received in the last second.
      * @return int 0 for success, 1 for error
      */
-    int Correlate(vector<SurveillanceReport *> *adsb,
-        vector<SurveillanceReport *> *tcas,vector<SurveillanceReport *> *radar,
-        bool is_relative);
+    int Correlate(ReceivedReports reports);
 
     /**
      * Converts a given Cluster into a CorrelateAircraft by averaging

@@ -16,8 +16,7 @@
 #include <cdti.pb.h>
 
 #include "SurveillanceReport.h"
-#include "CorrelationEngine.h"
-#include "ReceivedReports.h"
+
 
 class ReceivedReports {
 private:

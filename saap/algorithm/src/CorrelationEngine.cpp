@@ -147,11 +147,15 @@ double CorrelationEngine::CompareTcasToClusters(SurveillanceReport *report) {
     return result;
 }
 
-int CorrelationEngine::Correlate(vector<SurveillanceReport *> *adsb,
-        vector<SurveillanceReport *> *tcas,
-        vector<SurveillanceReport *> *radar, bool is_relative) {
+int CorrelationEngine::Correlate(ReceivedReports reports) {
     CorrelationAircraft *temp;
-    _is_relative = is_relative;
+    //TODO make the received reports make things relative and have it return
+    // a bool to make _is_relative equal to.
+    _is_relative = true;
+
+    vector<SurveillanceReport *> *adsb = reports.CopyAdsb();
+    vector<SurveillanceReport *> *tcas = reports.CopyTcas();
+    vector<SurveillanceReport *> *radar = reports.CopyRadar();
 
     // Mutex lock for using the cluster vectors.
     if (mutexs)

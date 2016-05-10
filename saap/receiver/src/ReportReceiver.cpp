@@ -199,10 +199,13 @@ void ReportReceiver::callCorrelate() {
     pthread_mutex_lock(&_adsb_mutex);
     pthread_mutex_lock(&_ownship_mutex);
 
-    std::vector<SurveillanceReport *>* tcas = _held_reports.CopyTcas();
+    /*std::vector<SurveillanceReport *>* tcas = _held_reports.CopyTcas();
     std::vector<SurveillanceReport *>* adsb = _held_reports.CopyAdsb();
     std::vector<SurveillanceReport *>* radar = _held_reports.CopyRadar();
-    SurveillanceReport * ownship = _held_reports.CopyOwnship();
+    SurveillanceReport * ownship = _held_reports.CopyOwnship();*/
+
+    ReceivedReports lastSecond = _held_reports;
+    _held_reports = ReceivedReports();
 
     _is_copying = false;
     pthread_cond_broadcast(&_held_report_cv);
@@ -213,5 +216,5 @@ void ReportReceiver::callCorrelate() {
 
 
     //TODO make all of the copied held reports adsb relative
-    _correlationEngine->Correlate(adsb, tcas, radar, false);
+    _correlationEngine->Correlate(lastSecond);
 }
