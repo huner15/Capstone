@@ -32,48 +32,24 @@ void ReceivedReports::addTcasReport(SurveillanceReport *report) {
 }
 
 
-SurveillanceReport* ReceivedReports::getOwnship() {
+SurveillanceReport* ReceivedReports::GetOwnship() {
     return _ownship;
 }
 
-std::vector<SurveillanceReport *>* ReceivedReports::getAdsb() {
+std::vector<SurveillanceReport *>* ReceivedReports::GetAdsb() {
     return _adsb_reports;
 }
 
-std::vector<SurveillanceReport *>* ReceivedReports::getRadar() {
+std::vector<SurveillanceReport *>* ReceivedReports::GetRadar() {
     return _radar_reports;
 }
 
-std::vector<SurveillanceReport *>* ReceivedReports::getTcas() {
+std::vector<SurveillanceReport *>* ReceivedReports::GetTcas() {
     return _tcas_reports;
 }
 
-std::vector<SurveillanceReport *>* ReceivedReports::CopyTcas() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_tcas_reports;
-    newVector->swap(hold);
-    return newVector;
+bool ReceivedReports::MakeRelative() {
+    //TODO actually put in the logic to make adsb relative here.
+    return false;
 }
 
-std::vector<SurveillanceReport *>* ReceivedReports::CopyAdsb() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_adsb_reports;
-    newVector->swap(hold);
-    return newVector;
-}
-
-std::vector<SurveillanceReport *>* ReceivedReports::CopyRadar() {
-    std::vector<SurveillanceReport *>* newVector = new
-            std::vector<SurveillanceReport *>();
-    std::vector<SurveillanceReport *> hold = *_radar_reports;
-    newVector->swap(hold);
-    return newVector;
-}
-
-SurveillanceReport* ReceivedReports::CopyOwnship() {
-    SurveillanceReport * report = _ownship;
-    _ownship = new SurveillanceReport();
-    return report;
-}

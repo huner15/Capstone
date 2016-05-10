@@ -175,19 +175,19 @@ void ReportReceiver::ReceiveRadar(RadarReport report) {
 }
 
 SurveillanceReport * ReportReceiver::getOwnship() {
-    return _held_reports.getOwnship();
+    return _held_reports.GetOwnship();
 }
 
 vector<SurveillanceReport *>* ReportReceiver::getTcas() {
-    return _held_reports.getTcas();
+    return _held_reports.GetTcas();
 }
 
 vector<SurveillanceReport *>* ReportReceiver::getAdsB() {
-    return _held_reports.getAdsb();
+    return _held_reports.GetAdsb();
 }
 
 vector<SurveillanceReport *>* ReportReceiver::getRadar() {
-    return _held_reports.getRadar();
+    return _held_reports.GetRadar();
 }
 
 void ReportReceiver::callCorrelate() {

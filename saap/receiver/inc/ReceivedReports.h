@@ -40,24 +40,24 @@ public:
      * Gets the current vector of Surveillance Report * for Tcas.
      * @return the current vector for tcas.
      */
-    std::vector<SurveillanceReport *>* getTcas();
+    std::vector<SurveillanceReport *>*GetTcas();
 
     /*
      * Gets the current vector of Surveillance Report * for adsb
      * @return the current vector for adsb
      */
-    std::vector<SurveillanceReport *>* getAdsb();
+    std::vector<SurveillanceReport *>* GetAdsb();
 
     /*
      * Gets the current vector of Surveillance Report * for radar
      * @return the current vector for radar
      */
-    std::vector<SurveillanceReport *>* getRadar();
+    std::vector<SurveillanceReport *>* GetRadar();
 
     /*
      * Gets the Current Surveillance Report for ownship
      */
-    SurveillanceReport* getOwnship();
+    SurveillanceReport* GetOwnship();
 
     /*
      * Adds a SurveillanceReport pointer to the Tcas Reports
@@ -84,31 +84,12 @@ public:
     void changeOwnship(SurveillanceReport * report);
 
     /*
-     * Swaps out the current data into a return vector and clears the
-     * current vector of tcas surveillance reports
-     * @return a different place for the current tcas reports.
+     * Tries to make ADS-B relative first by using ownship and if that fails
+     * by using the coordinates by a radar report. Returns whether or not it
+     * has sucessfully made the ADS-B reports relative.
+     * @return true if the ADS-B reports are relative, false if not.
      */
-    std::vector<SurveillanceReport *>* CopyTcas();
-
-    /*
-     * Swaps out the current data into a return vector and clears the
-     * current vector of Adsb surveillance reports
-     * @return a different place for the current Adsb reports.
-     */
-    std::vector<SurveillanceReport *>* CopyAdsb();
-
-    /*
-     * Swaps out the current data into a return vector and clears the
-     * current vector of radar surveillance reports
-     * @return a different place for the current radar reports.
-     */
-    std::vector<SurveillanceReport *>* CopyRadar();
-
-    /*
-     * Gets the current ownship and clears the ownship inside of held
-     * reports
-     */
-    SurveillanceReport* CopyOwnship();
+    bool MakeRelative();
 };
 
 #endif
