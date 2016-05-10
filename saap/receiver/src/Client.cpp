@@ -9,12 +9,15 @@
 
 #include "Client.h"
 
-Client::Client(ReportReceiver& report_receiver, in_port_t ownship_port,
-        in_port_t adsb_port, in_port_t radar_port, in_port_t tcas_port,
-               in_port_t cdti_port)
-        : _report_receiver(report_receiver), _ownship_port(ownship_port),
-          _adsb_port(adsb_port), _radar_port(radar_port),
-          _tcas_port(tcas_port), _cdti_port(cdti_port) {
+Client::Client(ReportReceiver& report_receiver, CorrelationEngine&
+correlation_engine, Categorizer& categorizer,
+               in_port_t ownship_port, in_port_t adsb_port,
+               in_port_t radar_port, in_port_t tcas_port, in_port_t cdti_port)
+        : _report_receiver(report_receiver),
+          _correlation_engine(correlation_engine), _categorizer(categorizer),
+          _ownship_port(ownship_port), _adsb_port(adsb_port),
+          _radar_port(radar_port), _tcas_port(tcas_port),
+          _cdti_port(cdti_port) {
     _is_connected = true;
 }
 

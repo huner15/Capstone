@@ -37,6 +37,12 @@ private:
     /** Correlation engine report receiver. */
     ReportReceiver& _report_receiver;
 
+    /** Correlation Engine to send ReceivedReports to */
+    CorrelationEngine& _correlation_engine;
+
+    /** Categorizer to send CorrelationAircraft to */
+    Categorizer& _categorizer;
+
     /** Host machine IP address. */
     std::string _host;
 
@@ -54,11 +60,11 @@ private:
 
 
 
-
 public:
-    Client(ReportReceiver& report_receiver, in_port_t ownship_port,
-           in_port_t adsb_port, in_port_t radar_port, in_port_t tcas_port,
-           in_port_t cdti_port);
+    Client(ReportReceiver& report_receiver, CorrelationEngine&
+           correlation_engine, Categorizer& categorizer,
+           in_port_t ownship_port, in_port_t adsb_port,
+           in_port_t radar_port, in_port_t tcas_port, in_port_t cdti_port);
 
     bool StartReceivers();
 
