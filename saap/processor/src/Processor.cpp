@@ -8,17 +8,26 @@
 
 #include "Processor.h"
 
+
 int main(int argc, char *argv[]) {
     if (argc == EXPECTED_ARGUMENTS) {
         ReportReceiver report_receiver;
         //TODO make the creation of Correlation Engine based on command line
         // arguments to easily change the Correlation Engine and take out the
         // dependencies
-        ClientSocket clientSocket ("local host",
-                                   (in_port_t) atoi(argv[CDTI_INDEX + 2]));
-        Categorizer categorizer(clientSocket);
-        CorrelationEngine correlationEngine(categorizer);
-        Client client(report_receiver, correlationEngine, categorizer,
+        Categorizer* categorizer;
+        try {
+            ClientSocket* client_socket =
+                    new ClientSocket("localhost",
+                                     (in_port_t) atoi(argv[CDTI_INDEX + 2]));
+            categorizer = new Categorizer(*client_socket);
+        }
+        catch (SocketException exception) {
+            std::cout << "Could not connect to CDTI." << std::endl;
+            exit(EXIT_SUCCESS);
+        }
+        CorrelationEngine correlationEngine(*categorizer);
+        Client client(report_receiver, correlationEngine, *categorizer,
                       (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[RADAR_THREAD_INDEX + 2]),

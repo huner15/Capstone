@@ -33,8 +33,6 @@ private:
     ReceivedReports _held_reports;
 
 
-    CorrelationEngine* _correlationEngine;
-
     /*
      * Takes the OwnshipReport and translates it to a Surveillance report.
      * @param report A report received from the ReceiveOwnship.
@@ -77,11 +75,6 @@ public:
      * Deconstruct the report receiver.
      */
     ~ReportReceiver();
-
-    /**
-     * Stops the infinite thread
-     */
-    void Close();
 
     /*
      * Takes in an OwnshipReport from the Simulation Server and sends it to
@@ -137,20 +130,10 @@ public:
     vector<SurveillanceReport *>* getRadar();
 
     /*
-     * Checks if the ReportReceiver is connected
-     */
-    bool getIsConnected();
-
-    /**
-     * Starts the receiver
-     */
-    void StartReceiver();
-
-    /*
      * Calls the correlate function in CorrelationEngine using the copied
      * reports from heldreports after making all of the adsb reports relative.
      */
-    void callCorrelate();
+    ReceivedReports callCorrelate();
 };
 
 #endif

@@ -10,17 +10,7 @@
 
 #include "ReportReceiver.h"
 
-CorrelationEngine* startEngine() {
-    try {
-        ClientSocket* client_socket = new ClientSocket("localhost", 13000);
-        Categorizer* categorizer = new Categorizer(*client_socket);
-        return new CorrelationEngine(*categorizer);
-    }
-    catch (SocketException exception) {
-        std::cout << "Could not connect to CDTI." << std::endl;
-        exit(EXIT_SUCCESS);
-    }
-}
+
 
 ReportReceiver::ReportReceiver() {
     _held_reports = ReceivedReports();
@@ -31,20 +21,11 @@ ReportReceiver::ReportReceiver() {
     pthread_mutex_init(&_adsb_mutex, NULL);
     pthread_mutex_init(&_tcas_mutex, NULL);
     pthread_cond_init (&_held_report_cv, NULL);
-
-    _correlationEngine = startEngine();
 }
 
 ReportReceiver::~ReportReceiver() {
 }
 
-void ReportReceiver::Close() {
-    _is_connected = false;
-}
-
-bool ReportReceiver::getIsConnected(){
-    return _is_connected;
-}
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
         (OwnshipReport report){
@@ -190,7 +171,7 @@ vector<SurveillanceReport *>* ReportReceiver::getRadar() {
     return _held_reports.GetRadar();
 }
 
-void ReportReceiver::callCorrelate() {
+ReceivedReports ReportReceiver::callCorrelate() {
     /* TODO: Return ReceivedReport. */
 
     _is_copying = true;
@@ -215,6 +196,5 @@ void ReportReceiver::callCorrelate() {
     pthread_mutex_unlock(&_ownship_mutex);
 
 
-    //TODO make all of the copied held reports adsb relative
-    _correlationEngine->Correlate(lastSecond);
+    return lastSecond;
 }

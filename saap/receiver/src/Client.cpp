@@ -9,6 +9,8 @@
 
 #include "Client.h"
 
+
+
 Client::Client(ReportReceiver& report_receiver, CorrelationEngine&
 correlation_engine, Categorizer& categorizer,
                in_port_t ownship_port, in_port_t adsb_port,
@@ -98,5 +100,6 @@ bool Client::GetIsConnected() {
 }
 
 void Client::Process() {
-    _report_receiver.callCorrelate();
+    ReceivedReports reports = _report_receiver.callCorrelate();
+    _correlation_engine.Correlate(reports);
 }
