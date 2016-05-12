@@ -103,5 +103,6 @@ void Client::Process() {
     ReceivedReports reports = _report_receiver.callCorrelate();
     std::vector<CorrelationAircraft *>* corrAircraft =
             _correlation_engine.Correlate(reports);
+    if(corrAircraft != NULL)
     _categorizer.Categorize(corrAircraft);
 }

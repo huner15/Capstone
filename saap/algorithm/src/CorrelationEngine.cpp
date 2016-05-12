@@ -11,17 +11,8 @@
 
 using namespace std;
 
-CorrelationEngine::CorrelationEngine(Categorizer& categorizer)
-        : _categorizer(categorizer) {
+CorrelationEngine::CorrelationEngine() {
     _is_relative = true;
-    pthread_mutex_init(&cluster_mutex, NULL);
-    pthread_mutex_init(&corr_aircraft_mutex, NULL);
-}
-
-CorrelationEngine::CorrelationEngine(
-        Categorizer& categorizer, bool relativeValue)
-        : _categorizer(categorizer) {
-    _is_relative = relativeValue;
     pthread_mutex_init(&cluster_mutex, NULL);
     pthread_mutex_init(&corr_aircraft_mutex, NULL);
 }

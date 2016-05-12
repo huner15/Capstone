@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
             std::cout << "Could not connect to CDTI." << std::endl;
             exit(EXIT_SUCCESS);
         }
-        CorrelationEngine correlationEngine(*categorizer);
+        CorrelationEngine correlationEngine = CorrelationEngine();
         Client client(report_receiver, correlationEngine, *categorizer,
                       (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]),

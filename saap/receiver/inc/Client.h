@@ -16,6 +16,7 @@
 #include "AdsbReceiver.h"
 #include "RadarReceiver.h"
 #include "TcasReceiver.h"
+#include "Categorizer.h"
 
 /** Expected number of command line arguments. */
 const int EXPECTED_ARGUMENTS = 7;

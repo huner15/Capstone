@@ -15,7 +15,6 @@
 #include "SurveillanceReport.h"
 #include "Cluster.h"
 #include "CorrelationAircraft.h"
-#include "Categorizer.h"
 #include "GenerationMath.h"
 #include "ReceivedReports.h"
 
@@ -54,9 +53,6 @@ protected:
      * @return int 0 for success, 1 for error
      */
     int CheckClusterCount();
-
-    // Categorizer to be used by this correlation engine.
-    Categorizer& _categorizer;
 
 private:
     /**
@@ -103,15 +99,7 @@ public:
     /*
      * No parameter constructor, sets _is_relative to true.
      */
-    CorrelationEngine(Categorizer& categorizer);
-
-    /*
-     * One parameter constructor, sets _is_relative to given value.
-     * For testing.
-     * @relativeValue boolean if the SurveillanceReports are converted
-     * to all relative values
-     */
-    CorrelationEngine(Categorizer& categorizer, bool relativeValue);
+    CorrelationEngine();
 
     /*
      * Empty deconstructor, does nothing.
