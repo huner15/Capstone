@@ -163,7 +163,7 @@ public:
      * @param reports the reports received in the last second.
      * @return int 0 for success, 1 for error
      */
-    int Correlate(ReceivedReports reports);
+    std::vector<CorrelationAircraft *>* Correlate(ReceivedReports reports);
 
     /**
      * Converts a given Cluster into a CorrelateAircraft by averaging

@@ -147,7 +147,8 @@ double CorrelationEngine::CompareTcasToClusters(SurveillanceReport *report) {
     return result;
 }
 
-int CorrelationEngine::Correlate(ReceivedReports reports) {
+std::vector<CorrelationAircraft *>* CorrelationEngine::Correlate
+        (ReceivedReports reports) {
     CorrelationAircraft *temp;
     _is_relative = reports.MakeRelative();
 
@@ -159,6 +160,7 @@ int CorrelationEngine::Correlate(ReceivedReports reports) {
     if (mutexs)
         pthread_mutex_lock(&cluster_mutex);
 
+    _corr_aircraft.clear();
     _clusters.clear();
 
     printf("Correlate. adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
@@ -167,14 +169,14 @@ int CorrelationEngine::Correlate(ReceivedReports reports) {
 
     if (RunAlgorithm(adsb, tcas, radar) != TRUE) {
         printf("Error with running the Algorithm.\n");
-        return EXITVAL;
+        return NULL;
     }
 
     // Checks that all SurveillanceReports are in only one Cluster.
     if (CheckClusterCount() != TRUE) {
         printf("At least one SurveillanceReport is either not in a cluster or"
                        " in multiple clusters.\n");
-        return EXITVAL;
+        return NULL;
     }
 
     // Lock CorrelationAircraft vectors.
@@ -191,29 +193,15 @@ int CorrelationEngine::Correlate(ReceivedReports reports) {
 
     printf("%lu\n", _corr_aircraft.size());
 
-    // Unlock cluster vectors.
-    if (mutexs)
+    // Unlock cluster vectors and CorrelationAircraft vectors.
+    if (mutexs) {
         pthread_mutex_unlock(&cluster_mutex);
+        pthread_mutex_unlock(&corr_aircraft_mutex);
+    }
 
     printf("Categorize!\n");
 
-    // Send all correlate aircraft to the categorizer.
-    _categorizer.Categorize(&_corr_aircraft);
-
-    // Delete Correlate and Cluster data
-    for (int i = 0; i < _corr_aircraft.size(); i++) {
-        // TODO: Do we need the line below?
-        //_free_aircraft.push_back(_corr_aircraft.at(i));
-    }
-
-    _corr_aircraft.clear();
-    _clusters.clear();
-
-    // Unlock CorrelationAircraft vectors.
-    if (mutexs)
-        pthread_mutex_unlock(&corr_aircraft_mutex);
-
-    return 0;
+    return &_corr_aircraft;
 }
 
 CorrelationAircraft *CorrelationEngine::ConvertAircraft(Cluster *cluster) {

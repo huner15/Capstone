@@ -101,5 +101,7 @@ bool Client::GetIsConnected() {
 
 void Client::Process() {
     ReceivedReports reports = _report_receiver.callCorrelate();
-    _correlation_engine.Correlate(reports);
+    std::vector<CorrelationAircraft *>* corrAircraft =
+            _correlation_engine.Correlate(reports);
+    _categorizer.Categorize(corrAircraft);
 }
