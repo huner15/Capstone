@@ -1,0 +1,5 @@
+include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${gtest_SOURCE_DIR}/inc ${gtest_SOURCE_DIR})
+file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+add_executable(run_categorizer_test ${SOURCE_FILES})
+target_link_libraries(run_categorizer_test gtest gtest_main categorizer_lib)

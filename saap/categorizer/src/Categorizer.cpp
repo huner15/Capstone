@@ -44,7 +44,6 @@ CDTIPlane* Categorizer::CreateOwnshipCDTIPlane() {
 }
 
 Categorizer::~Categorizer() {
-    delete _ownship_cdti_plane;
 }
 
 CDTIReport* Categorizer::Categorize(

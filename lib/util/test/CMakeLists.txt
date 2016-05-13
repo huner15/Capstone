@@ -1,5 +1,5 @@
 include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(${gtest_SOURCE_DIR}/inc ${gtest_SOURCE_DIR})
 file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
-add_executable(run_util_tests ${SOURCE_FILES} SpecialMathTests.cpp)
+add_executable(run_util_tests ${SOURCE_FILES})
 target_link_libraries(run_util_tests gtest gtest_main util_lib)

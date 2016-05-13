@@ -89,4 +89,4 @@ public:
     CDTIPlane CreateCdtiPlane();
 };
 
-#endif //SAAS_CORRELATIONAIRCRAFT_H
+#endif
