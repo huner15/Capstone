@@ -111,10 +111,20 @@ Json::Value SimulationGenerator::FormatRadarReport(RadarID id, std::time_t time,
     return radar_report;
 }
 
-Json::Value SimulationGenerator::WriteTcasReports() {
-    Json::Value reports(Json::arrayValue);
+std::vector<Aircraft> SimulationGenerator::AllAircraftWithTcas() {
     std::vector<Aircraft> aircraft =
             _flight_scenario.GetAircraft();
+    std::vector<Aircraft> TcasAircraft;
+    for (int i = 0; i < aircraft.size(); i++) {
+        if(aircraft.at(i).HasTcas()) {
+            TcasAircraft.push_back(aircraft.at(i));
+        }
+    }
+}
+
+Json::Value SimulationGenerator::WriteTcasReports() {
+    Json::Value reports(Json::arrayValue);
+    std::vector<Aircraft> aircraft = AllAircraftWithTcas();
 
     //Loops through each aircraft in the simulation
     for (int k = 0; k < aircraft.size(); k++) {
@@ -281,11 +291,20 @@ Json::Value SimulationGenerator::WriteRadarReports() {
     return reports;
 }
 
+std::vector<Aircraft> SimulationGenerator::AllAircraftWithAdsb() {
+    std::vector<Aircraft> aircraft =
+            _flight_scenario.GetAircraft();
+    std::vector<Aircraft> AdsbAircraft;
+    for (int i = 0; i < aircraft.size(); i++) {
+        if(aircraft.at(i).HasAdsB()) {
+            AdsbAircraft.push_back(aircraft.at(i));
+        }
+    }
+}
 
 Json::Value SimulationGenerator::WriteAdsbReports() {
     Json::Value reports(Json::arrayValue);
-    std::vector<Aircraft> aircraft =
-            _flight_scenario.GetAircraft();
+    std::vector<Aircraft> aircraft = AllAircraftWithAdsb();
 
     for (int k = 0; k < aircraft.size(); k++) {
         std::vector<FlightLeg> flight_legs =

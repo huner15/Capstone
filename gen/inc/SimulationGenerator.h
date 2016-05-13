@@ -61,6 +61,10 @@ public:
 
     Json::Value WriteRadarReports();
 
+    std::vector<Aircraft> AllAircraftWithTcas();
+
+    std::vector<Aircraft> AllAircraftWithAdsb();
+
     int GetNumberOfAircraft();
 
     Json::Value WriteReports();
