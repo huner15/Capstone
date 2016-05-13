@@ -18,6 +18,7 @@
 #include "AdsbReceiver.h"
 #include "RadarReceiver.h"
 #include "TcasReceiver.h"
+#include "CorrelationEngine.h"
 #include "Categorizer.h"
 
 /** Expected number of command line arguments. */

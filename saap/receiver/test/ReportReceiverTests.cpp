@@ -10,7 +10,6 @@
 #include <ReportReceiver.h>
 #include <Device.h>
 #include "SurveillanceReport.h"
-#include "OwnshipReceiver.h"
 #define RANGE_TOLERANCE .5
 
 /*
@@ -435,6 +434,126 @@ TEST(ReportReceiverRadarSurveillanceReports, TwoReports){
     EXPECT_EQ(10, surveillanceReport->GetAltitude());
 
     surveillanceReport = reports->at(1);
+
+    EXPECT_EQ(time1, surveillanceReport->GetTime());
+    EXPECT_EQ(12, surveillanceReport->GetRange());
+    EXPECT_EQ(13, surveillanceReport->GetAzimuth());
+    EXPECT_EQ(14, surveillanceReport->GetElevation());
+    EXPECT_EQ(radarID1.Get(), surveillanceReport->GetRadarID().Get());
+    EXPECT_EQ(15, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(16, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(17, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(18, surveillanceReport->GetLatitude());
+    EXPECT_EQ(19, surveillanceReport->GetLongitude());
+    EXPECT_EQ(20, surveillanceReport->GetAltitude());
+}
+
+TEST(callCorrelate, TestSizeTwoReports){
+    RadarReport radarReport = RadarReport();
+    std::time_t time = std::time_t(1);
+    radarReport.set_timestamp(time);
+    radarReport.set_range(2);
+    radarReport.set_azimuth(3);
+    radarReport.set_elevation(4);
+    RadarID radarID = RadarID();
+    radarReport.set_id(radarID.Get());
+    radarReport.set_north(5);
+    radarReport.set_east(6);
+    radarReport.set_down(7);
+    radarReport.set_latitude(8);
+    radarReport.set_longitude(9);
+    radarReport.set_altitude(10);
+
+    ReportReceiver reportReceiver = ReportReceiver();
+    vector<SurveillanceReport *>* reports = reportReceiver.getRadar();
+
+    EXPECT_EQ(0, reports->size());
+    reportReceiver.ReceiveRadar(radarReport);
+    reports = reportReceiver.getRadar();
+    EXPECT_EQ(1, reports->size());
+
+    SurveillanceReport * surveillanceReport = reports->at(0);
+
+    EXPECT_EQ(time, surveillanceReport->GetTime());
+    EXPECT_EQ(2, surveillanceReport->GetRange());
+    EXPECT_EQ(3, surveillanceReport->GetAzimuth());
+    EXPECT_EQ(4, surveillanceReport->GetElevation());
+    EXPECT_EQ(radarID.Get(), surveillanceReport->GetRadarID().Get());
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(8, surveillanceReport->GetLatitude());
+    EXPECT_EQ(9, surveillanceReport->GetLongitude());
+    EXPECT_EQ(10, surveillanceReport->GetAltitude());
+
+    RadarReport radarReport1 = RadarReport();
+    std::time_t time1 = std::time_t(11);
+    radarReport1.set_timestamp(time1);
+    radarReport1.set_range(12);
+    radarReport1.set_azimuth(13);
+    radarReport1.set_elevation(14);
+    RadarID radarID1 = RadarID();
+    radarReport1.set_id(radarID1.Get());
+    radarReport1.set_north(15);
+    radarReport1.set_east(16);
+    radarReport1.set_down(17);
+    radarReport1.set_latitude(18);
+    radarReport1.set_longitude(19);
+    radarReport1.set_altitude(20);
+
+    reportReceiver.ReceiveRadar(radarReport1);
+    reports = reportReceiver.getRadar();
+    EXPECT_EQ(2, reports->size());
+    surveillanceReport = reports->at(0);
+
+    EXPECT_EQ(time, surveillanceReport->GetTime());
+    EXPECT_EQ(2, surveillanceReport->GetRange());
+    EXPECT_EQ(3, surveillanceReport->GetAzimuth());
+    EXPECT_EQ(4, surveillanceReport->GetElevation());
+    EXPECT_EQ(radarID.Get(), surveillanceReport->GetRadarID().Get());
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(8, surveillanceReport->GetLatitude());
+    EXPECT_EQ(9, surveillanceReport->GetLongitude());
+    EXPECT_EQ(10, surveillanceReport->GetAltitude());
+
+    surveillanceReport = reports->at(1);
+
+    EXPECT_EQ(time1, surveillanceReport->GetTime());
+    EXPECT_EQ(12, surveillanceReport->GetRange());
+    EXPECT_EQ(13, surveillanceReport->GetAzimuth());
+    EXPECT_EQ(14, surveillanceReport->GetElevation());
+    EXPECT_EQ(radarID1.Get(), surveillanceReport->GetRadarID().Get());
+    EXPECT_EQ(15, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(16, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(17, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(18, surveillanceReport->GetLatitude());
+    EXPECT_EQ(19, surveillanceReport->GetLongitude());
+    EXPECT_EQ(20, surveillanceReport->GetAltitude());
+
+    ReceivedReports held = reportReceiver.callCorrelate();
+
+    reports = reportReceiver.getRadar();
+    EXPECT_EQ(0, reports->size());
+
+    std::vector<SurveillanceReport *>* heldRadar = held.GetRadar();
+    EXPECT_EQ(2, heldRadar->size());
+
+    surveillanceReport = heldRadar->at(0);
+    EXPECT_EQ(time, surveillanceReport->GetTime());
+    EXPECT_EQ(2, surveillanceReport->GetRange());
+    EXPECT_EQ(3, surveillanceReport->GetAzimuth());
+    EXPECT_EQ(4, surveillanceReport->GetElevation());
+    EXPECT_EQ(radarID.Get(), surveillanceReport->GetRadarID().Get());
+    EXPECT_EQ(5, surveillanceReport->GetVelocity()->north);
+    EXPECT_EQ(6, surveillanceReport->GetVelocity()->east);
+    EXPECT_EQ(7, surveillanceReport->GetVelocity()->down);
+    EXPECT_EQ(8, surveillanceReport->GetLatitude());
+    EXPECT_EQ(9, surveillanceReport->GetLongitude());
+    EXPECT_EQ(10, surveillanceReport->GetAltitude());
+
+    surveillanceReport = heldRadar->at(1);
 
     EXPECT_EQ(time1, surveillanceReport->GetTime());
     EXPECT_EQ(12, surveillanceReport->GetRange());
