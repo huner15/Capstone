@@ -15,6 +15,25 @@ ReceivedReports::ReceivedReports() {
     _tcas_reports = new std::vector<SurveillanceReport *>();
 }
 
+ReceivedReports::ReceivedReports(const ReceivedReports& other){
+    _ownship = new SurveillanceReport(*other._ownship);
+    _adsb_reports = new std::vector<SurveillanceReport *>();
+    _radar_reports = new std::vector<SurveillanceReport *>();
+    _tcas_reports = new std::vector<SurveillanceReport *>();
+    for(int i = 0; i < other._adsb_reports->size(); i++){
+        _adsb_reports->push_back(new SurveillanceReport
+                                         (other._adsb_reports->[i]));
+    }
+    for (int j = 0; j < other._radar_reports->size(); j++){
+        _radar_reports->push_back(new SurveillanceReport
+                                          (other._radar_reports->[j]));
+    }
+    for (int k = 0; k < other._tcas_reports->size(); k++){
+        _tcas_reports->push_back(new SurveillanceReport
+                                         (other._tcas_reports->[k]));
+    }
+}
+
 void ReceivedReports::changeOwnship(SurveillanceReport *report) {
     _ownship = report;
 }

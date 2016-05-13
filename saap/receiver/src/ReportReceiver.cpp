@@ -190,7 +190,7 @@ ReceivedReports ReportReceiver::callCorrelate() {
     std::vector<SurveillanceReport *>* radar = _held_reports.CopyRadar();
     SurveillanceReport * ownship = _held_reports.CopyOwnship();*/
 
-    ReceivedReports lastSecond = _held_reports;
+    ReceivedReports lastSecond = ReceivedReports(_held_reports);
     _held_reports = ReceivedReports();
 
     _is_copying = false;

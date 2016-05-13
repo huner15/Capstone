@@ -38,6 +38,8 @@ private:
 public:
     ReceivedReports();
 
+    ReceivedReports(const ReceivedReports& other);
+
     /*
      * Gets the current vector of Surveillance Report * for Tcas.
      * @return the current vector for tcas.
