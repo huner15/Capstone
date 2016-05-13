@@ -22,15 +22,15 @@ ReceivedReports::ReceivedReports(const ReceivedReports& other){
     _tcas_reports = new std::vector<SurveillanceReport *>();
     for(int i = 0; i < other._adsb_reports->size(); i++){
         _adsb_reports->push_back(new SurveillanceReport
-                                         (other._adsb_reports->[i]));
+                                         (*other._adsb_reports->at(i)));
     }
     for (int j = 0; j < other._radar_reports->size(); j++){
         _radar_reports->push_back(new SurveillanceReport
-                                          (other._radar_reports->[j]));
+                                          (*other._radar_reports->at(j)));
     }
     for (int k = 0; k < other._tcas_reports->size(); k++){
         _tcas_reports->push_back(new SurveillanceReport
-                                         (other._tcas_reports->[k]));
+                                         (*other._tcas_reports->at(k)));
     }
 }
 
