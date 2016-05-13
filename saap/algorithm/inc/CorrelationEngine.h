@@ -33,13 +33,13 @@ using namespace std;
 
 class CorrelationEngine {
 protected:
-    vector<Cluster *> _clusters; //Holds the Clusters generated for this second
-    vector<Cluster *> _free_clusters; //Holds the unused Cluster objects
-    //Holds the Correlation Aircraft objects generated this second
+    vector<Cluster *> _clusters; // Holds the Clusters generated for this second
+    vector<Cluster *> _free_clusters; // Holds the unused Cluster objects
+    // Holds the Correlation Aircraft objects generated this second
     vector<CorrelationAircraft *> _corr_aircraft;
-    //Holds the unused Correlation Aircraft objects
+    // Holds the unused Correlation Aircraft objects
     vector<CorrelationAircraft *> _free_aircraft;
-    //Whether or not ADS-B reports where converted to relative this second
+    // Whether or not ADS-B reports where converted to relative this second
     bool _is_relative;
 
     // Mutex locks for using the cluster and corrAircraft vectors.

@@ -39,7 +39,8 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
     vector<SurveillanceReport *> *radar) {
     Cluster *cluster;
 
-    printf("Running top level algorithm\n");
+    // TODO: Remove debug prints.
+    printf("RunAlgorithm Called:\n");
     printf("adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
            tcas->size(), radar->size());
 
@@ -67,11 +68,10 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
             cluster->_tcas = tcas->at(i);
             _clusters.push_back(cluster);
         }
-
-        printf("clusters size: %lu and aircraft size: %lu\n", _clusters
-                .size(),
-                _corr_aircraft.size());
     }
+
+    // TODO: Remove debug print.
+    printf("clusters size: %lu and aircraft size: %lu\n", _clusters.size(), _corr_aircraft.size());
 
     return 0;
 }
@@ -154,9 +154,9 @@ std::vector<CorrelationAircraft *>* CorrelationEngine::Correlate
     _corr_aircraft.clear();
     _clusters.clear();
 
-    printf("Correlate. adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
+    // TODO: Remove debug print.
+    printf("Correlate Called adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
            tcas->size(), radar->size());
-    printf("Correlate called\n");
 
     if (RunAlgorithm(adsb, tcas, radar) != TRUE) {
         printf("Error with running the Algorithm.\n");
@@ -182,15 +182,11 @@ std::vector<CorrelationAircraft *>* CorrelationEngine::Correlate
         //_free_clusters.push_back(_clusters.at(i));
     }
 
-    printf("%lu\n", _corr_aircraft.size());
-
     // Unlock cluster vectors and CorrelationAircraft vectors.
     if (mutexs) {
         pthread_mutex_unlock(&cluster_mutex);
         pthread_mutex_unlock(&corr_aircraft_mutex);
     }
-
-    printf("Categorize!\n");
 
     return &_corr_aircraft;
 }

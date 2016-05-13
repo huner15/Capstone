@@ -11,6 +11,8 @@
 
 #include <string>
 
+#include <cdti.pb.h>
+
 #include "DeviceReceiver.h"
 #include "OwnshipReceiver.h"
 #include "AdsbReceiver.h"
@@ -19,7 +21,7 @@
 #include "Categorizer.h"
 
 /** Expected number of command line arguments. */
-const int EXPECTED_ARGUMENTS = 7;
+const int EXPECTED_ARGUMENTS = 8;
 
 /** Total number of threads. */
 const int NUM_THREADS = 4;
@@ -44,8 +46,8 @@ private:
     /** Categorizer to send CorrelationAircraft to */
     Categorizer& _categorizer;
 
-    /** Host machine IP address. */
-    std::string _host;
+    /** Simulator host machine IP address. */
+    std::string _sim_host;
 
     /** Device simulator port numbers. */
     in_port_t _ownship_port;
@@ -53,19 +55,25 @@ private:
     in_port_t _radar_port;
     in_port_t _tcas_port;
 
+    /** CDTI host machine IP adrress. */
+    std::string _cdti_host;
+
     /** CDTI port number. */
     in_port_t _cdti_port;
+
+    /** CDTI socket connected to cdti_host on cdti_port */
+    ClientSocket* _cdti_socket;
 
     /** Stops the TimerThreadFunction when false */
     bool _is_connected;
 
-
-
 public:
     Client(ReportReceiver& report_receiver, CorrelationEngine&
            correlation_engine, Categorizer& categorizer,
+           std::string sim_host,
            in_port_t ownship_port, in_port_t adsb_port,
-           in_port_t radar_port, in_port_t tcas_port, in_port_t cdti_port);
+           in_port_t radar_port, in_port_t tcas_port,
+           std::string cdti_host, in_port_t cdti_port);
 
     bool StartReceivers();
 

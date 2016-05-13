@@ -14,9 +14,6 @@
 #include "SurveillanceReport.h"
 #include <vector>
 
-#define TRUE 0
-#define FALSE 1
-
 using namespace std;
 
 /**

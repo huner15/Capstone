@@ -9,6 +9,8 @@
 #ifndef RECEIVED_REPORTS_H_
 #define RECEIVED_REPORTS_H_
 
+#include <iostream>
+
 #include <ownship.pb.h>
 #include <adsb.pb.h>
 #include <radar.pb.h>

@@ -10,8 +10,6 @@
 
 #include "ReportReceiver.h"
 
-
-
 ReportReceiver::ReportReceiver() {
     _held_reports = ReceivedReports();
     _is_copying = false;
@@ -25,7 +23,6 @@ ReportReceiver::ReportReceiver() {
 
 ReportReceiver::~ReportReceiver() {
 }
-
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
         (OwnshipReport report){
@@ -67,7 +64,6 @@ SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
                                   geographic_coordinate,
                                   spherical_coordinate, velocity,
                                   TCAS);
-
 }
 
 SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
@@ -120,6 +116,8 @@ SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
 }
 
 void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
+    // TODO: Remove debug print.
+    std::cout << "Received Ownship Report" << std::endl;
     pthread_mutex_lock(&_ownship_mutex);
     while(_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_ownship_mutex);
@@ -129,6 +127,8 @@ void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
 }
 
 void ReportReceiver::ReceiveTcas(TcasReport report) {
+    // TODO: Remove debug print.
+    std::cout << "Received TCAS Report" << std::endl;
     pthread_mutex_lock(&_tcas_mutex);
     while(_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_tcas_mutex);
@@ -138,6 +138,9 @@ void ReportReceiver::ReceiveTcas(TcasReport report) {
 }
 
 void ReportReceiver::ReceiveAdsb(AdsBReport report) {
+    // TODO: Remove debug print.
+    std::cout << "Received ADSB Report" << std::endl;
+    std::cout << "ADSB East Velocity: " << report.east() << std::endl;
     pthread_mutex_lock(&_adsb_mutex);
     while (_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_adsb_mutex);
@@ -147,6 +150,8 @@ void ReportReceiver::ReceiveAdsb(AdsBReport report) {
 }
 
 void ReportReceiver::ReceiveRadar(RadarReport report) {
+    // TODO: Remove debug print.
+    std::cout << "Received Radar Report" << std::endl;
     pthread_mutex_lock(&_radar_mutex);
     while(_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_radar_mutex);
@@ -194,7 +199,6 @@ ReceivedReports ReportReceiver::callCorrelate() {
     pthread_mutex_unlock(&_tcas_mutex);
     pthread_mutex_unlock(&_adsb_mutex);
     pthread_mutex_unlock(&_ownship_mutex);
-
 
     return lastSecond;
 }

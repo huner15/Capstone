@@ -3,11 +3,12 @@
  * @author Specific Atomics
  * @authors Michael Lenz, Frank Poole
  * @date 4-14-16
- * @brief TODO: Description
+ * @brief Generate a CDTI Report assigning every detected aircraft it's own
+ * proximate traffic severity category.
  */
 
-#ifndef SAAS_CATEGORIZER_H_
-#define SAAS_CATEGORIZER_H_
+#ifndef CATEGORIZER_H_
+#define CATEGORIZER_H_
 
 #include <cmath>
 
@@ -16,30 +17,36 @@
 #include "ClientSocket.h"
 #include "CorrelationAircraft.h"
 #include "SpecialMath.h"
-#include "FlightReport.h"
 
 class Categorizer {
 
 private:
-    ClientSocket& _client_socket;
+    /** Create a single ownship cdti plane as the ownship is the system origin
+     * and it's field values do not update. */
+    CDTIPlane* _ownship_cdti_plane;
 
-public:
-    Categorizer(ClientSocket& _client_socket);
+    /** Generate a constant CDTI plane to represent ownship. */
+    CDTIPlane* CreateOwnshipCDTIPlane();
 
-    ~Categorizer();
-
-    void Categorize(std::vector<CorrelationAircraft *> *aircraft);
-
+    /** Calculate the range from ownship to a given CDTI plane. */
     double CalculateRange(CDTIPlane plane);
 
+    /** Calculate the closest point of approach to a given CDTI plane. */
     double CalculateCPA(CDTIPlane plane);
 
-    CDTIPlane_Severity CategorizePlane(CDTIPlane plane);
+    /** Generate the severity category for a given CDTI plane. */
+    CDTIPlane_Severity GenerateSeverity(CDTIPlane* plane);
 
-    std::vector<CDTIPlane> MakeCDTI(
-            std::vector<CorrelationAircraft*>* aircraft);
+public:
+    /** Create a new Categorizer. */
+    Categorizer();
 
-    CDTIPlane MakeCDTIPlane(CorrelationAircraft* aircraft);
+    /** Deconstruct the Categorizer. */
+    ~Categorizer();
+
+    /** Generate a CDTI Report assigning every detected aircraft it's own
+     * proximate traffic severity category. */
+    CDTIReport* Categorize(std::vector<CorrelationAircraft *> *aircraft);
 };
 
 #endif

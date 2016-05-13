@@ -6,10 +6,13 @@
  * does specialty math
 */
 
-#ifndef SAAS_SPECIALMATH_H
-#define SAAS_SPECIALMATH_H
-#include "Vector.h"
+#ifndef SPECIAL_MATH_H_
+#define SPECIAL_MATH_H_
+
 #include <cmath>
+
+#include "Vector.h"
+
 namespace SpecialMath {
     /*
      * Calculates the distance between two points represented as vectors
@@ -26,4 +29,4 @@ namespace SpecialMath {
 };
 
 
-#endif //SAAS_SPECIALMATH_H
+#endif

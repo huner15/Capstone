@@ -8,38 +8,30 @@
 
 #include "Processor.h"
 
-
 int main(int argc, char *argv[]) {
     if (argc == EXPECTED_ARGUMENTS) {
         ReportReceiver report_receiver;
         //TODO make the creation of Correlation Engine based on command line
         // arguments to easily change the Correlation Engine and take out the
         // dependencies
-        Categorizer* categorizer;
-        try {
-            ClientSocket* client_socket =
-                    new ClientSocket("localhost",
-                                     (in_port_t) atoi(argv[CDTI_INDEX + 2]));
-            categorizer = new Categorizer(*client_socket);
-        }
-        catch (SocketException exception) {
-            std::cout << "Could not connect to CDTI." << std::endl;
-            exit(EXIT_SUCCESS);
-        }
+        Categorizer* categorizer = new Categorizer();
+
         CorrelationEngine correlationEngine = CorrelationEngine();
         Client client(report_receiver, correlationEngine, *categorizer,
+                      std::string(argv[1]),
                       (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[RADAR_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[TCAS_THREAD_INDEX + 2]),
-                      (in_port_t) atoi(argv[CDTI_INDEX + 2]));
+                      std::string(argv[CDTI_INDEX + 2]),
+                      (in_port_t) atoi(argv[CDTI_INDEX + 3]));
 
         client.StartReceivers();
     }
     else {
         std::cout <<
         "usage: run_saap host ownship_port adsb_port radar_port tcas_port "
-                "cdti_port" <<
+                "cdti_host cdti_port" <<
         std::endl;
     }
 }
