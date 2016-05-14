@@ -138,7 +138,7 @@ void Client::Process() {
         /** Print to console report counts to be categorized. */
         std::cout << "Categorization Engine Processing:" << std::endl <<
                 "\t" << correlation_aircraft->size() <<
-                " Correlated Reports" << std::endl;
+                " Correlated Report(s)" << std::endl;
 
         /** Categorize the set of correlated aircraft. */
         CDTIReport* cdtiReport = _categorizer.Categorize(correlation_aircraft);
