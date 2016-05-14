@@ -15,7 +15,7 @@ Socket::Socket() : _m_sock(-1) {
 }
 
 Socket::~Socket() {
-    if (IsValid()) {
+    if (IsConnected()) {
         ::close(_m_sock);
     }
 }
@@ -23,12 +23,12 @@ Socket::~Socket() {
 bool Socket::Create() {
     int opt = 1;
     _m_sock = socket(AF_INET, SOCK_STREAM, 0);
-    return IsValid() && ::setsockopt(_m_sock, SOL_SOCKET, SO_REUSEADDR,
+    return IsConnected() && ::setsockopt(_m_sock, SOL_SOCKET, SO_REUSEADDR,
                                      (const char *) &opt, sizeof(opt)) != -1;
 }
 
 bool Socket::Bind(const in_port_t port) {
-    if (IsValid()) {
+    if (IsConnected()) {
         _m_addr.sin_family = AF_INET;
         _m_addr.sin_addr.s_addr = INADDR_ANY;
         _m_addr.sin_port = htons(port);
@@ -41,13 +41,13 @@ bool Socket::Bind(const in_port_t port) {
 }
 
 bool Socket::Listen() const {
-    return IsValid() && ::listen(_m_sock, _MAX_CONNECTIONS) != -1;
+    return IsConnected() && ::listen(_m_sock, _MAX_CONNECTIONS) != -1;
 }
 
 bool Socket::Accept(Socket &new_socket) const {
     socklen_t addr_len = sizeof(_m_addr);
     new_socket._m_sock = ::accept(_m_sock, (sockaddr *) &_m_addr, &addr_len);
-    return new_socket.IsValid();
+    return new_socket.IsConnected();
 }
 
 bool Socket::Send(const std::string &msg) const {
@@ -84,7 +84,7 @@ size_t Socket::Recv(void *bfr, size_t len, int flags) const {
 }
 
 bool Socket::Connect(const std::string host, const in_port_t port) {
-    if (IsValid()) {
+    if (IsConnected()) {
         _m_addr.sin_family = AF_INET;
         _m_addr.sin_port = htons(port);
         inet_pton(AF_INET, host.c_str(), &_m_addr.sin_addr);

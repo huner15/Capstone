@@ -126,7 +126,7 @@ public:
      * @return true if the socket is valid for use or return false if the
      * socket has not been created
      */
-    bool IsValid() const {
+    bool IsConnected() const {
         return _m_sock != -1;
     }
 };
