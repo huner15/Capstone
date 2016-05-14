@@ -3,20 +3,6 @@ connection established
 temp written
 reading temp
 temp read
-4
-Example.CDTIPlane
-0
-
-at intake
-added to screed hi
-added to screed hi
-added to screed 45298
-added to screed 45298
-added to screed 0
-end intake
-temp written
-reading temp
-temp read
 0
 Example.CDTIPlane
 0
@@ -176,6 +162,25 @@ added to screed 0
 end intake
 temp written
 reading temp
+temp read
+0
+Example.CDTIPlane
+0
+
+at intake
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+0
+Example.CDTIPlane
+0
+
+at intake
+added to screed 0
+end intake
+ding temp
 temp read
 0
 Example.CDTIPlane

@@ -35,7 +35,7 @@ public:
     /**
      * Print the contents of an AdsbReport to standard out.
      */
-    void PrintReport(AdsBReport& ownshipReport);
+    static void PrintReport(AdsBReport& ownshipReport);
 };
 
 #endif

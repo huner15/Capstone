@@ -35,7 +35,7 @@ public:
     /**
      * Print the contents of a RadarReport.
      */
-    void PrintReport(RadarReport& radar_report);
+    static void PrintReport(RadarReport& radar_report);
 };
 
 #endif

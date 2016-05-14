@@ -7,8 +7,15 @@
  */
 
 #include <cstdlib>
+#include <iostream>
 
 #include "ReportReceiver.h"
+
+// For report debug prints.
+#include "OwnshipReceiver.h"
+#include "AdsbReceiver.h"
+#include "TcasReceiver.h"
+#include "RadarReceiver.h"
 
 ReportReceiver::ReportReceiver() {
     _held_reports = ReceivedReports();
@@ -26,7 +33,8 @@ ReportReceiver::~ReportReceiver() {
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
         (OwnshipReport report){
-
+    // TODO: Remove debug print.
+    OwnshipReceiver::PrintReport(report);
     std::time_t time = report.timestamp();
     float latitude = report.ownship_latitude();
     double longitude = report.ownship_longitude();
@@ -47,6 +55,8 @@ SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
 
 SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
         TcasReport report) {
+    // TODO: Remove debug print.
+    TcasReceiver::PrintReport(report);
     TcasID tcas_id = TcasID(report.id());
     double range = report.range() * NAUTICAL_MILES_TO_FEET;
     double altitude = report.altitude();
@@ -68,6 +78,8 @@ SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
 
 SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
         AdsBReport report) {
+    // TODO: Remove debug print.
+    AdsbReceiver::PrintReport(report);
     std::time_t time = report.timestamp();
     double latitude = report.latitude();
     double longitude = report.longitude();
@@ -90,6 +102,8 @@ SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
 
 SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
         RadarReport report) {
+    // TODO: Remove debug print.
+    RadarReceiver::PrintReport(report);
     std::time_t time = report.timestamp();
     double range = report.range();
     double azimuth = report.azimuth();
@@ -117,7 +131,7 @@ SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
 
 void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
     // TODO: Remove debug print.
-    std::cout << "Received Ownship Report" << std::endl;
+    //OwnshipReceiver::PrintReport(report);
     pthread_mutex_lock(&_ownship_mutex);
     while(_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_ownship_mutex);
@@ -128,7 +142,7 @@ void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
 
 void ReportReceiver::ReceiveTcas(TcasReport report) {
     // TODO: Remove debug print.
-    std::cout << "Received TCAS Report" << std::endl;
+    //TcasReceiver::PrintReport(report);
     pthread_mutex_lock(&_tcas_mutex);
     while(_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_tcas_mutex);
@@ -139,8 +153,7 @@ void ReportReceiver::ReceiveTcas(TcasReport report) {
 
 void ReportReceiver::ReceiveAdsb(AdsBReport report) {
     // TODO: Remove debug print.
-    std::cout << "Received ADSB Report" << std::endl;
-    std::cout << "ADSB East Velocity: " << report.east() << std::endl;
+    //AdsbReceiver::PrintReport(report);
     pthread_mutex_lock(&_adsb_mutex);
     while (_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_adsb_mutex);
@@ -151,7 +164,7 @@ void ReportReceiver::ReceiveAdsb(AdsBReport report) {
 
 void ReportReceiver::ReceiveRadar(RadarReport report) {
     // TODO: Remove debug print.
-    std::cout << "Received Radar Report" << std::endl;
+    //RadarReceiver::PrintReport(report);
     pthread_mutex_lock(&_radar_mutex);
     while(_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_radar_mutex);
@@ -189,6 +202,10 @@ ReceivedReports ReportReceiver::callCorrelate() {
     std::vector<SurveillanceReport *>* adsb = _held_reports.CopyAdsb();
     std::vector<SurveillanceReport *>* radar = _held_reports.CopyRadar();
     SurveillanceReport * ownship = _held_reports.CopyOwnship();*/
+
+    std::cout << "Held ADSB Reports: " << _held_reports.GetAdsb()->size() << std::endl;
+    std::cout << "Held TCAS Reports: " << _held_reports.GetTcas()->size() << std::endl;
+    std::cout << "Held Radar Reports: " << _held_reports.GetRadar()->size() << std::endl;
 
     ReceivedReports lastSecond = ReceivedReports(_held_reports);
     _held_reports = ReceivedReports();

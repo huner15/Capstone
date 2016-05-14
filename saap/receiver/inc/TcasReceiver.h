@@ -37,7 +37,7 @@ public:
     /**
      * Print the contents of an TcasReport to standard out.
      */
-    void PrintReport(TcasReport& tcas_report);
+    static void PrintReport(TcasReport& tcas_report);
 };
 
 #endif

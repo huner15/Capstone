@@ -35,7 +35,7 @@ public:
     /**
      * Print the contents of an OwnshipReport to standard out.
      */
-    void PrintReport(OwnshipReport& ownshipReport);
+    static void PrintReport(OwnshipReport& ownshipReport);
 };
 
 #endif
