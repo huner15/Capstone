@@ -532,7 +532,7 @@ TEST(callCorrelate, TestSizeTwoReports){
     EXPECT_EQ(19, surveillanceReport->GetLongitude());
     EXPECT_EQ(20, surveillanceReport->GetAltitude());
 
-    ReceivedReports held = reportReceiver.callCorrelate();
+    ReceivedReports held = reportReceiver.GetReports();
 
     reports = reportReceiver.getRadar();
     EXPECT_EQ(0, reports->size());

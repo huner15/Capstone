@@ -17,7 +17,6 @@ Cluster::Cluster() {
 }
 
 Cluster::~Cluster() {
-
 }
 
 void Cluster::SetADSB(SurveillanceReport *adsb) {
@@ -31,13 +30,3 @@ void Cluster::SetTCAS(SurveillanceReport *tcas) {
 void Cluster::SetRadar(SurveillanceReport *radar) {
     _radar = radar;
 }
-
-
-
-
-
-
-
-
-
-

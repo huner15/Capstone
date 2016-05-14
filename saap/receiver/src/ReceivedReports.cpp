@@ -20,7 +20,7 @@ ReceivedReports::ReceivedReports(const ReceivedReports& other){
     _adsb_reports = new std::vector<SurveillanceReport *>();
     _radar_reports = new std::vector<SurveillanceReport *>();
     _tcas_reports = new std::vector<SurveillanceReport *>();
-    for(int i = 0; i < other._adsb_reports->size(); i++){
+    for (int i = 0; i < other._adsb_reports->size(); i++){
         _adsb_reports->push_back(new SurveillanceReport
                                          (*other._adsb_reports->at(i)));
     }
@@ -50,7 +50,6 @@ void ReceivedReports::addTcasReport(SurveillanceReport *report) {
     _tcas_reports->push_back(report);
 }
 
-
 SurveillanceReport* ReceivedReports::GetOwnship() {
     return _ownship;
 }
@@ -70,4 +69,11 @@ std::vector<SurveillanceReport *>* ReceivedReports::GetTcas() {
 bool ReceivedReports::MakeRelative() {
     //TODO actually put in the logic to make adsb relative here.
     return false;
+}
+
+void ReceivedReports::Clear() {
+    _tcas_reports->clear();
+    _adsb_reports->clear();
+    _radar_reports->clear();
+    // TODO: Clear/deallocate ownship?
 }

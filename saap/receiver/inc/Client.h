@@ -68,6 +68,9 @@ private:
     /** Stops the TimerThreadFunction when false */
     bool _is_connected;
 
+    /** Count completed processing steps. */
+    int _processing_step;
+
 public:
     Client(ReportReceiver& report_receiver, CorrelationEngine&
            correlation_engine, Categorizer& categorizer,

@@ -22,6 +22,7 @@ correlation_engine, Categorizer& categorizer,
           _radar_port(radar_port), _tcas_port(tcas_port),
           _cdti_host(cdti_host), _cdti_port(cdti_port) {
     _is_connected = true;
+    _processing_step = 0;
     try {
         _cdti_socket = new ClientSocket(cdti_host, cdti_port);
     }
@@ -110,19 +111,40 @@ bool Client::GetIsConnected() {
 }
 
 void Client::Process() {
-    ReceivedReports reports = _report_receiver.callCorrelate();
-    // TODO: Remove debug print.
-    std::cout << "Received ADSB Reports Size: " << reports.GetAdsb()->size() << std::endl;
-    std::cout << "Received TCAS Reports Size: " << reports.GetTcas()->size() << std::endl;
-    std::cout << "Received Radar Reports Size: " << reports.GetRadar()->size() << std::endl;
+    /** Retrieve all pending reports collected by the report receiver. */
+    ReceivedReports* reports = _report_receiver.GetReports();
 
-    std::vector<CorrelationAircraft *>* corrAircraft =
-            _correlation_engine.Correlate(reports);
-    // TODO: Remove debug print.
-    std::cout << "Correlation Aircraft Size: " << corrAircraft->size() << std::endl;
+    /** Print to console processing step count. */
+    std::cout << "- - - - - Processing Step " <<
+            _processing_step++ << " - - - - -" << endl;
 
-    if (corrAircraft != NULL) {
-        CDTIReport* cdtiReport = _categorizer.Categorize(corrAircraft);
+    /** Print to console report counts to be processed. */
+    std::cout << "Correlation Engine Processing:" << endl <<
+            "\t" << reports->GetAdsb()->size() <<
+            " ADSB Report(s)" << std::endl <<
+            "\t" << reports->GetTcas()->size() <<\
+            " TCAS Report(s)" << std::endl <<
+            "\t" << reports->GetRadar()->size() <<
+            " Radar Report(s)" << std::endl;
+
+    /** Correlate incoming aircraft reports. */
+    std::vector<CorrelationAircraft *>* correlation_aircraft =
+            _correlation_engine.Correlate(*reports);
+
+    /** Clear all reports held in the report receiver. */
+    _report_receiver.Clear();
+
+    /** Ensure that correlation processing did not fail. */
+    if (correlation_aircraft != NULL) {
+        /** Print to console report counts to be categorized. */
+        std::cout << "Categorization Engine Processing:" << std::endl <<
+                "\t" << correlation_aircraft->size() <<
+                " Correlated Reports" << std::endl;
+
+        /** Categorize the set of correlated aircraft. */
+        CDTIReport* cdtiReport = _categorizer.Categorize(correlation_aircraft);
+
+        /** Send the generated CDTI Report to the CDTI. */
         *_cdti_socket << *cdtiReport;
     }
 }

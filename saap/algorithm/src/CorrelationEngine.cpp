@@ -39,21 +39,14 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
     vector<SurveillanceReport *> *radar) {
     Cluster *cluster;
 
-    // TODO: Remove debug prints.
-    printf("RunAlgorithm Called:\n");
-    printf("adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
-           tcas->size(), radar->size());
-
     //Create individual clusters for all ads-b reports
     for (int i = 0; i < adsb->size(); i++) {
-        printf("ADSB\n");
         cluster = NewCluster();
         cluster->_adsb = adsb->at(i);
         _clusters.push_back(cluster);
     }
     //Create individual clusters for all radar reports
     for (int i = 0; i < radar->size(); i++) {
-        printf("Radar\n");
         if (CompareRadarToClusters(radar->at(i)) == FALSE) {
             cluster = NewCluster();
             cluster->_radar = radar->at(i);
@@ -62,16 +55,12 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
     }
     //Create individual clusters for all tcas reports
     for (int i = 0; i < tcas->size(); i++) {
-        printf("TCAS\n");
         if (CompareTcasToClusters(tcas->at(i)) == FALSE) {
             cluster = NewCluster();
             cluster->_tcas = tcas->at(i);
             _clusters.push_back(cluster);
         }
     }
-
-    // TODO: Remove debug print.
-    printf("clusters size: %lu and aircraft size: %lu\n", _clusters.size(), _corr_aircraft.size());
 
     return 0;
 }
@@ -153,10 +142,6 @@ std::vector<CorrelationAircraft *>* CorrelationEngine::Correlate
 
     _corr_aircraft.clear();
     _clusters.clear();
-
-    // TODO: Remove debug print.
-    printf("Correlate Called adsb: %lu tcas: %lu radar: %lu\n", adsb->size(),
-           tcas->size(), radar->size());
 
     if (RunAlgorithm(adsb, tcas, radar) != TRUE) {
         printf("Error with running the Algorithm.\n");

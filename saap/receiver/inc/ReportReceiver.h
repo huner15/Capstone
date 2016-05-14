@@ -1,13 +1,15 @@
 /*
  * @file ReportReceiver.h
  * @author Specific Atomics
- * @author Alanna Buss, Dat Tran (style)
- * @date 2-18-16
+ * @author Alanna Buss, Dat Tran (style), Frank Poole
+ * @date 5-13-2016
  * @brief TODO make description
  */
 
 #ifndef REPORT_RECEIVER_H_
 #define REPORT_RECEIVER_H_
+
+#include <cstdlib>
 
 #include <ownship.pb.h>
 #include <adsb.pb.h>
@@ -20,17 +22,18 @@
 
 class ReportReceiver {
 private:
-    const double NAUTICAL_MILES_TO_FEET = 6076.12;
+    ReceivedReports* _held_reports;
 
     bool _is_copying;
     bool _is_connected;
+
     pthread_cond_t _held_report_cv;
     pthread_mutex_t _radar_mutex;
     pthread_mutex_t _tcas_mutex;
     pthread_mutex_t _adsb_mutex;
     pthread_mutex_t _ownship_mutex;
-    ReceivedReports _held_reports;
 
+    static constexpr double NAUTICAL_MILES_TO_FEET = 6076.12;
 
     /*
      * Takes the OwnshipReport and translates it to a Surveillance report.
@@ -59,11 +62,7 @@ private:
      */
     SurveillanceReport* CreateAdsbSurveillanceReport(AdsBReport report);
 
-
-
-
 public:
-
     /*
      * Initializes the thread for countdown, creates all the locks and
      * creates the correct correlation engine.
@@ -132,7 +131,12 @@ public:
      * Calls the correlate function in CorrelationEngine using the copied
      * reports from heldreports after making all of the adsb reports relative.
      */
-    ReceivedReports callCorrelate();
+    ReceivedReports* GetReports();
+
+    /**
+     * Clear all reports held in this report receiver.
+     */
+    void Clear();
 };
 
 #endif

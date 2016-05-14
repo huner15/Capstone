@@ -18,7 +18,7 @@ DeviceReceiver::DeviceReceiver(std::string host, in_port_t port,
 void DeviceReceiver::Receive() {
     try {
         ClientSocket client_socket(_host, _port);
-        std::cout << "Connected to device at " << _host << ", on port "<< _port
+        std::cout << "Connected to " << _host << " on port "<< _port << "."
         << std::endl;
 
         try {

@@ -19,7 +19,6 @@
 
 #include "SurveillanceReport.h"
 
-
 class ReceivedReports {
 private:
     std::vector<SurveillanceReport *>* _tcas_reports;
@@ -90,10 +89,15 @@ public:
     /*
      * Tries to make ADS-B relative first by using ownship and if that fails
      * by using the coordinates by a radar report. Returns whether or not it
-     * has sucessfully made the ADS-B reports relative.
+     * has successfully made the ADS-B reports relative.
      * @return true if the ADS-B reports are relative, false if not.
      */
     bool MakeRelative();
+
+    /**
+     * Clear all held reports.
+     */
+    void Clear();
 };
 
 #endif

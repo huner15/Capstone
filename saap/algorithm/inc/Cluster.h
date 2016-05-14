@@ -10,9 +10,10 @@
 #define CLUSTER_H_
 
 #include <stdint.h>
+#include <vector>
+
 #include "CorrelationAircraft.h"
 #include "SurveillanceReport.h"
-#include <vector>
 
 using namespace std;
 
@@ -60,4 +61,4 @@ public:
     void SetTCAS(SurveillanceReport *tcas);
 };
 
-#endif //SAAS_CLUSTER_H
+#endif

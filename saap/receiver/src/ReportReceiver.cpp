@@ -6,19 +6,10 @@
  * @brief TODO make description
  */
 
-#include <cstdlib>
-#include <iostream>
-
 #include "ReportReceiver.h"
 
-// For report debug prints.
-#include "OwnshipReceiver.h"
-#include "AdsbReceiver.h"
-#include "TcasReceiver.h"
-#include "RadarReceiver.h"
-
 ReportReceiver::ReportReceiver() {
-    _held_reports = ReceivedReports();
+    _held_reports = new ReceivedReports();
     _is_copying = false;
     _is_connected = true;
     pthread_mutex_init(&_radar_mutex, NULL);
@@ -32,9 +23,7 @@ ReportReceiver::~ReportReceiver() {
 }
 
 SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
-        (OwnshipReport report){
-    // TODO: Remove debug print.
-    OwnshipReceiver::PrintReport(report);
+        (OwnshipReport report) {
     std::time_t time = report.timestamp();
     float latitude = report.ownship_latitude();
     double longitude = report.ownship_longitude();
@@ -55,13 +44,11 @@ SurveillanceReport * ReportReceiver::CreateOwnshipSurveillanceReport
 
 SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
         TcasReport report) {
-    // TODO: Remove debug print.
-    TcasReceiver::PrintReport(report);
     TcasID tcas_id = TcasID(report.id());
     double range = report.range() * NAUTICAL_MILES_TO_FEET;
     double altitude = report.altitude();
     double bearing = report.bearing();
-    //TODO find a way to incorporate tcas' altitude.
+    //TODO find a way to incorporate TCAS' altitude.
     GeographicCoordinate geographic_coordinate = GeographicCoordinate(0.0,
                                                                       0.0,
                                                                       0.0);
@@ -78,8 +65,6 @@ SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
 
 SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
         AdsBReport report) {
-    // TODO: Remove debug print.
-    AdsbReceiver::PrintReport(report);
     std::time_t time = report.timestamp();
     double latitude = report.latitude();
     double longitude = report.longitude();
@@ -102,8 +87,6 @@ SurveillanceReport* ReportReceiver::CreateAdsbSurveillanceReport(
 
 SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
         RadarReport report) {
-    // TODO: Remove debug print.
-    RadarReceiver::PrintReport(report);
     std::time_t time = report.timestamp();
     double range = report.range();
     double azimuth = report.azimuth();
@@ -130,92 +113,61 @@ SurveillanceReport* ReportReceiver::CreateRadarSurveillanceReport(
 }
 
 void ReportReceiver::ReceiveOwnship(OwnshipReport report) {
-    // TODO: Remove debug print.
-    //OwnshipReceiver::PrintReport(report);
     pthread_mutex_lock(&_ownship_mutex);
-    while(_is_copying) {
+    while (_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_ownship_mutex);
     }
-    _held_reports.changeOwnship(CreateOwnshipSurveillanceReport(report));
+    _held_reports->changeOwnship(CreateOwnshipSurveillanceReport(report));
     pthread_mutex_unlock(&_ownship_mutex);
 }
 
 void ReportReceiver::ReceiveTcas(TcasReport report) {
-    // TODO: Remove debug print.
-    //TcasReceiver::PrintReport(report);
     pthread_mutex_lock(&_tcas_mutex);
-    while(_is_copying) {
+    while (_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_tcas_mutex);
     }
-    _held_reports.addTcasReport(CreateTcasSurveillanceReport(report));
+    _held_reports->addTcasReport(CreateTcasSurveillanceReport(report));
     pthread_mutex_unlock(&_tcas_mutex);
 }
 
 void ReportReceiver::ReceiveAdsb(AdsBReport report) {
-    // TODO: Remove debug print.
-    //AdsbReceiver::PrintReport(report);
     pthread_mutex_lock(&_adsb_mutex);
     while (_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_adsb_mutex);
     }
-    _held_reports.addAdsBReport(CreateAdsbSurveillanceReport(report));
+    _held_reports->addAdsBReport(CreateAdsbSurveillanceReport(report));
     pthread_mutex_unlock(&_adsb_mutex);
 }
 
 void ReportReceiver::ReceiveRadar(RadarReport report) {
-    // TODO: Remove debug print.
-    //RadarReceiver::PrintReport(report);
     pthread_mutex_lock(&_radar_mutex);
-    while(_is_copying) {
+    while (_is_copying) {
         pthread_cond_wait(&_held_report_cv, &_radar_mutex);
     }
-    _held_reports.addRadarReport(CreateRadarSurveillanceReport(report));
+    _held_reports->addRadarReport(CreateRadarSurveillanceReport(report));
     pthread_mutex_unlock(&_radar_mutex);
 }
 
 SurveillanceReport * ReportReceiver::getOwnship() {
-    return _held_reports.GetOwnship();
+    return _held_reports->GetOwnship();
 }
 
 vector<SurveillanceReport *>* ReportReceiver::getTcas() {
-    return _held_reports.GetTcas();
+    return _held_reports->GetTcas();
 }
 
 vector<SurveillanceReport *>* ReportReceiver::getAdsB() {
-    return _held_reports.GetAdsb();
+    return _held_reports->GetAdsb();
 }
 
 vector<SurveillanceReport *>* ReportReceiver::getRadar() {
-    return _held_reports.GetRadar();
+    return _held_reports->GetRadar();
 }
 
-ReceivedReports ReportReceiver::callCorrelate() {
-    /* TODO: Return ReceivedReport. */
+ReceivedReports* ReportReceiver::GetReports() {
+    return _held_reports;
+}
 
-    _is_copying = true;
-    pthread_mutex_lock(&_radar_mutex);
-    pthread_mutex_lock(&_tcas_mutex);
-    pthread_mutex_lock(&_adsb_mutex);
-    pthread_mutex_lock(&_ownship_mutex);
-
-    /*std::vector<SurveillanceReport *>* tcas = _held_reports.CopyTcas();
-    std::vector<SurveillanceReport *>* adsb = _held_reports.CopyAdsb();
-    std::vector<SurveillanceReport *>* radar = _held_reports.CopyRadar();
-    SurveillanceReport * ownship = _held_reports.CopyOwnship();*/
-
-    std::cout << "Held ADSB Reports: " << _held_reports.GetAdsb()->size() << std::endl;
-    std::cout << "Held TCAS Reports: " << _held_reports.GetTcas()->size() << std::endl;
-    std::cout << "Held Radar Reports: " << _held_reports.GetRadar()->size() << std::endl;
-
-    ReceivedReports lastSecond = ReceivedReports(_held_reports);
-    _held_reports = ReceivedReports();
-
-    _is_copying = false;
-    pthread_cond_broadcast(&_held_report_cv);
-    pthread_mutex_unlock(&_radar_mutex);
-    pthread_mutex_unlock(&_tcas_mutex);
-    pthread_mutex_unlock(&_adsb_mutex);
-    pthread_mutex_unlock(&_ownship_mutex);
-
-    return lastSecond;
+void ReportReceiver::Clear() {
+    _held_reports->Clear();
 }

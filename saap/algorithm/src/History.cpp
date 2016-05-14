@@ -27,9 +27,11 @@ Snapshot *History::GetSecondToLast() const {
 
 int History::AddSnapshot(Snapshot *snapshot) {
     int status = 0;
+
     if (snapshot == NULL) {
         status = 1;
-    } else {
+    }
+    else {
         // Empty last snapshot
         time_t t = _last->GetTimestamp();
         if (time(&t) == -1) {
@@ -41,4 +43,3 @@ int History::AddSnapshot(Snapshot *snapshot) {
     }
     return status;
 }
-

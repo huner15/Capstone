@@ -34,7 +34,7 @@ CDTIPlane CorrelationAircraft::CreateCdtiPlane() {
     CDTIPlane cdti_plane;
 
     if (_type == ADSB) {
-        cdti_plane.set_id("hi");
+        cdti_plane.set_id("error");
     }
     else if (_type == TCAS) {
         cdti_plane.set_id(std::to_string(_tcas_id.Get()));
