@@ -18,6 +18,7 @@ SimulationGenerator::SimulationGenerator(std::string file_name) {
 
     _num_aircraft = _flight_scenario.GetAircraft().size();
     _ownship_duration = 0;
+
     for (int i = 0; i < flight_legs.size(); i++) {
         int duration = flight_legs.at(i).GetDurationAfterManeuver() +
                        flight_legs.at(i).GetDurationOfManeuver();
@@ -120,6 +121,8 @@ std::vector<Aircraft> SimulationGenerator::AllAircraftWithTcas() {
             TcasAircraft.push_back(aircraft.at(i));
         }
     }
+
+    return TcasAircraft;
 }
 
 Json::Value SimulationGenerator::WriteTcasReports() {
@@ -300,6 +303,8 @@ std::vector<Aircraft> SimulationGenerator::AllAircraftWithAdsb() {
             AdsbAircraft.push_back(aircraft.at(i));
         }
     }
+
+    return AdsbAircraft;
 }
 
 Json::Value SimulationGenerator::WriteAdsbReports() {
@@ -409,7 +414,6 @@ Json::Value SimulationGenerator::WriteReports() {
     all_reports["radar"] = WriteRadarReports();
     all_reports["tcas"] = WriteTcasReports();
     all_reports["numAircraft"] = GetNumberOfAircraft();
-
     return all_reports;
 }
 
