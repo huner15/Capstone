@@ -64,6 +64,7 @@ private:
 
     /** CDTI socket connected to cdti_host on cdti_port */
     ClientSocket* _cdti_socket;
+    bool _is_cdti_connected;
 
     /** Stops the TimerThreadFunction when false */
     bool _is_connected;

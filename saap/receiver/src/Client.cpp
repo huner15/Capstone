@@ -25,11 +25,13 @@ correlation_engine, Categorizer& categorizer,
     _processing_step = 0;
     try {
         _cdti_socket = new ClientSocket(cdti_host, cdti_port);
+        _is_cdti_connected = true;
     }
     catch (SocketException exception) {
         std::cout <<
                 "Could not connect to CDTI invalid ip address or port number."
         << std::endl << "Continuing execution...";
+        _is_cdti_connected = false;
     }
 }
 
@@ -143,13 +145,15 @@ void Client::Process() {
         /** Categorize the set of correlated aircraft. */
         CDTIReport* cdtiReport = _categorizer.Categorize(correlation_aircraft);
 
-        /** Send the generated CDTI Report to the CDTI. */
-        try {
-            *_cdti_socket << *cdtiReport;
-        }
-        catch (SocketException& exception) {
-            /** The CDTI is not connected however do nothing to continue
-             * processor execution. */
+        if(_is_cdti_connected) {
+            /** Send the generated CDTI Report to the CDTI. */
+            try {
+                *_cdti_socket << *cdtiReport;
+            }
+            catch (SocketException &exception) {
+                /** The CDTI is not connected however do nothing to continue
+                 * processor execution. */
+            }
         }
     }
 }
