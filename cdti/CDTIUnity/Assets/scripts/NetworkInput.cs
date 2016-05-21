@@ -27,7 +27,7 @@ public class NetworkInput : MonoBehaviour {
     private CDTIReport lastReport = null;
     private Vector pos = new Vector();
     private GameObject plane;
-
+    private System.Collections.Generic.List<GameObject> circles;
     static System.IO.StreamWriter writer;
 
     public static void logger(String str)
@@ -57,17 +57,6 @@ public class NetworkInput : MonoBehaviour {
 
 
 
-    void OnGUI()
-    {
-        int h = Screen.height;
-        int w = Screen.width;
-        Console.Write("boom");
-        GUI.Label(new Rect(w/1.7f, h/2, 40, 20), "" + (maxRange/4));
-        GUI.Label(new Rect(w/1.52f, h/2, 40, 20), "" + (maxRange * 2 / 4));
-        GUI.Label(new Rect(w/1.37f, h/2, 40, 20), "" + (maxRange * 3 / 4));
-        GUI.Label(new Rect(w/1.26f, h/2, 40, 20), "" + (maxRange));
-        GUI.Label(new Rect(w / 2, 0, 100, 20), message);
-    }
 
 
     public void zoomIn()
@@ -84,7 +73,10 @@ public class NetworkInput : MonoBehaviour {
     }
     private void zoomCommon()
     {
-       
+       for(int i = 0; i < 4; i++)
+        {
+            circles[i].GetComponent<Circle>().updateText(maxRange * (4 - i) / 4);
+        }
         if (lastReport != null)
         {
             intake(lastReport);
@@ -96,20 +88,25 @@ public class NetworkInput : MonoBehaviour {
     // Use this for initialization
     void Start () {
         GameObject addCircles;
-
+        circles = new System.Collections.Generic.List<GameObject>();
         addCircles = Instantiate(circle) as GameObject;
         addCircles.GetComponent<Transform>().localScale =new Vector3(2.64f, 2.64f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
+        
+        circles.Add(addCircles);
         addCircles = Instantiate(circle) as GameObject;
         addCircles.GetComponent<Transform>().localScale = new Vector3(1.98f,1.98f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
+        circles.Add(addCircles);
         addCircles = Instantiate(circle) as GameObject;
         addCircles.GetComponent<Transform>().localScale = new Vector3(1.33f, 1.33f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
+        circles.Add(addCircles);
         addCircles = Instantiate(circle) as GameObject;
         addCircles.GetComponent<Transform>().localScale = new Vector3(.67f, .67f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
-
+        circles.Add(addCircles);
+        zoomCommon();
 
         plane = Instantiate(aircraftBuilder) as GameObject;
         pos.X = 0;
