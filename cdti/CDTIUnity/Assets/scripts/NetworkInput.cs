@@ -73,7 +73,7 @@ public class NetworkInput : MonoBehaviour {
     }
     private void zoomCommon()
     {
-       for(int i = 0; i < 4; i++)
+       for(int i = 0; i < circles.Count; i++)
         {
             circles[i].GetComponent<Circle>().updateText(maxRange * (4 - i) / 4);
         }
@@ -106,6 +106,7 @@ public class NetworkInput : MonoBehaviour {
         addCircles.GetComponent<Transform>().localScale = new Vector3(.67f, .67f, 1);
         addCircles.GetComponent<Transform>().position = new Vector3(0f, .14f, 0);
         circles.Add(addCircles);
+        print("cricles added " + circles.Count);
         zoomCommon();
 
         plane = Instantiate(aircraftBuilder) as GameObject;
@@ -212,7 +213,7 @@ public class NetworkInput : MonoBehaviour {
                         //fs = new FileStream("temp.txt", FileMode.Open);
                         try
                         {
-                            fs.Seek(4, SeekOrigin.Begin);
+                           // fs.Seek(4, SeekOrigin.Begin);
                             logger("reading temp");
                             report = CDTIReport.Deserialize(fs);
                             fs.Close();

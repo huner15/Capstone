@@ -24,7 +24,7 @@ public class Aircraft : MonoBehaviour {
         Instantiate(text);
         text.GetComponent<TextMesh>().fontSize = 60;
         text.GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
-        text.GetComponent<TextMesh>().text = "" + plane.Position.Z;
+        text.GetComponent<TextMesh>().text = plane.Id + "\n" + plane.Position.Z;
         text.transform.localScale = new Vector3(.05f, .05f, 1);
         text.transform.position = transform.position + new Vector3(.2f, .2f, 0);
     }
