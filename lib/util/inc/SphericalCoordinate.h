@@ -64,7 +64,7 @@ public:
      */
     double operator- (const SphericalCoordinate& other);
 
-    static SphericalCoordinate *Average(SphericalCoordinate *one,
+    static SphericalCoordinate Average(SphericalCoordinate *one,
         SphericalCoordinate *two, SphericalCoordinate *three);
 };
 

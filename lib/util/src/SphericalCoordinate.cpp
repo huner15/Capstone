@@ -56,7 +56,7 @@ double SphericalCoordinate::operator-(const SphericalCoordinate &other) {
                                                  cos(other.GetElevation()))));
 }
 
-SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
+SphericalCoordinate SphericalCoordinate:: Average(SphericalCoordinate
     *one, SphericalCoordinate *two, SphericalCoordinate *three) {
     double range = 0, elevation = 0, azimuth = 0, count = 0;
     double vOne, vTwo, vThree, removeVal;
@@ -75,7 +75,7 @@ SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
         coords.push_back(three);
     }
 
-    for (int i = 0; i < count; i++)
+    for (uint i = 0; i < count; i++)
     {
         range += coords.at(i)->_range;
         elevation += coords.at(i)->_elevation;
@@ -92,22 +92,22 @@ SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
             pow(coords.at(2)->_elevation, 2) + pow(coords.at(2)->_azimuth, 2));
 
         //if difference is twice as big as other distance, must be an outlier
-        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 0 : -1;
-        removeVal = (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 1 : -1;
-        removeVal = (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 2 : -1;
+        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 1 : 0;
+        removeVal += (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 2 : 0;
+        removeVal += (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 3 : 0;
 
-        if (removeVal != -1) {
+        if (removeVal != 0) {
             count--;
-            range -= coords.at(removeVal)->_range;
-            elevation -= coords.at(removeVal)->_elevation;
-            azimuth -= coords.at(removeVal)->_azimuth;
+            range -= coords.at(removeVal - 1)->_range;
+            elevation -= coords.at(removeVal - 1)->_elevation;
+            azimuth -= coords.at(removeVal - 1)->_azimuth;
         }
     }
 
     //No coordinates exist
     if (count == 0)
     {
-        return NULL;
+        return SphericalCoordinate(0, 0, 0);
     }
 
     //geometric mean
@@ -115,5 +115,5 @@ SphericalCoordinate *SphericalCoordinate:: Average(SphericalCoordinate
     elevation = pow(elevation, 1 / count);
     azimuth = pow(azimuth, 1 / count);
 
-    return new SphericalCoordinate(range, elevation, azimuth);
+    return SphericalCoordinate(range, elevation, azimuth);
 }

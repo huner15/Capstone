@@ -10,7 +10,6 @@
 #define CLIENT_H_
 
 #include <string>
-
 #include <cdti.pb.h>
 
 #include "DeviceReceiver.h"
@@ -20,6 +19,9 @@
 #include "TcasReceiver.h"
 #include "CorrelationEngine.h"
 #include "Categorizer.h"
+#include "ProcessorLogger.h"
+
+class ProcessorLogger;
 
 /** Expected number of command line arguments. */
 const int EXPECTED_ARGUMENTS = 8;
@@ -71,6 +73,9 @@ private:
 
     /** Count completed processing steps. */
     int _processing_step;
+
+    /** Logger that documents each of the received data types. */
+    ProcessorLogger* _logger;
 
 public:
     Client(ReportReceiver& report_receiver, CorrelationEngine&

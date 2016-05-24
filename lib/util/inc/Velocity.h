@@ -63,7 +63,7 @@ public:
      */
     Velocity operator+ (const Velocity& other);
 
-    static Velocity *Average(Velocity *one, Velocity *two, Velocity *three);
+    static Velocity Average(Velocity *one, Velocity *two, Velocity *three);
 };
 
 #endif

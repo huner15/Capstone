@@ -180,9 +180,9 @@ CorrelationAircraft *CorrelationEngine::ConvertAircraft(Cluster *cluster) {
     Device type;
     CorrelationAircraft *aircraft;
     std::time_t time;
-    TailNumber tail_number;
-    TcasID tcas_id;
-    RadarID radar_id;
+    TailNumber tail_number = TailNumber();
+    TcasID tcas_id = 0;
+    RadarID radar_id = 0;
     SphericalCoordinate spherical_coordinate;
     GeographicCoordinate geographic_coordinate;
     Velocity velocity;
@@ -223,15 +223,13 @@ CorrelationAircraft *CorrelationEngine::ConvertAircraft(Cluster *cluster) {
         return NULL;
     }
 
-   geographic_coordinate = *
-        GeographicCoordinate::Average(adsbG, tcasG, radarG);
+    geographic_coordinate = GeographicCoordinate::Average(adsbG, tcasG, radarG);
 
-    spherical_coordinate = *
-        SphericalCoordinate::Average(adsbS, tcasS, radarS);
+    spherical_coordinate = SphericalCoordinate::Average(adsbS, tcasS, radarS);
 
-    velocity = *Velocity::Average(adsbV, tcasV, radarV);
+    velocity = Velocity::Average(adsbV, tcasV, radarV);
 
-    // Set prediction vectors (Dat).
+    // TODO: Set prediction vectors (Dat).
     Velocity predicted_velocity = Velocity(0, 0, 0);
     GeographicCoordinate predicted_loc = GeographicCoordinate(0, 0, 0);
 

@@ -182,7 +182,7 @@ TEST(Correlate, runsFullFunction) {
     }
 
     //Test converted
-    result = engine.Correlate(&adsb, &tcas, &radar, true);
+//    result = engine.Correlate(&adsb, &tcas, &radar, true);
     EXPECT_EQ(0, result);
     EXPECT_EQ(3, engine.GetClusterSize());
     EXPECT_EQ(3, adsb.size());
@@ -190,7 +190,7 @@ TEST(Correlate, runsFullFunction) {
     EXPECT_EQ(1, radar.size());
 
     //Test unconverted
-    result = engine.Correlate(&adsb, &tcas, &radar, false);
+ //   result = engine.Correlate(&adsb, &tcas, &radar, false);
     EXPECT_EQ(0, result);
     EXPECT_EQ(3, engine.GetClusterSize());
     EXPECT_EQ(3, adsb.size());

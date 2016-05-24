@@ -23,6 +23,8 @@ correlation_engine, Categorizer& categorizer,
           _cdti_host(cdti_host), _cdti_port(cdti_port) {
     _is_connected = true;
     _processing_step = 0;
+    _logger = new ProcessorLogger();
+
     try {
         _cdti_socket = new ClientSocket(cdti_host, cdti_port);
         _is_cdti_connected = true;
@@ -115,6 +117,8 @@ void Client::Process() {
     /** Retrieve all pending reports collected by the report receiver. */
     ReceivedReports* reports = _report_receiver.GetReports();
 
+    _logger->LogReceivedReports(reports);
+
     /** Print to console processing step count. */
     std::cout << "- - - - - Processing Step " <<
             _processing_step++ << " - - - - -" << endl;
@@ -132,6 +136,8 @@ void Client::Process() {
     std::vector<CorrelationAircraft *>* correlation_aircraft =
             _correlation_engine.Correlate(*reports);
 
+    _logger->LogCorrelationAircraft(correlation_aircraft);
+
     /** Clear all reports held in the report receiver. */
     _report_receiver.Clear();
 
@@ -145,8 +151,11 @@ void Client::Process() {
         /** Categorize the set of correlated aircraft. */
         CDTIReport* cdtiReport = _categorizer.Categorize(correlation_aircraft);
 
+        _logger->LogCDTIReport(cdtiReport);
+
         if(_is_cdti_connected) {
             /** Send the generated CDTI Report to the CDTI. */
+
             try {
                 *_cdti_socket << *cdtiReport;
             }

@@ -44,7 +44,7 @@ GeographicCoordinate::~GeographicCoordinate() {
 
 }
 
-GeographicCoordinate *GeographicCoordinate::Average(GeographicCoordinate
+GeographicCoordinate GeographicCoordinate::Average(GeographicCoordinate
     *one, GeographicCoordinate *two, GeographicCoordinate *three) {
     double latitude = 0, longitude = 0, altitude = 0, count = 0;
     double vOne, vTwo, vThree, removeVal;
@@ -63,7 +63,7 @@ GeographicCoordinate *GeographicCoordinate::Average(GeographicCoordinate
         coords.push_back(three);
     }
 
-    for (int i = 0; i < count; i++) {
+    for (uint i = 0; i < count; i++) {
         latitude += coords.at(i)->_latitude;
         longitude += coords.at(i)->_longitude;
         altitude += coords.at(i)->_altitude;
@@ -79,22 +79,22 @@ GeographicCoordinate *GeographicCoordinate::Average(GeographicCoordinate
             pow(coords.at(2)->_longitude, 2) + pow(coords.at(2)->_altitude, 2));
 
         //if difference is twice as big as other distance, must be an outlier
-        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 0 : -1;
-        removeVal = (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 1 : -1;
-        removeVal = (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 2 : -1;
+        removeVal = (fabs(vOne - vTwo) >= 2 * fabs(vTwo - vThree)) ? 1 : 0;
+        removeVal += (fabs(vTwo - vThree) >= 2 * fabs(vThree - vOne)) ? 2 : 0;
+        removeVal += (fabs(vThree - vOne) >= 2 * fabs(vOne - vTwo)) ? 3 : 0;
 
-        if (removeVal != -1) {
+        if (removeVal != 0) {
             count--;
-            latitude -= coords.at(removeVal)->_latitude;
-            longitude -= coords.at(removeVal)->_longitude;
-            altitude -= coords.at(removeVal)->_altitude;
+            latitude -= coords.at(removeVal - 1)->_latitude;
+            longitude -= coords.at(removeVal - 1)->_longitude;
+            altitude -= coords.at(removeVal - 1)->_altitude;
         }
     }
 
     //No coordinates exist
     if (count == 0)
     {
-        return NULL;
+        return GeographicCoordinate(0, 0, 0);
     }
 
     //geometric mean
@@ -102,5 +102,5 @@ GeographicCoordinate *GeographicCoordinate::Average(GeographicCoordinate
     longitude = pow(longitude, 1 / count);
     altitude = pow(altitude, 1 / count);
 
-    return new GeographicCoordinate(latitude, longitude, altitude);
+    return GeographicCoordinate(latitude, longitude, altitude);
 }
