@@ -46,6 +46,14 @@ CDTIPlane* Categorizer::CreateOwnshipCDTIPlane() {
 Categorizer::~Categorizer() {
 }
 
+
+/**Converts fields that should be in miles to miles */
+void Categorizer::ConvertUnits(CDTIPlane* plane) {
+    Vector* p = plane->mutable_position();
+    p->set_n(p->n() * feet_to_miles);
+    p->set_e(p->e() * feet_to_miles);
+}
+
 CDTIReport* Categorizer::Categorize(
         std::vector<CorrelationAircraft *> *correlation_aircraft) {
     /** Allocate memory for the cdti report. */
@@ -73,10 +81,9 @@ CDTIReport* Categorizer::Categorize(
         /** Rely on the CorrelationAircraft to set all CDTI plane fields other
          * than the traffic category. */
         CDTIPlane cdti_plane = correlation_aircraft->at(i)->CreateCdtiPlane();
-
         /** Set the CDTI proximate traffic category. */
         cdti_plane.set_severity(GenerateSeverity(&cdti_plane));
-
+        ConvertUnits(&cdti_plane);
         /** Add the CDTI plane to the CDTI Report. */
         CDTIPlane *set_cdti_plane = cdti_report->add_planes();
         *set_cdti_plane = cdti_plane;
@@ -84,6 +91,10 @@ CDTIReport* Categorizer::Categorize(
 
     return cdti_report;
 }
+
+
+
+
 
 /**
  * calculates range to ownship.
@@ -131,10 +142,10 @@ CDTIPlane_Severity Categorizer::GenerateSeverity(CDTIPlane* plane) {
     double range = CalculateRange(*plane);
     double cpa = CalculateCPA(*plane);
 
-    if (range < 2 && abs(plane->position().d()) < 300 && cpa < .5) {
+    if (range < 2 && abs(plane->position().d()) < 300 && cpa < 2640) {
         return plane->RESOLUTION;
     }
-    else if (range < 5 && abs(plane->position().d()) < 500 && cpa < 1) {
+    else if (range < 5 && abs(plane->position().d()) < 500 && cpa < 5280){
         return plane->TRAFFIC;
     }
     else if (range < 10 && abs(plane->position().d()) < 1000) {

@@ -3,15 +3,13 @@ connection established
 temp written
 reading temp
 temp read
-4
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed error
-added to screed error
 added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -22,8 +20,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -34,8 +32,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -46,8 +44,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -58,8 +56,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -70,8 +68,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -82,8 +80,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -94,8 +92,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -106,8 +104,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -118,8 +116,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -130,8 +128,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -142,8 +140,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -154,8 +152,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -166,8 +164,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -178,8 +176,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -190,8 +188,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -202,8 +200,20 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed error
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
@@ -216,310 +226,441 @@ Example.CDTIPlane
 at intake
 added to screed 0
 end intake
-o screed 45298
+ad
+2
+Example.CDTIPlane
+0
+
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
 reading temp
 temp read
-22
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
 reading temp
 temp read
-24
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
 reading temp
 temp read
-26
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+at intake
 added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
 reading temp
 temp read
-28
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
 added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
 reading temp
 temp read
-32
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
 added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
 reading temp
 temp read
-34
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
 added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
 reading temp
 temp read
-36
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
 added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
-added to screed 45298
+added to screed 19
 added to screed 0
 end intake
 temp written
 reading temp
 temp read
-36
+2
 Example.CDTIPlane
 0
 
 at intake
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
-added to screed hi
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+0
+Example.CDTIPlane
+0
+
+at intake
+added to screed 0
+end intake
+
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 45298
+added to screed 19
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+0
+Example.CDTIPlane
+0
+
+at intake
+added to screed 0
+end intake
+eed hi
 added to screed hi
 added to screed hi
 added to screed hi

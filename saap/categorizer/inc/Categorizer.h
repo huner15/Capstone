@@ -21,6 +21,8 @@
 class Categorizer {
 
 private:
+
+    const double feet_to_miles = 0.000189394;
     /** Create a single ownship cdti plane as the ownship is the system origin
      * and it's field values do not update. */
     CDTIPlane* _ownship_cdti_plane;
@@ -33,6 +35,9 @@ private:
 
     /** Calculate the closest point of approach to a given CDTI plane. */
     double CalculateCPA(CDTIPlane plane);
+
+    /**Converts fields that should be in miles to miles */
+    void ConvertUnits(CDTIPlane* plane);
 
     /** Generate the severity category for a given CDTI plane. */
     CDTIPlane_Severity GenerateSeverity(CDTIPlane* plane);
