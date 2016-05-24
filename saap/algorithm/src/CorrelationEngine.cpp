@@ -180,7 +180,7 @@ CorrelationAircraft *CorrelationEngine::ConvertAircraft(Cluster *cluster) {
     Device type;
     CorrelationAircraft *aircraft;
     std::time_t time;
-    TailNumber tail_number = TailNumber();
+    TailNumber tail_number = TailNumber("      ");
     TcasID tcas_id = 0;
     RadarID radar_id = 0;
     SphericalCoordinate spherical_coordinate;

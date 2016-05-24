@@ -2,10 +2,6 @@
 // Created by andrea on 5/19/16.
 //
 
-//
-// Created by andrea on 5/19/16.
-//
-
 #include <cdti.pb.h>
 #include "ProcessorLogger.h"
 
@@ -70,7 +66,7 @@ void ProcessorLogger::LogCorrelationAircraft(
     _aircraftData << "      " << aircraft->size();
     _aircraftData << " aircraft correlated" << endl;
 
-    for (int i =0; i < aircraft->size(); i++) {
+    for (int i = 0; i < aircraft->size(); i++) {
         curAircraft = aircraft->at(i);
         vel = curAircraft->GetVelocity();
         geo = curAircraft->GetGeographicCoordinate();
@@ -78,8 +74,8 @@ void ProcessorLogger::LogCorrelationAircraft(
 
         _aircraftData << "\n    Aircraft";
 
-        if (!curAircraft->GetTailNumber().Get().compare("")) {
-            _aircraftData << " \"" << curAircraft->GetTailNumber().Get() <<"\"";
+        if (curAircraft->GetTailNumber().Get().compare("      ")) {
+            _aircraftData << " \"" << curAircraft->GetTailNumber().Get()<< "\"";
         }
 
         _aircraftData << " TCAS ID #" << (int) curAircraft->GetTcasID().Get();
@@ -112,21 +108,22 @@ void ProcessorLogger::LogCorrelationAircraft(
 
 void ProcessorLogger::LogReceivedReports(ReceivedReports *reports) {
     vector<SurveillanceReport *> *rep = reports->GetAdsb();
-    Velocity vel;
-    GeographicCoordinate geo;
-    SphericalCoordinate spher;
+    SurveillanceReport *ownship = reports->GetOwnship();
 
     _surveillanceReportsData << "Received Reports Cycle #" << _snapshotIndex
         << endl;
     _surveillanceReportsData << "      Ownship:" << endl;
-    _surveillanceReportsData << "        Moving at (" << vel.north << ", "
-        << vel.east << ", " << vel.down << ") feet/second" << endl;
+    _surveillanceReportsData << "        Moving at (" <<
+        ownship->GetVelocity()->north << ", " << ownship->GetVelocity()->east
+        << ", " << ownship->GetVelocity()->down << ") feet/second" << endl;
 
     _surveillanceReportsData << "        Located at latitude: ";
-    _surveillanceReportsData << geo.GetLatitude() << ", longitude: ";
-    _surveillanceReportsData << geo.GetLongitude() << ", and altitude: ";
-    _surveillanceReportsData << geo.GetAltitude() << endl;
+    _surveillanceReportsData <<ownship->GetGeographicCoordinate()->GetLatitude()
+        << ", longitude: " << ownship->GetGeographicCoordinate()->GetLongitude()
+        << ", and altitude: " <<
+        ownship->GetGeographicCoordinate()->GetAltitude() << endl;
 
+    //ADS-B Reports
     _surveillanceReportsData << "\n    ADS-B reports: " << rep->size() << endl;
 
     for (int i = 0; i < rep->size(); i++) {
@@ -135,13 +132,16 @@ void ProcessorLogger::LogReceivedReports(ReceivedReports *reports) {
         _surveillanceReportsData << "        Correlated at " <<
             rep->at(i)->GetTime() << " seconds" << endl;
 
-        _surveillanceReportsData << "        Moving at (" << vel.north << ", "
-            << vel.east << ", " << vel.down << ") feet/second" << endl;
+        _surveillanceReportsData << "        Moving at (" <<
+            rep->at(i)->GetVelocity()->north << ", " <<
+            rep->at(i)->GetVelocity()->east << ", " <<
+            rep->at(i)->GetVelocity()->down << ") feet/second" << endl;
 
-        _surveillanceReportsData << "        Relative to ownship at range: " <<
-            spher.GetRange() << ", azimuth: " << spher.GetAzimuth();
-        _surveillanceReportsData << ", elevation: " << spher.GetElevation()
-            << endl;
+        _surveillanceReportsData << "        Located at latitude: " <<
+            rep->at(i)->GetGeographicCoordinate()->GetLatitude() << ", " <<
+            "longitude: " << rep->at(i)->GetGeographicCoordinate()
+                    ->GetLongitude() << ", and altitude: " <<
+            rep->at(i)->GetGeographicCoordinate()->GetAltitude() << endl;
     }
 
     //TCAS Reports
@@ -154,13 +154,11 @@ void ProcessorLogger::LogReceivedReports(ReceivedReports *reports) {
         _surveillanceReportsData << "        Correlated at " <<
             rep->at(i)->GetTime() << " seconds" << endl;
 
-        _surveillanceReportsData << "        Moving at (" << vel.north << ", "
-            << vel.east << ", " << vel.down << ") feet/second" << endl;
-
-        _surveillanceReportsData << "        Located at latitude: ";
-        _surveillanceReportsData << geo.GetLatitude() << ", longitude: ";
-        _surveillanceReportsData << geo.GetLongitude() << ", and altitude: ";
-        _surveillanceReportsData << geo.GetAltitude() << endl;
+        _surveillanceReportsData << "        Relative to ownship at range: " <<
+            rep->at(i)->GetSphericalCoordinate()->GetRange() << ", azimuth: " <<
+            rep->at(i)->GetSphericalCoordinate()->GetAzimuth() << ", elevation"
+            << ": " << rep->at(i)->GetSphericalCoordinate()->GetElevation()
+            << endl;
     }
 
     //Radar Reports
@@ -173,12 +171,23 @@ void ProcessorLogger::LogReceivedReports(ReceivedReports *reports) {
         _surveillanceReportsData << "        Correlated at " <<
             rep->at(i)->GetTime() << " seconds" << endl;
 
-        _surveillanceReportsData << "        Moving at (" << vel.north << ", "
-            << vel.east << ", " << vel.down << ") feet/second" << endl;
+        _surveillanceReportsData << "        Moving at (" <<
+            rep->at(i)->GetVelocity()->north << ", " <<
+            rep->at(i)->GetVelocity()->east << ", " <<
+            rep->at(i)->GetVelocity()->down << ") feet/second" << endl;
+
+        _surveillanceReportsData << "        Located at latitude: " <<
+            rep->at(i)->GetGeographicCoordinate()->GetLatitude() <<
+            ", longitude: " <<
+            rep->at(i)->GetGeographicCoordinate()->GetLongitude() <<
+            ", and altitude: " <<
+            rep->at(i)->GetGeographicCoordinate()->GetAltitude() << endl;
+
 
         _surveillanceReportsData << "        Relative to ownship at range: " <<
-            spher.GetRange() << ", azimuth: " << spher.GetAzimuth();
-        _surveillanceReportsData << ", elevation: " << spher.GetElevation()
+            rep->at(i)->GetSphericalCoordinate()->GetRange() << ", azimuth: " <<
+            rep->at(i)->GetSphericalCoordinate()->GetAzimuth() << ", elevation"
+            << ": " << rep->at(i)->GetSphericalCoordinate()->GetElevation()
             << endl;
     }
 
