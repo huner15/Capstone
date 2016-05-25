@@ -49,9 +49,9 @@ CDTIPlane CorrelationAircraft::CreateCdtiPlane() {
     pos->set_e(position.y);
     pos->set_d(position.z);
     Vector* vel = new Vector();
-    vel->set_n(_velocity.east);
-    vel->set_e(_velocity.north);
-    vel->set_d(_velocity.down);
+    vel->set_n(_velocity.East());
+    vel->set_e(_velocity.North());
+    vel->set_d(_velocity.Down());
     cdti_plane.set_allocated_position(pos);
     cdti_plane.set_allocated_velocity(vel);
 

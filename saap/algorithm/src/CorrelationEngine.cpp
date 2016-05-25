@@ -404,9 +404,9 @@ double CorrelationEngine::CalcVelocity(SurveillanceReport *reportOne,
      * or that the TCAS report has a prediction vector
      */
     if (reportOne->GetDevice() != TCAS && reportTwo->GetDevice() != TCAS) {
-        difference = abs(oneVelocity->north - twoVelocity->north);
-        difference += abs(oneVelocity->east - twoVelocity->east);
-        difference += abs(oneVelocity->down - twoVelocity->down);
+        difference = abs(oneVelocity->North() - twoVelocity->North());
+        difference += abs(oneVelocity->East() - twoVelocity->East());
+        difference += abs(oneVelocity->Down() - twoVelocity->Down());
 
         error = CalcVelocityError(reportOne->GetDevice());
         error += CalcVelocityError(reportTwo->GetDevice());

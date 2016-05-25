@@ -11,9 +11,9 @@ TEST(Velocity, allValues) {
     Velocity *three = new Velocity(4, 1, 3);
 
     Velocity result = *Velocity::Average(one, two, three);
-    EXPECT_EQ(2, result.east);
-    EXPECT_EQ(2, result.down);
-    EXPECT_EQ(2, result.north);
+    EXPECT_EQ(2, result.East);
+    EXPECT_EQ(2, result.Down);
+    EXPECT_EQ(2, result.North);
 }
 
 TEST(Velocity, oneNull) {
@@ -22,19 +22,19 @@ TEST(Velocity, oneNull) {
     Velocity *three = new Velocity(16, 9, 16);
 
     Velocity result = *Velocity::Average(one, two, three);
-    EXPECT_EQ(5, result.east);
-    EXPECT_EQ(5, result.down);
-    EXPECT_EQ(5, result.north);
+    EXPECT_EQ(5, result.East);
+    EXPECT_EQ(5, result.Down);
+    EXPECT_EQ(5, result.North);
 
     result = *Velocity::Average(two, three, one);
-    EXPECT_EQ(5, result.east);
-    EXPECT_EQ(5, result.down);
-    EXPECT_EQ(5, result.north);
+    EXPECT_EQ(5, result.East);
+    EXPECT_EQ(5, result.Down);
+    EXPECT_EQ(5, result.North);
 
     result = *Velocity::Average(two, one, three);
-    EXPECT_EQ(5, result.east);
-    EXPECT_EQ(5, result.down);
-    EXPECT_EQ(5, result.north);
+    EXPECT_EQ(5, result.East);
+    EXPECT_EQ(5, result.Down);
+    EXPECT_EQ(5, result.North);
 }
 
 TEST(Velocity, twoNull) {
@@ -42,19 +42,19 @@ TEST(Velocity, twoNull) {
     Velocity *two = new Velocity(1, 2, 3);
 
     Velocity result = *Velocity::Average(one, two, one);
-    EXPECT_EQ(1, result.east);
-    EXPECT_EQ(2, result.down);
-    EXPECT_EQ(3, result.north);
+    EXPECT_EQ(1, result.East);
+    EXPECT_EQ(2, result.Down);
+    EXPECT_EQ(3, result.North);
 
     result = *Velocity::Average(two, one, one);
-    EXPECT_EQ(1, result.east);
-    EXPECT_EQ(2, result.down);
-    EXPECT_EQ(3, result.north);
+    EXPECT_EQ(1, result.East);
+    EXPECT_EQ(2, result.Down);
+    EXPECT_EQ(3, result.North);
 
     result = *Velocity::Average(one, one, two);
-    EXPECT_EQ(1, result.east);
-    EXPECT_EQ(2, result.down);
-    EXPECT_EQ(3, result.north);
+    EXPECT_EQ(1, result.East);
+    EXPECT_EQ(2, result.Down);
+    EXPECT_EQ(3, result.North);
 }
 
 TEST(Velocity, threeNull) {
@@ -73,9 +73,9 @@ TEST(Velocity, outlier) {
     Velocity *three = new Velocity(16, 9, 16); //vThree = 8.4014
 
     Velocity result = *Velocity::Average(one, two, three);
-    EXPECT_EQ(5, result.east);
-    EXPECT_EQ(5, result.down);
-    EXPECT_EQ(5, result.north);
+    EXPECT_EQ(5, result.East);
+    EXPECT_EQ(5, result.Down);
+    EXPECT_EQ(5, result.North);
 }
 
 //SphericalCoordinate Tests

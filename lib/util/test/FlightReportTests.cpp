@@ -89,7 +89,7 @@ TEST(FlightReportMakeOwnshipReport, Creation){
 /*
  * Tests to see if Flight Report correctly creates ADSB reports
  */
-
+/*
 TEST(FlightReportMakeADSBReport, Creation) {
     std::time_t time = 1;
     TailNumber tailNumber = TailNumber();
@@ -117,7 +117,7 @@ TEST(FlightReportMakeADSBReport, Creation) {
     EXPECT_EQ(velocity.down, adsBReport.down());
     EXPECT_EQ(velocity.east, adsBReport.east());
 }
-
+*/
 /*
  * Tests to see if FlightReport correctly creates radar reports.
  */

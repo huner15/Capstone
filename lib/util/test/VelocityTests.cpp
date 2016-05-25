@@ -18,9 +18,9 @@
 TEST(VelocityDefaultConstructor, Assignment) {
     Velocity velocity;
 
-    EXPECT_EQ(0, velocity.east);
-    EXPECT_EQ(0, velocity.down);
-    EXPECT_EQ(0, velocity.north);
+    EXPECT_EQ(0, velocity.East());
+    EXPECT_EQ(0, velocity.Down());
+    EXPECT_EQ(0, velocity.North());
 }
 
 /**
@@ -30,9 +30,21 @@ TEST(VelocityDefaultConstructor, Assignment) {
 TEST(VelocityInputConstructor, Assignment) {
     Velocity velocity (1, 2, 3);
 
-    EXPECT_EQ(1, velocity.east);
-    EXPECT_EQ(2, velocity.down);
-    EXPECT_EQ(3, velocity.north);
+    EXPECT_EQ(1, velocity.East());
+    EXPECT_EQ(2, velocity.Down());
+    EXPECT_EQ(3, velocity.North());
+}
+
+/**
+ * Test that Velocity still retains access to underlying variables using Vector
+ * x, y, and z references.
+ */
+TEST(VelocityInputConstructor, VectorAccess) {
+    Velocity velocity (1, 2, 3);
+
+    EXPECT_EQ(1, velocity.x);
+    EXPECT_EQ(2, velocity.y);
+    EXPECT_EQ(3, velocity.z);
 }
 
 /**
@@ -43,7 +55,7 @@ TEST(VelocityDifferenceOperator, Calculation) {
     Velocity velocity2 (3, 2, 1);
     Velocity velocityr = velocity1 - velocity2;
 
-    EXPECT_EQ(2, velocityr.east);
-    EXPECT_EQ(4, velocityr.down);
-    EXPECT_EQ(6, velocityr.north);
+    EXPECT_EQ(2, velocityr.East());
+    EXPECT_EQ(4, velocityr.Down());
+    EXPECT_EQ(6, velocityr.North());
 }

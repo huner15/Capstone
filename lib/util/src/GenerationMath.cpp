@@ -63,8 +63,8 @@ GeographicCoordinate GenerationMath::DestinationPoint(
     //φ2 = asin( sin φ1 ⋅ cos δ + cos φ1 ⋅ sin δ ⋅ cos θ )
     //λ2 = λ1 + atan2( sin θ ⋅ sin δ ⋅ cos φ1, cos δ − sin φ1 ⋅ sin φ2 )
 
-    double distance = sqrt(velocity.east * velocity.east +
-                                   velocity.north * velocity.north);
+    double distance = sqrt(velocity.East() * velocity.East() +
+                                   velocity.North() * velocity.North());
     //std::cout << "\ndistance traveled: " << distance << std::endl;
     double start_lat = ToRadians(start.GetLatitude());
     double start_long = ToRadians(start.GetLongitude());
@@ -85,7 +85,7 @@ GeographicCoordinate GenerationMath::DestinationPoint(
     dest_lat = ToDegrees(dest_lat);
     dest_long = ToDegrees(dest_long);
     return GeographicCoordinate (dest_lat, dest_long,
-                                 start.GetAltitude()-velocity.down);
+                                 start.GetAltitude()- velocity.Down());
 }
 
 double GenerationMath::ToRadians(double degrees) {

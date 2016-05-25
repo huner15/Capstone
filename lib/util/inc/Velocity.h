@@ -20,19 +20,7 @@
  * down.
  */
 class Velocity : public Saas_Util::Vector3D {
-private:
 public:
-    /**
-     * Enable accessing the underlying three dimensional vector using the
-     * keywords north, east, and down instead or x, y, z or array indexing.
-     */
-    union {
-        std::array<double, 3> array;
-        struct {
-            double east, down, north;
-        };
-    };
-
     /**
      * Create a new velocity with east, down, and north velocities of zero.
      */
@@ -46,6 +34,42 @@ public:
      * @param north the northwards velocity
      */
     Velocity(double east, double down, double north);
+
+    /**
+     * Get the eastward velocity.
+     * @return the eastward velocity.
+     */
+    double East() const;
+
+    /**
+    * Get the downward velocity.
+    * @return the downward velocity.
+    */
+    double Down() const;
+
+    /**
+     * Get the northward velocity.
+     * @return the northward velocity.
+     */
+    double North() const;
+
+    /**
+     * Set the eastward velocity.
+     * @param the new eastward velocity.
+     */
+    void SetEast(double east);
+
+    /**
+     * Set the downward velocity.
+     * @param the new eastward velocity.
+     */
+    void SetDown(double down);
+
+    /**
+     * Set the northward velocity.
+     * @param the new northward velocity.
+     */
+    void SetNorth(double north);
 
     /**
      * Create a velocity representing the relative velocity of this velocity to

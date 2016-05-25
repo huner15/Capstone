@@ -87,8 +87,9 @@ void ProcessorLogger::LogCorrelationAircraft(
         _aircraftData << "        Most High Ranked Report Type in Cluster " <<
                 "(ADSB, TCAS, radar): " << curAircraft->GetDeviceType() << endl;
 
-        _aircraftData << "        Moving at (" << vel.north << ", " << vel.east
-                << ", " << vel.down << ") feet/second" << endl;
+        _aircraftData << "        Moving at (" << vel.North() << ", " <<
+                vel.East()
+                << ", " << vel.Down() << ") feet/second" << endl;
 
         if (!(geo.GetLatitude() == 0 && geo.GetLongitude() == 0 &&
                 geo.GetAltitude() == 0)) {
@@ -114,8 +115,9 @@ void ProcessorLogger::LogReceivedReports(ReceivedReports *reports) {
         << endl;
     _surveillanceReportsData << "      Ownship:" << endl;
     _surveillanceReportsData << "        Moving at (" <<
-        ownship->GetVelocity()->north << ", " << ownship->GetVelocity()->east
-        << ", " << ownship->GetVelocity()->down << ") feet/second" << endl;
+            ownship->GetVelocity()->North() << ", " <<
+            ownship->GetVelocity()->East()
+        << ", " << ownship->GetVelocity()->Down() << ") feet/second" << endl;
 
     _surveillanceReportsData << "        Located at latitude: ";
     _surveillanceReportsData <<ownship->GetGeographicCoordinate()->GetLatitude()
@@ -133,9 +135,9 @@ void ProcessorLogger::LogReceivedReports(ReceivedReports *reports) {
             rep->at(i)->GetTime() << " seconds" << endl;
 
         _surveillanceReportsData << "        Moving at (" <<
-            rep->at(i)->GetVelocity()->north << ", " <<
-            rep->at(i)->GetVelocity()->east << ", " <<
-            rep->at(i)->GetVelocity()->down << ") feet/second" << endl;
+                rep->at(i)->GetVelocity()->North() << ", " <<
+                rep->at(i)->GetVelocity()->East() << ", " <<
+                rep->at(i)->GetVelocity()->Down() << ") feet/second" << endl;
 
         _surveillanceReportsData << "        Located at latitude: " <<
             rep->at(i)->GetGeographicCoordinate()->GetLatitude() << ", " <<
@@ -172,9 +174,9 @@ void ProcessorLogger::LogReceivedReports(ReceivedReports *reports) {
             rep->at(i)->GetTime() << " seconds" << endl;
 
         _surveillanceReportsData << "        Moving at (" <<
-            rep->at(i)->GetVelocity()->north << ", " <<
-            rep->at(i)->GetVelocity()->east << ", " <<
-            rep->at(i)->GetVelocity()->down << ") feet/second" << endl;
+                rep->at(i)->GetVelocity()->North() << ", " <<
+                rep->at(i)->GetVelocity()->East() << ", " <<
+                rep->at(i)->GetVelocity()->Down() << ") feet/second" << endl;
 
         _surveillanceReportsData << "        Located at latitude: " <<
             rep->at(i)->GetGeographicCoordinate()->GetLatitude() <<

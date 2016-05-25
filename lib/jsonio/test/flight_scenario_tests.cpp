@@ -52,9 +52,12 @@ TEST(GetsFlightLegs, CorrectData) {
         std::cout << "latitude: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetStartPosition().GetLatitude() << std::endl;
         std::cout << "longitude: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetStartPosition().GetLongitude() << std::endl;
         std::cout << "alt: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetStartPosition().GetAltitude() << std::endl;
-        std::cout << "x: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().east << std::endl;
-        std::cout << "y: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().north << std::endl;
-        std::cout << "z: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().down << std::endl;
+        std::cout << "x: " << flightScenario.GetAircraft().at(
+                i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().East() << std::endl;
+        std::cout << "y: " << flightScenario.GetAircraft().at(
+                i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().North() << std::endl;
+        std::cout << "z: " << flightScenario.GetAircraft().at(
+                i).GetFlightPlan().GetFlightLegs()[0].GetNewRelativeVelocity().Down() << std::endl;
         std::cout << "duration: " << flightScenario.GetAircraft().at(i).GetFlightPlan().GetFlightLegs().at(0).GetDurationOfManeuver() << std::endl;
     }
 

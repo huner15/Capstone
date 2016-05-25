@@ -250,7 +250,7 @@ Json::Value SimulationGenerator::WriteRadarReports() {
                                           elevation, own_pos.GetAltitude(),
                                           own_pos.GetLatitude(),
                                           own_pos.GetLongitude(),
-                                          vel.north, vel.east, vel.down, time,
+                                          vel.North(), vel.East(), vel.Down(), time,
                                           k+1));
                 }
             }
@@ -285,7 +285,7 @@ Json::Value SimulationGenerator::WriteRadarReports() {
                                           elevation, own_pos.GetAltitude(),
                                           own_pos.GetLatitude(),
                                           own_pos.GetLongitude(),
-                                          vel.north, vel.east, vel.down, time,
+                                          vel.North(), vel.East(), vel.Down(), time,
                                           k + 1));
             }
         }
@@ -339,8 +339,8 @@ Json::Value SimulationGenerator::WriteAdsbReports() {
                                          cur_pos.GetAltitude(),
                                          cur_pos.GetLatitude(),
                                          cur_pos.GetLongitude(),
-                                         vel.north, vel.east,
-                                         vel.down, time, k + 1));
+                                         vel.North(), vel.East(),
+                                         vel.Down(), time, k + 1));
             }
         }
         while(time < _ownship_duration) {
@@ -357,8 +357,8 @@ Json::Value SimulationGenerator::WriteAdsbReports() {
                                      cur_pos.GetAltitude(),
                                      cur_pos.GetLatitude(),
                                      cur_pos.GetLongitude(),
-                                     vel.north, vel.east,
-                                     vel.down, time, k + 1));
+                                     vel.North(), vel.East(),
+                                     vel.Down(), time, k + 1));
         }
 
     }
@@ -399,7 +399,8 @@ Json::Value SimulationGenerator::WriteOwnshipReports() {
             reports.append(FormatOwnshipReport(time, cur_pos.GetAltitude(),
                                                cur_pos.GetLatitude(),
                                                cur_pos.GetLongitude(),
-                                               vel.north, vel.east, vel.down,
+                                               vel.North(), vel.East(),
+                                               vel.Down(),
             time));
         }
     }
