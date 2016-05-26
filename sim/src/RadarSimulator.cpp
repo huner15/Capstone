@@ -19,4 +19,7 @@ void RadarSimulator::SendReport(ServerSocket& client_socket,
         RadarReport radar_report = flight_report.GetRadarReport();
         client_socket << radar_report;
     }
+    else {
+        std::cout << "Attempted to send incomplete Radar Report." << std::endl;
+    }
 }

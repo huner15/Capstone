@@ -2,66 +2,16 @@ server Start ver 1.4.3
 connection established
 temp written
 reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readDeserialize 3 Invalid field id: 0, something went wrong in the stream
-temp written
-reading temp
-Exception caught in readUnknown wire type: 6
 temp read
-2
+4
 Example.CDTIPlane
 0
 
 at intake
 added to screed 45298
+added to screed 22081
 added to screed 19
+added to screed 7
 added to screed 0
 end intake
 temp written
@@ -72,8 +22,8 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed 45298
-added to screed 19
+added to screed 64677
+added to screed 12
 added to screed 0
 end intake
 temp written
@@ -84,10 +34,189 @@ Example.CDTIPlane
 0
 
 at intake
-added to screed 45298
-added to screed 19
+added to screed 44710
+added to screed 18
 added to screed 0
 end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 20738
+added to screed 5
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 30280
+added to screed 24
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 48946
+added to screed 22
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 47937
+added to screed 20
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 17079
+added to screed 10
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 50101
+added to screed 13
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 38357
+added to screed 24
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 10282
+added to screed 0
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 28835
+added to screed 16
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 24754
+added to screed 21
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 9158
+added to screed 14
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 22156
+added to screed 2
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 20955
+added to screed 17
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+2
+Example.CDTIPlane
+0
+
+at intake
+added to screed 48786
+added to screed 6
+added to screed 0
+end intake
+temp written
+reading temp
+temp read
+0
+Example.CDTIPlane
+0
+
+at intake
+added to screed 0
+end intake
+ntake
 temp written
 reading temp
 temp read
