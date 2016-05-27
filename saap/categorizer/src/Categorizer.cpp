@@ -61,7 +61,7 @@ CDTIReport* Categorizer::Categorize(
 
     /** Set CDTI Report timestamp. */
     // TODO: Use system time for timestamp.
-    int64_t timestamp = 0;
+    int64_t timestamp = time(NULL);
     cdti_report->set_timestamp(timestamp);
 
     /** Use a constant ownship cdti plane to avoid ownship re-initialization. */
