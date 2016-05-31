@@ -117,6 +117,7 @@ bool Client::GetIsConnected() {
 ReceivedReports *Client::Convert(ReceivedReports *reports) {
     SurveillanceReport *ownship = reports->GetOwnship();
     SphericalCoordinate newCoord;
+    float z;
 
     for (int i = 0; i < reports->GetAdsb()->size(); i++) {
         newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
@@ -127,10 +128,11 @@ ReceivedReports *Client::Convert(ReceivedReports *reports) {
     }
 
     for (int i = 0; i < reports->GetTcas()->size(); i++) {
+        z = reports->GetTcas()->at(i)->GetAltitude() - ownship->GetAltitude();
+
         newCoord = SphericalCoordinate
              (reports->GetTcas()->at(i)->GetSphericalCoordinate()->GetRange(),
-             (reports->GetTcas()->at(i)->GetGeographicCoordinate()->GetAltitude()
-                     - ownship->GetAltitude()),
+              atan(reports->GetTcas()->at(i)->GetRange() / z),
               reports->GetTcas()->at(i)->GetSphericalCoordinate()->GetAzimuth());
 
         reports->GetTcas()->at(i)->SetSphericalCoordinate(newCoord);
