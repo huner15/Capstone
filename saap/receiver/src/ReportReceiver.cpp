@@ -51,7 +51,7 @@ SurveillanceReport* ReportReceiver::CreateTcasSurveillanceReport(
     //TODO find a way to incorporate TCAS' altitude.
     GeographicCoordinate geographic_coordinate = GeographicCoordinate(0.0,
                                                                       0.0,
-                                                                      0.0);
+                                                                      altitude);
     Velocity velocity = Velocity(0.0, 0.0, 0.0);
     SphericalCoordinate spherical_coordinate = SphericalCoordinate(range, 0.0,
                                                                    bearing);
@@ -170,4 +170,25 @@ ReceivedReports* ReportReceiver::GetReports() {
 
 void ReportReceiver::Clear() {
     _held_reports->Clear();
+}
+
+SphericalCoordinate ReportReceiver::ConvertGeoToSphericalCoordinates
+        (GeographicCoordinate *aircraft, GeographicCoordinate *ownship) {
+    return ConvertCoordinates(aircraft, ownship);
+}
+SphericalCoordinate ReportReceiver::ConvertCoordinates
+        (GeographicCoordinate *aircraft, GeographicCoordinate *ownship) {
+    double range, elevation, azimuth, r, z, y, x;
+// Use util method to find physical distance between both points
+    range = GenerationMath::DistanceBetweenTwoCoordinates(*aircraft, *ownship);
+// Set cylindrical values
+    z = aircraft->GetAltitude() - ownship->GetAltitude();
+    r = sqrt(pow(range, 2) - pow(z, 2));
+// Set cartesian coordinates
+    x = aircraft->GetLatitude() - ownship->GetLatitude();
+    y = aircraft->GetLongitude() - ownship->GetLongitude();
+// Calculate elevation and azimuth
+    elevation = atan(r / z);
+    azimuth = atan(y / x);
+    return SphericalCoordinate(range, elevation, azimuth);
 }

@@ -18,6 +18,7 @@
 #include "GenerationMath.h"
 #include "ReceivedReports.h"
 #include "Correlator.h"
+#include <ReportReceiver.h>
 
 #define TRUE 0
 #define FALSE 1
@@ -34,12 +35,11 @@ using namespace std;
 
 class CorrelationEngine: public Correlator {
 protected:
-    vector<Cluster *> _clusters; // Holds the Clusters generated for this second
-    vector<Cluster *> _free_clusters; // Holds the unused Cluster objects
+    // Holds the Clusters generated for this second
+    vector<Cluster *> _clusters;
     // Holds the Correlation Aircraft objects generated this second
     vector<CorrelationAircraft *> _corr_aircraft;
-    // Holds the unused Correlation Aircraft objects
-    vector<CorrelationAircraft *> _free_aircraft;
+
     // Whether or not ADS-B reports where converted to relative this second
     bool _is_relative;
 
@@ -113,20 +113,6 @@ public:
      */
     int GetClusterSize();
 
-    /*
-     * Moves a specified CorrelationAircraft to the free list.
-     * Used to test NewCorrelationAircraft() and Correlate() methods.
-     * @index int the index to move to the free list
-     */
-    void AddFreeAircraft(int index);
-
-    /*
-     * Moves a specified Cluster to the free list.
-     * Used to test NewCluster() and Correlate() methods.
-     * @index int the index to move to the free list
-     */
-    void AddFreeCluster(int index);
-
     /**
      * Runs the Algorithm to create all of the Clusters.
      * Will be overridden by each class that extends this class.
@@ -168,13 +154,6 @@ public:
      * @return Cluster * the pointer to the new Cluster to use
      */
     Cluster *NewCluster();
-
-    /*
-     * Gets an empty CorrelationAircraft pointer from the existing list or
-     * mallocs a new one.
-     * @return Cluster * the pointer to the new Cluster to use
-     */
-    CorrelationAircraft *NewCorrAircraft();
 
     /*
      * Generates the distance between two SurveillanceReports

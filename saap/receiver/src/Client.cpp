@@ -16,7 +16,8 @@ correlator, Categorizer& categorizer,
                in_port_t radar_port, in_port_t tcas_port,
                std::string cdti_host, in_port_t cdti_port)
         : _report_receiver(report_receiver),
-          _correlator(correlator), _categorizer(categorizer),
+          _correlator(correlator),
+          _categorizer(categorizer),
           _sim_host(sim_host),
           _ownship_port(ownship_port), _adsb_port(adsb_port),
           _radar_port(radar_port), _tcas_port(tcas_port),
@@ -113,6 +114,29 @@ bool Client::GetIsConnected() {
     return _is_connected;
 }
 
+void Client::Convert(ReceivedReports *reports) {
+    SurveillanceReport *ownship = reports->GetOwnship();
+    SphericalCoordinate newCoord;
+
+    for (int i = 0; i < reports->GetAdsb()->size(); i++) {
+        newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
+             (reports->GetAdsb()->at(i)->GetGeographicCoordinate(),
+              ownship->GetGeographicCoordinate());
+
+        reports->GetAdsb()->at(i)->SetSphericalCoordinate(newCoord);
+    }
+
+    for (int i = 0; i < reports->GetTcas()->size(); i++) {
+        newCoord = SphericalCoordinate
+             (reports->GetTcas()->at(i)->GetSphericalCoordinate()->GetRange(),
+             (reports->GetTcas()->at(i)->GetGeographicCoordinate()->GetAltitude()
+                     - ownship->GetAltitude()),
+              reports->GetTcas()->at(i)->GetSphericalCoordinate()->GetAzimuth());
+
+        reports->GetTcas()->at(i)->SetSphericalCoordinate(newCoord);
+    }
+}
+
 void Client::Process() {
     /** Retrieve all pending reports collected by the report receiver. */
     ReceivedReports* reports = _report_receiver.GetReports();
@@ -132,9 +156,15 @@ void Client::Process() {
             "\t" << reports->GetRadar()->size() <<
             " Radar Report(s)" << std::endl;
 
+    Convert(reports);
+
     /** Correlate incoming aircraft reports. */
-    std::vector<CorrelationAircraft *>* correlation_aircraft =
-            _correlator.Correlate(*reports);
+    std::vector<CorrelationAircraft *>* correlation_aircraft
+            = _correlator.Correlate(*reports);
+
+//    /** Convert clusters. */
+//    std::vector<CorrelationAircraft *>* correlation_aircraft =
+//            _converter.Convert(clusters);
 
     _logger->LogCorrelationAircraft(correlation_aircraft);
 

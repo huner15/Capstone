@@ -24,16 +24,6 @@ int CorrelationEngine::GetClusterSize() {
     return _clusters.size();
 }
 
-void CorrelationEngine::AddFreeAircraft(int index) {
-    CorrelationAircraft *aircraft = _corr_aircraft.at(index);
-    _free_aircraft.push_back(aircraft);
-}
-
-void CorrelationEngine::AddFreeCluster(int index) {
-    Cluster *cluster = _clusters.at(index);
-    _free_clusters.push_back(cluster);
-}
-
 int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
     vector<SurveillanceReport *> *tcas,
     vector<SurveillanceReport *> *radar) {
@@ -163,8 +153,6 @@ std::vector<CorrelationAircraft *>* CorrelationEngine::Correlate
     for (uint32_t i = 0; i < _clusters.size(); i++) {
         temp = ConvertAircraft(_clusters.at(i));
         _corr_aircraft.push_back(temp);
-        // TODO: Do we need the line below?
-        //_free_clusters.push_back(_clusters.at(i));
     }
 
     // Unlock cluster vectors and CorrelationAircraft vectors.
@@ -203,16 +191,13 @@ CorrelationAircraft *CorrelationEngine::ConvertAircraft(Cluster *cluster) {
         type = TCAS;
         time = cluster->_tcas->GetTime();
         tcas_id = cluster->_tcas->GetTcasID();
-        tcasG = cluster->_tcas->GetGeographicCoordinate();
         tcasS = cluster->_tcas->GetSphericalCoordinate();
-        tcasV = cluster->_tcas->GetVelocity();
     }
     if (cluster->_adsb != NULL) {
         type = ADSB;
         time = cluster->_adsb->GetTime();
         tail_number = cluster->_adsb->GetTailNumber();
         adsbG = cluster->_adsb->GetGeographicCoordinate();
-        adsbS = cluster->_adsb->GetSphericalCoordinate();
         adsbV = cluster->_adsb->GetVelocity();
     }
 
@@ -256,15 +241,7 @@ int CorrelationEngine::CheckClusterCount() {
 Cluster *CorrelationEngine::NewCluster() {
     Cluster *cluster;
 
-    // TODO: Do we need the lines below?
-    //if (_free_clusters.empty()) {
-        cluster = (Cluster *) malloc(sizeof(Cluster));
-    //}
-    //else {
-    //cluster = _free_clusters.at(_clusters.size() - 1);
-    //_free_clusters.pop_back();
-    //}
-
+    cluster = new Cluster();
     cluster->_adsb = NULL;
     cluster->_radar = NULL;
     cluster->_tcas = NULL;
@@ -273,25 +250,10 @@ Cluster *CorrelationEngine::NewCluster() {
     return cluster;
 }
 
-CorrelationAircraft *CorrelationEngine::NewCorrAircraft() {
-    CorrelationAircraft *aircraft;
-
-    // TODO: Do we need the lines below?
-    //if (_free_aircraft.empty()) {
-        aircraft = (CorrelationAircraft *) malloc(sizeof(CorrelationAircraft));
-    //}
-    //else {
-    //aircraft = _free_aircraft.at(_free_aircraft.size() - 1);
-    //_free_aircraft.pop_back();
-    //}
-
-    return aircraft;
-}
-
 double CorrelationEngine::CalcDistance(SurveillanceReport *reportOne,
     SurveillanceReport *reportTwo) {
-    double distance = CalcHeading(reportOne, reportTwo);
-    distance *= CalcEuclidDistance(reportOne, reportTwo);
+    double distance = CalcEuclidDistance(reportOne, reportTwo);
+    distance *= CalcHeading(reportOne, reportTwo);
     distance *= CalcVelocity(reportOne, reportTwo);
 
     distance = cbrt(distance);
@@ -306,11 +268,11 @@ double CorrelationEngine::CalcDistance(SurveillanceReport *reportOne,
 
 double CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
     SurveillanceReport *reportTwo) {
-    double difference, azimuth, elevation = 0, metric, temp = 0;
+    double difference, azimuth, elevation = 0, metric;
 
-    // ADS-B could not be converted to spherical coordinates.
-    if (!_is_relative && (reportOne->GetDevice() == ADSB
-        || reportTwo->GetDevice() == ADSB)) {
+    // Check if ADS-B could be converted to spherical coordinates.
+    if (_is_relative || (reportOne->GetDevice() != TCAS
+        && reportTwo->GetDevice() != TCAS)) {
         // No way to calculate heading for unconverted ADSB.
         metric = 1;
     }
@@ -319,21 +281,21 @@ double CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
         // Calculate azimuth correlation.
         difference = abs(reportOne->GetAzimuth() - reportTwo->GetAzimuth());
         azimuth = (MAXAZIMUTHERROR - difference) / MAXAZIMUTHERROR;
+        elevation = 1;
 
         // Calculate elevation correlation.
-        if (reportOne->GetDevice() == RADAR) {
-            temp = reportOne->GetElevation();
-
-            difference = abs(temp -
-                    reportTwo->GetAltitude());
-            elevation = (MAXELEVATIONERROR - difference) / MAXELEVATIONERROR;
-        }
-        else if (reportTwo->GetDevice() == RADAR) {
-            difference = reportOne->GetElevation() - reportTwo->GetElevation();
+        if (reportOne->GetDevice() != TCAS && reportTwo->GetDevice() != TCAS) {
+            difference = abs(reportOne->GetElevation() -
+                reportTwo->GetElevation());
             elevation = (MAXELEVATIONERROR - difference) / MAXELEVATIONERROR;
         }
 
         metric = sqrt(elevation * azimuth);
+    }
+
+    // The reports are farther apart then the maximum distance.
+    if (metric < 0) {
+        metric = 0;
     }
 
     return metric;
@@ -341,44 +303,39 @@ double CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
 
 double CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
     SurveillanceReport *reportTwo) {
-    double range, azimuth, elevation, difference, metric;
-    SphericalCoordinate coord;
+    double range, difference, metric;
+    SphericalCoordinate newCoord;
     GeographicCoordinate geoCoord;
 
-    // TODO: WTF
     //if possible, use ownship from radar report to convert
-    //    if (_is_relative == false) && (reportOne->GetDevice() == RADAR
-    //        || reportTwo->GetDevice() == RADAR)) {
-    //        //report one is the radar report
-    //        if (reportOne->GetDevice() == RADAR) {
-    //            //Create ownship geographical coordinate using Radar's ownship vals
-    //            geoCoord = GeographicCoordinate(reportOne->GetLatitude(),
-    //                reportOne->GetLongitude(), reportOne->GetAltitude());
-    //
-    //            //convert TCAS to spherical
-    //            coord = ConvertGeoToSpher(reportTwo->GetGeographicCoordinate(),
-    //                &geoCoord);
-    //
-    //            reportTwo->SetSphericalCoordinate(coord);
-    //        }
-    //        else {
-    //            //Create ownship geographical coordinate using Radar's ownship vals
-    //            geoCoord = GeographicCoordinate(reportTwo->GetLatitude(),
-    //                reportTwo->GetLongitude(), reportTwo->GetAltitude());
-    //
-    //            //convert TCAS to spherical
-    //            coord = ConvertGeoToSpher(reportOne->GetGeographicCoordinate(),
-    //                &geoCoord);
-    //
-    //            reportOne->SetSphericalCoordinate(coord);
-    //        }
-    //
-    //        _is_relative = true;
-    //    }
+        if (!_is_relative && reportOne->GetDevice() == RADAR
+            && reportTwo->GetDevice() == ADSB) {
+            //Create ownship geographical coordinate using Radar's ownship vals
+            geoCoord = GeographicCoordinate(reportOne->GetLatitude(),
+                reportOne->GetLongitude(), reportOne->GetAltitude());
 
-    // Check if ADS-B could not be converted to spherical coordinates.
-    if (!_is_relative && reportOne->GetDevice() != ADSB
-        && reportTwo->GetDevice() != ADSB) {
+            //convert TCAS to spherical
+            newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
+                 (reportTwo->GetGeographicCoordinate(), &geoCoord);
+
+            reportTwo->SetSphericalCoordinate(newCoord);
+        }
+        else if (!_is_relative && reportTwo->GetDevice() == RADAR
+            && reportOne->GetDevice() == ADSB) {
+            //Create ownship geographical coordinate using Radar's ownship vals
+            geoCoord = GeographicCoordinate(reportTwo->GetLatitude(),
+                reportTwo->GetLongitude(), reportTwo->GetAltitude());
+
+            //convert TCAS to spherical
+            newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
+                (reportOne->GetGeographicCoordinate(), &geoCoord);
+
+            reportOne->SetSphericalCoordinate(newCoord);
+        }
+
+    // Check if ADS-B could be converted to spherical coordinates.
+    if (_is_relative || (reportOne->GetDevice() != TCAS
+        && reportTwo->GetDevice() != TCAS)) {
         // Calculate range correlation.
         difference = abs(reportOne->GetRange() - reportTwo->GetRange());
         range = (MAXRADARERROR - difference) / MAXRADARERROR;
@@ -388,6 +345,11 @@ double CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
     // No way to calculate heading for unconverted ADSB, so 1 to not skew result.
     else {
         metric = 1;
+    }
+
+    // The reports are farther apart then the maximum distance.
+    if (metric < 0) {
+        metric = 0;
     }
 
     return metric;
@@ -442,28 +404,4 @@ double CorrelationEngine::CalcVelocityError(Device type) {
     }
 
     return error;
-}
-
-//TODO take in to account ownship heading should be zero
-SphericalCoordinate CorrelationEngine::ConvertGeoToSpher(
-    GeographicCoordinate *aircraft, GeographicCoordinate *ownship)
-{
-    double range, elevation, azimuth, r, z, y, x;
-
-    // Use util method to find physical distance between both points
-    range = GenerationMath::DistanceBetweenTwoCoordinates(*aircraft, *ownship);
-
-    // Set cylindrical values
-    z = aircraft->GetAltitude() - ownship->GetAltitude();
-    r = sqrt(pow(range, 2) - pow(z, 2));
-
-    // Set cartesian coordinates
-    x = aircraft->GetLatitude() - ownship->GetLatitude();
-    y = aircraft->GetLongitude() - ownship->GetLongitude();
-
-    // Calculate elevation and azimuth
-    elevation = atan(r / z);
-    azimuth = atan(y / x);
-
-    return SphericalCoordinate(range, elevation, azimuth);
 }
