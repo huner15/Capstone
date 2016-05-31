@@ -124,18 +124,6 @@ ReceivedReports *Client::Convert(ReceivedReports *reports) {
               ownship->GetGeographicCoordinate());
 
         reports->GetAdsb()->at(i)->SetSphericalCoordinate(newCoord);
-        cout << "New Coord: " << newCoord.GetRange() << " and ";
-        cout << newCoord.GetElevation() << " and " << newCoord.GetAzimuth()
-        <<endl;
-        cout << "Sphere: " << reports->GetAdsb()->at(i)
-                                      ->GetSphericalCoordinate()->GetRange()
-        << " "
-                                                                                 "and ";
-        cout << reports->GetAdsb()->at(i)
-                        ->GetSphericalCoordinate()->GetElevation() << " and " <<
-                reports->GetAdsb()->at(i)
-                        ->GetSphericalCoordinate()->GetAzimuth()
-        <<endl;
     }
 
     for (int i = 0; i < reports->GetTcas()->size(); i++) {
@@ -148,6 +136,7 @@ ReceivedReports *Client::Convert(ReceivedReports *reports) {
         reports->GetTcas()->at(i)->SetSphericalCoordinate(newCoord);
     }
 
+    reports->SetRelative(true);
     return reports;
 }
 
@@ -170,6 +159,7 @@ void Client::Process() {
             "\t" << reports->GetRadar()->size() <<
             " Radar Report(s)" << std::endl;
 
+    reports->SetRelative(false);
     reports = Convert(reports);
 
     /** Correlate incoming aircraft reports. */

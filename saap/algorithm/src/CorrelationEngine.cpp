@@ -120,17 +120,11 @@ double CorrelationEngine::CompareTcasToClusters(SurveillanceReport *report) {
 std::vector<CorrelationAircraft *>* CorrelationEngine::Correlate
         (ReceivedReports reports) {
     CorrelationAircraft *temp;
-    _is_relative = true;
+    _is_relative = reports.MakeRelative();
 
     vector<SurveillanceReport *> *adsb = reports.GetAdsb();
     vector<SurveillanceReport *> *tcas = reports.GetTcas();
     vector<SurveillanceReport *> *radar = reports.GetRadar();
-
-    for (int i = 0; i < adsb->size(); i++) {
-        cout << "Plane "<<i<<": " << adsb->at(i)->GetRange() << " and ";
-        cout << adsb->at(i)->GetElevation() << " and " << adsb->at(i)->GetAzimuth()
-        <<endl;
-    }
 
     // Mutex lock for using the cluster vectors.
     if (mutexs)
@@ -288,15 +282,14 @@ double CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
     // Compare most reports by spherical coordinates.
     else {
         // Calculate azimuth correlation.
-        difference = abs(reportOne->GetAzimuth() - reportTwo->GetAzimuth());
-        azimuth = (MAXAZIMUTHERROR - difference) / MAXAZIMUTHERROR;
-        elevation = 1;
+        azimuth = 1;
+        difference = abs(reportOne->GetElevation() - reportTwo->GetElevation());
+        elevation = (MAXELEVATIONERROR - difference) / MAXELEVATIONERROR;;
 
         // Calculate elevation correlation.
         if (reportOne->GetDevice() != TCAS && reportTwo->GetDevice() != TCAS) {
-            difference = abs(reportOne->GetElevation() -
-                reportTwo->GetElevation());
-            elevation = (MAXELEVATIONERROR - difference) / MAXELEVATIONERROR;
+            difference = abs(reportOne->GetAzimuth() - reportTwo->GetAzimuth());
+            azimuth = (MAXAZIMUTHERROR - difference) / MAXAZIMUTHERROR;
         }
 
         metric = sqrt(elevation * azimuth);

@@ -68,7 +68,11 @@ std::vector<SurveillanceReport *>* ReceivedReports::GetTcas() {
 
 bool ReceivedReports::MakeRelative() {
     //TODO actually put in the logic to make adsb relative here.
-    return true;
+    return _relative;
+}
+
+void ReceivedReports::SetRelative(bool relative) {
+    _relative = relative;
 }
 
 void ReceivedReports::Clear() {
