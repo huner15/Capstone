@@ -43,7 +43,7 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
             _clusters.push_back(cluster);
         }
     }
-    //Create individual clusters for all tcas reports
+    // Create individual clusters for all tcas reports
     for (int i = 0; i < tcas->size(); i++) {
         if (CompareTcasToClusters(tcas->at(i)) == FALSE) {
             cluster = NewCluster();
@@ -120,11 +120,17 @@ double CorrelationEngine::CompareTcasToClusters(SurveillanceReport *report) {
 std::vector<CorrelationAircraft *>* CorrelationEngine::Correlate
         (ReceivedReports reports) {
     CorrelationAircraft *temp;
-    _is_relative = reports.MakeRelative();
+    _is_relative = true;
 
     vector<SurveillanceReport *> *adsb = reports.GetAdsb();
     vector<SurveillanceReport *> *tcas = reports.GetTcas();
     vector<SurveillanceReport *> *radar = reports.GetRadar();
+
+    for (int i = 0; i < adsb->size(); i++) {
+        cout << "Plane "<<i<<": " << adsb->at(i)->GetRange() << " and ";
+        cout << adsb->at(i)->GetElevation() << " and " << adsb->at(i)->GetAzimuth()
+        <<endl;
+    }
 
     // Mutex lock for using the cluster vectors.
     if (mutexs)
@@ -192,12 +198,15 @@ CorrelationAircraft *CorrelationEngine::ConvertAircraft(Cluster *cluster) {
         time = cluster->_tcas->GetTime();
         tcas_id = cluster->_tcas->GetTcasID();
         tcasS = cluster->_tcas->GetSphericalCoordinate();
+        tcasG = cluster->_tcas->GetGeographicCoordinate();
+        tcasV = cluster->_tcas->GetVelocity();
     }
     if (cluster->_adsb != NULL) {
         type = ADSB;
         time = cluster->_adsb->GetTime();
         tail_number = cluster->_adsb->GetTailNumber();
         adsbG = cluster->_adsb->GetGeographicCoordinate();
+        adsbS = cluster->_adsb->GetSphericalCoordinate();
         adsbV = cluster->_adsb->GetVelocity();
     }
 

@@ -81,7 +81,7 @@ private:
     /** Logger that documents each of the received data types. */
     ProcessorLogger* _logger;
 
-    void Convert(ReceivedReports *reports);
+    ReceivedReports *Convert(ReceivedReports *reports);
 
 public:
     Client(ReportReceiver& report_receiver, Correlator&

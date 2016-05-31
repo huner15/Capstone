@@ -114,7 +114,7 @@ bool Client::GetIsConnected() {
     return _is_connected;
 }
 
-void Client::Convert(ReceivedReports *reports) {
+ReceivedReports *Client::Convert(ReceivedReports *reports) {
     SurveillanceReport *ownship = reports->GetOwnship();
     SphericalCoordinate newCoord;
 
@@ -124,6 +124,18 @@ void Client::Convert(ReceivedReports *reports) {
               ownship->GetGeographicCoordinate());
 
         reports->GetAdsb()->at(i)->SetSphericalCoordinate(newCoord);
+        cout << "New Coord: " << newCoord.GetRange() << " and ";
+        cout << newCoord.GetElevation() << " and " << newCoord.GetAzimuth()
+        <<endl;
+        cout << "Sphere: " << reports->GetAdsb()->at(i)
+                                      ->GetSphericalCoordinate()->GetRange()
+        << " "
+                                                                                 "and ";
+        cout << reports->GetAdsb()->at(i)
+                        ->GetSphericalCoordinate()->GetElevation() << " and " <<
+                reports->GetAdsb()->at(i)
+                        ->GetSphericalCoordinate()->GetAzimuth()
+        <<endl;
     }
 
     for (int i = 0; i < reports->GetTcas()->size(); i++) {
@@ -135,6 +147,8 @@ void Client::Convert(ReceivedReports *reports) {
 
         reports->GetTcas()->at(i)->SetSphericalCoordinate(newCoord);
     }
+
+    return reports;
 }
 
 void Client::Process() {
@@ -156,15 +170,11 @@ void Client::Process() {
             "\t" << reports->GetRadar()->size() <<
             " Radar Report(s)" << std::endl;
 
-    Convert(reports);
+    reports = Convert(reports);
 
     /** Correlate incoming aircraft reports. */
     std::vector<CorrelationAircraft *>* correlation_aircraft
             = _correlator.Correlate(*reports);
-
-//    /** Convert clusters. */
-//    std::vector<CorrelationAircraft *>* correlation_aircraft =
-//            _converter.Convert(clusters);
 
     _logger->LogCorrelationAircraft(correlation_aircraft);
 

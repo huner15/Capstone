@@ -17,8 +17,7 @@ int main(int argc, char *argv[]) {
         // dependencies
         Categorizer* categorizer = new Categorizer();
 
-        //CorrelationEngine correlator = CorrelationEngine();
-        FakeCorrelator correlator = FakeCorrelator();
+        CorrelationEngine correlator = CorrelationEngine();
 
         Client client(report_receiver, correlator, *categorizer,
                       std::string(argv[1]),

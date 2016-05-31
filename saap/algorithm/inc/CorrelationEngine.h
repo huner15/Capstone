@@ -56,6 +56,8 @@ protected:
     int CheckClusterCount();
 
 private:
+    ReceivedReports Convert(ReceivedReports reports);
+
     /**
      * Compares two geographical coordinates to calculate the spherical
      * coordinate relation between the two points.
