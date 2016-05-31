@@ -19,7 +19,7 @@
 #include "TcasReceiver.h"
 #include "CorrelationEngine.h"
 #include "Categorizer.h"
-#include "ClusterConverter.h"
+//#include "ClusterConverter.h"
 #include "ProcessorLogger.h"
 
 class ProcessorLogger;
