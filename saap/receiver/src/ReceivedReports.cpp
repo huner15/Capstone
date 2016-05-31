@@ -72,7 +72,6 @@ bool ReceivedReports::MakeRelative() {
 }
 
 void ReceivedReports::Clear() {
-    delete(_ownship);
     _tcas_reports->clear();
     _adsb_reports->clear();
     _radar_reports->clear();

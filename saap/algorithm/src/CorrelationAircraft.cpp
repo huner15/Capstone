@@ -110,3 +110,7 @@ Velocity CorrelationAircraft::GetVelocity() const {
 Device CorrelationAircraft::GetDeviceType() const {
     return _type;
 }
+
+void CorrelationAircraft::SetTime(std::time_t time) {
+    _time = time;
+}

@@ -17,6 +17,7 @@
 #include "CorrelationAircraft.h"
 #include "GenerationMath.h"
 #include "ReceivedReports.h"
+#include "Correlator.h"
 
 #define TRUE 0
 #define FALSE 1
@@ -31,7 +32,7 @@
 
 using namespace std;
 
-class CorrelationEngine {
+class CorrelationEngine: public Correlator {
 protected:
     vector<Cluster *> _clusters; // Holds the Clusters generated for this second
     vector<Cluster *> _free_clusters; // Holds the unused Cluster objects
@@ -47,7 +48,7 @@ protected:
     pthread_mutex_t corr_aircraft_mutex;
 
     /*
-     * Checks that all Clusters have atleast one SurveillanceReport.
+     * Checks that all Clusters have at least one SurveillanceReport.
      * Ran after all CorrelatedAircraft are calculated by the algorithm.
      *
      * @return int 0 for success, 1 for error

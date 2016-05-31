@@ -44,7 +44,7 @@ private:
     ReportReceiver& _report_receiver;
 
     /** Correlation Engine to send ReceivedReports to */
-    CorrelationEngine& _correlation_engine;
+    Correlator& _correlator;
 
     /** Categorizer to send CorrelationAircraft to */
     Categorizer& _categorizer;
@@ -78,7 +78,7 @@ private:
     ProcessorLogger* _logger;
 
 public:
-    Client(ReportReceiver& report_receiver, CorrelationEngine&
+    Client(ReportReceiver& report_receiver, Correlator&
            correlation_engine, Categorizer& categorizer,
            std::string sim_host,
            in_port_t ownship_port, in_port_t adsb_port,

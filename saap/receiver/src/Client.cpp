@@ -9,14 +9,14 @@
 
 #include "Client.h"
 
-Client::Client(ReportReceiver& report_receiver, CorrelationEngine&
-correlation_engine, Categorizer& categorizer,
+Client::Client(ReportReceiver& report_receiver, Correlator&
+correlator, Categorizer& categorizer,
                std::string sim_host,
                in_port_t ownship_port, in_port_t adsb_port,
                in_port_t radar_port, in_port_t tcas_port,
                std::string cdti_host, in_port_t cdti_port)
         : _report_receiver(report_receiver),
-          _correlation_engine(correlation_engine), _categorizer(categorizer),
+          _correlator(correlator), _categorizer(categorizer),
           _sim_host(sim_host),
           _ownship_port(ownship_port), _adsb_port(adsb_port),
           _radar_port(radar_port), _tcas_port(tcas_port),
@@ -134,7 +134,7 @@ void Client::Process() {
 
     /** Correlate incoming aircraft reports. */
     std::vector<CorrelationAircraft *>* correlation_aircraft =
-            _correlation_engine.Correlate(*reports);
+            _correlator.Correlate(*reports);
 
     _logger->LogCorrelationAircraft(correlation_aircraft);
 

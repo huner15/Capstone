@@ -3,8 +3,8 @@
   {
     "startPosition" :
     {
-      "latitude": 83.60,
-      "longitude": 34.45,
+      "latitude": 83.00,
+      "longitude": 34.00,
       "altitude": 18000
     },
     "flightLegs" : [
@@ -31,8 +31,8 @@
    "flightPlans" : [
      {
        "startPosition": {
-         "latitude": 89,
-         "longitude": 24,
+         "latitude": 82.75,
+         "longitude": 34.25,
          "altitude": 345
        },
        "tailNo" : "12ASX3",
@@ -41,18 +41,18 @@
        "flightLegs": [
          {
            "durationOfManeuver": 5,
-           "durationAfterManeuver": 4,
+           "durationAfterManeuver": 10,
            "newRelativeVelocity": {
-             "x": 34,
+             "x": -34,
              "y": 0,
-             "z": 23
+             "z": -23
            }
          }
        ]
      },
      {
        "startPosition": {
-         "latitude": 73.59,
+         "latitude": 83.50,
          "longitude": 34.45,
          "altitude": 100
        },
