@@ -39,13 +39,13 @@ namespace Example
 
         public float X
         {
-            get { return N; }
-            set { N = value; }
+            get { return E; }
+            set { E = value; }
         }
         public float Y
         {
-            get { return E; }
-            set { E = value;}
+            get { return N; }
+            set { N = value;}
         }
         public float Z
         {

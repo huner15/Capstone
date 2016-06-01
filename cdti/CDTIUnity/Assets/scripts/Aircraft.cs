@@ -20,12 +20,13 @@ public class Aircraft : MonoBehaviour {
     {
         text = new GameObject();
         text.AddComponent<TextMesh>();
+        text.transform.localScale = new Vector3(.025f, .025f, 1);
         text.transform.SetParent(transform);
         Instantiate(text);
-        text.GetComponent<TextMesh>().fontSize = 60;
+        text.GetComponent<TextMesh>().fontSize = 120;
         text.GetComponent<TextMesh>().fontStyle = FontStyle.Normal;
         text.GetComponent<TextMesh>().text = plane.Id + "\n" + plane.Position.Z;
-        text.transform.localScale = new Vector3(.05f, .05f, 1);
+        
         text.transform.position = transform.position + new Vector3(.2f, .2f, 0);
     }
 

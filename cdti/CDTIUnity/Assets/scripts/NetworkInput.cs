@@ -17,7 +17,9 @@ public class NetworkInput : MonoBehaviour {
 
 
 
-    public Sprite airTrafficDirectional, airTrafficNonDirectional, proximateTrafficDirectional, proximateTrafficNonDirectional, resolutionAdvisoryDirectional, trafficAdvisoryDirectional;
+    public Sprite airTrafficDirectional, airTrafficNonDirectional, proximateTrafficDirectional, proximateTrafficNonDirectional,
+        resolutionAdvisoryDirectional, resolutionAdvisoryNonDirectional, trafficAdvisoryDirectional, trafficAdvisoryNonDirectional,
+        ownship, ownshipCrash;
     public GameObject aircraftBuilder;
     private System.Collections.Generic.List<GameObject> aircraft = new System.Collections.Generic.List<GameObject>();
     private System.Collections.Generic.List<GameObject> aircraftHidden = new System.Collections.Generic.List<GameObject>();
@@ -275,12 +277,13 @@ public class NetworkInput : MonoBehaviour {
         {
             AddToScreen(plane);
         }
-        AddToScreen(report.Ownship);
+        AddToScreen(report.Ownship, true);
 
 		logger("end intake");
     }
+    private void AddToScreen(CDTIPlane plane) { AddToScreen(plane, false); }
 
-    private void AddToScreen(CDTIPlane plane)
+    private void AddToScreen(CDTIPlane plane, bool ownship)
     {
         if(plane == null)
         {
@@ -298,7 +301,13 @@ public class NetworkInput : MonoBehaviour {
         }
 
 
-        toAdd.GetComponent<SpriteRenderer>().sprite = getCorrectSprite(plane);
+        toAdd.GetComponent<SpriteRenderer>().sprite = getCorrectSprite(plane, ownship);
+        float x = toAdd.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+        float y = toAdd.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+        float xtotarget = 68.0f / x;
+        float ytoTarget = 68.0f / y;
+       
+        toAdd.GetComponent<Transform>().localScale = new Vector3(xtotarget/100, ytoTarget/100, 1);
         toAdd.GetComponent<Transform>().position = figurePositon(plane);
         toAdd.GetComponent<Transform>().rotation = figureRotation(plane);
         if(plane != null && plane.Position.X != 0 || plane.Position.Y != 0 || plane.Position.Z != 0)
@@ -365,11 +374,15 @@ public class NetworkInput : MonoBehaviour {
        // throw new NotImplementedException();
     }
 
-    private Sprite getCorrectSprite(CDTIPlane plane)
+    private Sprite getCorrectSprite(CDTIPlane plane, bool own)
     {
         if(plane == null)
         {
             return airTrafficDirectional;
+        }
+        if (own)
+        {
+            return ownship;
         }
 
         switch (plane.severity) {
@@ -381,9 +394,19 @@ public class NetworkInput : MonoBehaviour {
                 else
                     return proximateTrafficDirectional;
             case (CDTIPlane.Severity.TRAFFIC):
-                return trafficAdvisoryDirectional;
+                if (plane.Velocity.X == 0 && plane.Velocity.Y == 0)
+                {
+                    return trafficAdvisoryDirectional;
+                }
+                else
+                    return trafficAdvisoryNonDirectional;
             case (CDTIPlane.Severity.RESOLUTION):
-                return resolutionAdvisoryDirectional;
+                if (plane.Velocity.X == 0 && plane.Velocity.Y == 0)
+                {
+                    return resolutionAdvisoryDirectional;
+                }
+                else
+                    return resolutionAdvisoryNonDirectional;
 
             default:
                 if (plane.Velocity.X == 0 && plane.Velocity.Y == 0)
