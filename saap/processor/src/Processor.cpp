@@ -6,6 +6,7 @@
  * @brief TODO
  */
 
+#include <FakeCorrelator.h>
 #include "Processor.h"
 
 int main(int argc, char *argv[]) {
@@ -16,8 +17,9 @@ int main(int argc, char *argv[]) {
         // dependencies
         Categorizer* categorizer = new Categorizer();
 
-        CorrelationEngine correlationEngine = CorrelationEngine();
-        Client client(report_receiver, correlationEngine, *categorizer,
+        CorrelationEngine correlator = CorrelationEngine();
+
+        Client client(report_receiver, correlator, *categorizer,
                       std::string(argv[1]),
                       (in_port_t) atoi(argv[OWNSHIP_THREAD_INDEX + 2]),
                       (in_port_t) atoi(argv[ADSB_THREAD_INDEX + 2]),

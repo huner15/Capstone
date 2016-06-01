@@ -19,6 +19,7 @@
 #include "TcasReceiver.h"
 #include "CorrelationEngine.h"
 #include "Categorizer.h"
+//#include "ClusterConverter.h"
 #include "ProcessorLogger.h"
 
 class ProcessorLogger;
@@ -44,7 +45,10 @@ private:
     ReportReceiver& _report_receiver;
 
     /** Correlation Engine to send ReceivedReports to */
-    CorrelationEngine& _correlation_engine;
+    Correlator& _correlator;
+
+    /**ClusterConverter to send Clusters to */
+  //  ClusterConverter &_converter;
 
     /** Categorizer to send CorrelationAircraft to */
     Categorizer& _categorizer;
@@ -77,9 +81,12 @@ private:
     /** Logger that documents each of the received data types. */
     ProcessorLogger* _logger;
 
+    ReceivedReports *Convert(ReceivedReports *reports);
+
 public:
-    Client(ReportReceiver& report_receiver, CorrelationEngine&
-           correlation_engine, Categorizer& categorizer,
+    Client(ReportReceiver& report_receiver, Correlator&
+           correlation_engine,
+           Categorizer& categorizer,
            std::string sim_host,
            in_port_t ownship_port, in_port_t adsb_port,
            in_port_t radar_port, in_port_t tcas_port,

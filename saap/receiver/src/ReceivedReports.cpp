@@ -68,12 +68,15 @@ std::vector<SurveillanceReport *>* ReceivedReports::GetTcas() {
 
 bool ReceivedReports::MakeRelative() {
     //TODO actually put in the logic to make adsb relative here.
-    return false;
+    return _relative;
+}
+
+void ReceivedReports::SetRelative(bool relative) {
+    _relative = relative;
 }
 
 void ReceivedReports::Clear() {
     _tcas_reports->clear();
     _adsb_reports->clear();
     _radar_reports->clear();
-    // TODO: Clear/deallocate ownship?
 }

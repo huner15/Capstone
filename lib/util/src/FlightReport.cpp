@@ -17,19 +17,19 @@ FlightReport::FlightReport(AdsBReport adsb_report, RadarReport radar_report,
 }
 
 bool FlightReport::HasAsdbReport() {
-    return _adsb_report.has_timestamp();
+    return _adsb_report.IsInitialized();
 }
 
 bool FlightReport::HasRadarReport() {
-    return _radar_report.has_timestamp();
+    return _radar_report.IsInitialized();
 }
 
 bool FlightReport::HasTcasReport() {
-    return _tcas_report.has_id();
+    return _tcas_report.IsInitialized();
 }
 
 bool FlightReport::HasOwnshipReport() {
-    return _ownship_report.has_timestamp();
+    return _ownship_report.IsInitialized();
 }
 
 AdsBReport FlightReport::GetAdsbReport() {

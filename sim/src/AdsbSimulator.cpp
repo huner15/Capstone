@@ -19,4 +19,7 @@ void AdsbSimulator::SendReport(ServerSocket& client_socket,
         AdsBReport adsb_report = flight_report.GetAdsbReport();
         client_socket << adsb_report;
     }
+    else {
+        std::cout << "Attempted to send incomplete ADS-B Report." << std::endl;
+    }
 }

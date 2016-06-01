@@ -17,6 +17,7 @@
 #include <tcas.pb.h>
 #include <cdti.pb.h>
 
+#include "GenerationMath.h"
 #include "SurveillanceReport.h"
 #include "ReceivedReports.h"
 
@@ -61,6 +62,17 @@ private:
      * @return the created Surveillance Report
      */
     SurveillanceReport* CreateAdsbSurveillanceReport(AdsBReport report);
+
+    /**
+     * Converts geographical coordinates to spherical. Does not modify Report
+     * Receiver classes.
+     * @param aircraft the Geographical Coordinate to convert
+     * @param ownship the Geographical Coordinate to compare against for
+     *      relative distances
+     * @return SphericalCoordinate the converted coordinate
+     */
+    static SphericalCoordinate ConvertCoordinates(
+            GeographicCoordinate *aircraft, GeographicCoordinate *ownship);
 
 public:
     /*
@@ -137,6 +149,17 @@ public:
      * Clear all reports held in this report receiver.
      */
     void Clear();
+
+    /**
+     * Converts geographical coordinates to spherical. Does not modify Report
+     * Receiver classes.
+     * @param aircraft the Geographical Coordinate to convert
+     * @param ownship the Geographical Coordinate to compare against for
+     *      relative distances
+     * @return SphericalCoordinate the converted coordinate
+     */
+    static SphericalCoordinate ConvertGeoToSphericalCoordinates(
+        GeographicCoordinate *aircraft, GeographicCoordinate *ownship);
 };
 
 #endif

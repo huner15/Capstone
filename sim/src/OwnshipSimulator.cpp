@@ -32,4 +32,8 @@ void OwnshipSimulator::SendReport(ServerSocket& client_socket,
         OwnshipReport ownship_report = flight_report.GetOwnshipReport();
         client_socket << ownship_report;
     }
+    else {
+        std::cout << "Attempted to send incomplete Ownship Report." <<
+                std::endl;
+    }
 }

@@ -19,4 +19,7 @@ void TcasSimulator::SendReport(ServerSocket& client_socket,
         TcasReport tcas_report = flight_report.GetTcasReport();
         client_socket << tcas_report;
     }
+    else {
+        std::cout << "Attempted to send incomplete TCAS Report." << std::endl;
+    }
 }

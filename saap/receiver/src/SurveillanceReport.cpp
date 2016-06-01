@@ -55,7 +55,7 @@ TailNumber SurveillanceReport::GetTailNumber() {
     return _tail_number;
 }
 
-Velocity *SurveillanceReport::GetVelocity() {
+Velocity* SurveillanceReport::GetVelocity() {
     return &_velocity;
 }
 

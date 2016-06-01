@@ -25,6 +25,7 @@ private:
     std::vector<SurveillanceReport *>* _adsb_reports;
     std::vector<SurveillanceReport *>* _radar_reports;
     SurveillanceReport * _ownship;
+    bool _relative;
 
     /*
      * Creates a copy of the specified vector. This copy uses the ownship
@@ -93,6 +94,8 @@ public:
      * @return true if the ADS-B reports are relative, false if not.
      */
     bool MakeRelative();
+
+    void SetRelative(bool relative);
 
     /**
      * Clear all held reports.

@@ -9,14 +9,15 @@
 
 #include "Client.h"
 
-Client::Client(ReportReceiver& report_receiver, CorrelationEngine&
-correlation_engine, Categorizer& categorizer,
+Client::Client(ReportReceiver& report_receiver, Correlator&
+correlator, Categorizer& categorizer,
                std::string sim_host,
                in_port_t ownship_port, in_port_t adsb_port,
                in_port_t radar_port, in_port_t tcas_port,
                std::string cdti_host, in_port_t cdti_port)
         : _report_receiver(report_receiver),
-          _correlation_engine(correlation_engine), _categorizer(categorizer),
+          _correlator(correlator),
+          _categorizer(categorizer),
           _sim_host(sim_host),
           _ownship_port(ownship_port), _adsb_port(adsb_port),
           _radar_port(radar_port), _tcas_port(tcas_port),
@@ -113,6 +114,34 @@ bool Client::GetIsConnected() {
     return _is_connected;
 }
 
+ReceivedReports *Client::Convert(ReceivedReports *reports) {
+    SurveillanceReport *ownship = reports->GetOwnship();
+    SphericalCoordinate newCoord;
+    float z;
+
+    for (int i = 0; i < reports->GetAdsb()->size(); i++) {
+        newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
+             (reports->GetAdsb()->at(i)->GetGeographicCoordinate(),
+              ownship->GetGeographicCoordinate());
+
+        reports->GetAdsb()->at(i)->SetSphericalCoordinate(newCoord);
+    }
+
+    for (int i = 0; i < reports->GetTcas()->size(); i++) {
+        z = reports->GetTcas()->at(i)->GetAltitude() - ownship->GetAltitude();
+
+        newCoord = SphericalCoordinate
+             (reports->GetTcas()->at(i)->GetSphericalCoordinate()->GetRange(),
+              atan(reports->GetTcas()->at(i)->GetRange() / z),
+              reports->GetTcas()->at(i)->GetSphericalCoordinate()->GetAzimuth());
+
+        reports->GetTcas()->at(i)->SetSphericalCoordinate(newCoord);
+    }
+
+    reports->SetRelative(true);
+    return reports;
+}
+
 void Client::Process() {
     /** Retrieve all pending reports collected by the report receiver. */
     ReceivedReports* reports = _report_receiver.GetReports();
@@ -132,9 +161,12 @@ void Client::Process() {
             "\t" << reports->GetRadar()->size() <<
             " Radar Report(s)" << std::endl;
 
+    reports->SetRelative(false);
+    reports = Convert(reports);
+
     /** Correlate incoming aircraft reports. */
-    std::vector<CorrelationAircraft *>* correlation_aircraft =
-            _correlation_engine.Correlate(*reports);
+    std::vector<CorrelationAircraft *>* correlation_aircraft
+            = _correlator.Correlate(*reports);
 
     _logger->LogCorrelationAircraft(correlation_aircraft);
 
