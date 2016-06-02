@@ -45,8 +45,8 @@ CDTIPlane CorrelationAircraft::CreateCdtiPlane() {
     Saas_Util::Vector<double, 3> position = _spherical_coordinate
             .ToCartesianCoordinates();
     Vector* pos = new Vector();
-    pos->set_n(position.x);
-    pos->set_e(position.y);
+    pos->set_n(position.y);
+    pos->set_e(position.x);
     pos->set_d(position.z);
     Vector* vel = new Vector();
     vel->set_n(_velocity.East());
