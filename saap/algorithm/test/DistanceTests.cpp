@@ -10,7 +10,6 @@
 #include "CorrelationEngine.h"
 #include "SurveillanceReport.h"
 
-//TODO: add unconverted report tests
 TEST(TcasAdsb, outofrange) {
     //setup data
     std::time_t time = 1;

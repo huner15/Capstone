@@ -111,9 +111,9 @@ Velocity Velocity::Average(Velocity *one, Velocity *two, Velocity *three) {
     }
 
     //geometric mean
-    east = pow(east, 1 / count);
-    down = pow(down, 1 / count);
-    north = pow(north, 1 / count);
+    east = east / (count + 1);
+    down = down / (count + 1);
+    north = north / (count + 1);
 
     return Velocity(east, down, north);
 }

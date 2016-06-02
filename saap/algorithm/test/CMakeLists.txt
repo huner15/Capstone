@@ -10,16 +10,18 @@ file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/MainFunctionalityTests.cpp"
 #   "${CMAKE_CURRENT_SOURCE_DIR}/../../receiver/src/SurveillanceReport.cpp")
 
 add_executable(run_correlate_tests ${SOURCE_FILES})
-target_link_libraries(run_correlate_tests saap_lib gtest gtest_main util_lib
-        categorize_lib gp_lib)
+target_link_libraries(run_correlate_tests algorithm_lib gtest gtest_main
+        util_lib
+        categorizer_lib gp_lib)
 target_include_directories(run_correlate_tests
         PUBLIC ${PROJECT_SOURCE_DIR}/../inc
         PUBLIC ${PROJECT_SOURCE_DIR}/../../categorizer/inc)
 
 file(GLOB SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 add_executable(run_all_correlate_tests ${SOURCE_FILES})
-target_link_libraries(run_all_correlate_tests saap_lib gtest gtest_main util_lib
-        categorize_lib gp_lib)
+target_link_libraries(run_all_correlate_tests algorithm_lib gtest gtest_main
+        util_lib
+        categorizer_lib gp_lib)
 target_include_directories(run_all_correlate_tests
         PUBLIC ${PROJECT_SOURCE_DIR}/../inc
         PUBLIC ${PROJECT_SOURCE_DIR}/../../receiver/inc

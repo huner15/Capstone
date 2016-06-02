@@ -98,9 +98,9 @@ GeographicCoordinate GeographicCoordinate::Average(GeographicCoordinate
     }
 
     //geometric mean
-    latitude = pow(latitude, 1 / count);
-    longitude = pow(longitude, 1 / count);
-    altitude = pow(altitude, 1 / count);
+    latitude = latitude / (count + 1);
+    longitude = longitude / (count + 1);
+    altitude = altitude / (count + 1);
 
     return GeographicCoordinate(latitude, longitude, altitude);
 }

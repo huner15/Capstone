@@ -37,19 +37,19 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
     }
     //Create individual clusters for all radar reports
     for (int i = 0; i < radar->size(); i++) {
-       // if (CompareRadarToClusters(radar->at(i)) == FALSE) {
+        if (CompareRadarToClusters(radar->at(i)) == FALSE) {
             cluster = NewCluster();
             cluster->_radar = radar->at(i);
             _clusters.push_back(cluster);
-        //}
+        }
     }
     // Create individual clusters for all tcas reports
     for (int i = 0; i < tcas->size(); i++) {
-        //if (CompareTcasToClusters(tcas->at(i)) == FALSE) {
+        if (CompareTcasToClusters(tcas->at(i)) == FALSE) {
             cluster = NewCluster();
             cluster->_tcas = tcas->at(i);
             _clusters.push_back(cluster);
-        //}
+        }
     }
 
     return 0;
@@ -60,22 +60,16 @@ double CorrelationEngine::CompareRadarToClusters(SurveillanceReport *report) {
     double result = 0, val;
 
     for (int i = 0; i < _clusters.size(); i++) {
+        //only ADS-B reports, TCAS reports not in clusters yet
         if (_clusters.at(i)->_adsb != NULL) {
             if ((val = CalcDistance(_clusters.at(i)->_adsb, report)) > result) {
                 result = val;
                 index = i;
             }
         }
-
-        if (_clusters.at(i)->_tcas != NULL) {
-            if ((val = CalcDistance(_clusters.at(i)->_tcas, report)) > result) {
-                result = val;
-                index = i;
-            }
-        }
     }
 
-    if (result >= MINDISTANCE) {
+    if (result >= MINRADARDISTANCE) {
         _clusters.at(index)->_radar = report;
         result = TRUE;
     }
@@ -88,25 +82,32 @@ double CorrelationEngine::CompareRadarToClusters(SurveillanceReport *report) {
 
 double CorrelationEngine::CompareTcasToClusters(SurveillanceReport *report) {
     int index = -1;
-    double result = 0, val;
+    double resultADSB, resultRadar, result = 0, val;
 
     for (int i = 0; i < _clusters.size(); i++) {
+        resultADSB = resultRadar = 1;
+        val = 0;
+
         if (_clusters.at(i)->_adsb != NULL) {
-            if ((val = CalcDistance(_clusters.at(i)->_adsb, report)) > result) {
-                result = val;
-                index = i;
-            }
+            resultADSB = CalcDistance(_clusters.at(i)->_adsb, report);
+            val++;
         }
 
         if (_clusters.at(i)->_radar != NULL) {
-            if ((val = CalcDistance(_clusters.at(i)->_radar, report)) > result){
-                result = val;
-                index = i;
-            }
+            resultRadar = CalcDistance(_clusters.at(i)->_radar, report);
+            val++;
+        }
+
+        //combine results
+        val = pow((resultADSB * resultRadar), val);
+
+        if (val > result) {
+            result = val;
+            index = i;
         }
     }
 
-    if (result >= MINDISTANCE) {
+    if (result >= MINTCASDISTANCE) {
         _clusters.at(index)->_tcas = report;
         result = TRUE;
     }
@@ -266,7 +267,7 @@ double CorrelationEngine::CalcDistance(SurveillanceReport *reportOne,
     if (distance < 0) {
         distance = 0;
     }
-cout << "full metric: " << distance << endl;
+
     return distance;
 }
 

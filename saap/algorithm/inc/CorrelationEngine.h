@@ -22,7 +22,8 @@
 
 #define TRUE 0
 #define FALSE 1
-#define MINDISTANCE 0.9 //Minimum distance to cluster by
+#define MINRADARDISTANCE 0.91 //Minimum distance to cluster radar to ADS-B by
+#define MINTCASDISTANCE 0.93 //Minimum distance to cluster TCAS reports by
 #define MAXLATITUDEERROR 0.0001 //degrees
 #define MAXLONGITUDEERROR 0.0001 //degrees
 #define MAXALTITUDEERROR 50 //feet
