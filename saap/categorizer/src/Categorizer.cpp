@@ -92,10 +92,6 @@ CDTIReport* Categorizer::Categorize(
     return cdti_report;
 }
 
-
-
-
-
 /**
  * calculates range to ownship.
  * returns a double representing the planes distance to the ownship
@@ -109,6 +105,9 @@ double Categorizer::CalculateRange(CDTIPlane plane) {
     position.z = pos->d();
 
     Saas_Util::Vector<double,3> zero;
+    zero.x = 0;
+    zero.y = 0;
+    zero.z = 0;
 
     return SpecialMath::DistanceFormula<double, 3>(position, zero);
 }
@@ -131,6 +130,9 @@ double Categorizer::CalculateCPA(CDTIPlane plane) {
     vel.z = plane.velocity().d();
 
     Saas_Util::Vector<double, 3> zero;
+    zero.x = 0;
+    zero.y = 0;
+    zero.z = 0;
 
     return SpecialMath::LineDistance(pos, vel, zero);
 }
