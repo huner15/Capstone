@@ -156,11 +156,12 @@ void ProcessorLogger::LogReceivedReports(ReceivedReports *reports) {
         _surveillanceReportsData << "        Correlated at " <<
             rep->at(i)->GetTime() << " seconds" << endl;
 
-        _surveillanceReportsData << "        Relative to ownship at range: " <<
+        _surveillanceReportsData << "        Located at altitude: " <<
+        rep->at(i)->GetGeographicCoordinate()->GetAltitude() << endl;
+
+        _surveillanceReportsData <<  "        Relative to ownship at range: " <<
             rep->at(i)->GetSphericalCoordinate()->GetRange() << ", azimuth: " <<
-            rep->at(i)->GetSphericalCoordinate()->GetAzimuth() << ", elevation"
-            << ": " << rep->at(i)->GetSphericalCoordinate()->GetElevation()
-            << endl;
+            rep->at(i)->GetSphericalCoordinate()->GetAzimuth() << endl;
     }
 
     //Radar Reports

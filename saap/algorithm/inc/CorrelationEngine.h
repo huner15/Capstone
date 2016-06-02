@@ -136,7 +136,7 @@ public:
      * Clusters, and evaluates each detected aircraft location.
      *
      * @param reports the reports received in the last second.
-     * @return int 0 for success, 1 for error
+     * @return vector of Clusters
      */
     std::vector<CorrelationAircraft *>* Correlate(ReceivedReports reports);
 

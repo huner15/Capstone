@@ -6,6 +6,7 @@
  * TODO: Description
  */
 
+#include <iostream>
 #include "SphericalCoordinate.h"
 
 SphericalCoordinate::SphericalCoordinate(
@@ -59,7 +60,7 @@ double SphericalCoordinate::operator-(const SphericalCoordinate &other) {
 SphericalCoordinate SphericalCoordinate:: Average(SphericalCoordinate
     *one, SphericalCoordinate *two, SphericalCoordinate *three) {
     double range = 0, elevation = 0, azimuth = 0, count = 0;
-    double vOne, vTwo, vThree, removeVal;
+    double vOne, vTwo, vThree, removeVal, power;
     std::vector<SphericalCoordinate *> coords;
 
     if (one != NULL) {
@@ -109,11 +110,14 @@ SphericalCoordinate SphericalCoordinate:: Average(SphericalCoordinate
     {
         return SphericalCoordinate(0, 0, 0);
     }
+    printf("elevation: %f and count: %d\n", elevation, 1 / count);
+
+    power = count + 1; //starts at 1
 
     //geometric mean
-    range = pow(range, 1 / count);
-    elevation = pow(elevation, 1 / count);
-    azimuth = pow(azimuth, 1 / count);
-
+    range = range / power;
+    elevation = elevation / power;
+    azimuth = azimuth / power;
+    printf("after elevation: %f\n", elevation);
     return SphericalCoordinate(range, elevation, azimuth);
 }

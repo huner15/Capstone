@@ -161,12 +161,15 @@ void Client::Process() {
             "\t" << reports->GetRadar()->size() <<
             " Radar Report(s)" << std::endl;
 
-    reports->SetRelative(false);
     reports = Convert(reports);
 
     /** Correlate incoming aircraft reports. */
-    std::vector<CorrelationAircraft *>* correlation_aircraft
-            = _correlator.Correlate(*reports);
+//    std::vector<CorrelationAircraft *>* clusters
+//            = _correlator.Correlate(*reports);
+//    _logger->LogClusters(clusters);
+
+    std::vector<CorrelationAircraft *>* correlation_aircraft =
+            _correlator.Correlate(*reports);
 
     _logger->LogCorrelationAircraft(correlation_aircraft);
 

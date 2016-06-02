@@ -10,8 +10,8 @@
 #define PROCESSOR_H_
 
 #include <iostream>
-
 #include "Client.h"
+#include <ClusterConverter.h>
 
 int main(int argc, char *argv[]);
 

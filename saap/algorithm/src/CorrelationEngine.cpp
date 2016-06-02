@@ -120,15 +120,16 @@ double CorrelationEngine::CompareTcasToClusters(SurveillanceReport *report) {
 std::vector<CorrelationAircraft *>* CorrelationEngine::Correlate
         (ReceivedReports reports) {
     CorrelationAircraft *temp;
-    _is_relative = reports.MakeRelative();
+    _is_relative = true;
 
     vector<SurveillanceReport *> *adsb = reports.GetAdsb();
     vector<SurveillanceReport *> *tcas = reports.GetTcas();
     vector<SurveillanceReport *> *radar = reports.GetRadar();
 
     // Mutex lock for using the cluster vectors.
-    if (mutexs)
+    if (mutexs) {
         pthread_mutex_lock(&cluster_mutex);
+    }
 
     _corr_aircraft.clear();
     _clusters.clear();
@@ -265,36 +266,38 @@ double CorrelationEngine::CalcDistance(SurveillanceReport *reportOne,
     if (distance < 0) {
         distance = 0;
     }
-
+cout << "full metric: " << distance << endl;
     return distance;
 }
 
 double CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
     SurveillanceReport *reportTwo) {
-    double difference, azimuth, elevation = 0, metric;
+    double difference, azimuth, elevation = 0, metric = 0;
 
     // Check if ADS-B could be converted to spherical coordinates.
-    if (_is_relative || (reportOne->GetDevice() != TCAS
-        && reportTwo->GetDevice() != TCAS)) {
+    if ((reportOne->GetDevice() == ADSB || reportTwo->GetDevice() == ADSB)
+        && !_is_relative) {
         // No way to calculate heading for unconverted ADSB.
         metric = 1;
     }
     // Compare most reports by spherical coordinates.
     else {
         // Calculate azimuth correlation.
-        azimuth = 1;
-        difference = abs(reportOne->GetElevation() - reportTwo->GetElevation());
-        elevation = (MAXELEVATIONERROR - difference) / MAXELEVATIONERROR;;
+        elevation = 1; // must be zero if unconverted (no elevation) TCAS report
+
+        difference = abs(reportOne->GetAzimuth() - reportTwo->GetAzimuth());
+        azimuth = (MAXAZIMUTHERROR - difference) / MAXAZIMUTHERROR;
 
         // Calculate elevation correlation.
-        if (reportOne->GetDevice() != TCAS && reportTwo->GetDevice() != TCAS) {
-            difference = abs(reportOne->GetAzimuth() - reportTwo->GetAzimuth());
-            azimuth = (MAXAZIMUTHERROR - difference) / MAXAZIMUTHERROR;
+        if (_is_relative || (reportOne->GetDevice() != TCAS
+            && reportTwo->GetDevice() != TCAS)) {
+            difference = abs(reportOne->GetElevation() - reportTwo->GetElevation());
+            elevation = (MAXELEVATIONERROR - difference) / MAXELEVATIONERROR;
         }
 
         metric = sqrt(elevation * azimuth);
     }
-
+    cout << "heading metric: " << metric << endl;
     // The reports are farther apart then the maximum distance.
     if (metric < 0) {
         metric = 0;
@@ -310,45 +313,46 @@ double CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
     GeographicCoordinate geoCoord;
 
     //if possible, use ownship from radar report to convert
-        if (!_is_relative && reportOne->GetDevice() == RADAR
-            && reportTwo->GetDevice() == ADSB) {
-            //Create ownship geographical coordinate using Radar's ownship vals
-            geoCoord = GeographicCoordinate(reportOne->GetLatitude(),
-                reportOne->GetLongitude(), reportOne->GetAltitude());
+    if (!_is_relative && reportOne->GetDevice() == RADAR
+        && reportTwo->GetDevice() == ADSB) {
+        //Create ownship geographical coordinate using Radar's ownship vals
+        geoCoord = GeographicCoordinate(reportOne->GetLatitude(),
+            reportOne->GetLongitude(), reportOne->GetAltitude());
 
-            //convert TCAS to spherical
-            newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
-                 (reportTwo->GetGeographicCoordinate(), &geoCoord);
+        //convert TCAS to spherical
+        newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
+             (reportTwo->GetGeographicCoordinate(), &geoCoord);
 
-            reportTwo->SetSphericalCoordinate(newCoord);
-        }
-        else if (!_is_relative && reportTwo->GetDevice() == RADAR
-            && reportOne->GetDevice() == ADSB) {
-            //Create ownship geographical coordinate using Radar's ownship vals
-            geoCoord = GeographicCoordinate(reportTwo->GetLatitude(),
-                reportTwo->GetLongitude(), reportTwo->GetAltitude());
+        reportTwo->SetSphericalCoordinate(newCoord);
+    }
+    else if (!_is_relative && reportTwo->GetDevice() == RADAR
+        && reportOne->GetDevice() == ADSB) {
+        //Create ownship geographical coordinate using Radar's ownship vals
+        geoCoord = GeographicCoordinate(reportTwo->GetLatitude(),
+            reportTwo->GetLongitude(), reportTwo->GetAltitude());
 
-            //convert TCAS to spherical
-            newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
-                (reportOne->GetGeographicCoordinate(), &geoCoord);
+        //convert TCAS to spherical
+        newCoord = ReportReceiver::ConvertGeoToSphericalCoordinates
+            (reportOne->GetGeographicCoordinate(), &geoCoord);
 
-            reportOne->SetSphericalCoordinate(newCoord);
-        }
+        reportOne->SetSphericalCoordinate(newCoord);
+    }
 
     // Check if ADS-B could be converted to spherical coordinates.
-    if (_is_relative || (reportOne->GetDevice() != TCAS
-        && reportTwo->GetDevice() != TCAS)) {
+    if (_is_relative || (reportOne->GetDevice() != ADSB
+        && reportTwo->GetDevice() != ADSB)) {
         // Calculate range correlation.
         difference = abs(reportOne->GetRange() - reportTwo->GetRange());
-        range = (MAXRADARERROR - difference) / MAXRADARERROR;
 
+        //error is doubled to represent error for both reports
+        range = ((MAXRADARERROR * 2) - difference) / (2 * MAXRADARERROR);
         metric = range;
     }
     // No way to calculate heading for unconverted ADSB, so 1 to not skew result.
     else {
         metric = 1;
     }
-
+    cout << "range metric: " << metric << endl;
     // The reports are farther apart then the maximum distance.
     if (metric < 0) {
         metric = 0;
@@ -365,21 +369,24 @@ double CorrelationEngine::CalcVelocity(SurveillanceReport *reportOne,
 
     /**
      * Checks if both reports are not TCAS,
-     * or that the TCAS report has a prediction vector
+     * OR that the TCAS report has a prediction vector
      */
     if (reportOne->GetDevice() != TCAS && reportTwo->GetDevice() != TCAS) {
-        difference = abs(oneVelocity->North() - twoVelocity->North());
-        difference += abs(oneVelocity->East() - twoVelocity->East());
-        difference += abs(oneVelocity->Down() - twoVelocity->Down());
+        difference = pow((oneVelocity->North() - twoVelocity->North()), 2);
+        difference += pow((oneVelocity->East() - twoVelocity->East()), 2);
+        difference += pow((oneVelocity->Down() - twoVelocity->Down()), 2);
 
         error = CalcVelocityError(reportOne->GetDevice());
         error += CalcVelocityError(reportTwo->GetDevice());
-        metric = (error * difference) / error;
+        metric = (error - sqrt(difference)) / error;
     }
     // Reports can't be compared, so has to be 1 to not skew result.
     else {
         metric = 1;
+        cout << "can't be correlated" << endl;
     }
+
+    cout << "velocity metric: " << metric << endl;
 
     // The reports are farther apart then the maximum distance.
     if (metric < 0) {
