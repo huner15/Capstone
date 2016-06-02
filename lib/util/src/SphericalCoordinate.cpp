@@ -110,7 +110,6 @@ SphericalCoordinate SphericalCoordinate:: Average(SphericalCoordinate
     {
         return SphericalCoordinate(0, 0, 0);
     }
-    printf("elevation: %f and count: %d\n", elevation, 1 / count);
 
     power = count + 1; //starts at 1
 
@@ -118,6 +117,6 @@ SphericalCoordinate SphericalCoordinate:: Average(SphericalCoordinate
     range = range / power;
     elevation = elevation / power;
     azimuth = azimuth / power;
-    printf("after elevation: %f\n", elevation);
+
     return SphericalCoordinate(range, elevation, azimuth);
 }

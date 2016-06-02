@@ -37,19 +37,19 @@ int CorrelationEngine::RunAlgorithm(vector<SurveillanceReport *> *adsb,
     }
     //Create individual clusters for all radar reports
     for (int i = 0; i < radar->size(); i++) {
-        if (CompareRadarToClusters(radar->at(i)) == FALSE) {
+       // if (CompareRadarToClusters(radar->at(i)) == FALSE) {
             cluster = NewCluster();
             cluster->_radar = radar->at(i);
             _clusters.push_back(cluster);
-        }
+        //}
     }
     // Create individual clusters for all tcas reports
     for (int i = 0; i < tcas->size(); i++) {
-        if (CompareTcasToClusters(tcas->at(i)) == FALSE) {
+        //if (CompareTcasToClusters(tcas->at(i)) == FALSE) {
             cluster = NewCluster();
             cluster->_tcas = tcas->at(i);
             _clusters.push_back(cluster);
-        }
+        //}
     }
 
     return 0;
@@ -297,7 +297,7 @@ double CorrelationEngine::CalcHeading(SurveillanceReport *reportOne,
 
         metric = sqrt(elevation * azimuth);
     }
-    cout << "heading metric: " << metric << endl;
+
     // The reports are farther apart then the maximum distance.
     if (metric < 0) {
         metric = 0;
@@ -352,7 +352,7 @@ double CorrelationEngine::CalcEuclidDistance(SurveillanceReport *reportOne,
     else {
         metric = 1;
     }
-    cout << "range metric: " << metric << endl;
+
     // The reports are farther apart then the maximum distance.
     if (metric < 0) {
         metric = 0;
@@ -383,10 +383,7 @@ double CorrelationEngine::CalcVelocity(SurveillanceReport *reportOne,
     // Reports can't be compared, so has to be 1 to not skew result.
     else {
         metric = 1;
-        cout << "can't be correlated" << endl;
     }
-
-    cout << "velocity metric: " << metric << endl;
 
     // The reports are farther apart then the maximum distance.
     if (metric < 0) {
